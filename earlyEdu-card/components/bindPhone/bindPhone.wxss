@@ -1,0 +1,154 @@
+/* pages/bindPhoe/bindPhone.wxss */
+/*弹框样式*/
+ .show-btn {
+  margin-top: 100rpx;
+  color: #22cc22;
+}
+
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.modal-dialog {
+  width: 540rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 35%;
+  left: 0;
+  z-index: 9999;
+  background: #f9f9f9;
+  margin: -180rpx 80rpx;
+  border-radius: 36rpx;
+}
+.modal-content {
+  padding:30rpx 60rpx 50rpx 60rpx;
+  text-align:center;
+  color:#333;
+  font-size:28rpx;
+}
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  height:88rpx;
+  border-top:1px solid #e5e5e5;
+  font-size:28rpx;
+  line-height:88rpx;
+}
+.btn-cancel {
+  width: 50%;
+  color:#333;
+text-align:center;
+border-right:1px solid #e5e5e5;
+}
+
+.btn-confirm {
+  width: 100%;
+  color: #ffffff;
+  text-align: center;
+  background:#CBB588
+}
+.alertimg{
+  width:100rpx;
+  height:100rpx;
+  margin-bottom:30rpx;
+
+}
+.alerttext{
+  text-align:left;
+}
+.modal-title{
+  height:94rpx;
+  display:flex;
+  line-height:94rpx;
+  font-size:34rpx;
+  color:#333;
+  padding-left:30rpx;
+}
+.closeicon{
+  flex:0 0 100rpx;
+text-align:center;
+
+}
+view.titleright{
+  flex:1;
+  text-align:center;
+  padding-right:112rpx;
+}
+.closeicon image{
+  width:26rpx;
+  height:26rpx;
+}
+.reachbottom,.nodata{
+  text-align:center;
+color:#666;
+}
+
+/*绑定手机号弹框*/
+.modal-dialog{
+  width:600rpx;
+}
+.modal-content{
+  padding:0rpx;
+}
+view.headline{
+  height:90rpx;
+  line-height:90rpx;
+  border-bottom:2rpx solid #ddd;
+  text-align:center;
+  color:#333;
+  font-size:32rpx;
+}
+.phonelayer{
+  display: flex;
+  justify-content:space-between;
+padding:0 20rpx;
+  align-items:center;
+  height:87rpx;
+border-bottom:2rpx solid #ddd;
+
+}
+.getcodebtn{
+  width:180rpx;
+  height:62rpx;
+ 
+  font-size:26rpx;
+}
+.leftbox{
+  height:100%;
+line-height:87rpx;
+
+}
+.leftbox input{
+  display: inline-block;
+  vertical-align:middle;
+  width:280rpx;
+  text-align:left;
+}
+.codebtn{
+  display:inline-block;
+  font-size:26rpx;
+  color:#fff;
+  background-color:#CBB588;
+  padding:0 20rpx;
+}
+.verifybox{
+  display:flex;
+padding:0 20rpx;
+line-height:87rpx;
+}
+.verifybox input{
+  display:inline-block;
+vertical-align:middle;
+height:87rpx;
+flex:1;
+text-align:left;
+}

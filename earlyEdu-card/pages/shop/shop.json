@@ -1,0 +1,7 @@
+{
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "bindphone": "../../components/bindPhone/bindPhone"
+  }
+}

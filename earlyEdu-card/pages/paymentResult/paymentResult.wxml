@@ -1,0 +1,16 @@
+<!--pages/paymentResult/paymentResult.wxml-->
+<view class='contanier'>
+   <view>
+       <view class='pay_title'>支付成功</view>
+       <view class='skip'>(3秒后自动跳转至订单页面)</view>
+       <view class='view'>查看订单</view>
+   </view>
+   <!-- <view>
+       <view class='pay_default'>支付失败</view>
+       <view class='skip tell'>请在<text style='color:#B4282D'>24小时</text>内完成付款 否则订单会被系统取消</view>
+       <view style='display:flex'>
+          <view class='view' style='margin-right:50rpx'>查看订单</view>
+          <view class='view'>重新付款</view>
+       </view>
+   </view> -->
+</view>

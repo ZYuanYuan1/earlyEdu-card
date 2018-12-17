@@ -1,0 +1,21 @@
+<!--pages/myQRcode/myQRcode.wxml-->
+<view class='contanier' style='margin-top:121rpx'>
+<!-- 邀请好友得分红奖励,多邀多得！ -->
+      <view class='title QRmargin'>送你一份杭州宝宝专属大礼！</view>
+      <!-- <view class='content QRmargin'>邀请好友成为会员，TA可享受早教卡专属福利，你可获得<text style='color:#FCDC89'>39元</text>现金返现作为奖励。</view> -->
+      <view class='content QRmargin'>邀请好友成为会员，TA可享受早教卡专属福利，还能额外获得一份“传家宝”-8090童年时光礼盒！</view>
+    <view class='qrcode'>
+     <image src="{{img}}" class="qritem"></image>
+      <image class="img" src='/images/bag.png'></image>
+    </view>
+    <!-- bindtap='saveImg' -->
+      <view class='save QRmargin' bindtap='handleSharePoster'>生成分享海报</view>
+      <!-- <view class='save_share'>截图保存并分享哦~</view> -->
+</view>
+<!--绑定手机号弹窗-->
+<bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone>
+<!-- <canvas canvas-id="shareCanvas"></canvas> -->
+
+<modal hidden="{{!showModal}}" bindconfirm="handleSavePoster" bindcancel="handleCancelPoster" confirmText="保存图片">
+  <painter palette="{{template}}" bind:imgOK="onImgOK" />
+</modal>

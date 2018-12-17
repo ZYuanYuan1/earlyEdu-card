@@ -1,0 +1,43 @@
+/* pages/extra/extra.wxss */
+page{
+  background: url("https://img.sahuanka.com/earlyEdu-card/images/extra_bg.gif") no-repeat;
+  background-size: 100% 100%
+}
+.header{
+  font-size: 24rpx;
+  color: #A17B3A;
+  text-align: right;
+  height: 225rpx;
+  margin-top: 50rpx;
+  margin-right: 30rpx
+}
+.content{
+  text-align: center
+}
+.con_amount{
+  color: #44300B;
+  font-size: 60rpx
+}
+.con_awar{
+  font-size: 28rpx;
+  color: #44300B;
+}
+.get{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70rpx
+}
+.get_awar{
+  width: 200rpx;
+  height: 64rpx;
+  background: #FFFFFF;
+  color: #A17B3A;
+  font-size: 28rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 34rpx;
+  opacity: 0.5
+}

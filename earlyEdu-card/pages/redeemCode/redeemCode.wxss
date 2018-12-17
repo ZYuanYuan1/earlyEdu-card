@@ -1,0 +1,42 @@
+/* pages/redeemCode/redeemCode.wxss */
+page{
+  background: #F4F4F4
+}
+.contanier{
+  display: flex;
+  padding: 120rpx 66rpx 0;
+}
+.title{
+  text-align: center;
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: bold
+}
+.input{
+  width: 618rpx;
+  height: 100rpx;
+  border: 4rpx solid #DDDDDD;
+  background: #ffffff;
+  border-radius: 58rpx;
+  margin: 80rpx 0 60rpx 0;
+  text-align: center;
+  color: #B68930;
+  font-size: 32rpx
+}
+.plInput{
+  text-align: center;
+  font-size: 32rpx;
+  color: #DDDDDD;
+}
+.sure{
+  width: 618rpx;
+  height: 100rpx;
+  background: #CBB588;
+  border-radius: 58rpx;
+  margin-bottom: 240rpx
+}
+    .explain{
+       font-size: 24rpx;
+       color: #666666;
+       line-height: 50rpx
+    }

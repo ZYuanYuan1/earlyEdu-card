@@ -1,0 +1,76 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/groupDetail/groupDetail",
+    "pages/assemble/assemble",
+    "pages/myQRcode/myQRcode",
+    "pages/extra/extra",
+    "pages/choose/choose",
+    "pages/cash_record/cash_record",
+    "pages/myNews/myNews",
+    "pages/shop/shop",
+    "pages/cash_charge/cash_charge",
+    "pages/comment/comment",
+    "pages/commentAll/commentAll",
+    "pages/orders/orders",
+    "pages/myMessage/myMessage",
+    "pages/orderDetail/orderDetail",
+    "pages/payment/payment",
+    "pages/paymentResult/paymentResult",
+    "pages/shopAddress/shopAddress",
+    "pages/goodsDetail/goodsDetail",
+    "pages/coupon/coupon",
+    "pages/collection/collection",
+    "pages/addressAdd/addressAdd",
+    "pages/address/address",
+    "pages/redeemCode/redeemCode",
+    "pages/member/member",
+    "pages/openCard/openCard",
+    "pages/classify/classify",
+    "pages/order/order",
+    "pages/my/my",
+    "pages/add/index",
+    "pages/babyGift/babyGift",
+    "pages/moneyRewards/moneyRewards",
+    "pages/searchLocation/searchLocation",
+    "pages/me/me",
+    "pages/agreement/agreement",
+    "pages/bindPhone/bindPhone"
+
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#FFFECF",
+    "navigationBarTitleText": "早教卡",
+    "navigationBarTextStyle":"black"
+  },"tabBar": {
+    "color": "#333333",
+    "selectedColor": "#333333",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "/images/Group9.png",
+      "selectedIconPath": "/images/Group.png"
+    },
+    {
+      "pagePath": "pages/classify/classify",
+      "text": "分类",
+      "iconPath": "/images/Group17.png",
+      "selectedIconPath": "/images/Group8.png"
+    },
+    {
+      "pagePath": "pages/orders/orders",
+      "text": "订单",
+      "iconPath": "/images/Group18.png",
+      "selectedIconPath": "/images/Group7.png"
+    },
+    {
+      "pagePath": "pages/my/my",
+      "text": "我的",
+      "iconPath": "/images/Group19.png",
+      "selectedIconPath": "/images/Group6.png"
+    
+    }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+<!--pages/bindPhoe/bindPhone.wxml-->
+<button type="primary" bindtap='showDialogPhoneBtn'>测试点击弹出弹窗</button>
+ <!--绑定手机号弹窗-->
+    <view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{phoneShowModal}}"></view>
+    <view class="modal-dialog" wx:if="{{phoneShowModal}}">
+      <view class="modal-content">
+          <view class='headline'>绑定手机号</view>
+         <!-- <image src="/images/alert.png" class="alertimg"></image> -->
+         <view class="phonelayer">
+            <view class="leftbox">
+              <text>手机号:</text>
+              <input type="text"></input>
+            </view>
+            <view class="getcodebtn">
+               <button class="codebtn">获取验证码</button> 
+            </view>
+         </view>
+         <view class="verifybox">
+            <text>验证码：</text>
+            <input type="text" class=""></input>
+         </view>
+      </view>
+      <view class="modal-footer">
+        <view class="btn-cancel" bindtap="onCancelPhone" data-status="cancel">取消</view>
+        <view class="btn-confirm" bindtap="onConfirmPhone" data-status="confirm">确定</view>
+      </view>
+    </view>

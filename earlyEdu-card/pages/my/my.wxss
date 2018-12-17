@@ -1,0 +1,125 @@
+/* pages/my/my.wxss */
+page{
+  background: #F4F4F4
+}
+/* 头部 */
+.header{
+  display:fixed;
+  background:#FFFECF;
+  height:240rpx;
+  width:100%;
+
+}
+/* 动画 */
+/* @-webkit-keyframes bounce-up {
+ 25% {-webkit-transform: translateY(10rpx);height: 50rpx}
+ 50%, 100% {-webkit-transform: translateY(0);}
+ 75% {-webkit-transform: translateY(-10rpx);height: 70rpx}
+} */
+
+@keyframes bounce-up {
+ 25% {transform: translateY(6rpx);height: 56rpx}
+ 50%, 100% {transform: translateY(0);}
+ 75% {transform: translateY(-6rpx);height: 66rpx}
+}
+/* .vipCard{ background:#ddd; width: 100px; height: 100px; margin:100px auto;-webkit-animation: bounce-up 1.4s linear infinite;animation: bounce-up 1.4s linear infinite;} */
+
+.headerCon{
+  display:flex;
+}
+.headerConAll{
+  text-align:center;
+  height:180rpx;
+}
+.headerConA image{ 
+  width:104rpx;
+  height:104rpx;
+  border-radius:;
+  border-radius:50%;
+}
+.headerConB{
+  font-size:36rpx;
+  font-weight:bold;
+
+}
+
+.headerConC image{
+   width:80rpx;
+   height:80rpx;
+}
+.vipCard{
+  display:flex;
+  justify-content:space-between;
+  width:630rpx;
+  height:60rpx;
+  background:#333333;
+  color:#E4DCC0;
+  font-size:24rpx;
+  border-radius:16rpx 16rpx 0 0;
+  margin:0 auto;
+  line-height:55rpx;
+  padding:0 20rpx;
+  -webkit-animation: bounce-up 2s linear infinite;
+  animation: bounce-up 2s linear infinite;
+}
+.vipCardA image{
+  width:24rpx;
+  height:24rpx;
+
+}
+.vipCardA text{
+  margin-left:8rpx;
+
+}
+.myCon{
+  display:flex;
+  padding:24rpx 40rpx;
+  background:#ffffff;
+  height: 42rpx
+}
+.myImg{
+  flex: 0 0 10%;
+}
+.myImg image{
+  width:38rpx;
+ height:38rpx;
+}
+.myInfo{
+  flex: 0 0 85%;
+}
+.myInfo text{
+  font-size: 30rpx;
+  color: #333333
+}
+.concact{
+  background: #ffffff;
+  font-size: 30rpx;
+  padding: 0;
+  margin-top:-15rpx;
+  text-align:left;
+
+}
+.concact::after{
+  border: none
+}
+.myArrow{
+  flex:0 0 5%;
+  text-align:center;
+}
+.myArrow image{
+  width:12rpx;
+  height:24rpx;
+}
+.my{
+  border-bottom: 2rpx solid #E4E4E4
+}
+.invit::after{
+    border: none
+}
+.invit{
+  font-size: 22rpx;
+  margin-top:18px;
+
+}
+/* 无订单 */
+

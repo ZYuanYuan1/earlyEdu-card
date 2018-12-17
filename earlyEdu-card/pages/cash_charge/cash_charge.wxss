@@ -1,0 +1,152 @@
+/* pages/cash_charge/cash_charge.wxss */
+@import "../../components/six-input-box/component.wxss";
+page{
+  /* min-height:100%; */
+  background-color:#f6f6f6;
+}
+.whitebox{
+  background-color:#fff;
+  border-radius:6rpx;
+  padding:20rpx 20rpx 50rpx 20rpx; 
+  margin:30rpx;
+  box-sizing:border-box;
+}
+.cardbox{
+  background-color:#fbfbfb;
+  display:flex;
+  padding:30rpx;
+  box-sizing:border-box;
+  margin-bottom:40rpx;
+
+}
+view.leftbox{
+  flex:0 0 90rpx;
+  font-size:28rpx;
+  color:#000;
+  margin-right:90rpx;
+
+}
+view.rightbox{
+  flex:1;
+  font-size:28rpx;
+  color:#969696;
+}
+view.bankname{
+  margin-bottom:26rpx;
+  color:#7282a5;
+}
+.moneybox{
+  margin:0 40rpx 30rpx 40rpx;
+  border-bottom:#e2e2e2;
+}
+.textintro{
+  color:#000;
+  font-size:26rpx;
+  margin-bottom:35rpx;
+}
+.passinput{
+  font-size:48rpx;
+  color:#000;
+  border-bottom: 2rpx solid #e2e2e2;
+  display:flex;
+align-items:center;
+}
+.passinput input{
+  display:inline-block;
+  vertical-align:middle;
+  height:120rpx;
+  width:90%;
+
+}
+/*底部按钮*/
+.btnbox{
+  width:100%;
+
+}
+.btnbox button{
+  width:90%;
+background-color:#CBB588;
+color:#fff;
+font-size:38rpx;
+letter-spacing:4rpx;
+}
+/*弹框样式*/
+.titleright{
+  color:#030303;
+  font-size:36rpx;
+}
+.modal-content{
+ border-top:2rpx solid #91b49c;
+  text-align:center;
+  padding:30rpx 30rpx 38rpx 30rpx;
+}
+.hosthead{
+  color:#010000;
+  font-size:32rpx;
+  margin-bottom: 36rpx;
+
+}
+.moneytext{
+  font-size: 40rpx;
+  color:#000;
+  font-weight:700;
+  margin-bottom:46rpx;
+}
+view.bankbox{
+  display:flex;
+  padding:26rpx 0;
+  border-top:2rpx solid #d8d8d8;
+  border-bottom:2rpx solid #d8d8d8;
+  justify-content: space-around;
+  margin-bottom: 40rpx;
+}
+.bankminicon{
+  width:55rpx;
+  height:55rpx;
+  border-radius:50%;
+  vertical-align:middle;
+
+}
+.rightminicon{
+  width:22rpx;
+  height:28rpx;
+  position:relative;
+top:10rpx;
+vertical-align:middle;
+
+}
+.modal-dialog {
+  top:6%;
+  margin:0rpx 105rpx;
+}
+.namebox{
+ margin:0 36rpx;
+font-size:28rpx;
+color:#333;
+line-height:80rpx;
+border-bottom:2rpx solid #ddd;
+
+}
+.namebox input{
+  display:inline-block;
+vertical-align:middle;
+width:66%;
+padding:0;
+
+}
+.moneybox{
+  margin:20px 40rpx 30rpx 40rpx;
+}
+
+.maintext{
+  padding:0rpx 30rpx;
+  color:#333;
+  line-height:50rpx;
+}
+.maintext view{
+  font-size:28rpx;
+  text-indent: 40rpx;
+}
+.maintext text{
+  font-size:32rpx;
+}

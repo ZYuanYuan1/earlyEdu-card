@@ -1,0 +1,7 @@
+<!--pages/shopAddress/shopAddress.wxml-->
+<view class='contanier'>
+   <view class='content' wx:for='{{addressList}}'>
+       <image src='https://img.sahuanka.com/earlyEdu-card/images/shopPosition.png'></image><text>{{item.province}}{{item.city}}{{item.district}}{{item.address}}</text>
+       <view>{{item.phone}}</view>
+   </view>
+</view>

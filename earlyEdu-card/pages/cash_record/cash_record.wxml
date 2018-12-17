@@ -1,0 +1,27 @@
+<!-- cash_record/cash_record.js -->
+<view class="page">
+  <view wx:if="{{homeList.length>0}}">
+    <block wx:for='{{homeList}}' wx:key="{{item.fundsflowid}}">
+      <view class="singledealbox">
+        <view class="dealleftbox">
+          <text>提现</text>
+          <view>{{item.createdate}}</view>
+        </view>
+        <view class="dealrightbox">
+          <view>{{item.amount?item.amount:'0'}}元</view> 
+          <view wx:if="{{item.state==1}}">提现中</view>
+          <view wx:elif="{{item.state==4}}">提现失败</view>
+          <view wx:elif="{{item.state==7}}">提现成功</view>
+        </view>
+      </view>
+    </block>
+    <view wx:if="{{reachBottomTip==true}}" class="reachbottom">到底啦</view> 
+  </view>
+  <!--当没有交易时显示-->
+  <view class="nodata" wx:else>
+      暂无数据
+  </view> 
+</view>
+<!--绑定手机号弹窗-->
+ <bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone> 
+ 

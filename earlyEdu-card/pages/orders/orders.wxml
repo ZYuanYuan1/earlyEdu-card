@@ -1,0 +1,154 @@
+<!--pages/orders/orders.wxml-->
+<view class='contanier'>
+<!-- 头部导航 -->
+   <view class='header'>
+       <view class='header_items {{activeIndex == index ? "header_change" : ""}}' wx:for="{{tabs}}"  wx:key="{{index}}" id="{{index}}" bindtap="tabClick">{{item}}</view>
+   </view>
+   <!-- 订单 -->
+
+     <view class='myOrder'>
+     <!-- 全部选项卡 -->
+      <view class="myOrderAll" wx:for="{{taskList}}" wx:key="{{item.orderid}}" hidden="{{activeIndex != 0}}">
+       <view style='display:flex'>
+          <!-- <view class='myTitle' wx:for="{{businiss}}">
+             <image src='/images/store.png' style="margin-right:8rpx"></image>
+             <text style="margin-right:8rpx">{{item.businessName}}</text>
+             <image src='https://img.sahuanka.com/earlyEdu-card/images/arrow.png' style='width:10rpx;height:18rpx'></image>
+          </view> -->
+          <view class='mytitleCor' wx:if="{{item.ordertype==11?false:item.state==1}}">已创建</view>
+          <view class='mytitleCor' wx:if="{{item.state==2}}">待支付</view>
+          <view class='mytitleCor' wx:if="{{item.ordertype==11?item.state==1||item.state==3:item.state==3}}">待使用</view>
+          <view class='mytitleCor' wx:if="{{item.state==4}}">付款失败</view>
+          <view class='mytitleCor' wx:if="{{item.state==5}}">已关闭</view>
+          <view class='mytitleCor' wx:if="{{item.state==6}}">已取消</view>
+          <view class='mytitleCor' wx:if="{{item.state==7}}">待评价</view>
+          <view class='mytitleCor' wx:if="{{item.state==8}}">已过期</view>
+          <view class='mytitleCor' wx:if="{{item.state==9}}">已完成</view>
+       </view>
+       <view style='display:flex;padding:20rpx 0' bindtap='goGoodsDetail'data-business-id="{{item.businessactivityid}}" data-activity-type="{{item.ordertype}}">
+          <image class="storeImg" src="{{item.orderpic?item.orderpic:'https://img.sahuanka.com/sjCard/images/defaultImg.png'}}"  data-index="{{index}}" binderror="errImg" data-err-img="taskList[{{index}}].orderpic" bindtap='skip_courseDetail' data-business-id="{{item.businessactivityid}}" data-activity-type="{{item.ordertype}}"></image>
+          <view class='orderMidd'>
+             <view class='myfont'>{{item.activityname}}</view>
+             <!-- <view  class='myfont  myOfont'>地点：西湖区水晶城</view> -->
+          </view>
+          <view style='orderRight'>
+            <view  class='myfont myright'>￥{{item.totalamount/100}}</view>
+            <view  class='myfont myOfont myright'>x1</view>
+            <view  class='myfont' style='margin-top: 60rpx'>合计:￥{{item.totalamount/100}}</view>
+          </view>
+       </view>
+        <view class='orderButton'>
+            <view class="comment" style='border: 2rpx solid #D0021B;' data-order-info="{{item}}" bindtap='gotopay'  wx:if="{{item.state==2}}">支付</view>
+            <view class="comment" style='border: 2rpx solid #D0021B;' bindtap="showDialogBtn" data-qrcode-url="{{item.qrcode}}" data-order-number="{{item.orderno}}"  wx:if="{{item.ordertype==11?item.state==3||item.state==1:item.state==3}}">查看券码</view>
+            <view class="comment" style='border: 2rpx solid #D0021B;'  bindtap='pop_evaluate' hover-class="none" data-order-id="{{item.orderid}}" data-business-activity-id="{{item.businessactivityid}}"  wx:if="{{item.state==7}}">评价有礼</view>
+            <view class="comment" style='border: 2rpx solid #D0021B;' bindtap='goGoodsDetail'data-business-id="{{item.businessactivityid}}" data-activity-type="{{item.ordertype}}"  wx:if="{{item.state==9}}">再来一单</view>
+            <!-- <view>再来一单</view> -->
+        </view>
+      </view>
+      <!-- 待支付选项卡 -->
+      <view class="myOrderAll" wx:for="{{taskList}}" wx:key="{{item.orderid}}" hidden="{{activeIndex != 1}}"  wx:if="{{item.state==2}}">
+       <view style='display:flex'>
+          <!-- <view class='myTitle'>
+             <image src='/images/store.png' style="margin-right:8rpx"></image>
+             <text style="margin-right:8rpx">潮童星</text>
+             <image src='https://img.sahuanka.com/earlyEdu-card/images/arrow.png' style='width:10rpx;height:18rpx'></image>
+          </view> -->
+          <view class='mytitleCor'>待支付</view>
+       </view>
+       <view style='display:flex;padding:20rpx 0' bindtap='goGoodsDetail'data-business-id="{{item.businessactivityid}}" data-activity-type="{{item.ordertype}}">
+          <image class="storeImg" src="{{item.orderpic?item.orderpic:'https://img.sahuanka.com/sjCard/images/defaultImg.png'}}"  data-index="{{index}}" binderror="errImg" data-err-img="taskList[{{index}}].orderpic" bindtap='skip_courseDetail' data-business-id="{{item.businessactivityid}}" data-activity-type="{{item.ordertype}}"></image>
+          <view class='orderMidd'>
+             <view class='myfont'>{{item.activityname}}</view>
+             <!-- <view  class='myfont  myOfont'>地点：西湖区水晶城</view> -->
+          </view>
+          <view style='orderRight'>
+            <view  class='myfont myright'>￥{{item.totalamount/100}}</view>
+            <view  class='myfont myOfont myright'>x1</view>
+            <view  class='myfont' style='margin-top: 60rpx'>合计:￥{{item.totalamount/100}}</view>
+          </view>
+        </view>
+        <view class='orderButton'>
+             <view class="comment" style='border: 2rpx solid #D0021B;' data-order-info="{{item}}" bindtap='gotopay'>支付</view>
+            <!-- <view>再来一单</view> -->
+        </view>
+      </view>
+      <!-- 待使用选项卡 -->
+      <view class="myOrderAll" wx:for="{{taskList}}" wx:key="{{item.orderid}}" hidden="{{activeIndex != 2}}" wx:if="{{item.ordertype==11?item.state==3||item.state==1:item.state==3}}" >
+       <view style='display:flex'>
+          <!-- <view class='myTitle'>
+             <image src='/images/store.png' style="margin-right:8rpx"></image>
+             <text style="margin-right:8rpx">潮童星</text>
+             <image src='https://img.sahuanka.com/earlyEdu-card/images/arrow.png' style='width:10rpx;height:18rpx'></image>
+          </view> -->
+          <view class='mytitleCor'>待使用</view>
+       </view>
+       <view style='display:flex;padding:20rpx 0' data-business-id="{{item.businessactivityid}}" data-activity-type="{{item.ordertype}}"  bindtap='goGoodsDetail'>
+          <image class="storeImg" src="{{item.orderpic?item.orderpic:'https://img.sahuanka.com/sjCard/images/defaultImg.png'}}"  data-index="{{index}}" binderror="errImg" data-err-img="taskList[{{index}}].orderpic" bindtap='skip_courseDetail' data-business-id="{{item.businessactivityid}}" data-activity-type="{{item.ordertype}}"></image>
+          <view class='orderMidd'>
+             <view class='myfont'>{{item.activityname}}</view>
+             <!-- <view  class='myfont  myOfont'>地点：西湖区水晶城</view> -->
+          </view>
+          <view style='orderRight'>
+            <view  class='myfont myright'>￥{{item.totalamount/100}}</view>
+            <view  class='myfont myOfont myright'>x1</view>
+            <view  class='myfont' style='margin-top: 60rpx'>合计:￥￥{{item.totalamount/100}}</view>
+          </view>
+        </view>
+        <view class='orderButton'>
+           <view class="comment" style='border: 2rpx solid #D0021B;' bindtap="showDialogBtn" data-qrcode-url="{{item.qrcode}}" data-order-number="{{item.orderno}}">查看券码</view>
+            <!-- <view>再来一单</view> -->
+        </view>
+      </view>
+
+      <!-- 待评价选项卡 -->
+      <view class="myOrderAll" wx:for="{{taskList}}" wx:key="{{item.orderid}}"  hidden="{{activeIndex != 3}}" wx:if="{{item.state==7}}">
+       <view style='display:flex'>
+          <!-- <view class='myTitle'>
+             <image src='/images/store.png' style="margin-right:8rpx"></image>
+             <text style="margin-right:8rpx">潮童星</text>
+             <image src='https://img.sahuanka.com/earlyEdu-card/images/arrow.png' style='width:10rpx;height:18rpx'></image>
+          </view> -->
+          <view class='mytitleCor'>待评价</view>
+       </view>
+       <view style='display:flex;padding:20rpx 0' data-business-id="{{item.businessactivityid}}" data-activity-type="{{item.ordertype}}"  bindtap='goGoodsDetail'>
+          <image class="storeImg"src="{{item.orderpic?item.orderpic:'https://img.sahuanka.com/sjCard/images/defaultImg.png'}}"  data-index="{{index}}" binderror="errImg" data-err-img="taskList[{{index}}].orderpic" bindtap='skip_courseDetail' data-business-id="{{item.businessactivityid}}" data-activity-type="{{item.ordertype}}"></image>
+          <view class='orderMidd'>
+             <view class='myfont'>{{item.activityname}}</view>
+             <!-- <view  class='myfont  myOfont'>地点：西湖区水晶城</view> -->
+          </view>
+          <view style='orderRight'>
+            <view  class='myfont myright'>￥{{item.totalamount/100}}</view>
+            <view  class='myfont myOfont myright'>x1</view>
+            <view  class='myfont' style='margin-top: 60rpx'>合计:￥{{item.totalamount/100}}</view>
+          </view>
+        </view>
+        <view class='orderButton'>
+            <view class="comment" style='border: 2rpx solid #D0021B;'  bindtap='pop_evaluate' hover-class="none" data-order-id="{{item.orderid}}" data-business-activity-id="{{item.businessactivityid}}">评价有礼</view>
+            <!-- <view>再来一单</view> -->
+        </view>
+      </view>
+    </view>
+     <!--电子券弹框-->
+    <view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+    <view class="modal-dialog" wx:if="{{showModal}}">
+      <view class="modal-title">
+          <view class="closeicon" bindtap="onCancel"><image src="https://img.sahuanka.com/sjCard/images/closeicon.png"></image></view>
+          <view class="titleright">电子券</view>
+      </view>
+      <view class="modal-content">
+         <view class="alerttext">
+            电子券编号:<text>{{orderNo}}</text>
+         </view>
+         <view class="container-box">
+            <view class="img-box" bindtap='toinvite_people'>
+                <canvas hidden="{{canvasHidden}}" canvas-id="mycanvas" style="width:250rpx;height:250rpx;margin-left:90rpx;"/>
+            </view>
+        </view>
+        <view hidden="{{maskHidden}}" class="mask"></view>
+        <view class="canvas-box"></view>
+      </view>
+    </view>
+</view>
+<!--绑定手机号弹窗-->
+<bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone>
+

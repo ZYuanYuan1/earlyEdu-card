@@ -1,0 +1,7 @@
+{
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTitleText": "支付结果",
+  "usingComponents": {
+    "bindphone": "../../components/bindPhone/bindPhone"
+  }
+}

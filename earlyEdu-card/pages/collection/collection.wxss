@@ -1,0 +1,35 @@
+/* pages/collection/collection.wxss */
+page{
+  background: #F4F4F4
+}
+.contanier{
+  margin: 20rpx;
+  background: #ffffff;
+  width: 710rpx;
+  height: 160rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center
+}
+.title{
+  flex: 0 0 57%;
+  font-size: 32rpx;
+  color: #333333
+}
+.img{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius:50%;
+  background: #D8D8D8
+}
+.down_collection{
+   width: 136rpx;
+   height: 52rpx;
+   background: #CBB588;
+   font-size: 26rpx;
+   color: #ffffff;
+   border-radius: 22rpx;
+   display: flex;
+   align-items: center;
+   justify-content: center
+}

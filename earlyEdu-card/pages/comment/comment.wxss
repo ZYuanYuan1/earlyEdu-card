@@ -1,0 +1,111 @@
+/* pages/comment/comment.wxss */
+page{
+  background: #F8F8F8;
+}
+.comment_header{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin:24rpx 0 50rpx 0
+}
+.comment_header image{
+  width: 90rpx;
+  height: 94rpx;
+  flex: none;
+  margin-left:-32rpx;
+
+}
+.header_right{
+  flex: none;
+}
+.header_right text{
+  display: block;
+  font-family: "PingFangSC";
+  margin-left: -116rpx;
+  line-height: 48rpx;
+  
+}
+.right_select{
+  font-size: 20rpx;
+  color: #999999;
+  line-height:68rpx;
+
+}
+.right_select text{
+  width: 80rpx;
+  height: 28rpx;
+  text-align: 
+}
+.content_comment{
+  width: 690rpx;
+  height: 100%;
+  background:#ffffff;
+  margin: 0 auto;
+  border-radius: 8rpx
+}
+.content_triangle{
+     width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid red;
+}
+.comment_footer button{
+  position: fixed;
+  width: 670rpx;
+  height: 80rpx;
+  bottom: 35rpx;
+  left: 43rpx;
+  background: #CBB588;
+  color: #ffffff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+ 
+}
+.content_discuss{
+  background:#f4f4f4;
+  margin:0 auto;
+  width:650rpx;
+  height:auto;
+  margin-bottom:30rpx;
+  border-radius: 4rpx
+}
+.upload{
+  width:136rpx;
+ height:136rpx;
+}
+.star{
+  width: 48rpx;
+  height: 48rpx;
+  margin: 0 auto;
+  padding:30rpx 20rpx 30rpx 0;
+
+}
+.content_discuss textarea{
+  width:630rpx;
+  height:200rpx;
+  background:#f4f4f4;
+  padding-left:20rpx ;
+  margin:0 auto;
+  overflow: auto;
+  padding-top: 20rpx;
+  font-size: 26rpx
+}
+.plc{
+  font-size: 24rpx;
+  color: #C8C8C8;
+}
+.deltel{
+   width:26rpx;
+   height:26rpx;
+   position:absolute;
+   z-index:1;
+   margin-left:-20rpx;
+   margin-top:-12rpx;
+}
+.educt_hasupload_pic{
+  margin-left: 20rpx;
+  display: inline-block
+}

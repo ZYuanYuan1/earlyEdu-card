@@ -1,0 +1,7 @@
+{
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTitleText": "订单详情",
+  "usingComponents": {
+    "bindphone": "../../components/bindPhone/bindPhone"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "兑换码",
+  "navigationBarBackgroundColor": "#ffffff",
+  "usingComponents": {
+    "bindphone": "../../components/bindPhone/bindPhone"
+  }
+}

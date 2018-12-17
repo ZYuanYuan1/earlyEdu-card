@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "我要开卡",
+  "navigationBarBackgroundColor": "#ffffff",
+  "usingComponents": {
+    "bindphone": "../../components/bindPhone/bindPhone"
+  }
+}

@@ -1,0 +1,37 @@
+/* pages/commentAll/commentAll.wxss */
+page{
+  background: #F8F8F8
+}
+view{
+ word-break:break-all;
+ overflow:auto;
+}
+.taskitem {
+border-top:2rpx solid #e8e8ed;
+font-size:28rpx;
+padding:20rpx 10rpx;
+color:#333;
+}
+.taskitem image{
+ vertical-align:middle;
+ margin-right:10rpx;
+}
+.dissCountleft{
+border-radius:50%;
+width:80rpx;
+height:80rpx;
+margin-right:16rpx;
+}
+.dissCenterimg{
+  width: 150rpx;
+  height: 150rpx
+}
+.titleRightimg{
+  width: 32rpx;
+  height: 32rpx
+}
+.star{
+  width:20rpx;
+  height:20rpx;
+  margin-right:4rpx;
+}

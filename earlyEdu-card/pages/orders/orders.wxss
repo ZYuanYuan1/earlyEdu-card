@@ -1,0 +1,168 @@
+/* pages/orders/orders.wxss */
+@import '/components/wux.wxss';
+@import '/common_css/skyvow.wxss'; 
+page{
+  background: #F4F4F4
+}
+/*头部导航 */
+.header{
+  padding: 0 22rpx;
+  display: flex;
+  background: #ffffff;
+  height: 54rpx;
+  width: 706rpx;
+  position: fixed;
+  text-align: center;
+  font-size: 26rpx;
+  color: #333333;
+  align-items: center;
+
+}
+.header_items{
+  flex: 0 0 15%;
+  margin: 0 37rpx
+}
+.header_change{
+   border-bottom: 2rpx solid #B4282D;
+   color: #B4282D
+}
+
+/* 订单 */
+.myOrder{
+  padding:74rpx 0 20rpx 0;
+  margin: 0 22rpx
+}
+
+.myTitle{
+  flex: 0 0 85%;
+}
+.myTitle image{
+  width:28rpx;
+  height:28rpx;
+
+}
+.myTitle text{
+  font-size:24rpx;
+  color:#515151;
+}
+.mytitleCor{
+  font-size:24rpx;
+  color:#D0021B;
+}
+.myOrderAll{
+  background:#ffffff;
+  padding:20rpx 24rpx;
+  border-radius:20rpx;
+  margin-bottom: 20rpx
+}
+.myfont{
+  font-size: 22rpx;
+}
+.myOfont{
+  color: #999999
+}
+.storeImg{
+  width: 140rpx;
+  height: 140rpx
+}
+.orderMidd{
+  flex:0 0 50%;
+  margin-left:20rpx;
+  margin-top:10rpx;
+}
+.myright{
+  margin-top:10rpx;
+  text-align:right;
+  margin-left:66rpx;
+}
+.orderButton{
+  display:flex;
+  font-size:24rpx;
+  color:#666666;
+  flex-direction:row-reverse;
+}
+.orderButton view{
+  border:2rpx solid #979797;
+  border-radius:24rpx;
+  width:136rpx;
+  height:50rpx;
+  text-align:center;
+  line-height:54rpx;
+}
+.comment{
+  margin-left:20rpx;
+  color: #D0021B
+}
+/* 弹窗 */
+.modal-dialog {
+width:540rpx;
+overflow:hidden;
+position:fixed;
+top:50%;
+left:0;
+z-index:9999;
+background:#f9f9f9;
+margin:-180rpx 105rpx;
+border-radius:36rpx;
+}
+.modal-mask {
+width:100%;
+height:100%;
+position:fixed;
+top:0;
+left:0;
+background:#000;
+opacity:0.5;
+overflow:hidden;
+z-index:9000;
+color:#fff;
+}
+.modal-title {
+height:94rpx;
+display:flex;
+line-height:94rpx;
+font-size:34rpx;
+color:#333;
+padding-left:30rpx;
+}
+.modal-content {
+padding:30rpx 60rpx 50rpx 60rpx;
+text-align:center;
+color:#333;
+font-size:28rpx;
+border-top:2rpx solid #e5e5e5;
+}
+.alerttext {
+text-align:center;
+font-size:28rpx;
+color:#333;
+margin-top:20rpx;
+margin-bottom:10rpx;
+}
+.img-box {
+position:relative;
+}
+.mask {
+position:fixed;
+top:0;
+left:0;
+z-index:3;
+width:100%;
+height:100%;
+opacity:0;
+}
+.closeicon {
+flex:0 0 100rpx;
+text-align:center;
+z-index:10000;
+}
+.closeicon image{
+  width: 26rpx;
+  height: 26rpx
+}
+
+
+
+
+
+

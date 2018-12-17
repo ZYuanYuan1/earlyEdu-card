@@ -1,0 +1,47 @@
+<!--pages/order/order.wxml-->
+<view class='contanier'>
+<!-- 头部导航 -->
+  <view class='header'>
+    <view class='headerB'></view>
+    <view class='headerC'>
+       <view  class='headerD' wx:for="{{order}}">
+          <image src='{{item.imgUrl}}'></image>
+          <view>{{item.text}}</view>
+       </view>
+    </view>
+  </view>
+    <!-- 最近订单 -->
+    <view class='myOrder'>
+       <view class='myOrnew'>最近订单</view>
+      <view class="myOrderAll">
+       <view style='display:flex'>
+          <view class='myTitle'>
+             <image src='/images/store.png' style="margin-right:8rpx"></image>
+             <text style="margin-right:8rpx">潮童星</text>
+             <image src='/images/arrow2.png' style='width:10rpx;height:18rpx'></image>
+          </view>
+          <view class='mytitleCor'>待评价</view>
+       </view>
+       <view style='display:flex;padding:20rpx 0'>
+          <image class="storeImg"src='/images/erweima.png'></image>
+          <view class='orderMidd'>
+             <view class='myfont'>形体测试（水晶城店）</view>
+             <view  class='myfont  myOfont'>地点：西湖区水晶城</view>
+          </view>
+          <view style='orderRight'>
+            <view  class='myfont myright'>￥1999</view>
+            <view  class='myfont myOfont myright'>x1</view>
+            <view  class='myfont' style='margin-top: 60rpx'>合计:￥1999</view>
+          </view>
+        </view>
+        <view class='orderButton'>
+            <view class="comment" style='border: 2rpx solid #D0021B;'>评价有礼</view>
+            <view>再来一单</view>
+        </view>
+      </view>
+    </view>
+    <!-- <view class='myOrder'>
+       <view class='myOrnew'>最近订单</view>
+       <view style='font-size:24rpx;color:#888888'>暂无订单~</view>
+    </view> -->
+</view>

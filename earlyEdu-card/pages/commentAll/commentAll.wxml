@@ -1,0 +1,21 @@
+<!--pages/commentAll/commentAll.wxml-->
+<view>
+<scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px;" 
+bindscrolltolower="bindDownLoad" bindscrolltoupper="topLoad"  bindscroll="scroll">
+ <view class="taskitem" style='display:flex;background:#fff;margin-top:20rpx;' wx:for="{{list}}">
+                   <image src='{{item.avatarUrl}}' class='dissCountleft'></image>
+                   <view style='display:flex:0 0 72%;line-height:20rpx;line-height:22px;width:67%;'>
+                        <view style='font-size:26rpx;color:#446889'>{{item.userName==null&&item.avatarUrl==null?'*****':item.userName}}</view>
+                        <view style='font-size:20rpx'><text>打分 </text><image wx:for='{{item.starImg}}' src='{{item}}' class='star' style="margin-right:4rpx"></image></view>
+                        <view style='font-size:28rpx'>{{item.content==''?"暂无评论":item.content}}</view>
+                        <view style='margin-top:22rpx'><image wx:for="{{item.imgList}}" class='dissCenterimg' src='{{item}}'></image>
+                        </view>
+                   </view>
+                   <view style='font-size:24rpx;color:#999999;flex:0 0 16%'>{{createDate}}</view>
+              </view>
+ </scroll-view>
+ <view class="body-view">
+      <loading hidden="{{hidden}}" bindchange="loadingChange">加载中...
+         </loading>
+    </view>
+</view>

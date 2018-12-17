@@ -1,0 +1,8 @@
+<!--pages/coupon/coupon.wxml-->
+<view class='contanier'>
+    <view class='header'>
+       <view class='header_item'><text class='pop'>未使用</text></view>
+       <view  class='header_item'><text>已使用</text></view>
+       <view  class='header_item'><text>已失效</text></view>
+    </view>
+</view>

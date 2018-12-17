@@ -1,0 +1,7 @@
+{
+  "navigationBarBackgroundColor": "#ffffff",
+   "navigationBarTitleText": "我的消息",
+    "usingComponents": {
+      "bindphone": "../../components/bindPhone/bindPhone"
+    }
+}

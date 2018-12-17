@@ -1,0 +1,27 @@
+/* pages/shopAddress/shopAddress.wxss */
+.contanier{
+  padding: 10rpx 30rpx 30rpx 30rpx;
+  line-height: 50rpx
+}
+.content{
+  border-bottom: 2rpx solid #f4f4f4;
+    line-height: 50rpx;
+    padding: 20rpx 0
+}
+.content:last-child{
+  border-bottom:none
+}
+.content image{
+  width: 26rpx;
+  height: 30rpx;
+  margin-right: 16rpx
+}
+.content text{
+  font-size: 28rpx;
+  color: #333333
+}
+.content view{
+  font-size: 24rpx;
+  color: #333333 ;
+  margin-left: 42rpx
+}

@@ -1,0 +1,65 @@
+<!--pages/payment/payment.wxml-->
+<!-- 地址 -->
+  <view>
+    <view class='orderAddr orderPadd orderMar' bindtap="addAddress" style="height:100rpx" hidden='{{addressList}}'>
+      <text>您还没有填写地址，马上去完善</text>
+      <image src='https://img.sahuanka.com/earlyEdu-card/images/arrow.png'></image>
+    </view>
+    <view class="orderAddr orderPadd orderMar" bindtap="addAddress" hidden='{{!addressList}}'>
+      <view style='flex:0 0 14%'>
+        <view style='margin-bottom:14rpx;'>{{addressList.recipient}} </view>
+        <view class='enable' style='font-size:22rpx'>默认</view>
+      </view>
+      <view style='flex:0 0 70%;padding-left:50rpx'>
+        <view style='margin-bottom:14rpx;'>{{addressList.phoneNumber}}</view>
+        <view>{{addressList.province}}{{addressList.city}}{{addressList.district}}{{addressList.street}}</view>
+      </view>
+      <image src='https://img.sahuanka.com/earlyEdu-card/images/arrow.png'></image>
+    </view>
+  </view>
+<view class='contanier'>
+  <view wx:if="true">
+  <view class='orderBac orderPadd orderMar orderFont'>
+    <view class='orderItems'>
+      <view class='orderItem'>商品金额</view>
+      <view>￥{{orderInfo.amount}}</view>
+    </view>
+    <!-- <view class='orderItems'>
+      <view class='orderItem'>运费</view>
+      <view>￥0</view>
+    </view>
+     <view class='orderItems'>
+      <view style='flex:0 0 12%'>留言</view>
+       <textarea placeholder='点击给商家留言' placeholder-class='font-size:26rpx' bindinput="remark"></textarea>
+    </view> -->
+  </view>
+    <view class='orderBac orderMar' style="display:flex;padding:30rpx">
+       <view style='flex:0 0 24%'><image style='width:140rpx;height:140rpx;background:#ccc' src="{{orderInfo.orderpic?orderInfo.orderpic:'https://img.sahuanka.com/sjCard/images/defaultImg.png'}}" binderror="errImgDetail" data-err-img="{{orderInfo.orderpic}}"></image></view>
+       <view  style='flex:0 0 70%'>
+          <view class='orderFont'>{{orderInfo.activityname}}</view>
+          <!-- <view style='font-size:26rpx;color:#868686'>半年</view> -->
+          <view class='orderFont'>￥{{orderInfo.amount}}</view>
+       </view>
+       <view class='orderFont'>x1</view>
+    </view>
+    <view class='orderBac orderFont orderItems orderPadd'>
+       <view class='title'>可用佣金抵扣{{orderInfo.replaceAmount?orderInfo.replaceAmount:'0'}}元</view>
+      <view class="swich">
+       <switch checked="{{switchChecked}}" bindchange="switchChange"/>
+      </view>
+    </view>
+    <!-- <view  class='orderBac orderMar'>
+        <view class='order_groupitem'>联系人<input placeholder='必填'></input></view>
+        <view class='order_groupitem'>联系电话<input placeholder='必填'></input></view>
+    </view> -->
+<!-- 尾部 -->
+ <view class='footer'>
+       <view class='fontTwo' style='flex:0 0 64%'>
+           <text class="fontThree" style='color:#D0021B;'>实付：￥{{switchChecked?surplus:amount}}</text>
+       </view>
+       <button  data-order-id="{{orderInfo.orderid}}" data-order-number="{{orderInfo.orderno}}"  data-order-type="{{orderInfo.ordertype}}"   type="button" disabled="{{addressList?false:true}}" bindtap='wxpay'  class='fontTwo fontThree count' style='color:#ffffff'>
+            付款
+       </button>
+   </view>
+  </view>
+</view>

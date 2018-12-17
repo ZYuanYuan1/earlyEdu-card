@@ -1,0 +1,19 @@
+/* pages/agreement/agreement.wxss */
+.contanier{
+  margin:30rpx 30rpx 120rpx 30rpx;
+  font-size: 26rpx;
+  color: #333333;
+  line-height: 45rpx
+}
+.seven{
+  display: block
+}
+.weight{
+  font-weight: bold
+}
+.margin{
+  margin-bottom: 60rpx
+}
+.mar{
+  margin-bottom: 40rpx
+}

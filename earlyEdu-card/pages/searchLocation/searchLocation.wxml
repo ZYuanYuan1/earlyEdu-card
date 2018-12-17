@@ -1,0 +1,34 @@
+<!--pages/searchLocation/searchLocation.wxml-->
+<view class="search-container"> 
+    <view class="top-bar-container"> 
+        <view class="search-bar-container" >
+             <view class="search-bar-sub-container">
+                <image class="search-bar-sub-container-image" src="https://img.sahuanka.com/sjCard/images/searchLine@3x.png"></image>
+                <input class="search-bar-sub-container-input" placeholder="请输入地址" type="text"  placeholder-style="color:#adadad;letter-spacing:1px;" bindconfirm="keyboardDoneSelected" value="{{searchAddress}}"/>
+            </view>
+        </view>  
+
+        <view class="location" bindtap="locationViewSelected">
+          <view class="address"><text class="location-text">{{address}}</text>
+        </view>
+       
+            <image class="location-image" src="https://img.sahuanka.com/sjCard/images/location_aim_at.png"></image>
+            <text class="location-text2">{{location}}</text>
+         
+         </view>
+    </view>
+    
+    <view wx:if="{{searchRecords.length>0}}" class='search-records'>
+         <scroll-view  scroll-y="true" >
+            <view class="search-record-section-header">
+                <image class="search-record-section-header-image" src="https://img.sahuanka.com/sjCard/images/search_records.png"></image>
+                <text class="search-record-section-header-text">历史地址</text>
+            </view>
+             <view class="search-record" wx:for="{{searchRecords}}" wx:key="{{index}}" data-address="{{searchRecords[index]}}" bindtap="searchRecordSelected">
+                <text>{{item}} </text>
+            </view>
+        </scroll-view>
+    </view>
+  
+</view>
+       

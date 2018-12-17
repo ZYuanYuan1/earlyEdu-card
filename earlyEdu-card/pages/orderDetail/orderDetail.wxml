@@ -1,0 +1,49 @@
+<!--pages/orderDetail/orderDetail.wxml-->
+<view class='contanier'>
+   <view class='header margin'>
+       <view class='header_item'>
+           <view style='flex:0 0 85%'>
+               <image class='shop' src='https://img.sahuanka.com/earlyEdu-card/images/shop.png'></image>
+               <text class='title'>潮童星</text>
+               <image class='arrow' src='https://img.sahuanka.com/earlyEdu-card/images/arrow.png'></image>
+           </view>
+           <view class='success' style='flex:0 0 15%'>交易成功</view>
+       </view>
+       <view class='header_itemtwo'>
+          <view style='flex:0 0 20%' style='margin-right:30rpx'>
+             <image class='header_img' src=''></image>
+          </view>
+          <view  style='flex:0 0 60%'>
+             <view class='header_fonta' >潮童星形体测试课程</view>
+             <view class='header_fontb' >半年</view>
+          </view>
+          <view style='flex:0 0 15%;text-align:right'>
+             <view class='header_fonta'>￥1999</view>
+             <view class='header_fontb'>×1</view>
+          </view>
+       </view>
+       <view class='member'>
+          <view class='member_itemone'>会员优惠</view>
+          <view class='member_itemtwo'>-￥50</view>
+       </view>
+       <view class='money member'>
+          <view  class='member_itemone'>佣金抵扣</view>
+          <view class='member_itemtwo'>-￥100</view>
+       </view>
+       <view class='pay'>
+          <view  class='member_itemone'>实付款</view>
+          <view style='color:#B4282D' class='member_itemtwo'>￥1849</view>
+       </view>
+   </view>
+   <view class='header  margin'>
+       <view class='content_title'><text style='color:#B4282D'>|</text>订单信息</view>
+       <text selectable="true" class='title_font'>订单编号：8888888888</text>
+       <view class='title_font'>创建时间：2018-10-14 21:56:21</view>
+   </view>
+   <view class='footer'>
+       <!-- <view class='footer_button'>再来一单</view> -->
+       <!-- <view class='footer_button' style='right:176rpx'>删除订单</view>
+       <view class='footer_buttonpay'>支付</view> -->
+       <view  class='footer_buttonpay'>查看券码</view>
+   </view>
+</view>

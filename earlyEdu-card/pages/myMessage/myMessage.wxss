@@ -1,0 +1,30 @@
+/* pages/myMessage/myMessage.wxss */
+page{
+  background: #f4f4f4
+}
+.contanier{
+  margin-top: 20rpx
+}
+.contanier input{
+  width: 100%;
+  height: 92rpx;
+  background: #ffffff;
+  padding-left: 30rpx;
+  font-size: 28rpx;
+  color: #333333
+}
+.pl_input{
+  font-size: 28rpx;
+  color: #C7C7CC;
+}
+.contanier button{
+  width: 690rx;
+  height: 80rpx;
+  background: #CBB588;
+  font-size: 28rpx;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 80rpx 30rpx
+}

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "我的收藏",
+  "navigationBarBackgroundColor": "#ffffff",
+   "enablePullDownRefresh": true,
+    "usingComponents": {
+      "bindphone": "../../components/bindPhone/bindPhone"
+    }
+}

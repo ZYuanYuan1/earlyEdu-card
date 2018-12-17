@@ -1,0 +1,7 @@
+<!--pages/myMessage/myMessage.wxml-->
+<view class='contanier'>
+  <form bindsubmit='save'>
+   <input type="text" placeholder='请输入1-16个汉字、数字或者英文字母' name="input" placeholder-class='pl_input' value='{{userName}}'></input>
+   <button formType="submit">保存</button>
+  </form>
+</view>

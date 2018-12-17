@@ -1,0 +1,35 @@
+<!--pages/addressAdd/addressAdd.wxml-->
+<view class="container" style='padding:0'>
+    <form bindsubmit="bindSave">
+    <view class="form-box">
+        <view class="row-wrap">
+            <view class="label-right">
+                <input name="linkMan" class="input" type="text" placeholder="姓名" value="{{addressList.recipient}}"/>
+            </view>
+              <view class="label-right">
+                <input name="mobile" class="input" maxlength="11" type="number" style='border-left:2rpx solid #d8d8d8;padding-left:20rpx' placeholder="电话" value="{{addressList.phoneNumber}}"/>
+            </view>
+        </view>
+         <view class="label">省市区</view>
+        <view class="row-wrap" style="height:60rpx"bindtap="selectCity">
+             <picker mode="region" bindchange="bindRegionChange" value="{{region}}">
+    <view class="picker {{region[0]=='请选择省市区'?'hui':''}}">
+     {{region[0]}}{{region[1]}}{{region[2]}}
+    </view>
+  </picker>
+        </view>
+        <view class="row-wrap" style="border-bottom:none">
+            <view class="label-right">
+                <!--<input class="input" type="text" placeholder="街道门牌信息"/>-->
+                <input name="address" auto-height placeholder="详细地址"  value="{{addressList.street}}"/>
+            </view>
+        </view>
+        <checkbox-group bindchange="checkboxChange" class="row-wrap" style='border-top:30rpx solid #f8f8f8;margin:0;width:100%;border-bottom:none;height:100rpx'>
+            <checkbox name="check" checked='{{isDefault}}'>设置为默认地址</checkbox>
+        </checkbox-group>
+    </view>
+    <button  class="save-btn" formType="submit">保存地址</button>
+    </form>
+</view>
+
+

@@ -1,0 +1,68 @@
+/* pages/moneyRewards/moneyRewards.wxss */
+page{
+  background:#F4F4F4
+}
+/* 头部 */
+.header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 338rpx;
+  width: 100%;
+  background: #000000;
+  color: #EDD992;
+  text-align: center;
+}
+.header_title{
+   font-size: 32rpx;
+   margin-bottom: 10rpx
+}
+.header_num{
+  font-size: 60rpx;
+  margin-bottom: 10rpx
+}
+.header_postal{
+  font-size: 28rpx;
+  color: #ABA192
+}
+/* 内容 */
+.reward{ 
+   margin-top: -36px;
+   width: 100%;
+  display: flex;
+  justify-content: center
+}
+.reward image{
+  width: 690rpx;
+  height: 140rpx
+}
+.content{
+  margin: 30rpx 30rpx 30rpx;
+  width: 590rpx;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 40rpx 50rpx 0;
+}
+.content_item{
+  height: 132rpx;
+  border-bottom: 2rpx solid  #F4F4F4;
+  display: flex;
+  align-items: center
+}
+.cont_fontone{
+  font-size: 28rpx
+}
+.cont_fonttwo{
+  font-size: 24rpx;
+  color: #999999
+}
+ .no_content{
+    font-size:28rpx;
+    color:#dddddd;
+    text-align:center;
+    height:800rpx;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }

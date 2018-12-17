@@ -1,0 +1,16 @@
+<!--pages/redeemCode/redeemCode.wxml-->
+<form class="contanier" bindsubmit='changeVip'>
+   <view>
+       <view class='title'>请输入您的兑换码</view>
+       <input placeholder='请输入兑换码' placeholder-class='plInput' class='input' name="input"></input>
+       <button formType="submit" class='sure'>确定</button>
+       <view class='explain'>
+          <view>说明：</view>
+          <view>1、兑换码为预售阶段兑换会员资格的凭证</view>
+          <view>2、每个兑换码仅有一次兑换资格，兑换成功</view>
+          <view>3、当您忘记您的兑换码时，请联系客服</view>
+       </view>
+   </view>
+</form>
+<!--绑定手机号弹窗-->
+<bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone>

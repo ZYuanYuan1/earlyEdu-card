@@ -1,0 +1,54 @@
+<!--pages/member/member.wxml-->
+<view class='contanier'>
+    <view class='header'>
+        <image src='https://img.sahuanka.com/earlyEdu-card/images/member_headimg.png'></image>
+        <view class='header_content'>
+            <view style='margin-top:44rpx;color:#E6D5B5;font-size:32rpx'>开通会员，万元豪礼免费领</view>
+            <view style='margin-top:34rpx;color:#f4f4f4;font-size:28rpx'>仅需299，每天仅需0.81元</view>     
+            <view class='header_button' bindtap='openCard'>我要开卡</view>
+        </view>
+    </view>
+    <view class='content'>
+       <view class='content_title'>会员专享免费权益</view>
+          <view style='display:flex'>
+             <view class='content_item'>
+                <image src='https://img.sahuanka.com/earlyEdu-card/images/Group.png'></image>
+                <view>会员折扣</view>
+             </view>
+             <view class='content_item'>
+                <image src='https://img.sahuanka.com/earlyEdu-card/images/Group2.png'></image>
+                <view>育儿咨询</view>
+             </view>
+             <view class='content_item'>
+                <image src='https://img.sahuanka.com/earlyEdu-card/images/Group3.png'></image>
+                <view>专业测评</view>
+             </view>
+             <view class='content_item'>
+                <image src='https://img.sahuanka.com/earlyEdu-card/images/Group4.png'></image>
+                <view>专属礼包</view>
+             </view>
+          </view>
+           <view style='display:flex'>
+             <view class='content_item'>
+                <image src='https://img.sahuanka.com/earlyEdu-card/images/Group5.png'></image>
+                <view>活动沙龙</view>
+             </view>
+             <view class='content_item'>
+                <image src='https://img.sahuanka.com/earlyEdu-card/images/Group6.png'></image>
+                <view>时尚摄影</view>
+             </view>
+             <view class='content_item'>
+                <image src='https://img.sahuanka.com/earlyEdu-card/images/Group7.png'></image>
+                <view>专业私教</view>
+             </view>
+             <view class='content_item' style='margin-right:none'>
+                <image src='https://img.sahuanka.com/earlyEdu-card/images/Group8.png'></image>
+                <view>生日轰趴</view>
+             </view>
+          </view>
+    </view>
+    <view class='footer'>
+       <image src='https://img.sahuanka.com/earlyEdu-card/images/member_footimg.png'></image>
+       <view>会员须知：本卡有效期 2019-01-01至2019-12-31</view>
+    </view>
+</view>

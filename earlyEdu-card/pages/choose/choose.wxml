@@ -1,0 +1,67 @@
+<!--pages/choose/choose.wxml-->
+<view class='contanier'>
+<!-- 头部导航 -->
+    <view class='header'>
+      <scroll-view scroll-x="true" style='background: #FFFECF' >
+        <view class='nav'>
+         <view class='nav_item {{chooseId==item.productMenuId?"nav_change":""}}' wx:for="{{choose}}" id="{{item.productMenuId}}" bindtap='chooseBind'>{{item.name}}</view>
+        </view>
+      </scroll-view>
+      <view class='filter {{chooseId==0&&sortId==0?"filter_add":""}}'>
+         <view class='filter_item' id='{{chooseId}}' data-index='{{sortId}}' bindtap='searchClass' hidden='{{chooseId==0&&sortId==0?true:false}}'>
+            <text>分类</text>
+            <image src="{{arrowUrl}}" ></image>
+         </view>
+         <view class='filter_item' data-index='{{sortId}}' id='{{chooseId}}' bindtap='searchSort' hidden='{{chooseId==0&&sortId==0?true:false}}'>
+            <text>排序</text>
+            <image src="{{arrowUrl}}" ></image>
+         </view>
+      </view>
+     <!-- 分类 -->
+         <view class='pop' wx:for="{{choose}}" wx:for-item='items' id="{{items.productMenuId}}" hidden='{{classShow}}' style='display:{{chooseId==items.productMenuId&&classShow==false?"block":"none"}}' > 
+          <view class='pop_item' wx:for="{{items.subList}}" id="{{item.productMenuId}}" bindtap='searchClass'>{{item.name}}</view>
+      </view>
+      <!-- 排序 -->
+      <view class='pop' hidden='{{sortShow}}'> 
+          <view class='pop_item  {{sortId==item.index?"change":""}}' wx:for="{{sort}}" data-index="{{item.index}}" id='{{chooseId}}' bindtap='searchSort'>{{item.sortName}}</view>
+      </view>
+   </view>
+  <!-- 内容 -->
+    <view class='content {{chooseId==0&&sortId==0?"content_add":""}}'>
+        <view class='conGoods' wx:for="{{goods}}" hidden='{{item.activitytype==4?false:true}}'data-business-id="{{item.businessactivityid}}" data-id="{{item.businessid}}" data-type="{{item.activitytype}}" bindtap='goGoodsdetail'>
+              <view class='conVip'>
+                 <view>
+                    <view>会员</view>
+                    <view>专享</view>
+                 </view>
+             </view>
+             <image src='{{item.activitypic}}'></image>
+             <view class='conDis conAll des' style='padding:10rpx'>{{item.description}}</view>
+             <view class='con'>
+                <view class='conName conAll' style='overflow:hidden;white-space:nowrap;text-overflow:ellipsis;'>{{item.activityname}}</view>
+                <view style='padding:0rpx 2rpx 20rpx 10rpx'>
+                     <text class="price" >￥{{item.gradeAmount}}</text>
+                     <text class='linePrice'>￥{{item.amount}}</text>
+                  </view>
+             </view>
+        </view>
+        <view class='conGoods' wx:for="{{goods}}" hidden="{{item.activitytype==3?false:true}}"  data-business-id="{{item.businessactivityid}}" data-id="{{item.businessid}}" data-type="{{item.activitytype}}" bindtap='goGoodsdetail'>
+              <!-- <view class='conVip'>
+                 <view>
+                    <view>会员</view>
+                    <view>专享</view>
+                 </view>
+             </view> -->
+             <image src='{{item.activitypic}}'></image>
+             <view class='conDis conAll des' style='padding:10rpx'>{{item.description}}</view>
+             <view class='con'>
+                <view class='conName conAll' style='overflow:hidden;white-space:nowrap;text-overflow:ellipsis;'>{{item.activityname}}</view>
+                <view style='padding:0rpx 2rpx 20rpx 10rpx'>
+                     <text class="price" >￥{{item.gradeAmount}}</text>
+                     <text style='color:#888888;font-size:18rpx;margin-left:20rpx'>非会员价￥{{item.amount}}</text>
+                  </view>
+             </view>
+        </view>
+    </view> 
+    <view class='more'>没有更多了</view>
+</view>

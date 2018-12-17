@@ -1,0 +1,37 @@
+<!--pages/comment/comment.wxml-->
+<view class='comment_con'>
+ <form bindsubmit='submitClick'> 
+   <view class='comment_header'>
+     <image src='{{businessactivity.activitypic}}' ></image>
+     <view class='header_right'>
+     <text style='font-size:32rpx;font-weight:bold'>{{businessactivity.businessname}}</text>
+     <text style='font-size:26rpx'>{{businessactivity.activityname}}</text>
+     </view>
+     <checkbox-group class='right_select'bindchange="checkboxChange">
+       <checkbox style='zoom:50%;font-size:48rpx' value='{{isAnon}}'>匿名评价</checkbox>
+       </checkbox-group>
+   </view>
+   <view class='comment_content'>
+     <view class='comment_triangle'></view>
+     <view class="content_comment">
+     <view style='text-align:center;magin-top:40rpx;padding-top:40rpx;'>
+      <text style='font-size:36rpx;display:block'>“{{startext}}”</text>
+        <image class="star" src="{{flag<=item?'/images/star3.png':'https://img.sahuanka.com/sjCard/images/star.png'}}" bindtap="changeColor" data-flag='{{flag1}}' data-index='0' data-no='{{item}}' wx:for="{{stardata}}"></image>
+      </view>
+        <view class='content_discuss'>
+       <textarea placeholder="您的评价可以帮助其他小伙伴哟~" maxlength="-1" placeholder-class='plc'  bindblur='bareaVal'/>
+        <view class="educt_hasupload_pic"  wx:for="{{evalList[0].tempFilePaths}}"  wx:key="index">
+              <image src="{{item.pic}}" class="upload"></image>
+              <image  src="/images/x.png" bindtap='clearImg' data-index="{{index}}" class="deltel"></image>
+          </view>
+          <view class="educt_upload_add educt_hasupload_pic" bindtap="joinPicture" data-index="{{0}}">
+              <image class="upload" src='/images/Group2.png'></image>
+           </view>
+        </view>
+     </view>
+   </view>
+   <view class='comment_footer'>
+     <button formType="submit">提交评价</button>
+   </view>
+   </form>
+</view>

@@ -1,0 +1,69 @@
+/* pages/openCard/openCard.wxss */
+.header{
+  background: #F6F3EF;
+  height: 100%
+}
+.header_title{
+  text-align:center;
+  padding:40rpx 0;
+  font-weight: bold
+}
+.header_content{
+  background: #ffffff;
+  margin:0 30rpx 40rpx;
+  border-radius: 16rpx;
+  padding: 40rpx 30rpx;
+  height:344rpx
+}
+.header_item{
+  flex: 1;
+  text-align: center;
+  margin-right: 51rpx
+}
+.header_item:last-child{
+  margin-right:0
+}
+.header_item image{
+   width: 64rpx;
+   height: 64rpx
+}
+.header_item view{
+  font-size: 28rpx;
+  color: #333333;
+  width: 100%;
+  margin: 20rpx 0 40rpx 0
+}
+/* 内容 */
+.content{
+  margin:40rpx 30rpx;
+}
+.content_card{
+  width: 690rpx;
+  height: 120rpx;
+  background: url('https://img.sahuanka.com/earlyEdu-card/images/openCard.png') no-repeat;
+  background-size: 690rpx 120rpx;
+  display: flex;
+  align-items: center
+}
+.content_center{
+color:#E4DCC0;
+font-size:32rpx;
+}
+.pay{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #CBB588;
+  color: #ffffff;
+  border-radius: 46rpx;
+  height: 92rpx;
+  margin-top: 60rpx;
+  margin-bottom: 32rpx
+}
+.content_font{
+  font-size: 24rpx;
+  color: #808080;
+  text-align: center
+}

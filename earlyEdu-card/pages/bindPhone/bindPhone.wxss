@@ -1,0 +1,60 @@
+/* pages/bindPhoe/bindPhone.wxss */
+.modal-dialog{
+  width:600rpx;
+}
+.modal-content{
+  padding:0rpx;
+}
+view.headline{
+  height:90rpx;
+  line-height:90rpx;
+  border-bottom:2rpx solid #ddd;
+  text-align:center;
+  color:#333;
+  font-size:32rpx;
+}
+.phonelayer{
+  display: flex;
+  justify-content:space-between;
+padding:0 20rpx;
+  align-items:center;
+  height:87rpx;
+border-bottom:2rpx solid #ddd;
+
+}
+.getcodebtn{
+  width:180rpx;
+  height:62rpx;
+ 
+  font-size:26rpx;
+}
+.leftbox{
+  height:100%;
+line-height:87rpx;
+
+}
+.leftbox input{
+  display: inline-block;
+  vertical-align:middle;
+  width:280rpx;
+
+}
+.codebtn{
+  display:inline-block;
+  font-size:26rpx;
+  color:#fff;
+  background-color:#f5bf00;
+  padding:0 20rpx;
+}
+.verifybox{
+  display:flex;
+padding:0 20rpx;
+line-height:87rpx;
+}
+.verifybox input{
+  display:inline-block;
+vertical-align:middle;
+height:87rpx;
+flex:1;
+
+}

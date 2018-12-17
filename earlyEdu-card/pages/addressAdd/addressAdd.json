@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "编辑地址",
+  "navigationBarBackgroundColor": "#ffffff",
+  "usingComponents": {
+    "bindphone": "../../components/bindPhone/bindPhone"
+  }
+}

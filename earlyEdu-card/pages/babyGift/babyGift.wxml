@@ -1,0 +1,49 @@
+<!--pages/babyGift/babyGift.wxml-->
+<view class='contanier'>
+   <view class='header'>
+      <scroll-view scroll-x="true" style='background: #FFFECF'>
+        <view class='nav'>
+         <view class='nav_item {{chooseId==item.productMenuId?"nav_change":""}}' bindtap='chooseBind' wx:for="{{choose}}" id="{{item.productMenuId}}">{{item.name}}</view>
+        </view>
+      </scroll-view>
+      <view class='filter {{chooseId==0&&sortId==0?"filter_add":""}}'>
+         <view class='filter_item' id='{{chooseId}}' data-index='{{sortId}}' bindtap='searchClass' hidden='{{chooseId==0&&sortId==0?true:false}}'>
+            <text>分类</text>
+            <image src="{{arrowUrl}}" ></image>
+         </view>
+         <view class='filter_item'  data-index='{{sortId}}' id='{{chooseId}}' bindtap='searchSort'hidden='{{chooseId==0&&sortId==0?true:false}}'>
+            <text>排序</text>
+            <image src="{{arrowUrl}}" ></image>
+         </view>
+      </view>
+      <!-- 分类 -->
+      <view class='pop' wx:for="{{choose}}" wx:for-item='items' id="{{items.productMenuId}}" hidden='{{classShow}}' style='display:{{chooseId==items.productMenuId&&classShow==false?"block":"none"}}' > 
+          <view class='pop_item' wx:for="{{items.subList}}" id="{{item.productMenuId}}" bindtap='searchClass'>{{item.name}}</view>
+      </view>
+      <!-- 排序 -->
+      <view class='pop' hidden='{{sortShow}}'> 
+          <view class='pop_item  {{sortId==item.index?"change":""}}' wx:for="{{sort}}" data-index="{{item.index}}" id='{{chooseId}}' bindtap='searchSort'>{{item.sortName}}</view>
+      </view>
+   </view>
+   <!-- 内容 -->
+     <view class='return' bindtap='returnIndex'><image style='width:120rpx;height:120rpx' src='https://img.sahuanka.com/earlyEdu-card/images/return.gif'></image></view>
+   <view  class='con {{chooseId==0&&sortId==0?"content_add":""}}'>
+      <view class='content ' wx:for="{{goods}}" bindtap='goGooddstail' data-businessactivityid="{{item.businessactivityid}}" data-businessid='{{item.businessid}}' data-activitytype='{{item.activitytype}}'>
+          <view style='flex:0 0 20%'><image src='{{item.activitypic}}'class="item_img"></image></view>
+          <view style='flex:0 0 60%'>
+              <view class='item_title'>{{item.activityname}}</view>
+              <view>
+                   <text class='item_price'>￥{{item.gradeAmount}}元</text>
+                   <text class='item_price price'>￥{{item.amount}}元</text>
+              </view>
+          </view>
+          <view style='flex:0 0 20%'>
+              <view class='receive' bindtap='getGift'>领取</view>
+              <view class='surplus'>剩余：{{item.count}}</view>
+          </view>
+      </view>
+   </view>
+    <view class='more'>没有更多了</view>
+</view>
+<!--绑定手机号弹窗-->
+<bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone>

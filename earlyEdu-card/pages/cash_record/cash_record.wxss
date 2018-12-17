@@ -1,0 +1,37 @@
+/* pages/cash_record/cash_record.wxss */
+.singledealbox{
+  display:flex;
+  justify-content: space-between;
+  /* height:126rpx; */
+  padding:30rpx;
+  box-sizing:border-box;
+  border-bottom:2rpx solid #ddd;
+}
+.dealleftbox{
+  font-size:24rpx;
+  color:#999;
+  flex:1;
+}
+.dealleftbox text{
+  font-size:28rpx;
+  color:#333;
+  margin-bottom:20rpx;
+  overflow:hidden;
+text-overflow:ellipsis;
+display:-webkit-box;
+-webkit-line-clamp:2;
+-webkit-box-orient:vertical;
+}
+.dealrightbox{
+  font-size:36rpx;
+  color:#f3362b;
+  flex:0 0 260rpx;
+text-align:right;
+}
+.dealrightbox{
+  font-size:30rpx;
+  color:#f3362b;
+  flex:0 0 260rpx;
+  text-align:right;
+}
+ 

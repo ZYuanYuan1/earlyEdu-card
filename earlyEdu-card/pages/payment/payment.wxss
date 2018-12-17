@@ -1,0 +1,177 @@
+/* pages/payment/payment.wxss */
+page{
+  background: #F4F4F4
+}
+.contanier{
+  margin-top: 20rpx
+}
+/* 尾部 */
+.footer{
+  display:flex;
+position:fixed;
+bottom:0;
+height:96rpx;
+width:100%;
+background:#ffffff;
+align-items:center;
+padding:0 11px 0 15px;
+}
+.choose{
+  border:1px solid #C6C6C6;
+  width:30rpx;
+  height:30rpx;
+  border-radius:50%;
+  display:inline-block;
+}
+.fontOne{
+  font-size: 24rpx
+}
+.fontTwo{
+  font-size: 26rpx
+}
+.fontThree{
+  margin-left: 20rpx
+}
+.count{
+  font-size:26rpx;
+  color:#ffffff;
+  background:#FF5339;
+  width:200rpx;
+  height:76rpx;
+  border-radius:48rpx;
+  text-align:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.content{
+  padding:20rpx 22rpx
+}
+/* 地址 */
+.orderAddr{
+display:flex;
+background:#FEFCED;
+font-size:28rpx;
+color:#666666;
+align-items:center;
+width:100%;
+height:144rpx;
+}
+.orderMar{
+  margin-bottom:20rpx;
+}
+.orderPadd{
+  padding: 0 30rpx
+}
+.orderAddr text{
+  flex:0 0 90%;
+}
+.orderAddr image{
+width:12rpx;
+height:24rpx;
+}
+/* 内容 */
+.orderBac{
+  background:#ffffff;
+}
+.orderItems{
+ display:flex;
+height:100rpx;
+align-items:center;
+width: 100%;
+border-bottom: 2rpx solid #e4e4e4
+}
+.orderFont{
+  font-size:28rpx;
+}
+.orderItem{
+  flex:0 0 85%;
+}
+.orderBac textarea{
+  display: inline-block;
+  height: 60rpx;
+  padding-top:30rpx
+}
+
+.namebox{
+ margin:0 36rpx;
+font-size:28rpx;
+color:#333;
+line-height:80rpx;
+border-bottom:2rpx solid #ddd;
+
+}
+.namebox input{
+  display:inline-block;
+vertical-align:middle;
+width:66%;
+padding:0;
+
+}
+.star{
+  color:#e80000;
+}
+.enable{
+  width: 64rpx;
+  height: 34rpx;
+  border-radius: 8rpx;
+  background: #CBB588;
+  color: #ffffff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.box{
+  height: 71rpx
+}
+/* 佣金 */
+.bkge{
+  display: flex
+}
+.swich{
+ zoom: 0.6;
+ flex: 0 0 20%
+}
+.title{
+  flex: 0 0 83%
+}
+/* 拼团 */
+.order_groupitem{
+  height: 100rpx;
+  font-size: 28rpx;
+  color: #333333;
+  border-bottom: 2rpx solid #E4E4E4;
+  padding: 0 30rpx;
+  display: flex;
+  align-items: center
+}
+.order_groupitem input{
+  width: 78%;
+  margin-left: 30rpx
+}
+/* 地址 */
+.orderAddr{
+display:flex;
+background:#FEFCED;
+font-size:28rpx;
+color:#666666;
+align-items:center;
+width:100%;
+height:144rpx;
+}
+.orderMar{
+  margin-bottom:20rpx;
+}
+.orderPadd{
+  padding: 0 30rpx
+}
+.orderAddr text{
+  flex:0 0 90%;
+}
+.orderAddr image{
+width:12rpx;
+height:24rpx;
+}
+button[disabled]{
+  background: #D8D8D8
+}

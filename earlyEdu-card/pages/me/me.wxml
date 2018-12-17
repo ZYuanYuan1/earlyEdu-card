@@ -1,0 +1,39 @@
+<!--pages/me/me.wxml-->
+<view class='contanier'>
+   <view class='header'>
+        <view style=' position: relative' bindtap='changeImg'>
+            <image class="headPortrait" src='{{userInfo.avatarurl?userInfo.avatarurl:"/images/img.png"}}'></image>
+            <image class="edit" src='https://img.sahuanka.com/earlyEdu-card/images/edit.png'></image>
+        </view>
+   </view>
+   <view class='content'>
+      <view class='content_item' bindtap='nameBind'>
+         <view class='item_one'>宝宝昵称</view>
+         <view class='item_two'>{{userInfo.username?userInfo.username:""}}</view>
+         <view class='arrow'><image src='https://img.sahuanka.com/earlyEdu-card/images/arrow.png'></image></view>
+      </view>
+      <view class='content_item' >
+        <view class='item_one'>性别</view>
+        <view class='item_two'>
+          <picker bindchange="sexBind" value="{{genderIndex}}" range="{{gender}}" data-different="sex">
+            <view class="picker">
+              {{gender[genderIndex]}}
+            </view>
+          </picker>
+        </view>    
+         <view class='arrow'><image src='https://img.sahuanka.com/earlyEdu-card/images/arrow.png'></image></view>
+      </view>
+      <view class='content_item'>
+          <view class='item_one'>出生日期</view>
+          <view class='item_two'>
+            <picker mode="date" value="{{date}}" start="2000-07-01" end="2037-07-01" bindchange="birthBind" data-different="birth">
+            <view class="picker">
+                {{date}}
+            </view>
+           </picker>
+          </view>
+          <view class='arrow'><image src='https://img.sahuanka.com/earlyEdu-card/images/arrow.png'></image></view>
+      </view>
+   </view>
+</view>
+<!-- 性别弹窗 -->

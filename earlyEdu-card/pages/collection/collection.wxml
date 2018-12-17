@@ -1,0 +1,10 @@
+<!--pages/collection/collection.wxml-->
+<view class='contanier' wx:for="{{saveList}}" data-businessid='{{item.businessid}}' bindtap='goShop'>
+        <view style='flex:0 0 20%;text-align:center'><image src="{{item.businesspic==null?'https://img.sahuanka.com/sjCard/images/defaultImg.png':item.businesspic}}" data-index="{{index}}" binderror="errImg" data-err-img="saveList[{{index}}].businesspic" class='img'></image></view>
+        <view class='title' wx:if="{{item.businessname}}">{{item.businessname}}</view>
+        <view wx:else>暂无收藏的商家</view>
+        <view style='flex:0 0 23%'><view class='down_collection' data-index="{{index}}" data-save-id="{{item.businessid}}" bindtap='onConfirm'>取消收藏</view></view>
+</view>
+<!--绑定手机号弹窗-->
+<bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone>
+

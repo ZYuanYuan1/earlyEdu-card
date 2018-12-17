@@ -1,0 +1,9 @@
+<!--pages/extra/extra.wxml-->
+<view class='content'>
+   <view class='header'>已有徒孙人数：{{count}}人</view>
+   <view class='content'>
+        <view class='con_amount'><text style='font-size:32rpx'>￥</text>{{allCount}}</view>
+        <view class='con_awar'>已有奖金</view>
+       <view class='get' bindtap='getExtra'><view class='get_awar'>领取奖金</view></view>
+   </view>
+</view>

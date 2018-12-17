@@ -1,0 +1,98 @@
+<!--pages/my/my.wxml-->
+<view>
+<!-- 头部 -->
+   <view class='header'>
+      <view class='headerCon'>
+         <view class='headerConA headerConAll' style='flex:0 0 20%' bindtap='editMy'>
+            <image src='{{userInfo.avatarurl?userInfo.avatarurl:"/images/img.png"}}'></image>
+            <view style='font-size:18rpx'>编辑</view>
+         </view>
+         <view style='flex:0 0 60%;margin-top:20rpx'>
+             <view class='headerConB'>{{userInfo.username}}</view>
+             <!--会员到期日 {{memberDate}} -->
+             <view style='font-size:20rpx;margin-top:10rpx'>会员到期日 2019-12-31</view>
+         </view>
+         <view class='headerConC headerConAll' style='flex:0 0 20%' bindtap='goQRcode'>
+               <image src="http://img.sahuanka.com/sjCard/images/reward.png" style='width:68rpx;height:82rpx;margin-top:28rpx'></image>
+              <!-- <view style='font-size:16rpx'>我的邀请码</view>  -->
+               <!-- <button open-type="share" class='invit' hover-class="none" hover-stop-propagation="true">邀请有奖</button> -->
+         </view>
+      </view>
+      <view  class='vipCard' bindtap='goMember'>
+         <view class='vipCardA'>
+               <image src="https://img.sahuanka.com/earlyEdu-card/images/vip.png"></image>
+               <text>早教卡</text>
+         </view>
+         <view>送给宝宝的第一份成长大礼</view>
+      </view>
+   </view>
+   <!-- 内容 -->
+   <view>
+
+    <!-- 宝贝大礼 -->
+          <view  class='myCon my' style='margin-top:20rpx' bindtap='babyGift'>
+             <view class='myImg'><image src='https://img.sahuanka.com/earlyEdu-card/images/giftt.png'></image>   </view>
+             <view class='myInfo'><text>宝贝大礼</text></view>
+             <view class='myArrow'><image src='https://img.sahuanka.com/earlyEdu-card/images/arrow.png'></image></view>
+          </view>
+  <!-- 现金奖励 -->
+            <view  class='myCon my'  bindtap='moneyRewards'>
+             <view class='myImg'><image src='https://img.sahuanka.com/earlyEdu-card/images/moneya.png'></image>   </view>
+             <view class='myInfo'><text>我的资金</text></view>
+             <view class='myArrow'><image src='https://img.sahuanka.com/earlyEdu-card/images/arrow.png'></image></view>
+          </view>
+           <!-- 我的消息 -->
+            <view class='myCon my' style='margin-bottom:20rpx'  bindtap='myNews'>
+             <view class='myImg'><image src='https://img.sahuanka.com/earlyEdu-card/images/mynews.png'></image></view>
+             <view class='myInfo'><text>我的消息</text></view>
+             <view class='myArrow'><image src="https://img.sahuanka.com/earlyEdu-card/images/arrow.png"></image>
+             </view>
+          </view>
+<!-- 我的收藏 -->
+            <view  class='myCon my' bindtap='collection'>
+             <view class='myImg'><image src='https://img.sahuanka.com/earlyEdu-card/images/collection.png'></image>   </view>
+             <view class='myInfo'><text>我的收藏</text></view>
+             <view class='myArrow'><image src='https://img.sahuanka.com/earlyEdu-card/images/arrow.png'></image></view>
+          </view>
+<!-- 优惠券 -->
+            <view  class='myCon my' bindtap='coupon'>
+             <view class='myImg'><image src='https://img.sahuanka.com/earlyEdu-card/images/coupon.png'></image>   </view>
+             <view class='myInfo'><text>优惠券</text></view>
+             <view class='myArrow'><image src='https://img.sahuanka.com/earlyEdu-card/images/arrow.png'></image></view>
+          </view>
+<!-- 客服帮助 -->
+            <view  class='myCon my'> 
+             <view class='myImg'><image src='https://img.sahuanka.com/earlyEdu-card/images/smile.png'></image>   </view>
+             <button class='myInfo concact'open-type="contact" >客服帮助</button>
+             <view class='myArrow'><image src='https://img.sahuanka.com/earlyEdu-card/images/arrow.png'></image></view>
+          </view>
+  <!-- 我的地址 -->
+            <view  class='myCon my' bindtap='address'>
+             <view class='myImg'><image src='https://img.sahuanka.com/earlyEdu-card/images/address.png'></image>   </view>
+             <view class='myInfo'><text>我的地址</text></view>
+             <view class='myArrow'><image src='https://img.sahuanka.com/earlyEdu-card/images/arrow.png'></image></view>
+          </view>
+<!-- 兑换码 -->
+            <view  class='myCon my' bindtap='redeemCode'>
+             <view class='myImg'><image src='https://img.sahuanka.com/earlyEdu-card/images/sao.png'></image>   </view>
+             <view class='myInfo'><text>兑换码</text></view>
+             <view class='myArrow'><image src='https://img.sahuanka.com/earlyEdu-card/images/arrow.png'></image></view>
+          </view>
+<!-- 核销码 -->
+            <view  class='myCon my' bindtap='skipScancode'>
+             <view class='myImg'><image src='https://img.sahuanka.com/earlyEdu-card/images/scan.png'></image>   </view>
+             <view class='myInfo'><text>扫一扫</text></view>
+             <view class='myArrow'><image src='https://img.sahuanka.com/earlyEdu-card/images/arrow.png'></image></view>
+          </view>
+ <!-- 我的二维码 -->
+          <!-- <view  class='myCon my' bindtap='close'>
+             <view class='myImg'><image src='https://img.sahuanka.com/earlyEdu-card/images/sao.png'></image>   </view>
+             <view class='myInfo'><text>我的二维码</text></view>
+             <view class='myArrow'><image src='https://img.sahuanka.com/earlyEdu-card/images/arrow.png'></image></view>
+          </view> -->
+       </view>
+</view>
+<!--绑定手机号弹窗-->
+<bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone>
+<!-- <view bindtap='goReturn' isShow="{{showPhoneModal}}">退出</view> -->
+

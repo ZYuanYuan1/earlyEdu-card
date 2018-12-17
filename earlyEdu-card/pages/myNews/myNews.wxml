@@ -1,0 +1,4 @@
+<!--pages/myNews/myNews.wxml-->
+<view class='contanier'>
+   暂无消息~
+</view>

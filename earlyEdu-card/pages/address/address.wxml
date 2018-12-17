@@ -1,0 +1,22 @@
+<!--pages/address/address.wxml-->
+<view>
+  <view class='addr_content' wx:for='{{addressList}}'>
+    <view class='addr_left'>
+    <view class='top'>{{item.recipient}}</view>
+    <view class='top'>{{item.phoneNumber}}</view>
+    <!-- {{index==0&&item.isDefault==true?false:true}} -->
+    <view class='enable top' style='font-size:22rpx' hidden="{{index==0&&item.isDefault==true?false:true}}">默认</view>
+    <view class='add'>{{item.province}}{{item.city
+}}{{item.district}}{{item.street}}</view>
+    </view>
+    <view class='addr_right'>
+      <image class='rignt_img' src='https://img.sahuanka.com/sjCard/images/edit.png' bindtap='editAddess' data-addressList="{{item}}"></image>
+      <image  class='rignt_img' src='https://img.sahuanka.com/earlyEdu-card/images/del.png' bindtap='deleteAddress' data-id="{{item.userAddrId}}"></image>
+    </view>
+  </view>
+</view>
+ <view class='comment_footer' bindtap='addAddr'>
+     <button>+新增地址</button>
+ </view>
+ <!--绑定手机号弹窗-->
+<bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone>

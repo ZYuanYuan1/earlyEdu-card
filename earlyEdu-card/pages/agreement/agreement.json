@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "用户协议页",
+  "navigationBarBackgroundColor": "#ffffff",
+  "usingComponents": {
+    "bindphone": "../../components/bindPhone/bindPhone"
+  }
+}

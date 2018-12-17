@@ -1,0 +1,103 @@
+/* pages/order/order.wxss */
+page{
+  background:#F4F4F4
+}
+.headerB{
+  width: 100%;
+  height: 104rpx;
+  background: #FFFECF
+}
+.headerC{
+  width:646rpx;
+  height:126rpx;
+  background:#ffffff;
+  position:absolute;
+  z-index:2;
+  border-radius:16rpx;
+  top:0;
+  right:0;
+  left:0;
+  right:0;
+  margin:auto;
+  display: flex;
+  padding:30rpx 36rpx;
+  text-align: center
+}
+.headerD image{
+  width: 50rpx;
+  height: 50rpx
+}
+.headerD{
+  flex: 1
+}
+.headerD view{
+  font-size: 22rpx;
+}
+/* 最近订单 */
+.myOrder{
+  padding:104rpx 22rpx;
+}
+.myOrnew{
+  font-size: 28rpx;
+  padding: 20rpx 0;
+  width: 100%
+}
+.myTitle{
+  flex: 0 0 85%;
+}
+.myTitle image{
+  width:28rpx;
+  height:28rpx;
+
+}
+.myTitle text{
+  font-size:24rpx;
+  color:#515151;
+}
+.mytitleCor{
+  font-size:24rpx;
+  color:#D0021B;
+}
+.myOrderAll{
+  background:#ffffff;
+  padding:20rpx 24rpx;
+  border-radius:20rpx;
+}
+.myfont{
+  font-size: 22rpx;
+}
+.myOfont{
+  color: #999999
+}
+.storeImg{
+  width: 140rpx;
+  height: 140rpx
+}
+.orderMidd{
+  flex:0 0 50%;
+  margin-left:20rpx;
+  margin-top:10rpx;
+}
+.myright{
+  margin-top:10rpx;
+  text-align:right;
+  margin-left:66rpx;
+}
+.orderButton{
+  display:flex;
+  font-size:24rpx;
+  color:#666666;
+  flex-direction:row-reverse;
+}
+.orderButton view{
+  border:2rpx solid #979797;
+  border-radius:24rpx;
+  width:136rpx;
+  height:50rpx;
+  text-align:center;
+  line-height:54rpx;
+}
+.comment{
+  margin-left:20rpx;
+  color: #D0021B
+}

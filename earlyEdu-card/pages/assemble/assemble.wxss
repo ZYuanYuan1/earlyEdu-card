@@ -1,0 +1,59 @@
+/* pages/assemble/assemble.wxss */
+.contanier{
+  padding: 36rpx 30rpx 0 30rpx
+}
+.content{
+  display: flex;
+  margin-bottom: 50rpx
+}
+.left{
+  flex: 0 0 35%
+}
+.left_member{
+  width:72rpx;
+  height:92rpx;
+  position: absolute;
+  z-index: 3;
+  margin-left: 10rpx;
+  font-size: 24rpx;
+  color: #ffffff;
+  display:flex;
+  justify-content: center;
+  align-items: center
+}
+.left_angimg{
+  width: 72rpx;
+  height: 92rpx;
+  position: absolute;
+  margin-left: 10rpx;
+  z-index: 2
+}
+.ass_leftimg{
+  background: #cccccc;
+  width: 210rpx;
+  height: 210rpx
+}
+.right{
+  flex: 0 0 65%
+}
+.right_title{
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: bold
+}
+.right_margin{
+  margin-bottom: 15rpx
+}
+.right_price{
+  font-size: 32rpx;
+  color: #FF5339
+}
+.ass_rightimg{
+  width: 20rpx;
+  height: 22rpx;
+  margin-right: 10rpx
+}
+.right_cont{
+  font-size: 24rpx;
+  color: #333333
+}

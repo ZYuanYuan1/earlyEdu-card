@@ -1,0 +1,116 @@
+/* pages/orderDetail/orderDetail.wxss */
+page{
+  background: #F4F4F4
+}
+.header{
+  background: white;
+  margin-top: 20rpx;
+  line-height: 50rpx
+}
+.margin{
+  padding: 26rpx 30rpx
+}
+.header_item{
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx
+}
+.shop{
+  width: 24rpx;
+  height: 22rpx;
+  margin-right: 16rpx
+}
+.title{
+  font-size: 24rpx;
+  color: #515151;
+  margin-right: 20rpx
+}
+.arrow{
+  width: 10rpx;
+  height: 18rpx
+}
+.success{
+   font-size: 24rpx;
+   color: #B4282D
+}
+.header_img{
+  width: 140rpx;
+  height: 140rpx;
+  background: #cccccc
+}
+.header_fonta{
+  font-size: 22rpx;
+  color: #333333
+}
+.header_fontb{
+  font-size: 22rpx;
+  color: #999999
+}
+.member{
+  font-size: 20rpx;
+  color: #3D4244;
+  display: flex
+}
+.pay{
+  font-size: 24rpx;
+  color: #3D4244;
+  display: flex
+}
+.money{
+  display: flex
+}
+.header_itemtwo{
+  display: flex
+}
+.member_itemone{
+  flex: 0 0 85%
+}
+.member_itemtwo{
+  flex: 0 0 15%;
+  text-align: right
+}
+/* 订单 */
+.content_title{
+  font-size: 26rpx;
+  color: #333333
+}
+.title_font{
+  font-size: 22rpx;
+  color: #666666
+}
+/* 底部 */
+.footer{
+  background: #ffffff;
+  width: 100%;
+  height: 90rpx;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center
+}
+.footer_button{
+  width: 136rpx;
+  height: 52rpx;
+  position: fixed;
+  border: 2rpx solid #979797;
+  font-size: 24rpx;
+  color: #666666;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 30rpx;
+  border-radius: 26rpx
+}
+.footer_buttonpay{
+    width: 136rpx;
+  height: 52rpx;
+  position: fixed;
+  border: 2rpx solid #B4282D;
+  font-size: 24rpx;
+  color: #B4282D;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 20rpx;
+  border-radius: 26rpx
+}

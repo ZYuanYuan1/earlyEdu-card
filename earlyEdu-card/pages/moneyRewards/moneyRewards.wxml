@@ -1,0 +1,29 @@
+<!--pages/moneyRewards/moneyRewards.wxml-->
+<view class='contanier'> 
+   <view class='header'>
+       <view style='flex:0 0 85%; margin-top: -92rpx'>
+           <view class='header_title'>{{grade>0?"我的奖励金":"我的资金"}}</view>
+           <view class='header_num'>{{amount}}</view>
+           <view class='header_postal' bindtap='postal'>立即提现</view>
+       </view>
+   </view>
+   <view class='reward' bindtap='goExtra'><image src='https://img.sahuanka.com/earlyEdu-card/images/rewards.png'></image></view>
+   <!-- 内容：有数据的时候显示 -->
+   <view class='content' wx:if="{{moneyLength>0}}">
+      <view style='font-size:32rpx'>{{grade>0?"现金奖励流水":"资金流水"}}</view>
+      <view class='content_item' wx:for="{{moneys}}">
+         <view style='flex:0 0 85%'>
+             <view class='cont_fontone'>{{item.description}}</view>
+              <view class='cont_fonttwo'>{{item.createdate}}</view>
+         </view>
+         <view class='cont_fontone' style='color:#FF5339'><text>{{item.fundsflowtype==1?"+":"-"}}</text>{{item.amount}}元</view>
+      </view>
+   </view>
+<!-- 无数据的时候显示 -->
+   <view class='content' wx:if="{{moneyLength<=0}}">
+      <view style='font-size:32rpx'>{{grade>0?"现金奖励流水":"资金流水"}}</view>
+      <view class='no_content'>暂无数据</view>  
+   </view>
+</view>
+<!--绑定手机号弹窗-->
+<bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone>

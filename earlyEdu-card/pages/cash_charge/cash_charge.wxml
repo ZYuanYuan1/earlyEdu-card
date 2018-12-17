@@ -1,0 +1,37 @@
+<!--pages/cash_charge/cash_charge.wxml-->
+<view class="page">
+  <view class="whitebox">
+     <!--储蓄卡-->
+    <!-- <view class="cardbox">
+      <view class="leftbox">储蓄卡</view>
+      <view class="rightbox">
+        <view class="bankname">工商银行（6300）</view>
+        <view class="maxmoney">单日交易限额￥50000.00</view>
+      </view>
+    </view> -->
+    <!-- <view> -->
+      <!-- <view class="namebox">
+        <text>真实姓名：</text><input type="text" bindinput='trueName' placeholder="请输入真实姓名" value="{{trueNameVal}}"></input>
+      </view> -->
+      <!-- <view class="namebox">
+        <text>支付宝：</text><input type="text" bindinput='alipay' placeholder="请输入支付宝账号" value="{{alipayVal}}"></input>
+      </view> -->
+    <!-- </view> -->
+    <!--充值金额-->
+    <view class="moneybox">
+      <view class="textintro">提现金额</view>
+      <view class="passinput"><text>￥</text><input type="number" focus='true' value="{{cashVal}}" bindinput='getCashVal'></input></view>
+    </view>   
+    <!--下一步-->
+    <view class="btnbox">
+      <button bindtap='showDialogBtn' bindtap='gotocharge'>下一步</button>
+    </view>
+
+     <view class='maintext'>
+          <text>温馨提示：</text> 
+            <view>提现需1-3个工作日到账，请您耐心等待哦~</view>
+          </view>
+  </view>
+   <!--绑定手机号弹窗-->
+  <bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone> 
+</view>

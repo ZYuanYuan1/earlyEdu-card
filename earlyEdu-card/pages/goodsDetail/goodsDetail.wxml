@@ -1,0 +1,122 @@
+<!--pages/goodsDetail/goodsDetail.wxml-->
+<!-- 加载模板 -->
+<import src="../../wxParse/wxParse.wxml"/>
+<view class="page">
+<view class="topdetailimgbox"  bindtap='skip_lessonList'>
+    <image src="{{businessInfo.businesspic}}" binderror="errImg" data-err-img="{{businessInfo.businesspic}}"></image>
+  </view>
+<view class="maindetailbigbox">
+    <!--标题与简介-->
+  <view> 
+      <!--任务详情-->
+    <view>
+      <!-- 更改模块 -->
+ <!--店铺  收藏-->
+       <view class='model'>
+              <view class="taskheadtext taskheadtextThree" style='text-align:center;'>{{businessInfo.businessname}}</view>
+               <view class="taskitem taskiteTwo">
+                  <text class='left'>{{businessInfo.description}}</text>
+                <view class='right' style='flex:0 0 30%'>
+                  <view style="margin-right:40rpx;text-align:center" bindtap="goShop">
+                     <image src='https://img.sahuanka.com/earlyEdu-card/images/shop.png' class='titleRightimg'></image>
+                     <view>店铺</view>
+                  </view>
+                  <view style='text-align:center' wx:if="{{saving==0}}" bindtap="save">
+                     <image class='titleRightimg'  src='https://img.sahuanka.com/earlyEdu-card/images/attention.png'></image>
+                     <view>收藏</view>
+                  </view>
+                  <view style='text-align:center'  wx:else  bindtap="save">
+                     <image class='titleRightimg' src='http://img.sahuanka.com/sjCard/images/shoucangblue.png'></image>
+                     <view>收藏</view>
+                  </view>
+                </view>
+              </view>
+          </view>
+
+    <!-- 销售多少件 -->
+      <view class='model'>
+              <view class="taskheadtext taskheadtextThree" style='display:flex;font-size:28rpx;'>{{activityInfo.activityname}}</view>
+          <view>
+               <view class="taskitem" style='display:flex'>
+                  <text style='flex:0 0 75%;' wx:if='{{activityInfo.activitytype==4}}'><text class="totalscore">￥{{activityInfo.gradeAmount}}</text><text class='linePrice'>￥{{activityInfo.amount}}</text></text>
+                  <text style='flex:0 0 75%;' wx:else='{{activityInfo.activitytype==3}}'><text class="totalscore">￥{{activityInfo.gradeAmount}}</text><text style='color:#888888;font-size:7px;margin-left:8px;'>非会员价￥{{activityInfo.amount}}</text></text>
+                  <view>
+                 <image src='/images/copy.png' class='shoppingImg'></image>
+                 <text style='font-size:24rpxcolor:#999999;'>已售{{ goodsNumber}}件</text>
+              </view>
+              </view>
+          </view>
+          </view>
+          <!-- 适合年龄 -->
+         <view class='model' style='font-size:26rpx;padding:26rpx 30rpx'>
+           适用年龄段：{{activityInfo.starage}}-{{activityInfo.endage}}周岁
+          </view>
+    <!-- 适用店铺-->
+     <view class='return' bindtap='returnIndex'><image style='width:120rpx;height:120rpx' src='https://img.sahuanka.com/earlyEdu-card/images/return.gif'></image></view>
+      <view class='model' hidden='{{addrShow}}'>
+                <view class="taskheadtext taskheadtextThree" style='display:flex'>
+                  <view class='dissLeft'>适用店铺({{addressLength}})</view>
+                  <view style='font-size:24rpx;color:#CBB588;align-items:center;' bindtap='adressAll' hidden='{{addressLength==1}}'>
+                     <text>查看全部</text>
+                     <image style='width:22rpx;height:22rpx;margin-left:8rpx' src='https://img.sahuanka.com/earlyEdu-card/images/arrow1.png'></image>
+                  </view>
+              </view>
+           <view class='taskitem'>
+               <view class='address'>
+                  <image src='https://img.sahuanka.com/earlyEdu-card/images/shopPosition.png' class='addressImg'></image>
+                  <view>{{addressList[0].province}}{{addressList[0].city}}{{addressList[0].district}}{{addressList[0].address}}</view>
+              </view>
+               <view style='margin-left:30rpx;margin-top:16rpx;'>{{addressList[0].phone}}</view>
+            </view>
+          </view>
+    <!-- 用户评价 -->
+      <view class='model' style='border-bottom:none' hidden='{{commentShow}}'>
+              <view class="taskheadtext taskheadtextThree" style='display:flex'>
+                  <view class='dissLeft'>用户评价({{count}})</view>
+                  <view style='font-size:24rpx;color:#CBB588;align-items:center;' bindtap='commentAll' hidden='{{count==1}}'>
+                     <text>查看全部</text>
+                     <image style='width:22rpx;height:22rpx;margin-left:8rpx' src='https://img.sahuanka.com/earlyEdu-card/images/arrow1.png'></image>
+                  </view>
+              </view>
+               <view class="taskitem" style='display:flex'>
+                   <image src='{{info.avatarUrl}}' class='dissCountleft'></image>
+                   <view style='display:flex:0 0 72%;line-height:20rpx;line-height:22px;width:68%;'>
+                        <view style='font-size:26rpx;color:#446889'>{{info.userName==null&&avatarUrl==null?'*****':info.userName}}</view>
+                        <view style='font-size:20rpx'><text>打分 </text>
+                        <image wx:for="{{starImg}}"src='{{item}}' class='star' style="margin-right:4rpx"></image></view>
+                        <view style='font-size:28rpx'>{{info.content}}</view>
+                        <view style='margin-top:22rpx'><image wx:for="{{info.imgList}}" class='dissCenterimg' src='{{item}}'></image>
+                        </view>
+                   </view>
+                   <view style='font-size:24rpx;color:#999999;flex:0 0 16%'>{{createDate}}</view>
+              </view>
+          </view>
+    <!-- 第五个 -->
+      <!-- <view class='model' style='border-bottom:none'>
+              <view class="taskheadtext">{{businessInfo.businessname}}</view>
+               <view class="taskitem taskitemone">
+                  <text>价格：<text class="totalscore">Š {{activityInfo.amount}}</text> 沅</text>
+              </view>
+          </view> -->
+          <!--任务标题-->
+         </view> 
+        <view class='detail'>一详情一</view>
+       <view class="maindetailbigbox" style='padding:0rpx 30rpx 40rpx 30rpx;'>
+          <!--图文-富文本-->
+          <view class="introinfolayer">
+              <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+          </view>
+      </view>
+    </view>
+  </view>
+  <!-- <image src='https://img.sahuanka.com/earlyEdu-card/images/return.gif' style='width:120rpx;height:120rpx;'></image> -->
+  <!-- bindtap="showDialogBtn" -->
+  <view class="bottombox">
+       <button class="pagesharebtn" open-type="share" hover-class="none" hover-stop-propagation="true">分享</button>
+      <view class="bottomrightbox" bindtap='sureOrders'>
+        {{activityInfo.activitytype==4?"领取(会员专享)":"去支付"}}
+      </view>
+  </view>
+</view>
+<!--绑定手机号弹窗-->
+<bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone>

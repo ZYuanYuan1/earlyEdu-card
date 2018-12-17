@@ -1,0 +1,12 @@
+/* pages/myNews/myNews.wxss */
+page{
+  background: #f4f4f4
+}
+.contanier{
+  display: flex;
+  justify-content: center;
+  color: #cccccc;
+  font-size:24rpx;
+  height:100rpx;
+  align-items:center;
+}
