@@ -18,7 +18,7 @@
   color: #ffffff
 }
 .header_button{
-  width: 260rpx;
+  width: 340rpx;
   height: 76rpx;
   background: #CBB588;
   display: flex;

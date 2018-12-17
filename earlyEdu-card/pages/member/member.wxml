@@ -3,9 +3,9 @@
     <view class='header'>
         <image src='https://img.sahuanka.com/earlyEdu-card/images/member_headimg.png'></image>
         <view class='header_content'>
-            <view style='margin-top:44rpx;color:#E6D5B5;font-size:32rpx'>开通会员，万元豪礼免费领</view>
-            <view style='margin-top:34rpx;color:#f4f4f4;font-size:28rpx'>仅需299，每天仅需0.81元</view>     
-            <view class='header_button' bindtap='openCard'>我要开卡</view>
+            <view style='margin-top:44rpx;color:#E6D5B5;font-size:32rpx'>给宝贝闪闪发光的童年</view>
+            <view style='margin-top:34rpx;color:#f4f4f4;font-size:28rpx'>开通会员，预计可赚62300元</view>     
+            <view class='header_button' bindtap='openCard'>为宝宝开通人生第一张卡</view>
         </view>
     </view>
     <view class='content'>
