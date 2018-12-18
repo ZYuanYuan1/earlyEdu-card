@@ -19,7 +19,7 @@ Page({
     saving: 0, //判断是否收藏
     activitytype: 0, //区分商品类型
     inviteUserPhone: '', //邀请人电话
-    userInfo: {}//用户信息
+    userInfo: {} //用户信息
   },
 
   /**
@@ -64,7 +64,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () { },
+  onShow: function () {},
 
   /**
    * 生命周期函数--监听页面隐藏
@@ -93,7 +93,12 @@ Page({
   onReachBottom: function () {
 
   },
-
+  //拉起电话
+  handlePhoneCall(e) {
+    wx.makePhoneCall({
+      phoneNumber: e.currentTarget.dataset.phone
+    })
+  },
   /**
    * 用户点击右上角分享
    */
