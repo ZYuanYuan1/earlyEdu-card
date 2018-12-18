@@ -8,7 +8,8 @@ Page({
     cashVal:'',//充值金额
     showPhoneModal: false,
     trueNameVal:'',
-    alipayVal:''
+    alipayVal:'',
+    grade: 0//用户是否是会员
   },
 
   /**
@@ -33,7 +34,11 @@ Page({
                var info=res.data.user
               //  that.data.trueNameVal = info.realname;
               //  that.data.alipayVal = info.alipay
-               that.setData({trueNameVal:info.realname, alipayVal:info.alipay})
+               that.setData({
+                 trueNameVal:info.realname, 
+                 alipayVal:info.alipay,
+                 grade: info.grade
+               })
             } else {
               wx.showToast({
                 title: res.data.msg,
@@ -162,17 +167,25 @@ Page({
           })
           return
         }
-        // var currcashmoney = userInfo.amount;//账户余额
-        // console.log(currcashmoney);
-        // console.log(currCash);
-        // if (currCash >currcashmoney){
-        //   wx.showToast({
-        //     title: '您已超出提现的金额',
-        //     icon: 'none',
-        //     duration: 2000
-        //   })
-        //   return
-        // }
+        var grade = that.data.grade;//判断用户是否是会员
+        if (grade<=0 && currCash < 100) {
+          wx.showModal({
+            content: '抱歉，100元以下不能提现，但是可以在平台消费；若升级为会员，可享受无门槛提现哦！',
+            confirmColor: "#D0021B",
+            cancelColor: "#33333",
+            confirmText: "去升级",
+            success(res) {
+              if (res.confirm) {
+                wx.navigateTo({
+                  url: '/pages/member/member',
+                })
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+              }
+            }
+          })
+          return
+        }
         wx.request({
           url: getApp().apiUrl + '/api/order/creatOrder',
           method: 'post',
@@ -215,6 +228,4 @@ Page({
   },
   preventTouchMove: function () {
   },
- 
- 
 })
