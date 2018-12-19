@@ -8,12 +8,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showModal: false,//取消关注弹框
     showPhoneModal: false,//手机号绑定弹框
     saveList: [],//列表
     reachBottomTip: false,
     inviteUserPhone: '',//邀请人电话
     showPhoneModal: false,//手机号绑定弹框
+    savelistLength: 0//判断是否有数据
   },
 
   /**
@@ -86,7 +86,10 @@ Page({
               } else {
                 page++;
               };
-              that.setData({ 'saveList': saveList });
+              that.setData({ 
+                'saveList': saveList,
+                'savelistLength':data.length
+                 });
             };
 
           },
@@ -146,10 +149,14 @@ Page({
               })
               var saveList = that.data.saveList;
               saveList.splice(currIndex, 1);
-              that.setData({ saveList: saveList });
-              that.setData({
-                showModal: false
+              var savelistLength = that.data.savelistLength-1
+              that.setData({ 
+                saveList: saveList,
+                savelistLength: savelistLength
               });
+              // that.setData({
+              //   showModal: false
+              // });
             };
 
           },
@@ -157,7 +164,7 @@ Page({
         })
       },
       fail: function (res) {
-        //that.setData({ 'showPhoneModal': true });
+        that.setData({ 'showPhoneModal': true });
       }
     })
   },
@@ -178,6 +185,12 @@ Page({
     console.log(e);
     util.errImgFun(e, this);
   },
+  //到选择页
+  goChoose(){
+    wx.navigateTo({
+      url: '/pages/choose/choose?businessMenuId=0',
+    })
+  }
   //进入商铺
   // goShop(e){
   //   var businessid = e.currentTarget.dataset.businessid

@@ -78,7 +78,8 @@
   .conGoods image{
     width: 334rpx;
     height: 334rpx;
-    background: #cccccc
+    background: #cccccc;
+    border-radius: 12rpx 12rpx 0 0
   }
   .conDis{
     font-size:20rpx;
@@ -120,10 +121,10 @@
         padding:10px 2px 0px 10px;
   }
   .conVip{
-    width: 122rpx;
-    height: 154rpx;
+    width: 100rpx;
+    height: 100rpx;
     background: linear-gradient(#EADAB2,#D1B37A);
-    border-radius: 20rpx 0rpx 20rpx 0rpx;
+    border-radius: 12rpx 0rpx 12rpx 0rpx;
     font-size: 32rpx;
     color: #ffffff;
     font-weight: 600;

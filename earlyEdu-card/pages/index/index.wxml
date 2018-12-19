@@ -1,89 +1,90 @@
 <!--pages/index/index.wxml-->
 <view>
-<!-- 头部搜索以及地址定位 -->
-    <view class='search'>
-        <view class='serPosition' bindtap='searchLocation' data-loca-search="{{locationStr}}">
-            <image src='https://img.sahuanka.com/earlyEdu-card/images/position.png'></image>
-            <text>{{locationStr}}</text>
-            <image src='https://img.sahuanka.com/earlyEdu-card/images/downArrow.png' style='width:12rpx;height:8rpx;margin-left:12rpx;margin-top:20rpx;'></image>
-        </view>
-        <view class='searchCon'>
-            <image src='https://img.sahuanka.com/earlyEdu-card/images/copy.png' style='margin-left:132rpx;'></image>
-            <input placeholder='搜索你想要的' placeholder-class='searPl' style='margin-left:6rpx;' confirm-type="搜索" value ='{{searchInput}}'bindconfirm='toSearch'></input>
-        </view>
+  <!-- 头部搜索以及地址定位 -->
+  <view class="search-bar">
+    <view class="search-bar-loacation" bindtap='locationViewSelected' data-loca-add="{{locationStr}}">
+      <image class="search-bar-loacation-icon" src='https://img.sahuanka.com/earlyEdu-card/images/position.png'></image>
+      <text class="search-bar-loacation-text">{{locationStr}}</text>
+      <image class="search-bar-loacation-arrow" src='https://img.sahuanka.com/earlyEdu-card/images/downArrow.png'></image>
     </view>
-    <!-- 轮播图 -->
+
+    <view class="search-bar-input-container">
+      <view class="search-bar-input-sub-container">
+        <image class="search-bar-input-sub-container-icon" src="https://img.sahuanka.com/earlyEdu-card/images/copy.png"></image>
+        <input placeholder='搜索你想要的' placeholder-class='searPl' type="text" confirm-type="search" class="search-bar-input-sub-container-text"  bindconfirm="toSearch" value="{{searchInput}}" />
+      </view>
+    </view>
+  </view>
+  <!-- 轮播图 -->
   <view wx:if="{{bannerList.length>0}}">
-    <swiper indicator-dots="true" class='inSwiper'
-  autoplay="true" interval="3000" duration="800" circular="true" indicator-active-color="#ffffff">
-        <block wx:for="{{bannerList}}" wx:key="{{item.bannerid}}" >
-            <swiper-item>
-                <image src="{{item.url}}" class="banner_image"  bindtap='skip_bannerDetail' data-banner-type="{{item.type}}" data-banner-requesturl="{{item.requesturl}}"  binderror="errImg"/>
-           </swiper-item>
-        </block>
+    <swiper indicator-dots="true" class='inSwiper' autoplay="true" interval="3000" duration="800" circular="true" indicator-active-color="#ffffff">
+      <block wx:for="{{bannerList}}" wx:key="{{item.bannerid}}">
+        <swiper-item>
+          <image src="{{item.url}}" class="banner_image" bindtap='skip_bannerDetail' data-banner-type="{{item.type}}" data-banner-requesturl="{{item.requesturl}}" binderror="errImg" />
+        </swiper-item>
+      </block>
     </swiper>
- </view>
+  </view>
   <view wx:else class='inSwiper'>
-    <image class="banner-image" src="/images/Group10.png"  style=' width: 100%; height: 280rpx'></image> 
- </view>
-    <!-- 导航栏 -->
-    <view class='nav'>
-        <view  class="navDisc navList" wx:for="{{navTxt.navtxtCon}}">
-            <image src='{{navTxt.navtxtImg}}'></image>
-            <text>{{item}}</text>
-        </view>
-        <view class="navList" wx:for="{{nav}}" id="{{item.businessMenuId}}" bindtap='goChoose'>
-            <image src="{{item.imgUrls}}"/>
-            <view>{{item.descs}}</view>
-        </view>
+    <image class="banner-image" src="/images/Group10.png" style=' width: 100%; height: 280rpx'></image>
+  </view>
+  <!-- 导航栏 -->
+  <view class='nav'>
+    <view class="navDisc navList" wx:for="{{navTxt.navtxtCon}}">
+      <image src='{{navTxt.navtxtImg}}'></image>
+      <text>{{item}}</text>
     </view>
-    <!-- 宝贝大礼 -->
-    <view class='cor'>
+    <view class="navList" wx:for="{{nav}}" id="{{item.businessMenuId}}" bindtap='goChoose'>
+      <image src="{{item.imgUrls}}" />
+      <view>{{item.descs}}</view>
+    </view>
+  </view>
+  <!-- 宝贝大礼 -->
+  <view class='cor'>
     <!-- <image src='/images/gif.gif'class="corset" bindtap='goAssemble'></image> -->
-         <image src='https://img.sahuanka.com/earlyEdu-card/images/Groupgif.gif'></image>
-         <image src='https://img.sahuanka.com/earlyEdu-card/images/babyGiftgif.gif' bindtap='goBabygift'></image>
-    </view>
-    <view class='conTitle' style='flex:1'>为你优选</view>
-    <!-- 内容 -->
-    <view class='content'>
-        <view class='conGoods' wx:for="{{goods}}" hidden='{{item.activitytype==4?false:true}}'data-business-id="{{item.businessactivityid}}" data-id="{{item.businessid}}" data-type="{{item.activitytype}}" bindtap='goGoodsdetail'>
-              <view class='conVip'>
-                 <view>
-                    <view>会员</view>
-                    <view>专享</view>
-                 </view>
-             </view>
-             <image src='{{item.activitypic}}'></image>
-             <view class='conDis conAll des'>{{item.description}}</view>
-             <view class='con'>
-                <view class='conName conAll' style='overflow:hidden;white-space:nowrap;text-overflow:ellipsis;'>{{item.activityname}}</view>
-                <view style='padding:0rpx 2rpx 20rpx 10rpx'>
-                     <text class="price" >￥{{item.gradeAmount}}</text>
-                     <text class='linePrice'>￥{{item.amount}}</text>
-                  </view>
-             </view>
+    <image src='https://img.sahuanka.com/earlyEdu-card/images/Groupgif.gif'></image>
+    <image src='https://img.sahuanka.com/earlyEdu-card/images/babyGiftgif.gif' bindtap='goBabygift'></image>
+  </view>
+  <view class='conTitle' style='flex:1'>为你优选</view>
+  <!-- 内容 -->
+  <view class='content'>
+    <view class='conGoods' wx:for="{{goods}}" hidden='{{item.activitytype==4?false:true}}' data-business-id="{{item.businessactivityid}}" data-id="{{item.businessid}}" data-type="{{item.activitytype}}" bindtap='goGoodsdetail'>
+      <view class='conVip'>
+        <view>
+          <view>会员</view>
+          <view>专享</view>
         </view>
-        <view class='conGoods' wx:for="{{goods}}" hidden="{{item.activitytype==3?false:true}}"  data-business-id="{{item.businessactivityid}}" data-id="{{item.businessid}}" data-type="{{item.activitytype}}" bindtap='goGoodsdetail'>
-              <!-- <view class='conVip'>
+      </view>
+      <image src='{{item.activitypic}}'></image>
+      <view class='conDis conAll des'>{{item.description}}</view>
+      <view class='con'>
+        <view class='conName conAll' style='overflow:hidden;white-space:nowrap;text-overflow:ellipsis;'>{{item.activityname}}</view>
+        <view style='padding:0rpx 2rpx 20rpx 10rpx'>
+          <text class="price">￥{{item.gradeAmount}}</text>
+          <text class='linePrice'>￥{{item.amount}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='conGoods' wx:for="{{goods}}" hidden="{{item.activitytype==3?false:true}}" data-business-id="{{item.businessactivityid}}" data-id="{{item.businessid}}" data-type="{{item.activitytype}}" bindtap='goGoodsdetail'>
+      <!-- <view class='conVip'>
                  <view>
                     <view>会员</view>
                     <view>专享</view>
                  </view>
              </view> -->
-             <image src='{{item.activitypic}}'></image>
-             <view class='conDis conAll des'>{{item.description}}</view>
-             <view class='con'>
-                <view class='conName conAll' style='overflow:hidden;white-space:nowrap;text-overflow:ellipsis;'>{{item.activityname}}</view>
-                <view style='padding:0rpx 2rpx 20rpx 10rpx'>
-                     <text class="price" >￥{{item.gradeAmount}}</text>
-                     <text style='color:#888888;font-size:18rpx;margin-left:20rpx'>非会员价￥{{item.amount}}</text>
-                  </view>
-             </view>
+      <image src='{{item.activitypic}}'></image>
+      <view class='conDis conAll des'>{{item.description}}</view>
+      <view class='con'>
+        <view class='conName conAll' style='overflow:hidden;white-space:nowrap;text-overflow:ellipsis;'>{{item.activityname}}</view>
+        <view style='padding:0rpx 2rpx 20rpx 10rpx'>
+          <text class="price">￥{{item.gradeAmount}}</text>
+          <text style='color:#888888;font-size:18rpx;margin-left:20rpx'>非会员价￥{{item.amount}}</text>
         </view>
-    </view> 
-    <view class='more'>没有更多了</view>
-    <!-- <view style='text-align:center;margin-top:60rpx;font-size:24rpx;color:#888888'>暂无商家</view> -->
+      </view>
+    </view>
+  </view>
+  <view class='more'>没有更多了</view>
+  <!-- <view style='text-align:center;margin-top:60rpx;font-size:24rpx;color:#888888'>暂无商家</view> -->
 </view>
 <!--绑定手机号弹窗-->
 <bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone>
-
