@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -47,7 +47,20 @@
 				{
 					"id": -1,
 					"name": "groupDetail",
-					"pathName": "pages/groupDetail/groupDetail"
+					"pathName": "pages/groupDetail/groupDetail",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "goodsDetail",
+					"pathName": "pages/goodsDetail/goodsDetail",
+					"query": "businessactivityid=522&businessid=308&activitytype=4"
+				},
+				{
+					"id": -1,
+					"name": "shopAddress",
+					"pathName": "pages/shopAddress/shopAddress",
+					"query": "businessid=308"
 				}
 			]
 		}

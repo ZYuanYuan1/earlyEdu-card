@@ -2,112 +2,121 @@
 <import src="../../wxParse/wxParse.wxml" />
 <!-- 弹窗 -->
 <view class="page">
-  <!--顶部图片-->
-  <view class='header'>
+   <!--顶部图片-->
+   <view class='header'>
       <!-- <view style='flex:0 0 70%'>
          <view class='header_title'>{{businessInfo.businessname}}</view>
          <view><image class='star_img' wx:for="{{starImg}}" src='{{item}}'></image></view>
       </view> -->
       <view style='flex:0 0 70%' wx:for="{{shop}}" wx:if="{{item.businessId==businessid}}">
          <view class='header_title'>{{item.businessName}}</view>
-         <view><image class='star_img' wx:for="{{starImg}}" src='{{item}}'></image></view>
+         <view>
+            <image class='star_img' wx:for="{{starImg}}" src='{{item}}'></image>
+         </view>
       </view>
       <view class='header_item' wx:if="{{saving==0}}" bindtap="save">
-          <image class='header_img' src="https://img.sahuanka.com/earlyEdu-card/images/attention.png"></image>
-          <view>收藏</view>
+         <image class='header_img' src="https://img.sahuanka.com/earlyEdu-card/images/attention.png"></image>
+         <view>收藏</view>
       </view>
-      <view class='header_item' wx:else  bindtap="save">
-          <image class='header_img' src="http://img.sahuanka.com/sjCard/images/shoucangblue.png"></image>
-          <view>收藏</view>
+      <view class='header_item' wx:else bindtap="save">
+         <image class='header_img' src="http://img.sahuanka.com/sjCard/images/shoucangblue.png"></image>
+         <view>收藏</view>
       </view>
-        <view class='header_item'>
+      <view class='header_item'>
          <!-- <image class='header_img' src='https://img.sahuanka.com/earlyEdu-card/images/share.png'></image> -->
-        <button open-type="share" class='pagesharebtn'> <image class='header_img' src='https://img.sahuanka.com/earlyEdu-card/images/share.png'></image>
-        </button>
-        <view style='width:74rpx'>分享</view>
+         <button open-type="share" class='pagesharebtn'>
+            <image class='header_img' src='https://img.sahuanka.com/earlyEdu-card/images/share.png'></image>
+         </button>
+         <view style='width:74rpx'>分享</view>
       </view>
-  </view>
-  <view class="topdetailimgbox"  bindtap='skip_lessonList'  wx:for="{{shop}}" wx:if="{{item.businessId==businessid}}">
-    <image src="{{item.businessPic}}" binderror="errImg" data-err-img="{{businessInfo.businesspic}}"></image>
-  </view>
-  <view class="maindetailbigbox">
-    <!-- 用户地址 -->
-    <view class='return' bindtap='returnIndex'><image style='width:120rpx;height:120rpx' src='https://img.sahuanka.com/earlyEdu-card/images/return.gif'></image></view>
+   </view>
+   <view class="topdetailimgbox" bindtap='skip_lessonList' wx:for="{{shop}}" wx:if="{{item.businessId==businessid}}">
+      <image src="{{item.businessPic}}" binderror="errImg" data-err-img="{{businessInfo.businesspic}}"></image>
+   </view>
+   <view class="maindetailbigbox">
+      <!-- 用户地址 -->
+      <view class='return' bindtap='returnIndex'>
+         <image style='width:120rpx;height:120rpx' src='https://img.sahuanka.com/earlyEdu-card/images/return.gif'></image>
+      </view>
       <view class='model' hidden='{{addrShow}}'>
-           <view style='display:flex;align-items:center'>
-              <view class="taskheadtext taskheadtextThree" style='font-size:26rpx;color:#999999;flex:0 0 80%'>适用店铺({{addressLength}})</view>
-              <view style='font-size:24rpx;color:#CBB588;align-items:center;' bindtap='adressAll' hidden='{{addressLength==1}}'>
-                     <text>查看全部</text>
-                     <image style='width:22rpx;height:22rpx;margin-left:8rpx' src='https://img.sahuanka.com/earlyEdu-card/images/arrow1.png'></image>
-              </view>
-           </view>
-           <view class='taskitem'>
-               <view class='address'>
-                  <image src='https://img.sahuanka.com/earlyEdu-card/images/shopPosition.png' class='addressImg'></image>
-                  <view>{{addressList[0].province}}{{addressList[0].city}}{{addressList[0].district}}{{addressList[0].address}}</view>
-               </view>
-               <view style='margin-left:30rpx;margin-top:16rpx;'>{{addressList[0].phone}}</view>
-          </view>
+         <view style='display:flex;align-items:center'>
+            <view class="taskheadtext taskheadtextThree" style='font-size:26rpx;color:#999999;flex:0 0 80%'>适用店铺({{addressLength}})</view>
+            <view style='font-size:24rpx;color:#CBB588;align-items:center;' bindtap='adressAll' hidden='{{addressLength==1}}'>
+               <text>查看全部</text>
+               <image style='width:22rpx;height:22rpx;margin-left:8rpx' src='https://img.sahuanka.com/earlyEdu-card/images/arrow1.png'></image>
+            </view>
+         </view>
+         <view class='taskitem'>
+            <view class='address'>
+               <image src='https://img.sahuanka.com/earlyEdu-card/images/shopPosition.png' class='addressImg'></image>
+               <view>{{addressList[0].province}}{{addressList[0].city}}{{addressList[0].district}}{{addressList[0].address}}</view>
+            </view>
+            <view style='margin-left:30rpx;margin-top:16rpx;' bindtap="handlePhoneCall" data-phone="{{addressList[0].phone}}">{{addressList[0].phone}}</view>
+         </view>
       </view>
-<!-- 用户评论 --> 
+      <!-- 用户评论 -->
       <view class='model' style='border-bottom:none' hidden='{{commentShow}}'>
-              <view class="taskheadtext taskheadtextThree" style='display:flex'>
-                  <view class='dissLeft'>用户评价({{count}})</view>
-                  <view style='font-size:24rpx;color:#CBB588;align-items:center;' bindtap='commentAll' hidden='{{count==1}}'>
-                     <text >查看全部</text>
-                     <image style='width:22rpx;height:22rpx;margin-left:8rpx' src='https://img.sahuanka.com/earlyEdu-card/images/arrow1.png'></image>
-                  </view>
-              </view>
-               <view class="taskitem" style='display:flex'>
-                   <image src='{{info.avatarUrl}}' class='dissCountleft'></image>
-                   <view style='display:flex:0 0 72%;line-height:20rpx;line-height:22px;width:68%;'>
-                        <view style='font-size:26rpx;color:#446889'>{{info.userName==null&&avatarUrl==null?'*****':info.userName}}</view>
-                        <view style='font-size:20rpx'><text>打分 </text>
-                        <image wx:for="{{starImg}}"src='{{item}}' class='star' style="margin-right:4rpx"></image></view>
-                        <view style='font-size:28rpx'>{{info.content}}</view>
-                        <view style='margin-top:22rpx'><image wx:for="{{info.imgList}}" class='dissCenterimg' src='{{item}}'></image>
-                        </view>
-                   </view>
-                   <view style='font-size:24rpx;color:#999999;flex:0 0 16%'>{{createDate}}</view>
-              </view>
+         <view class="taskheadtext taskheadtextThree" style='display:flex'>
+            <view class='dissLeft'>用户评价({{count}})</view>
+            <view style='font-size:24rpx;color:#CBB588;align-items:center;' bindtap='commentAll' hidden='{{count==1}}'>
+               <text>查看全部</text>
+               <image style='width:22rpx;height:22rpx;margin-left:8rpx' src='https://img.sahuanka.com/earlyEdu-card/images/arrow1.png'></image>
+            </view>
+         </view>
+         <view class="taskitem" style='display:flex'>
+            <image src='{{info.avatarUrl}}' class='dissCountleft'></image>
+            <view style='display:flex:0 0 72%;line-height:20rpx;line-height:22px;width:68%;'>
+               <view style='font-size:26rpx;color:#446889'>{{info.userName==null&&avatarUrl==null?'*****':info.userName}}</view>
+               <view style='font-size:20rpx'><text>打分 </text>
+                  <image wx:for="{{starImg}}" src='{{item}}' class='star' style="margin-right:4rpx"></image>
+               </view>
+               <view style='font-size:28rpx'>{{info.content}}</view>
+               <view style='margin-top:22rpx'>
+                  <image wx:for="{{info.imgList}}" class='dissCenterimg' src='{{item}}'></image>
+               </view>
+            </view>
+            <view style='font-size:24rpx;color:#999999;flex:0 0 16%'>{{createDate}}</view>
+         </view>
       </view>
-  </view>
-  <!-- 店铺商品 -->
-    <view class='content'>
-        <view class='conGoods' wx:for="{{goods}}" hidden='{{item.activitytype==4?false:true}}'data-business-id="{{item.businessactivityid}}" data-id="{{item.businessid}}" data-type="{{item.activitytype}}" bindtap='goGoodsdetail'>
-              <view class='conVip'>
-                 <view>
-                    <view>会员</view>
-                    <view>专享</view>
-                 </view>
-             </view>
-             <image src='{{item.activitypic}}' style='border-radius:12rpx 12rpx 0 0;'></image>
-             <view class='conDis conAll des'>{{item.description}}</view>
-             <view class='con'>
-                <view class='conName conAll' style='overflow:hidden;white-space:nowrap;text-overflow:ellipsis;'>{{item.activityname}}</view>
-                <view style='padding:0rpx 2rpx 20rpx 10rpx'>
-                     <text class="price" >￥{{item.gradeAmount}}</text>
-                     <text class='linePrice'>￥{{item.amount}}</text>
-                  </view>
-             </view>
-        </view>
-        <view class='conGoods' wx:for="{{goods}}" hidden="{{item.activitytype==3?false:true}}"  data-business-id="{{item.businessactivityid}}" data-id="{{item.businessid}}" data-type="{{item.activitytype}}" bindtap='goGoodsdetail'>
-              <!-- <view class='conVip'>
+   </view>
+   <!-- 店铺商品 -->
+   <view class='content'>
+      <view class='conGoods' wx:for="{{goods}}" hidden='{{item.activitytype==4?false:true}}' data-business-id="{{item.businessactivityid}}"
+         data-id="{{item.businessid}}" data-type="{{item.activitytype}}" bindtap='goGoodsdetail'>
+         <view class='conVip'>
+            <view>
+               <view>会员</view>
+               <view>专享</view>
+            </view>
+         </view>
+         <image src='{{item.activitypic}}' style='border-radius:12rpx 12rpx 0 0;'></image>
+         <view class='conDis conAll des'>{{item.description}}</view>
+         <view class='con'>
+            <view class='conName conAll' style='overflow:hidden;white-space:nowrap;text-overflow:ellipsis;'>{{item.activityname}}</view>
+            <view style='padding:0rpx 2rpx 20rpx 10rpx'>
+               <text class="price">￥{{item.gradeAmount}}</text>
+               <text class='linePrice'>￥{{item.amount}}</text>
+            </view>
+         </view>
+      </view>
+      <view class='conGoods' wx:for="{{goods}}" hidden="{{item.activitytype==3?false:true}}" data-business-id="{{item.businessactivityid}}"
+         data-id="{{item.businessid}}" data-type="{{item.activitytype}}" bindtap='goGoodsdetail'>
+         <!-- <view class='conVip'>
                  <view>
                     <view>会员</view>
                     <view>专享</view>
                  </view>
              </view> -->
-             <image src='{{item.activitypic}}' style='border-radius:12rpx 12rpx 0 0;'></image>
-             <view class='conDis conAll des'>{{item.description}}</view>
-             <view class='con'>
-                <view class='conName conAll' style='overflow:hidden;white-space:nowrap;text-overflow:ellipsis;'>{{item.activityname}}</view>
-                <view style='padding:0rpx 2rpx 20rpx 10rpx'>
-                     <text class="price" >￥{{item.gradeAmount}}</text>
-                     <text style='color:#888888;font-size:18rpx;margin-left:20rpx'>非会员价￥{{item.amount}}</text>
-                  </view>
-             </view>
-        </view>
-    </view> 
-     <view class='more'>没有更多了</view>
+         <image src='{{item.activitypic}}' style='border-radius:12rpx 12rpx 0 0;'></image>
+         <view class='conDis conAll des'>{{item.description}}</view>
+         <view class='con'>
+            <view class='conName conAll' style='overflow:hidden;white-space:nowrap;text-overflow:ellipsis;'>{{item.activityname}}</view>
+            <view style='padding:0rpx 2rpx 20rpx 10rpx'>
+               <text class="price">￥{{item.gradeAmount}}</text>
+               <text style='color:#888888;font-size:18rpx;margin-left:20rpx'>非会员价￥{{item.amount}}</text>
+            </view>
+         </view>
+      </view>
+   </view>
+   <view class='more'>没有更多了</view>
 </view>

@@ -28,7 +28,12 @@ Page({
   onShow: function () {
 
   },
-
+  //拉起电话
+  handlePhoneCall(e) {
+    wx.makePhoneCall({
+      phoneNumber: e.currentTarget.dataset.phone
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -63,7 +68,7 @@ Page({
   onShareAppMessage: function () {
 
   },
-  innitAddress(businessid){
+  innitAddress(businessid) {
     var that = this;
     wx.request({
       url: getApp().apiUrl + '/api/business/address/list/' + businessid,

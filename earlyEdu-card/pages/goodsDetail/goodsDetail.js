@@ -19,13 +19,13 @@ Page({
     saving: 0, //判断是否收藏
     activitytype: 0, //区分商品类型
     inviteUserPhone: '', //邀请人电话
-    userInfo:{}//用户信息
+    userInfo: {} //用户信息
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     console.log(options)
     var that = this;
     //主页面传过来的值赋值
@@ -38,7 +38,7 @@ Page({
     //加载用户token
     wx.getStorage({
       key: 'loginStutes',
-      success: function(res) {
+      success: function (res) {
         console.log(res);
         var userInfo = JSON.parse(res.data);
         var tokenVal = userInfo.app_token;
@@ -48,7 +48,7 @@ Page({
         that.innitAddress(); //初始化地址
         that.innitComment(tokenVal); //初始化评论
       },
-      fail: function(res) {
+      fail: function (res) {
         that.setData({
           'showPhoneModal': true
         });
@@ -59,43 +59,48 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {},
+  onShow: function () {},
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
-
+  //拉起电话
+  handlePhoneCall(e) {
+    wx.makePhoneCall({
+      phoneNumber: e.currentTarget.dataset.phone
+    })
+  },
   /**
    * 用户点击右上角分享
    */
@@ -151,7 +156,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded',
         'Authorization': token
       },
-      success: function(res) {
+      success: function (res) {
         console.log(res);
         if (res.data.code == 0) {
           var hostInfo = res.data.business; //商家信息
@@ -301,7 +306,7 @@ Page({
     })
   },
   //收藏
-  save: function(e) {
+  save: function (e) {
     console.log(e);
     var that = this;
     var storeId = that.data.businessInfo.businessid;
@@ -309,7 +314,7 @@ Page({
     var curr_state = that.data.saving;
     wx.getStorage({
       key: 'loginStutes',
-      success: function(res) {
+      success: function (res) {
         console.log(res);
         var datainfo = JSON.parse(res.data);
         var tokenval = datainfo.app_token;
@@ -325,7 +330,7 @@ Page({
               'content-type': 'text/html;charset=UTF-8',
               'Authorization': tokenval
             },
-            success: function(res) {
+            success: function (res) {
               console.log(res);
               if (res.data.code == 0) {
                 that.setData({
@@ -338,7 +343,7 @@ Page({
                 })
               }
             },
-            fail: function(res) {
+            fail: function (res) {
               console.log(res);
             }
 
@@ -354,7 +359,7 @@ Page({
               'content-type': 'application/x-www-form-urlencoded',
               'Authorization': tokenval
             },
-            success: function(res) {
+            success: function (res) {
               console.log(res);
               if (res.data.code == 0) {
                 that.setData({
@@ -367,14 +372,14 @@ Page({
                 })
               }
             },
-            fail: function(res) {
+            fail: function (res) {
               console.log(res);
             }
 
           });
         }
       },
-      fail: function(res) {
+      fail: function (res) {
         that.setData({
           'showPhoneModal': true
         });
@@ -390,7 +395,7 @@ Page({
   //确认支付
   //跳转至确认订单页面
 
-  sureOrders: function() {
+  sureOrders: function () {
     console.log();
     //创建支付订单
     var that = this;
@@ -407,7 +412,7 @@ Page({
 
       key: 'loginStutes',
 
-      success: function(res) {
+      success: function (res) {
 
         //console.log(res);
 
@@ -432,7 +437,7 @@ Page({
             'Authorization': tokenVal
           },
 
-          success: function(res) {
+          success: function (res) {
 
             console.log(res);
 
@@ -457,15 +462,15 @@ Page({
                 wx.navigateTo({
                   url: '/pages/payment/payment?orderInfo=' + orderInfo
                 })
-              }else {
-                  wx.showToast({
-                    title: "领取成功",
-                    icon: "none"
-                  })
+              } else {
+                wx.showToast({
+                  title: "领取成功",
+                  icon: "none"
+                })
               } //领取成功跳转到-确认订单页面
 
-            }else{
-              if (userInfo.grade < 0||res.data.msg=="你还不是会员") {
+            } else {
+              if (userInfo.grade < 0 || res.data.msg == "你还不是会员") {
                 wx.showModal({
                   content: '抱歉，您还不是会员，无法领取哦',
                   showCancel: false,
@@ -477,11 +482,11 @@ Page({
                     })
                   }
                 })
-              }else{
-               wx.showToast({
-                title: res.data.msg,
-                icon:"none"
-              })
+              } else {
+                wx.showToast({
+                  title: res.data.msg,
+                  icon: "none"
+                })
               }
             };
 
@@ -493,8 +498,8 @@ Page({
 
       },
 
-      fail: function(res) {
-       
+      fail: function (res) {
+
         that.setData({
           'showPhoneModal': true
         });
@@ -505,7 +510,7 @@ Page({
 
   },
   //邀请
-  onShareAppMessage: function(res) {
+  onShareAppMessage: function (res) {
     var that = this
     var businessactivityid = that.data.businessactivityid;
     var inviteUserPhone = that.data.inviteUserPhone;

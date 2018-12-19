@@ -1,7 +1,10 @@
 <!--pages/shopAddress/shopAddress.wxml-->
 <view class='contanier'>
-   <view class='content' wx:for='{{addressList}}'>
-       <image src='https://img.sahuanka.com/earlyEdu-card/images/shopPosition.png'></image><text>{{item.province}}{{item.city}}{{item.district}}{{item.address}}</text>
-       <view>{{item.phone}}</view>
-   </view>
+    <view class='content' wx:for='{{addressList}}'>
+        <image src='https://img.sahuanka.com/earlyEdu-card/images/shopPosition.png'></image>
+        <view>
+            <view class="address">{{item.province}}{{item.city}}{{item.district}}{{item.address}}</view>
+            <view class="phone" bindtap="handlePhoneCall" data-phone="{{item.phone}}">{{item.phone}}</view>
+        </view>
+    </view>
 </view>
