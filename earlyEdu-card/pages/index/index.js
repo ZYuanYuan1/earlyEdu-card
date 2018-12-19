@@ -10,7 +10,7 @@ Page({
    */
   data: {
     bannerList:[],//banner图
-    'locationStr': '加载中...',//定位地址
+    'locationStr': '加载失败',//定位地址
     'bannerList':[],//banner
      goods:[],//商品列表
      curPage:1,//当前页
@@ -152,11 +152,61 @@ Page({
       }
     })
   },
-  //定位跳转
-  searchLocation(e){
-    var loca = e.currentTarget.dataset.locaSearch;
-    wx.navigateTo({
-      url: '/pages/searchLocation/searchLocation?loca=' + loca
+  // //定位跳转
+  // searchLocation(e){
+  //   var loca = e.currentTarget.dataset.locaSearch;
+  //   wx.navigateTo({
+  //     url: '/pages/searchLocation/searchLocation?loca=' + loca
+  //   })
+  // },
+  //获取定位地址方法
+  locationViewSelected: function () {
+    var that = this;
+    that.setData({ 'address': '定位中...', 'location': '正在定位...' });
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        var latitude = res.latitude
+        var longitude = res.longitude
+        var speed = res.speed
+        var accuracy = res.accuracy
+        //that.globalData.latitude = latitude;
+        //that.globalData.longitude = longitude;
+        // 调用接口
+        qqmapsdk.reverseGeocoder({
+          location: {
+            latitude: latitude,
+            longitude: longitude
+          },
+          success: function (res) {
+            var address = res.result.address
+            if (res.result.address_reference && res.result.address_reference.landmark_l1) {
+              address = res.result.address_reference.landmark_l1.title;
+            } else if (res.result.address_reference && res.result.address_reference.landmark_l2) {
+              address = res.result.address_reference.landmark_l2.title;
+            } else {
+              // that.setData({ 'locationStr': address })
+            }
+
+            that.setData({ 'address': address, 'location': '重新定位' })
+          },
+          fail: function (res) {
+
+          },
+          complete: function (res) {
+
+
+          }
+        });
+
+      },
+      fail: function (res) {
+
+        that.setData({ 'address': '定位失败', 'location': '重新定位' })
+      },
+      complete: function (res) {
+
+      }
     })
   },
   //广告图方法
