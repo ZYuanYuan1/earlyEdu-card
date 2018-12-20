@@ -6,20 +6,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    businessInfo: {}, //商家信息
     activityInfo: {}, //商家活动
     actype: 4, //商品类型，区分礼品和普通商品价格，默认礼品
     businessid: 0, //商品id
+    assembleActivityId:0,//拼团id
     token: "", //用户token
-    businessactivityid: 0, //商品活动id
-    goodsNumber: 0, //销售多少件
     addrShow: true, //是否显示地址模块
     addressList: [], //地址列表
-    commentShow: true, //是否显示用户评价模块
-    saving: 0, //判断是否收藏
     activitytype: 0, //区分商品类型
     inviteUserPhone: '', //邀请人电话
-    userInfo: {} //用户信息
+    userInfo: {}, //用户信息
+    number:0,//拼团人数
+    dayDiff:0,//相差多少天
+    hours:0//相差多少小时
   },
 
   /**
@@ -30,9 +29,8 @@ Page({
     var that = this;
     //主页面传过来的值赋值
     that.setData({
-      activitytype: options.activitytype,
-      businessid: options.businessid,
-      businessactivityid: options.businessactivityid
+      assembleActivityId: options.assembleActivityId,
+      businessid: options.businessId,
     })
     console.log(that.data.businessid)
     //加载用户token
@@ -43,8 +41,7 @@ Page({
         var userInfo = JSON.parse(res.data);
         var tokenVal = userInfo.app_token;
         console.log(tokenVal)
-        that.innitGoodsdetail(options.businessactivityid, tokenVal) //初始化数据
-        that.innitAddress(); //初始化地址
+        that.innitGoodsdetail(options.assembleActivityId, tokenVal) //初始化数据
       },
       fail: function (res) {
         that.setData({
@@ -52,6 +49,8 @@ Page({
         });
       }
     })
+    that.innitCount(options.assembleActivityId)//初始化拼团人数
+    that.innitAddress(); //初始化地址
   },
 
   /**
@@ -64,7 +63,9 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {},
+  onShow: function () {
+    this.innitCount(this.data.assembleActivityId);
+  },
 
   /**
    * 生命周期函数--监听页面隐藏
@@ -148,20 +149,26 @@ Page({
     var that = this;
     wx.request({
       // + detailId
-      url: getApp().apiUrl + '/api/businessactivity/info/466',
-      method: 'post',
+      url: getApp().apiUrl + '/api/assembleActivity/info/' + detailId,
+      method: 'get',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
         'Authorization': token
       },
+      data:{
+        assembleActivityId: that.data.assembleActivityId
+      },
       success: function (res) {
         console.log(res);
         if (res.data.code == 0) {
-          var hostInfo = res.data.business; //商家信息
-          var activityInfo = res.data.businessactivity; //商家活动
-          console.log(activityInfo);
+          var activityInfo = res.data.info; //商家活动
+       //天数换算  
+          var t3 = activityInfo.shelfTime;
+          that.timeFun(t3)
+          if (activityInfo.shelfTime!= null) {
+            activityInfo.shelfTime = activityInfo.shelfTime.substring(0, 10)
+          }
           that.setData({
-            'businessInfo': hostInfo,
             'activityInfo': activityInfo
           });
           //富文本
@@ -179,12 +186,51 @@ Page({
 
     })
   },
+  innitCount(detailId){
+    var that = this;
+    wx.getStorage({
+      key: 'loginStutes',
+      success: function (res1) {
+        var userInfo = JSON.parse(res1.data);
+        var tokenVal = userInfo.app_token;
+        console.log(userInfo)
+    wx.request({
+      // + detailId
+      url: getApp().apiUrl + '/api/assembleActivity/orderCount/' + detailId,
+      method: 'get',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'Authorization': tokenVal
+      },
+      data: {
+        assembleActivityId: that.data.assembleActivityId
+      },
+      success: function (res) {
+        console.log(res)
+        var activityInfo=that.data.activityInfo;
+        var number = (res.data.count/activityInfo.maxNumber * 100).toFixed(1);
+         if(res.data.code==0){
+           that.setData({
+             number: number
+           })
+         }
+      }
+    })
+      },
+      fail: function (res) {
+        console.log("loginStutes 失败")
+        that.setData({
+          'showPhoneModal': true
+        });
+      }
+    })
+  },
   //初始化店铺地址
   innitAddress() {
     var that = this;
     // + that.data.businessid
     wx.request({
-      url: getApp().apiUrl + '/api/business/address/list/263',
+      url: getApp().apiUrl + '/api/business/address/list/' + that.data.businessid,
       success(res) {
         console.log(res.data.list.length);
         if (res.data.code == 0 && res.data.list.length != 0) {
@@ -211,81 +257,44 @@ Page({
   },
   //确认支付
   //跳转至确认订单页面
-
   sureOrders: function () {
     console.log();
     //创建支付订单
     var that = this;
-    var businessactivityid = that.data.businessactivityid;
-    var activitytype = that.data.activitytype;
-    var ordertype
-    if (activitytype == 3) {
-      ordertype = 6
-    } else {
-      ordertype = 11;
-    }
-    console.log(ordertype);
     wx.getStorage({
-
       key: 'loginStutes',
-
       success: function (res) {
-
-        //console.log(res);
-
         var userInfo = JSON.parse(res.data);
-
-        //console.log(userInfo);
-
         var tokenVal = userInfo.app_token;
+        console.log("111111111" + userInfo.grade)
         wx.request({
-
           url: getApp().apiUrl + '/api/order/creatOrder',
-
           method: 'post',
-
           data: {
-            'ordertype': ordertype,
-            'businessactivityid': businessactivityid
+            'ordertype': 12,
+            'businessactivityid': that.data.assembleActivityId
           },
-
           header: {
             'content-type': 'application/x-www-form-urlencoded',
             'Authorization': tokenVal
           },
-
           success: function (res) {
-
-            console.log(res);
-
+            console.log(res.data.order);
             if (res.data.code == 0) {
-
-              var activityInfo = that.data.activityInfo;
-
               var orderInfo = res.data.order;
-
               if (orderInfo.orderpic) {
                 orderInfo.orderpic = encodeURIComponent(orderInfo.orderpic);
               }
-
               if (orderInfo.qrcode) {
                 orderInfo.qrcode = encodeURIComponent(orderInfo.qrcode);
               }
-
-              // console.log(orderInfo);
-
               orderInfo = JSON.stringify(res.data.order);
-              if (ordertype == 6) {
-                wx.navigateTo({
-
-                  url: '/pages/payment/payment?orderInfo=' + orderInfo
-
-                })
-              } else {
+              var activityInfo = that.data.activityInfo
+              //商品是会员的情况下
+              if (activityInfo.isMember){
                 if (userInfo.grade > 0) {
-                  wx.showToast({
-                    title: "领取成功",
-                    icon: "none"
+                  wx.navigateTo({
+                    url: '/pages/payment/payment?orderInfo=' + orderInfo
                   })
                 } else {
                   wx.showModal({
@@ -300,7 +309,12 @@ Page({
                     }
                   })
                 }
-              } //领取成功跳转到-确认订单页面
+              }else{
+                wx.navigateTo({
+                  url: '/pages/payment/payment?orderInfo=' + orderInfo
+                })
+              }
+               //领取成功跳转到-确认订单页面
 
             } else {
               wx.showToast({
@@ -346,5 +360,28 @@ Page({
     wx.switchTab({
       url: "/pages/index/index"
     })
+  },
+  //天数换算函数
+  timeFun(d1){
+    //如果时间格式是正确的，那下面这一步转化时间格式就可以不用了
+    var that=this;
+    var dateBegin = new Date(d1.replace(/-/g, "/"));//将-转化为/，使用new Date
+    var dateEnd = new Date();//获取当前时间
+    var dateDiff = dateBegin.getTime() - dateEnd.getTime();//时间差的毫秒数
+    var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天数
+    var leave1 = dateDiff % (24 * 3600 * 1000)    //计算天数后剩余的毫秒数
+    var hours = Math.floor(leave1 / (3600 * 1000))//计算出小时数
+    console.log(" 相差 " + dayDiff + "天 " + hours + "小时 ")
+    if (dateDiff<0){
+      that.setData({
+        dayDiff: 0,
+        hours: 0
+      })
+    }else{
+    that.setData({
+      dayDiff:dayDiff,
+      hours: hours
+    })
+    }
   }
 })

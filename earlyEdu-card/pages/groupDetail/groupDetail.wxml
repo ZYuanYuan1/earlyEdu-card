@@ -3,11 +3,12 @@
 <import src="../../wxParse/wxParse.wxml" />
 <view class="page">
   <view class="topdetailimgbox" bindtap='skip_lessonList'>
-    <view class='head_time'>
-      <text>距结束 <text style='font-size:26rpx;color:#FF5339'>11</text> 天 <text style='font-size:26rpx;color:#FF5339'>20</text>
-        时</text>
+    <view class='head_time' style='  background: #ffffff;opacity: 0.5;'>
     </view>
-    <image src="{{activityInfo.activitypic}}" binderror="errImg" data-err-img="{{activityInfo.activitypic}}"></image>
+    <view class='head_time'>
+      <text>距结束 <text style='font-size:26rpx;color:#FF5339'>{{dayDiff}}</text> 天 <text style='font-size:26rpx;color:#FF5339'>{{hours}}</text>时</text>
+    </view>
+    <image src="{{activityInfo.activityPic}}" binderror="errImg" data-err-img="{{activityInfo.activityPic}}"></image>
   </view>
   <view class="maindetailbigbox">
     <!--标题与简介-->
@@ -17,23 +18,23 @@
         <!-- 更改模块 -->
         <!-- 第二个 -->
         <view class='model' style='padding:40rpx 30rpx'>
-          <view class="group_title">{{activityInfo.activityname}}</view>
+          <view class="group_title">{{activityInfo.activityName}}</view>
           <view>
             <view class="group_content">
               <text class='left_dec'>{{activityInfo.description}}</text>
               <view>
                 <!-- <image src='/images/copy.png' class='shoppingImg'></image> -->
                 <image src='https://img.sahuanka.com/earlyEdu-card/images/people.png' class='group_rightimg'></image>
-                <text style='font-size:24rpx'>10人开团</text>
+                <text style='font-size:24rpx'>{{activityInfo.minNumber}}人开团</text>
               </view>
             </view>
             <view class="group_content">
               <view>
-                <text class="totalscore">￥{{activityInfo.gradeAmount}}</text>
-                <text class='linePrice'>￥{{activityInfo.amount}}</text>
+                <text class="totalscore">￥{{activityInfo.amount}}</text>
+                <text class='linePrice'>￥{{activityInfo.originalAmount}}</text>
               </view>
               <view style='flex:0 0 40%'>
-                <progress style="font-size:20rpx" percent="40" color="#FF5339" stroke-width="10" border-radius="10px"
+                <progress style="font-size:20rpx" percent="{{number}}" color="#FF5339" stroke-width="10" border-radius="10px" font-size="14"
                   show-info></progress>
               </view>
             </view>
@@ -59,30 +60,6 @@
             <view style='margin-left:30rpx;margin-top:16rpx;' bindtap="handlePhoneCall" data-phone="{{addressList[0].phone}}">{{addressList[0].phone}}</view>
           </view>
         </view>
-        <!-- 用户评价 -->
-        <view class='model' style='border-bottom:none' hidden='{{commentShow}}'>
-          <view class="taskheadtext taskheadtextThree" style='display:flex'>
-            <view class='dissLeft'>用户评价({{count}})</view>
-            <view style='font-size:24rpx;color:#CBB588;align-items:center;' bindtap='commentAll' hidden='{{count==1}}'>
-              <text>查看全部</text>
-              <image style='width:22rpx;height:22rpx;margin-left:8rpx' src='https://img.sahuanka.com/earlyEdu-card/images/arrow1.png'></image>
-            </view>
-          </view>
-          <view class="taskitem" style='display:flex'>
-            <image src='{{info.avatarUrl}}' class='dissCountleft'></image>
-            <view style='display:flex:0 0 72%;line-height:20rpx;line-height:22px;width:68%;'>
-              <view style='font-size:26rpx;color:#446889'>{{info.userName==null&&avatarUrl==null?'*****':info.userName}}</view>
-              <view style='font-size:20rpx'><text>打分 </text>
-                <image wx:for="{{starImg}}" src='{{item}}' class='star' style="margin-right:4rpx"></image>
-              </view>
-              <view style='font-size:28rpx'>{{info.content}}</view>
-              <view style='margin-top:22rpx'>
-                <image wx:for="{{info.imgList}}" class='dissCenterimg' src='{{item}}'></image>
-              </view>
-            </view>
-            <view style='font-size:24rpx;color:#999999;flex:0 0 16%'>{{createDate}}</view>
-          </view>
-        </view>
         <!--任务标题-->
       </view>
       <view class='detail'>一详情一</view>
@@ -98,11 +75,11 @@
     <view style="margin-bottom:20rpx;font-weight:bold">课程说明</view>
     <view>
       <text>活动时间：</text>
-      <text>2019-1-18</text>
+      <text>{{activityInfo.shelfTime}}</text>
     </view>
     <view>
       <text>适合年龄：</text>
-      <text>0—3岁</text>
+      <text>{{activityInfo.startAge}}—{{activityInfo.endAge}}岁</text>
     </view>
     <view>
       <text>预约信息：</text>

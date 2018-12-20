@@ -42,7 +42,7 @@
   <!-- 宝贝大礼 -->
   <view class='cor'>
     <!-- <image src='/images/gif.gif'class="corset" bindtap='goAssemble'></image> -->
-    <image src='https://img.sahuanka.com/earlyEdu-card/images/Groupgif.gif'></image>
+    <image src='https://img.sahuanka.com/earlyEdu-card/images/Groupgif.gif' bindtap='goAssemble'></image>
     <image src='https://img.sahuanka.com/earlyEdu-card/images/babyGiftgif.gif' bindtap='goBabygift'></image>
   </view>
   <view class='conTitle' style='flex:1'>为你优选</view>

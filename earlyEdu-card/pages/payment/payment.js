@@ -81,6 +81,7 @@ Page({
   },
 //是否使用佣金抵扣
   switchChange(e){
+    console.log(e)
     this.setData({
       switchChecked: e.detail.value,
     })
@@ -95,10 +96,15 @@ Page({
         console.log(res);
         var userInfo = JSON.parse(res.data);
         var tokenVal = userInfo.app_token;
+        var isReplace = that.data.switchChecked;
+        var orderInfo = that.data.orderInfo;
+        if (orderInfo.ordertype == 12){//判断类型区分拼团和商品
+          isReplace=""
+        }
         wx.request({
           url: getApp().apiUrl + '/api/order/creatPayOrder',
           method: 'post',
-          data: { 'orderid': orderId, 'isReplace': that.data.switchChecked, 'addressId': that.data.addressList.userAddrId, 'remark': that.data.remark},
+          data: { 'orderid': orderId, 'isReplace': isReplace, 'addressId': that.data.addressList.userAddrId, 'remark': that.data.remark},
           header: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': tokenVal },
           success: function (res) {
             console.log(res);
@@ -121,7 +127,6 @@ Page({
                     icon: 'none',
                     duration: 2000
                   });
-
                 },
               })
 

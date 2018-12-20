@@ -5,7 +5,7 @@
       <view class='header_items {{activeIndex == index ? "header_change" : ""}}' wx:for="{{tabs}}" wx:key="{{index}}"
          id="{{index}}" bindtap="tabClick">{{item}}</view>
    </view>
-   <image src="https://img.sahuanka.com/earlyEdu-card/images/noorder.png" class="noorder" wx:hidden="{{taskList}}" />
+   <image src="https://img.sahuanka.com/earlyEdu-card/images/noorder.png" class="noorder" hidden="{{taskList}}" />
    <!-- 订单 -->
    <view class='myOrder' wx:if="{{taskList.length > 0}}">
       <!-- 全部选项卡 -->
@@ -26,7 +26,7 @@
             <view class='mytitleCor' wx:if="{{item.state==8}}">已过期</view>
             <view class='mytitleCor' wx:if="{{item.state==9}}">已完成</view>
          </view>
-         <view style='display:flex;padding:20rpx 0' bindtap='goGoodsDetail' data-business-id="{{item.businessactivityid}}"
+         <view style='display:flex;padding:20rpx 0' bindtap='goGoodsDetail' data-business-id="{{item.businessactivityid}}" id="{{item.businessid}}"
             data-activity-type="{{item.ordertype}}">
             <image class="storeImg" src="{{item.orderpic?item.orderpic:'https://img.sahuanka.com/sjCard/images/defaultImg.png'}}"
                data-index="{{index}}" binderror="errImg" data-err-img="taskList[{{index}}].orderpic" bindtap='skip_courseDetail'
@@ -48,7 +48,7 @@
                data-order-number="{{item.orderno}}" wx:if="{{item.ordertype==11?item.state==3||item.state==1:item.state==3}}">查看券码</view>
             <view class="comment" style='border: 2rpx solid #D0021B;' bindtap='pop_evaluate' hover-class="none"
                data-order-id="{{item.orderid}}" data-business-activity-id="{{item.businessactivityid}}" wx:if="{{item.state==7}}">评价有礼</view>
-            <view class="comment" style='border: 2rpx solid #D0021B;' bindtap='goGoodsDetail' data-business-id="{{item.businessactivityid}}"
+            <view class="comment" style='border: 2rpx solid #D0021B;' bindtap='goGoodsDetail' data-business-id="{{item.businessactivityid}}" id="{{item.businessid}}"
                data-activity-type="{{item.ordertype}}" wx:if="{{item.state==9}}">再来一单</view>
             <!-- <view>再来一单</view> -->
          </view>
@@ -63,10 +63,10 @@
           </view> -->
             <view class='mytitleCor'>待支付</view>
          </view>
-         <view style='display:flex;padding:20rpx 0' bindtap='goGoodsDetail' data-business-id="{{item.businessactivityid}}"
+         <view style='display:flex;padding:20rpx 0' bindtap='goGoodsDetail' data-business-id="{{item.businessactivityid}}" id="{{item.businessid}}"
             data-activity-type="{{item.ordertype}}">
             <image class="storeImg" src="{{item.orderpic?item.orderpic:'https://img.sahuanka.com/sjCard/images/defaultImg.png'}}"
-               data-index="{{index}}" binderror="errImg" data-err-img="taskList[{{index}}].orderpic" bindtap='skip_courseDetail'
+               data-index="{{index}}" binderror="errImg" data-err-img="taskList[{{index}}].orderpic" 
                data-business-id="{{item.businessactivityid}}" data-activity-type="{{item.ordertype}}"></image>
             <view class='orderMidd'>
                <view class='myfont'>{{item.activityname}}</view>
@@ -83,7 +83,7 @@
             <!-- <view>再来一单</view> -->
          </view>
       </view>
-      <!-- 待使用选项卡 -->
+      <!-- 待使用选项卡 item.ordertype==11?item.state==3||item.state==1:-->
       <view class="myOrderAll" wx:for="{{taskList}}" wx:key="{{item.orderid}}" hidden="{{activeIndex != 2}}" wx:if="{{item.ordertype==11?item.state==3||item.state==1:item.state==3}}">
          <view style='display:flex'>
             <!-- <view class='myTitle'>
@@ -93,7 +93,7 @@
           </view> -->
             <view class='mytitleCor'>待使用</view>
          </view>
-         <view style='display:flex;padding:20rpx 0' data-business-id="{{item.businessactivityid}}" data-activity-type="{{item.ordertype}}"
+         <view style='display:flex;padding:20rpx 0' data-business-id="{{item.businessactivityid}}" data-activity-type="{{item.ordertype}}"  id="{{item.businessid}}"
             bindtap='goGoodsDetail'>
             <image class="storeImg" src="{{item.orderpic?item.orderpic:'https://img.sahuanka.com/sjCard/images/defaultImg.png'}}"
                data-index="{{index}}" binderror="errImg" data-err-img="taskList[{{index}}].orderpic" bindtap='skip_courseDetail'
@@ -124,7 +124,7 @@
           </view> -->
             <view class='mytitleCor'>待评价</view>
          </view>
-         <view style='display:flex;padding:20rpx 0' data-business-id="{{item.businessactivityid}}" data-activity-type="{{item.ordertype}}"
+         <view style='display:flex;padding:20rpx 0' data-business-id="{{item.businessactivityid}}" data-activity-type="{{item.ordertype}}" id="{{item.businessid}}"
             bindtap='goGoodsDetail'>
             <image class="storeImg" src="{{item.orderpic?item.orderpic:'https://img.sahuanka.com/sjCard/images/defaultImg.png'}}"
                data-index="{{index}}" binderror="errImg" data-err-img="taskList[{{index}}].orderpic" bindtap='skip_courseDetail'

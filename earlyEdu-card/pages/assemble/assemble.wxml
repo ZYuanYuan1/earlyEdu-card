@@ -1,30 +1,22 @@
 <!--pages/assemble/assemble.wxml-->
 <view class='contanier'>
-  <view class='content'>
+  <view class='content' wx:for="{{homeList}}" bindtap='goGroupdetail' 
+  id="{{item.assembleActivityId}}" data-businessId="{{item.businessId}}">
     <view class='left'>
-        <view class='left_member'>
+        <view class='left_member' hidden='{{!item.isMember}}'>
            <view>
               <view>会员</view>
               <view>专享</view>
            </view>
         </view>
-        <image src='https://img.sahuanka.com/earlyEdu-card/images/Rectangle.png' class='left_angimg'></image>
-        <image src='' class='ass_leftimg'></image>
+        <image src='https://img.sahuanka.com/earlyEdu-card/images/Rectangle.png' class='left_angimg'  hidden='{{!item.isMember}}'></image>
+        <image src='{{item.activityPic}}' class='ass_leftimg'></image>
     </view>
     <view class='right'>
-        <view class='right_title right_margin'>美吉姆圣诞主题轰趴</view>
-        <view class='right_price right_margin'> ￥99<text style='color:#999999;font-size:24rpx;margin-left:10rpx'>￥888</text></view>
-        <progress percent="40" color="#FF5339" font-size="14" stroke-width="10" border-radius="10px" show-info style='margin-bottom:22rpx'></progress>
-        <view class="right_cont"><image src='https://img.sahuanka.com/earlyEdu-card/images/people.png' class='ass_rightimg'></image>10人开团</view>
-    </view>
-  </view>
-  <view class='content'>
-    <view class='left'><image src='https://img.sahuanka.com/earlyEdu-card/images/Rectangle.png' class='left_angimg'></image><image src='' class='ass_leftimg'></image></view>
-    <view class='right'>
-        <view>美吉姆圣诞主题轰趴</view>
-        <view>￥99<text>￥888</text></view>
-        <progress color="#FF5339" font-size="28rpx" show-info></progress>
-        <view><image src='https://img.sahuanka.com/earlyEdu-card/images/people.png' class='ass_rightimg'></image>10人开团</view>
+        <view class='right_title right_margin'>{{item.activityName}}</view>
+        <view class='right_price right_margin'> ￥{{item.amount}}<text style='color:#999999;font-size:24rpx;margin-left:10rpx'>￥{{item.originalAmount}}</text></view>
+        <progress percent="{{item.percent}}" color="#FF5339" font-size="14" stroke-width="10" border-radius="10px" show-info style='margin-bottom:22rpx'></progress>
+        <view class="right_cont"><image src='https://img.sahuanka.com/earlyEdu-card/images/people.png' class='ass_rightimg'></image>{{item.minNumber}}人开团</view>
     </view>
   </view>
 </view>

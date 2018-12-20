@@ -1,8 +1,8 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/groupDetail/groupDetail",
     "pages/assemble/assemble",
+    "pages/groupDetail/groupDetail",
     "pages/myQRcode/myQRcode",
     "pages/extra/extra",
     "pages/choose/choose",
@@ -32,7 +32,6 @@
     "pages/add/index",
     "pages/babyGift/babyGift",
     "pages/moneyRewards/moneyRewards",
-    "pages/searchLocation/searchLocation",
     "pages/me/me",
     "pages/agreement/agreement",
     "pages/bindPhone/bindPhone"

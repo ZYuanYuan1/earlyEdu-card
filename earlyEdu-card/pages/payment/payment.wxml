@@ -42,7 +42,7 @@
        </view>
        <view class='orderFont'>x1</view>
     </view>
-    <view class='orderBac orderFont orderItems orderPadd'>
+    <view class='orderBac orderFont orderItems orderPadd' hidden='{{orderInfo.ordertype==12}}'>
        <view class='title'>可用佣金抵扣{{orderInfo.replaceAmount?orderInfo.replaceAmount:'0'}}元</view>
       <view class="swich">
        <switch checked="{{switchChecked}}" bindchange="switchChange"/>
@@ -55,7 +55,8 @@
 <!-- 尾部 -->
  <view class='footer'>
        <view class='fontTwo' style='flex:0 0 64%'>
-           <text class="fontThree" style='color:#D0021B;'>实付：￥{{switchChecked?surplus:amount}}</text>
+           <!-- <text class="fontThree" style='color:#D0021B;' wx:if="{{{orderInfo.ordertype==12}}">实付：￥{{switchChecked?surplus:amount</text>  -->
+            <text class="fontThree" style='color:#D0021B;'>实付：￥{{orderInfo.ordertype==12?amount:(switchChecked?surplus:amount)}}</text> 
        </view>
        <button  data-order-id="{{orderInfo.orderid}}" data-order-number="{{orderInfo.orderno}}"  data-order-type="{{orderInfo.ordertype}}"   type="button" disabled="{{addressList?false:true}}" bindtap='wxpay'  class='fontTwo fontThree count' style='color:#ffffff'>
             付款

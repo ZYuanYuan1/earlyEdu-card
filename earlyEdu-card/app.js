@@ -93,6 +93,7 @@ App({
         var js_code = res.code;
         wx.request({
           url: that.apiUrl + '/api/weixin/login',
+          // url:"https://api.jcrsjy.com/api/home/getToken",
           method: 'post',
           data: { 'appletCode': js_code },
           header: { 'content-type': 'application/x-www-form-urlencoded' },

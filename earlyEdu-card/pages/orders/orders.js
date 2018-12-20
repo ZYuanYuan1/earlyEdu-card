@@ -27,10 +27,46 @@ Page({
     state: 1//textarea-评价内容
   },
   onLoad: function () {
-    console.log(this.data.state)
+    // console.log(this.data.state)
+    // page = 1;
+    // hadLastPage = false;
+    // var that = this;
+    // wx.getSystemInfo({
+    //   success: function (res) {
+    //     that.setData({
+    //       sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
+    //       sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
+    //     });
+    //   }
+    // });
+    //加载订单列表
+  //   that.loadOrderListFun();
+  // },
+  // tabClick: function (e) {
+  //   console.log(e);
+  //   this.setData({
+  //     sliderOffset: e.currentTarget.offsetLeft,
+  //     activeIndex: e.currentTarget.id
+  //   });
+  },
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    //加载订单列表
     page = 1;
     hadLastPage = false;
     var that = this;
+    that.setData({
+      taskList: []
+    })
     wx.getSystemInfo({
       success: function (res) {
         that.setData({
@@ -48,26 +84,6 @@ Page({
       sliderOffset: e.currentTarget.offsetLeft,
       activeIndex: e.currentTarget.id
     });
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    // var pages = getCurrentPages();
-
-    // var currPage = pages[pages.length - 1]; //当前页面
-
-    // console.log(currPage.__data__.state)
-    // this.setData({
-    //   state: currPage.__data__.state
-    // })
   },
 
   /**
@@ -95,6 +111,9 @@ Page({
    */
   onPullDownRefresh: function () {
     page=1;
+    this.setData({
+      taskList: []
+    })
     this.loadOrderListFun();
     wx.stopPullDownRefresh();
   },
@@ -116,7 +135,7 @@ Page({
         wx.request({
           url: getApp().apiUrl + '/api/order/info/list',
           method: 'post',
-          data: { 'ordertype': [6, 11], 'limit': 10, 'page': page },
+          data: { 'ordertype': [6, 11,12], 'limit': 10, 'page': page },
           header: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': tokenVal },
           success: function (res) {
             console.log(res);
@@ -272,10 +291,16 @@ Page({
     console.log(e);
     var businessactivityid = e.currentTarget.dataset.businessId
     var currActivityType = e.currentTarget.dataset.activityType;
+    var businessid = e.currentTarget.id;
+    if (currActivityType==12){
       wx.navigateTo({
-        url: '/pages/goodsDetail/goodsDetail?businessactivityid=' + businessactivityid,
+        url: '/pages/groupDetail/groupDetail?assembleActivityId=' + businessactivityid + "&businessId=" + businessid,
       })
-
+    }else{
+      wx.navigateTo({
+        url: '/pages/goodsDetail/goodsDetail?businessactivityid=' + businessactivityid + "&businessid=" + businessid + "&activitytype=" + currActivityType,
+      })
+    }
   },
   //评价弹框-提交按钮
   onConfirmStar: function () {

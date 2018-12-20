@@ -521,8 +521,6 @@ page {
 .head_time {
   width: 240rpx;
   height: 56rpx;
-  background: #ffffff;
-  opacity: 0.5;
   border-radius: 200rpx 0 0 200rpx;
   font-size: 24rpx;
   color: #333333;
