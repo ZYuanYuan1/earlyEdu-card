@@ -103,6 +103,12 @@ Page({
           success: function (res) {
             console.log(res);
             if (res.data.code == 0) {
+              if (!res.data.data) {
+                wx.switchTab({
+                  url: '/pages/orders/orders',
+                })
+                return
+              }
               //待完成-res参数
               wx.requestPayment({
                 timeStamp: res.data.data.timeStamp,

@@ -20,7 +20,7 @@
 <view class='contanier'>
   <view wx:if="true">
   <view class='orderBac orderPadd orderMar orderFont'>
-    <view class='orderItems'>
+    <view class='orderItems' wx:if="{{orderInfo.ordertype != 11}}">
       <view class='orderItem'>商品金额</view>
       <view>￥{{orderInfo.amount}}</view>
     </view>
@@ -42,7 +42,7 @@
        </view>
        <view class='orderFont'>x1</view>
     </view>
-    <view class='orderBac orderFont orderItems orderPadd'>
+    <view class='orderBac orderFont orderItems orderPadd' wx:if="{{orderInfo.ordertype != 11}}">
        <view class='title'>可用佣金抵扣{{orderInfo.replaceAmount?orderInfo.replaceAmount:'0'}}元</view>
       <view class="swich">
        <switch checked="{{switchChecked}}" bindchange="switchChange"/>
@@ -58,7 +58,7 @@
            <text class="fontThree" style='color:#D0021B;'>实付：￥{{switchChecked?surplus:amount}}</text>
        </view>
        <button  data-order-id="{{orderInfo.orderid}}" data-order-number="{{orderInfo.orderno}}"  data-order-type="{{orderInfo.ordertype}}"   type="button" disabled="{{addressList?false:true}}" bindtap='wxpay'  class='fontTwo fontThree count' style='color:#ffffff'>
-            付款
+            {{orderInfo.ordertype == 11? '领取' :'付款'}}
        </button>
    </view>
   </view>

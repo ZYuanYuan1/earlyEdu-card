@@ -5,7 +5,7 @@
       <view class='header_items {{activeIndex == index ? "header_change" : ""}}' wx:for="{{tabs}}" wx:key="{{index}}"
          id="{{index}}" bindtap="tabClick">{{item}}</view>
    </view>
-   <image src="https://img.sahuanka.com/earlyEdu-card/images/noorder.jpg" class="noorder" wx:hidden="{{taskList}}" />
+   <image src="https://img.sahuanka.com/earlyEdu-card/images/noorder.jpg" class="noorder" hidden="{{taskList}}" />
    <!-- 订单 -->
    <view class='myOrder' wx:if="{{taskList.length > 0}}">
       <!-- 全部选项卡 -->
