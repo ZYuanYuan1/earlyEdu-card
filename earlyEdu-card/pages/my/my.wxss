@@ -1,15 +1,17 @@
 /* pages/my/my.wxss */
-page{
+page {
   background: #F4F4F4
 }
+
 /* 头部 */
-.header{
-  display:fixed;
-  background:#FFFECF;
-  height:240rpx;
-  width:100%;
+.header {
+  display: fixed;
+  background: #FFFECF;
+  height: 240rpx;
+  width: 100%;
 
 }
+
 /* 动画 */
 /* @-webkit-keyframes bounce-up {
  25% {-webkit-transform: translateY(10rpx);height: 50rpx}
@@ -18,108 +20,143 @@ page{
 } */
 
 @keyframes bounce-up {
- 25% {transform: translateY(6rpx);height: 56rpx}
- 50%, 100% {transform: translateY(0);}
- 75% {transform: translateY(-6rpx);height: 66rpx}
+  25% {
+    transform: translateY(6rpx);
+    height: 56rpx
+  }
+
+  50%,
+  100% {
+    transform: translateY(0);
+  }
+
+  75% {
+    transform: translateY(-6rpx);
+    height: 66rpx
+  }
 }
+
 /* .vipCard{ background:#ddd; width: 100px; height: 100px; margin:100px auto;-webkit-animation: bounce-up 1.4s linear infinite;animation: bounce-up 1.4s linear infinite;} */
 
-.headerCon{
-  display:flex;
-}
-.headerConAll{
-  text-align:center;
-  height:180rpx;
-}
-.headerConA image{ 
-  width:104rpx;
-  height:104rpx;
-  border-radius:;
-  border-radius:50%;
-}
-.headerConB{
-  font-size:36rpx;
-  font-weight:bold;
-
+.headerCon {
+  display: flex;
 }
 
-.headerConC image{
-   width:80rpx;
-   height:80rpx;
+.headerConAll {
+  text-align: center;
+  height: 180rpx;
 }
-.vipCard{
-  display:flex;
-  justify-content:space-between;
-  width:630rpx;
-  height:60rpx;
-  background:#333333;
-  color:#E4DCC0;
-  font-size:24rpx;
-  border-radius:16rpx 16rpx 0 0;
-  margin:0 auto;
-  line-height:55rpx;
-  padding:0 20rpx;
+
+.headerConA image {
+  width: 104rpx;
+  height: 104rpx;
+  border-radius: ;
+  border-radius: 50%;
+}
+
+.headerConB {
+  font-size: 36rpx;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.headerConB image {
+  margin-left: 10rpx;
+  width: 36rpx;
+  height: 36rpx;
+}
+.headerConC image {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.vipCard {
+  display: flex;
+  justify-content: space-between;
+  width: 630rpx;
+  height: 60rpx;
+  background: #333333;
+  color: #E4DCC0;
+  font-size: 24rpx;
+  border-radius: 16rpx 16rpx 0 0;
+  margin: 0 auto;
+  line-height: 55rpx;
+  padding: 0 20rpx;
   -webkit-animation: bounce-up 2s linear infinite;
   animation: bounce-up 2s linear infinite;
 }
-.vipCardA image{
-  width:24rpx;
-  height:24rpx;
+
+.vipCardA image {
+  width: 24rpx;
+  height: 24rpx;
 
 }
-.vipCardA text{
-  margin-left:8rpx;
+
+.vipCardA text {
+  margin-left: 8rpx;
 
 }
-.myCon{
-  display:flex;
-  padding:24rpx 40rpx;
-  background:#ffffff;
+
+.myCon {
+  display: flex;
+  padding: 24rpx 40rpx;
+  background: #ffffff;
   height: 42rpx
 }
-.myImg{
+
+.myImg {
   flex: 0 0 10%;
 }
-.myImg image{
-  width:38rpx;
- height:38rpx;
+
+.myImg image {
+  width: 38rpx;
+  height: 38rpx;
 }
-.myInfo{
+
+.myInfo {
   flex: 0 0 85%;
 }
-.myInfo text{
+
+.myInfo text {
   font-size: 30rpx;
   color: #333333
 }
-.concact{
+
+.concact {
   background: #ffffff;
   font-size: 30rpx;
   padding: 0;
-  margin-top:-15rpx;
-  text-align:left;
+  margin-top: -15rpx;
+  text-align: left;
 
 }
-.concact::after{
+
+.concact::after {
   border: none
 }
-.myArrow{
-  flex:0 0 5%;
-  text-align:center;
+
+.myArrow {
+  flex: 0 0 5%;
+  text-align: center;
 }
-.myArrow image{
-  width:12rpx;
-  height:24rpx;
+
+.myArrow image {
+  width: 12rpx;
+  height: 24rpx;
 }
-.my{
+
+.my {
   border-bottom: 2rpx solid #E4E4E4
 }
-.invit::after{
-    border: none
+
+.invit::after {
+  border: none
 }
-.invit{
+
+.invit {
   font-size: 22rpx;
-  margin-top:18px;
+  margin-top: 18px;
 
 }
-/* 无订单 */
 
+/* 无订单 */

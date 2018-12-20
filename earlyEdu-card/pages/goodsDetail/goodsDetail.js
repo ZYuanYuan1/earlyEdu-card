@@ -463,9 +463,12 @@ Page({
                   url: '/pages/payment/payment?orderInfo=' + orderInfo
                 })
               } else {
-                wx.showToast({
-                  title: "领取成功",
-                  icon: "none"
+                // wx.showToast({
+                //   title: "领取成功",
+                //   icon: "none"
+                // })
+                wx.navigateTo({
+                  url: '/pages/payment/payment?orderInfo=' + orderInfo
                 })
               } //领取成功跳转到-确认订单页面
 

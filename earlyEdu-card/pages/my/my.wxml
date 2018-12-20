@@ -8,9 +8,12 @@
             <view style='font-size:18rpx'>编辑</view>
          </view>
          <view style='flex:0 0 60%;margin-top:20rpx'>
-             <view class='headerConB'>{{userInfo.username}}</view>
+             <view class='headerConB'>
+               <view>{{userInfo.username}}</view>
+               <image src="https://img.sahuanka.com/earlyEdu-card/images/v_icon.jpg" wx:if="{{userInfo.grade != 0}}" />
+              </view>
              <!--会员到期日 {{memberDate}} -->
-             <view style='font-size:20rpx;margin-top:10rpx'>会员到期日 2019-12-31</view>
+             <view wx:if="{{userInfo.grade != 0}}" style='font-size:20rpx;margin-top:10rpx'>会员到期日 2019-12-31</view>
          </view>
          <view class='headerConC headerConAll' style='flex:0 0 20%' bindtap='goQRcode'>
                <image src="http://img.sahuanka.com/sjCard/images/reward.png" style='width:68rpx;height:82rpx;margin-top:28rpx'></image>

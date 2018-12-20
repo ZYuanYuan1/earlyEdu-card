@@ -38,7 +38,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
@@ -63,6 +63,11 @@
 					"name": "shopAddress",
 					"pathName": "pages/shopAddress/shopAddress",
 					"query": "businessid=308"
+				},
+				{
+					"id": -1,
+					"name": "babyGift",
+					"pathName": "pages/babyGift/babyGift"
 				}
 			]
 		}
