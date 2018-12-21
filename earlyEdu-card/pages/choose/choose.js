@@ -26,7 +26,8 @@ Page({
     curPage: 1,//当前页
     pageSize: 10,//条数
     choose: [],//选择
-    // chooseId: 0,//选择id
+    chooseId: 0,//选择id
+    chooseClassId: null,
     classShow: true,//分类选框是否显示
     sortShow: true,//排序选框是否显示
     sortId: 0,//排序id
@@ -204,16 +205,21 @@ Page({
   },
   //分类选框是否显示，点击调用数据
   searchClass(e) {
+    let chooseClassId = e.currentTarget.id
+    if(e.currentTarget.dataset.c == true) {
+      chooseClassId = this.data.chooseClassId
+    }
     console.log(e)
     this.setData({
       goods: [],
       curPage: 1,
       classShow: !this.data.classShow,
       sortShow: true,
-      chooseId: e.currentTarget.id,
+      chooseClassId: chooseClassId,
+      // chooseId: e.currentTarget.id,
       // sortId: e.currentTarget.dataset.index
     })
-    this.innitBabygift(this.data.chooseId, 0);
+    this.innitBabygift(e.currentTarget.id, 0);
   },
   //排序选框是否显示，点击调用数据
   searchSort(e) {
@@ -232,6 +238,8 @@ Page({
     this.setData({
       goods: [],
       chooseId: e.currentTarget.id,
+      chooseClassId: null,
+      curPage: 1
     });
     this.innitBabygift(this.data.chooseId, this.data.sortId);
   },
