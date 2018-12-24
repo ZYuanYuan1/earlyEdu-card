@@ -16,9 +16,9 @@
       <view style='margin-top:30rpx'>
         <view wx:for="{{choose}}" wx:key="businessMenuId" wx:for-item='items' id="{{items.businessMenuId}}" hidden='{{classShow}}'
           style='display:{{chooseId==items.businessMenuId&&classShow==false?"block":"none"}}'>
-          <block wx:for="{{items.subList}}" wx:key="businessMenuId" wx:for-item='ite' id="{{ite.businessMenuId}}">
-            <view class='name'>{{ite.name}}</view>
-            <view class="nav_right_items">
+          <block wx:if="{{chooseId != 0}}" wx:for="{{items.subList}}" wx:key="businessMenuId" wx:for-item='ite' id="{{ite.businessMenuId}}">
+            <view class='name' wx:if="{{chooseId != 0}}">{{ite.name}}</view>
+            <view wx:if="{{chooseId != 0}}" class="{{chooseId == 0?'nav_right_items_all':'nav_right_items'}}">
               <view wx:for="{{shops}}" wx:key="businessId" wx:if='{{item.menuId==ite.businessMenuId}}' class='ite'
                 data-businessid="{{item.businessId}}" bindtap='goShop'>
                 <image src="{{item.businessPic}}"></image>
@@ -26,6 +26,15 @@
                 <text>{{item.businessName}}</text>
               </view>
             </view>
+          </block>
+          <block wx:if="{{chooseId == 0}}" wx:for="{{items.subList}}" wx:key="businessMenuId" wx:for-item='ite' id="{{ite.businessMenuId}}">
+            <block wx:if="{{chooseId == 0}}" class="nav_right_items_all">
+              <view wx:for="{{shops}}" wx:key="businessId" wx:if='{{item.menuId==ite.businessMenuId}}' class='ite nav_right_items_all_item'
+                data-businessid="{{item.businessId}}" bindtap='goShop'>
+                <image src="{{item.businessPic}}"></image>
+                <text>{{item.businessName}}</text>
+              </view>
+            </block>
           </block>
         </view>
       </view>
