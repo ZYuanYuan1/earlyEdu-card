@@ -1,24 +1,34 @@
 /* pages/member/member.wxss */
-.contanier{
-  margin: 30rpx;
+page {
+  width: 100%;
+  height: 100%;
+  background-color: #F1EFEA;
 }
+
+.contanier {
+  padding: 30rpx;
+}
+
 /* 头部 */
-.header{
+.header {
   display: flex;
   justify-content: center;
 }
-.header image{
-   width: 690rpx;
-   height: 260rpx;
+
+.header image {
+  width: 690rpx;
+  height: 260rpx;
 }
-.header_content{
+
+.header_content {
   text-align: center;
   position: absolute;
   z-index: 2;
   color: #ffffff;
   width: 690rpx
 }
-.header_button{
+
+.header_button {
   width: 340rpx;
   height: 76rpx;
   background: #CBB588;
@@ -30,43 +40,73 @@
   margin: 0 auto;
   margin-top: 60rpx
 }
+
 /* 内容 */
-.content{
-  margin-top: 98rpx
+.content {
+  width: 610rpx;
+  font-size: 28rpx;
+  margin: 98rpx auto 0;
+  text-align: justify;
+  font-weight: bold;
+  color: #333333;
+  line-height: 46rpx;
 }
-.content_title{
-  text-align:center;
-  margin-bottom:40rpx;
-  font-weight: bold
+
+.content_title {
+  text-align: center;
+  margin-bottom: 40rpx;
+  font-size: 32rpx;
 }
-.content_item{
+
+/* .content {
+  margin-top: 98rpx;
+}
+
+.content_title {
+  text-align: center;
+  margin-bottom: 40rpx;
+  font-weight: bold；
+}
+
+.content_item {
   flex: 1;
   text-align: center;
   margin-right: 80rpx
 }
-.content_item:last-child{
-  margin-right:0
+
+.content_item:last-child {
+  margin-right: 0
 }
-.content_item image{
-   width: 100rpx;
-   height: 100rpx
+
+.content_item image {
+  width: 100rpx;
+  height: 100rpx
 }
-.content_item view{
+
+.content_item view {
   font-size: 28rpx;
   color: #333333;
   width: 100%;
   margin: 30rpx 0 40rpx 0
-}
+} */
+
 /* 底部 */
-.footer image{
+.footer image {
+  display: block;
+  width: 544rpx;
+  height: 354rpx;
+  margin: 20rpx auto 0;
+}
+/* .footer image {
   display: block;
   width: 690rpx;
   height: 220rpx
-}
-.footer view{
+} */
+
+.footer view {
   color: #333333;
   font-size: 24rpx;
   width: 100%;
-  text-align:center;
-  padding-top: 20rpx
+  text-align: center;
+  padding-top: 40rpx
 }

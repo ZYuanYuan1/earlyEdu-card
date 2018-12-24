@@ -2,17 +2,24 @@
 var app = getApp();
 Page({
   data: {
-    choose:[],
-    chooseId: 0,//选择id
-    classShow: true,//分类选框是否显示
-    shops:[],//商家数据
-    showPhoneModal: false,//手机号绑定弹框
-    inviteUserPhone: '',//邀请人电话
-    allShop:[],//所有店铺数据
-    searchInput: "",//搜索内容
+    choose: [],
+    chooseId: 0, //选择id
+    classShow: true, //分类选框是否显示
+    shops: [], //商家数据
+    showPhoneModal: false, //手机号绑定弹框
+    inviteUserPhone: '', //邀请人电话
+    allShop: [], //所有店铺数据
+    searchInput: "", //搜索内容
   },
   onLoad: function () {
-    this.initShop(0);
+    // this.initShop(0);
+    this.initShop(0)
+    this.setData({
+      shops: [],
+      chooseId: 0,
+      curPage: 1,
+      classShow: false
+    })
     this.innitChoose()
   },
   //导航选择
@@ -22,7 +29,7 @@ Page({
       goods: [],
       chooseId: e.currentTarget.id,
     });
-    this.innitBabygift(e.currentTarget.id, 0);
+    // this.innitBabygift(e.currentTarget.id, 0);
   },
   //初始化选择状态框
   innitChoose() {
@@ -45,9 +52,16 @@ Page({
             var choose = [];
             var choosees = [];
             if (res.data.code == 0) {
+              let allSubListArr = []
               for (var i = 0; i < res.data.list.length; i++) {
                 choose.push(res.data.list[i]);
+                allSubListArr.push(...res.data.list[i].subList)
               }
+              choose.unshift({
+                businessMenuId: 0,
+                name: '全部',
+                subList: allSubListArr
+              })
             }
             that.setData({
               choose: choose,
@@ -59,11 +73,13 @@ Page({
         })
       },
       fail: function (res) {
-        that.setData({ 'showPhoneModal': true });
+        that.setData({
+          'showPhoneModal': true
+        });
       }
     })
   },
-  initShop(chooseId){
+  initShop(chooseId) {
     var that = this;
     wx.getStorage({
       key: 'loginStutes',
@@ -77,17 +93,21 @@ Page({
             'Authorization': tokenVal,
             'content-type': 'application/x-www-form-urlencoded'
           },
-          data: { businessMenuId: chooseId, limit: 1000, page: 1},
+          data: {
+            businessMenuId: chooseId,
+            limit: 1000,
+            page: 1
+          },
           success: function (res) {
             console.log(res);
             if (res.data.code !== 0) {
-               wx.showToast({
-                 title: '数据加载失败',
-                 icon:"none"
-               })
+              wx.showToast({
+                title: '数据加载失败',
+                icon: "none"
+              })
             }
             let shops = [];
-              shops = that.data.shops
+            shops = that.data.shops
             for (var i = 0; i < res.data.page.list.length; i++) {
               shops.push(res.data.page.list[i]);
             }
@@ -98,7 +118,9 @@ Page({
         })
       },
       fail: function (res) {
-        that.setData({ 'showPhoneModal': true });
+        that.setData({
+          'showPhoneModal': true
+        });
       }
     })
   },
@@ -107,16 +129,16 @@ Page({
     console.log(e)
     this.initShop(e.currentTarget.id);
     this.setData({
-      shops:[],
+      shops: [],
       chooseId: e.currentTarget.id,
       curPage: 1,
-      classShow:false
+      classShow: false
     });
   },
   //点击确定-bindPhone组件传过来的信息
   getBindInfo: function (e) {
     console.log(e);
-    var bindInfo = e.detail.bindPhone;//true为手机绑定成功，false为手机绑定失败
+    var bindInfo = e.detail.bindPhone; //true为手机绑定成功，false为手机绑定失败
     if (bindInfo) {
       var userInfo = e.detail.userInfo;
       console.log(userInfo);
@@ -125,10 +147,10 @@ Page({
     }
   },
   //邀请
-  goShop(e){
-    var businessid=e.currentTarget.dataset.businessid;
+  goShop(e) {
+    var businessid = e.currentTarget.dataset.businessid;
     wx.navigateTo({
-      url: '/pages/shop/shop?businessid=' +businessid,
+      url: '/pages/shop/shop?businessid=' + businessid,
     })
   },
 

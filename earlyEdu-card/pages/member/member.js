@@ -11,8 +11,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-  },
+  onLoad: function (options) {},
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -20,7 +19,14 @@ Page({
   onReady: function () {
 
   },
-
+  previewImage: function (e) {
+    console.log(e)
+    var current = e.target.dataset.src;
+    wx.previewImage({
+      current: current,
+      urls: [current]
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */
