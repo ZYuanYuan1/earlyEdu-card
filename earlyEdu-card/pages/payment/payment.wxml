@@ -20,29 +20,29 @@
 <view class='contanier'>
   <view wx:if="true">
   <view class='orderBac orderPadd orderMar orderFont'>
-    <view class='orderItems' wx:if="{{orderInfo.ordertype != 11}}">
+    <view class='orderItems' hidden="{{orderInfo.ordertype==11}}">
       <view class='orderItem'>商品金额</view>
-      <view>￥{{orderInfo.amount}}</view>
+      <view>￥{{type==1?orderInfo.amount*100:orderInfo.amount}}</view>
     </view>
     <!-- <view class='orderItems'>
       <view class='orderItem'>运费</view>
       <view>￥0</view>
-    </view>
+    </view> -->
      <view class='orderItems'>
       <view style='flex:0 0 12%'>留言</view>
        <textarea placeholder='点击给商家留言' placeholder-class='font-size:26rpx' bindinput="remark"></textarea>
-    </view> -->
+    </view>
   </view>
     <view class='orderBac orderMar' style="display:flex;padding:30rpx">
        <view style='flex:0 0 24%'><image style='width:140rpx;height:140rpx;background:#ccc' src="{{orderInfo.orderpic?orderInfo.orderpic:'https://img.sahuanka.com/sjCard/images/defaultImg.png'}}" binderror="errImgDetail" data-err-img="{{orderInfo.orderpic}}"></image></view>
        <view  style='flex:0 0 70%'>
           <view class='orderFont'>{{orderInfo.activityname}}</view>
           <!-- <view style='font-size:26rpx;color:#868686'>半年</view> -->
-          <view class='orderFont'>￥{{orderInfo.amount}}</view>
+          <view class='orderFont'>￥{{type==1?orderInfo.amount*100:orderInfo.amount}}</view>
        </view>
        <view class='orderFont'>x1</view>
     </view>
-    <view class='orderBac orderFont orderItems orderPadd' hidden='{{orderInfo.ordertype==12||orderInfo.ordertype != 11}}'>
+    <view class='orderBac orderFont orderItems orderPadd' hidden='{{orderInfo.ordertype==12||orderInfo.ordertype==11}}'>
        <view class='title'>可用佣金抵扣{{orderInfo.replaceAmount?orderInfo.replaceAmount:'0'}}元</view>
       <view class="swich">
        <switch checked="{{switchChecked}}" bindchange="switchChange"/>

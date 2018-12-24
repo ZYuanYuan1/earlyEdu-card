@@ -185,8 +185,9 @@ Page({
     }
     console.log(fromMyOrder);
     fromMyOrder = JSON.stringify(fromMyOrder);
+    var type=1;
     wx.navigateTo({
-      url: '/pages/payment/payment?orderInfo=' + fromMyOrder,
+      url: '/pages/payment/payment?orderInfo=' + fromMyOrder +"&type=1",
     })
   },
   preventTouchMove: function () {

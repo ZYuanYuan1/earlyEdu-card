@@ -11,7 +11,7 @@
     <view class="search-bar-input-container">
       <view class="search-bar-input-sub-container">
         <image class="search-bar-input-sub-container-icon" src="https://img.sahuanka.com/earlyEdu-card/images/copy.png"></image>
-        <input placeholder='搜索你想要的' placeholder-class='searPl' type="text" confirm-type="search" class="search-bar-input-sub-container-text"  bindconfirm="toSearch" value="{{searchInput}}" />
+        <input placeholder='搜索你想要的' placeholder-class='searPl' type="text" confirm-type="search" class="search-bar-input-sub-container-text"  bindblur="toSearch" value="{{searchInput}}" />
       </view>
     </view>
   </view>

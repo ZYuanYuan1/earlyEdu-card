@@ -10,25 +10,43 @@ Page({
     orderInfo: {},//订单信息
     surplus:0,//剩余支付资金
     amount:0,//不抵扣金额
-    remark:""//留言
+    remark:"",//留言
+    type:0//处理商品金额
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      var orderInfo = JSON.parse(options.orderInfo);
-      if (orderInfo.orderpic) {orderInfo.orderpic = decodeURIComponent(orderInfo.orderpic); }
-      if (orderInfo.qrcode) { orderInfo.qrcode = decodeURIComponent(orderInfo.qrcode); }
+    console.log(options)
+    var orderInfo = JSON.parse(options.orderInfo);
+    var type = options.type;
+    if (orderInfo.orderpic) { orderInfo.orderpic = decodeURIComponent(orderInfo.orderpic); }
+    if (orderInfo.qrcode) { orderInfo.qrcode = decodeURIComponent(orderInfo.qrcode); }
+    if (orderInfo.ordertype == 12 || orderInfo.ordertype == 11){
+      //对抵扣金额进行处理
+      if (type == 1) { 
+        var sur = orderInfo.amount * 100;
+        }else{
+        var sur = orderInfo.amount;
+        }
+      var amount = sur.toFixed(2);
+      this.setData({ 
+        orderInfo: orderInfo,
+        amount: amount,
+        type:type
+        });
+  }else{
       //对抵扣金额进行处理
       var sur = orderInfo.amount - orderInfo.replaceAmount;
       var surplus = sur.toFixed(2);
       var amount = orderInfo.amount.toFixed(2);
-      this.setData({ 
+      this.setData({
         orderInfo: orderInfo,
         surplus: surplus,
         amount: amount
-        });
+      });
+  }
       this.innitShoppingAddr()
   },
 
@@ -98,9 +116,10 @@ Page({
         var tokenVal = userInfo.app_token;
         var isReplace = that.data.switchChecked;
         var orderInfo = that.data.orderInfo;
-        if (orderInfo.ordertype == 12){//判断类型区分拼团和商品
+        if (orderInfo.ordertype == 12 || orderInfo.ordertype == 11){//判断类型区分拼团、礼品和商品
           isReplace=""
         }
+        // that.data.remark
         wx.request({
           url: getApp().apiUrl + '/api/order/creatPayOrder',
           method: 'post',
