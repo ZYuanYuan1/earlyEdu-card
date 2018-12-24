@@ -8,7 +8,7 @@
         </view>
       </scroll-view>
       <view class='filter {{chooseId==0&&sortId==0?"filter_add":""}}'>
-         <view class='filter_item' id='{{chooseId}}' data-index='{{sortId}}' bindtap='searchClass' hidden='{{chooseId==0&&sortId==0?true:false}}'>
+         <view class='filter_item' id='{{chooseId}}' data-c="{{true}}" data-index='{{sortId}}' bindtap='searchClass' hidden='{{chooseId==0&&sortId==0?true:false}}'>
             <text>分类</text>
             <image src="{{arrowUrl}}" ></image>
          </view>
@@ -19,7 +19,7 @@
       </view>
      <!-- 分类 -->
          <view class='pop' wx:for="{{choose}}" wx:for-item='items' id="{{items.productMenuId}}" hidden='{{classShow}}' style='display:{{chooseId==items.productMenuId&&classShow==false?"block":"none"}}' > 
-          <view class='pop_item' wx:for="{{items.subList}}" id="{{item.productMenuId}}" bindtap='searchClass'>{{item.name}}</view>
+          <view class='pop_item {{chooseClassId==item.productMenuId?"change":""}}' wx:for="{{items.subList}}" id="{{item.productMenuId}}" bindtap='searchClass'>{{item.name}}</view>
       </view>
       <!-- 排序 -->
       <view class='pop' hidden='{{sortShow}}'> 
