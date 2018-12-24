@@ -350,5 +350,5 @@ Page({
      wx.navigateTo({
        url: '/pages/assemble/assemble',
      })
-  }
+  },
 })

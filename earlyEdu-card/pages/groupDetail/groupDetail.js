@@ -296,19 +296,7 @@ Page({
                   wx.navigateTo({
                     url: '/pages/payment/payment?orderInfo=' + orderInfo
                   })
-                } else {
-                  wx.showModal({
-                    content: '抱歉，您还不是会员，无法领取哦',
-                    showCancel: false,
-                    confirmText: "去升级",
-                    confirmColor: "#D0021B",
-                    success() {
-                      wx.navigateTo({
-                        url: '/pages/member/member',
-                      })
-                    }
-                  })
-                }
+                } 
               }else{
                 wx.navigateTo({
                   url: '/pages/payment/payment?orderInfo=' + orderInfo
@@ -317,10 +305,24 @@ Page({
                //领取成功跳转到-确认订单页面
 
             } else {
+              if(res.data.msg=="你还不是会员"){
+                wx.showModal({
+                  content: '抱歉，您还不是会员，无法领取哦',
+                  showCancel: false,
+                  confirmText: "去升级",
+                  confirmColor: "#D0021B",
+                  success() {
+                    wx.navigateTo({
+                      url: '/pages/member/member',
+                    })
+                  }
+                })
+              }else{
               wx.showToast({
                 title: res.data.msg,
                 icon: "none"
               })
+            }
             };
 
           },

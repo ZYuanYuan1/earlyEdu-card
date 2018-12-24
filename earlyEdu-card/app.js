@@ -126,6 +126,7 @@ App({
     wx.getLocation({
       type: 'wgs84',
       success: function (res) {
+        console.log(res)
         var latitude = res.latitude
         var longitude = res.longitude
         var speed = res.speed
@@ -153,6 +154,7 @@ App({
     })
   },
 
-  //  apiUrl: "https://test.jcrsjy.com",//测试接口
-   apiUrl: "https://api.jcrsjy.com", //测试接口
+   apiUrl: "https://test2.jcrsjy.com",//测试接口
+  //  apiUrl: "https://api.jcrsjy.com", //正式接口
+
 })

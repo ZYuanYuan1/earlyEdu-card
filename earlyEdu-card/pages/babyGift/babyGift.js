@@ -46,7 +46,7 @@ Page({
     }
     // wx.createAudioContext(audioid, this)
     this.innitChoose(); //初始化数据
-    this.innitBabygift(0, 0) //初始化数据
+    this.innitBabygift(0, 0); //初始化数据
   },
 
   /**
@@ -174,8 +174,8 @@ Page({
             'productmenuid': chooseId,
             'page': that.data.curPage,
             'limit': that.data.pageSize,
-            sort: that.data.sortId,
-            activitytype: 4
+             sort: that.data.sortId,
+             activitytype: 4
           };
         }
         wx.showLoading({
@@ -300,5 +300,6 @@ Page({
     wx.switchTab({
       url: "/pages/index/index"
     })
-  }
+  },
+  //初始化
 })
