@@ -2,29 +2,31 @@
 var sliderWidth = 55; // 需要设置slider的宽度，用于计算中间位置
 var util = require('../../utils/util.js');
 var QR = require("../../utils/qrcode.js");
-import { $wuxRater } from '../../components/wux';//星星组件
+import {
+  $wuxRater
+} from '../../components/wux'; //星星组件
 var page = 1;
 var hadLastPage = false;
 Page({
   data: {
-    inviteUserPhone: '',//邀请人电话
+    inviteUserPhone: '', //邀请人电话
     taskList: [],
-    businiss:[],
+    businiss: [],
     tabs: ["全部", "待支付", "待使用", "待评价"],
     activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0,
-    showModal: false,//电子券弹框
-    showPhoneModal: false,//手机号绑定弹框
-    showModalStar: false,//订单评价弹框
+    showModal: false, //电子券弹框
+    showPhoneModal: false, //手机号绑定弹框
+    showModalStar: false, //订单评价弹框
     maskHidden: true,
     imagePath: '',
-    placeholder: '',//默认二维码生成文本
-    currClickStar: 5,//默认评分的值为5
-    businessActivityId: '',//评价-当前活动id
-    orderId: '',//订单id
+    placeholder: '', //默认二维码生成文本
+    currClickStar: 5, //默认评分的值为5
+    businessActivityId: '', //评价-当前活动id
+    orderId: '', //订单id
     textareaVal: '',
-    state: 1//textarea-评价内容
+    state: 1 //textarea-评价内容
   },
   onLoad: function () {
     // console.log(this.data.state)
@@ -40,14 +42,14 @@ Page({
     //   }
     // });
     //加载订单列表
-  //   that.loadOrderListFun();
-  // },
-  // tabClick: function (e) {
-  //   console.log(e);
-  //   this.setData({
-  //     sliderOffset: e.currentTarget.offsetLeft,
-  //     activeIndex: e.currentTarget.id
-  //   });
+    //   that.loadOrderListFun();
+    // },
+    // tabClick: function (e) {
+    //   console.log(e);
+    //   this.setData({
+    //     sliderOffset: e.currentTarget.offsetLeft,
+    //     activeIndex: e.currentTarget.id
+    //   });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -100,8 +102,8 @@ Page({
 
   },
   /**
- * 页面上拉触底事件的处理函数
- */
+   * 页面上拉触底事件的处理函数
+   */
   onReachBottom: function () {
     console.log(333);
     this.loadOrderListFun();
@@ -110,14 +112,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    page=1;
+    page = 1;
     this.setData({
       taskList: []
     })
     this.loadOrderListFun();
     wx.stopPullDownRefresh();
   },
- 
+
   //加载订单列表
   loadOrderListFun: function () {
     var that = this;
@@ -131,12 +133,21 @@ Page({
         console.log(res);
         var userInfo = JSON.parse(res.data);
         var tokenVal = userInfo.app_token;
-        that.setData({ 'userInfo': userInfo });
+        that.setData({
+          'userInfo': userInfo
+        });
         wx.request({
           url: getApp().apiUrl + '/api/order/info/list',
           method: 'post',
-          data: { 'ordertype': [6, 11,12], 'limit': 10, 'page': page },
-          header: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': tokenVal },
+          data: {
+            'ordertype': [6, 11, 12],
+            'limit': 10,
+            'page': page
+          },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'Authorization': tokenVal
+          },
           success: function (res) {
             console.log(res);
             if (res.data.code == 0) {
@@ -156,11 +167,14 @@ Page({
               } else {
                 page++;
               };
-              that.setData({ 'taskList': taskList, businiss: businiss });
-            }else{
+              that.setData({
+                'taskList': taskList,
+                businiss: businiss
+              });
+            } else {
               wx.showToast({
                 title: res.data.msg,
-                icon:"none"
+                icon: "none"
               })
             };
 
@@ -169,7 +183,9 @@ Page({
         })
       },
       fail: function (res) {
-        that.setData({ 'showPhoneModal': true });
+        that.setData({
+          'showPhoneModal': true
+        });
       }
     })
   },
@@ -185,13 +201,12 @@ Page({
     }
     console.log(fromMyOrder);
     fromMyOrder = JSON.stringify(fromMyOrder);
-    var type=1;
+    var type = 1;
     wx.navigateTo({
-      url: '/pages/payment/payment?orderInfo=' + fromMyOrder +"&type=1",
+      url: '/pages/payment/payment?orderInfo=' + fromMyOrder + "&type=1",
     })
   },
-  preventTouchMove: function () {
-  },
+  preventTouchMove: function () {},
   //点击电子券-弹出电子券二维码
   showDialogBtn: function (e) {
     var orderNo = e.target.dataset.orderNumber;
@@ -201,7 +216,7 @@ Page({
     })
     console.log(e);
     //生成二维码
-    var size = this.setCanvasSize();//动态设置画布大小
+    var size = this.setCanvasSize(); //动态设置画布大小
     var qrcData = e.target.dataset.qrcodeUrl;
     if (qrcData) {
       this.createQrCode(qrcData, "mycanvas", size.w, size.h);
@@ -255,7 +270,7 @@ Page({
   //点击确定-bindPhone组件传过来的信息
   getBindInfo: function (e) {
     console.log(e);
-    var bindInfo = e.detail.bindPhone;//true为手机绑定成功，false为手机绑定失败
+    var bindInfo = e.detail.bindPhone; //true为手机绑定成功，false为手机绑定失败
     if (bindInfo) {
       var userInfo = e.detail.userInfo;
       console.log(userInfo);
@@ -270,7 +285,9 @@ Page({
   //绑定textarea的值
   bindTextareaVal: function (e) {
     var textareaVal = e.detail.value.trim();
-    this.setData({ textareaVal: textareaVal });
+    this.setData({
+      textareaVal: textareaVal
+    });
   },
   //弹出评价弹框
   pop_evaluate: function (e) {
@@ -285,37 +302,51 @@ Page({
   },
   //评价弹框-取消按钮
   onCancelStar: function () {
-    this.setData({ 'showModalStar': false });
+    this.setData({
+      'showModalStar': false
+    });
   },
   //跳转到课程详情页
   goGoodsDetail: function (e) {
-    console.log(e);
-    var businessactivityid = e.currentTarget.dataset.businessId
-    var currActivityType = e.currentTarget.dataset.activityType;
-    var businessid = e.currentTarget.id;
-    if (currActivityType==12){
-      wx.navigateTo({
-        url: '/pages/groupDetail/groupDetail?assembleActivityId=' + businessactivityid + "&businessId=" + businessid,
-      })
-    }else{
-      wx.navigateTo({
-        url: '/pages/goodsDetail/goodsDetail?businessactivityid=' + businessactivityid + "&businessid=" + businessid + "&activitytype=" + currActivityType,
-      })
-    }
+    console.log(e)
+    const orderid = e.currentTarget.dataset.orderid
+    wx.navigateTo({
+      url: `/pages/orderDetail/orderDetail?orderid=${orderid}`
+    })
+    // var businessactivityid = e.currentTarget.dataset.businessId
+    // var currActivityType = e.currentTarget.dataset.activityType;
+    // var businessid = e.currentTarget.id;
+    // if (currActivityType==12){
+    //   wx.navigateTo({
+    //     url: '/pages/groupDetail/groupDetail?assembleActivityId=' + businessactivityid + "&businessId=" + businessid,
+    //   })
+    // }else{
+    //   wx.navigateTo({
+    //     url: '/pages/goodsDetail/goodsDetail?businessactivityid=' + businessactivityid + "&businessid=" + businessid + "&activitytype=" + currActivityType,
+    //   })
+    // }
   },
   //评价弹框-提交按钮
   onConfirmStar: function () {
     var that = this;
-    var businessActivityId = this.data.businessActivityId;//活动id
-    var orderId = this.data.orderId;//订单id
-    var currClickStar = this.data.currClickStar;//当前的评分
+    var businessActivityId = this.data.businessActivityId; //活动id
+    var orderId = this.data.orderId; //订单id
+    var currClickStar = this.data.currClickStar; //当前的评分
     var content = this.data.textareaVal;
     var tokenVal = this.data.userInfo.app_token;
     wx.request({
       url: getApp().apiUrl + '/api/businessevaluation/save',
       method: 'post',
-      data: { 'businessactivityid': businessActivityId, 'orderid': orderId, 'score': currClickStar, 'content': content },
-      header: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': tokenVal },
+      data: {
+        'businessactivityid': businessActivityId,
+        'orderid': orderId,
+        'score': currClickStar,
+        'content': content
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'Authorization': tokenVal
+      },
       success: function (res) {
         console.log(res);
         if (res.data.code == 0) {
@@ -323,13 +354,17 @@ Page({
             title: '评价成功',
             icon: 'success',
             duration: 2000,
-            success: function () { that.setData({ 'showModalStar': false }); }
+            success: function () {
+              that.setData({
+                'showModalStar': false
+              });
+            }
           })
 
-        }else{
+        } else {
           wx.showToast({
             title: res.data.msg,
-            icon:"none"
+            icon: "none"
           })
         };
 
