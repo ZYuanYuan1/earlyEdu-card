@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/orderDetail/orderDetail",
     "pages/index/index",
     "pages/assemble/assemble",
     "pages/groupDetail/groupDetail",
@@ -14,7 +15,7 @@
     "pages/commentAll/commentAll",
     "pages/orders/orders",
     "pages/myMessage/myMessage",
-    "pages/orderDetail/orderDetail",
+
     "pages/payment/payment",
     "pages/paymentResult/paymentResult",
     "pages/shopAddress/shopAddress",

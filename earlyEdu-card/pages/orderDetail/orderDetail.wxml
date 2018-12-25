@@ -40,6 +40,11 @@
        <text selectable="true" class='title_font'>订单编号：8888888888</text>
        <view class='title_font'>创建时间：2018-10-14 21:56:21</view>
    </view>
+    <view class='header  margin'>
+       <view class='content_title'><text style='color:#B4282D'>|</text>物流信息</view>
+       <text selectable="true" class='title_font'>物流公司：8888888888</text>
+       <view class='title_font'>物流编号：88888888888</view>
+   </view>
    <view class='footer'>
        <!-- <view class='footer_button'>再来一单</view> -->
        <!-- <view class='footer_button' style='right:176rpx'>删除订单</view>
