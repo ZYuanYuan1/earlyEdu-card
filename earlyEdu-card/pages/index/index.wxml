@@ -86,5 +86,8 @@
   <view class='more'>没有更多了</view>
   <!-- <view style='text-align:center;margin-top:60rpx;font-size:24rpx;color:#888888'>暂无商家</view> -->
 </view>
+ <view class='return' bindtap='buyCard'>
+          <image style='width:120rpx;height:120rpx' src='https://img.sahuanka.com/earlyEdu-card/images/buyCard.gif'></image>
+        </view>
 <!--绑定手机号弹窗-->
 <bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone>

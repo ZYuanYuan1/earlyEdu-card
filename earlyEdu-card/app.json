@@ -1,7 +1,7 @@
 {
   "pages":[
-    "pages/orderDetail/orderDetail",
-    "pages/index/index",
+     "pages/index/index",
+     "pages/orderDetail/orderDetail",
     "pages/assemble/assemble",
     "pages/groupDetail/groupDetail",
     "pages/myQRcode/myQRcode",
@@ -15,7 +15,6 @@
     "pages/commentAll/commentAll",
     "pages/orders/orders",
     "pages/myMessage/myMessage",
-
     "pages/payment/payment",
     "pages/paymentResult/paymentResult",
     "pages/shopAddress/shopAddress",

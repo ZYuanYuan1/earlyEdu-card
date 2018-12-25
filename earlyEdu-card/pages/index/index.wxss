@@ -228,3 +228,13 @@
     height: 220rpx;
     margin: 0 5rpx
   }
+/* 买卡按钮 */
+.return {
+  /* width: 100%; */
+  position: fixed;
+  right: 0;
+  z-index: 2;
+  text-align: right;
+  bottom: 27%;
+
+}

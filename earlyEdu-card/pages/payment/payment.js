@@ -11,7 +11,6 @@ Page({
     surplus:0,//剩余支付资金
     amount:0,//不抵扣金额
     remark:"",//留言
-    type:0//处理商品金额
   },
 
   /**
@@ -20,21 +19,15 @@ Page({
   onLoad: function (options) {
     console.log(options)
     var orderInfo = JSON.parse(options.orderInfo);
-    var type = options.type;
     if (orderInfo.orderpic) { orderInfo.orderpic = decodeURIComponent(orderInfo.orderpic); }
     if (orderInfo.qrcode) { orderInfo.qrcode = decodeURIComponent(orderInfo.qrcode); }
     if (orderInfo.ordertype == 12 || orderInfo.ordertype == 11){
       //对抵扣金额进行处理
-      if (type == 1) { 
-        var sur = orderInfo.amount * 100;
-        }else{
-        var sur = orderInfo.amount;
-        }
+      var sur = orderInfo.amount;
       var amount = sur.toFixed(2);
       this.setData({ 
         orderInfo: orderInfo,
         amount: amount,
-        type:type
         });
   }else{
       //对抵扣金额进行处理
@@ -116,6 +109,13 @@ Page({
         var tokenVal = userInfo.app_token;
         var isReplace = that.data.switchChecked;
         var orderInfo = that.data.orderInfo;
+        var addressId = that.data.addressList.userAddrId;
+        var remark = that.data.remark;
+        var  orderMessage={};
+        orderMessage.orderid = orderId;
+        orderMessage.isReplace = isReplace;
+        orderMessage.addressId = addressId;
+        orderMessage.remark = remark;
         if (orderInfo.ordertype == 12 || orderInfo.ordertype == 11){//判断类型区分拼团、礼品和商品
           isReplace=""
         }
@@ -123,7 +123,7 @@ Page({
         wx.request({
           url: getApp().apiUrl + '/api/order/creatPayOrder',
           method: 'post',
-          data: { 'orderid': orderId, 'isReplace': isReplace, 'addressId': that.data.addressList.userAddrId, 'remark': that.data.remark},
+          data: { 'orderid': orderId, 'isReplace': isReplace, 'addressId': addressId, 'remark': remark},
           header: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': tokenVal },
           success: function (res) {
             console.log(res);
@@ -142,16 +142,19 @@ Page({
                 signType: res.data.data.signType,
                 paySign: res.data.data.paySign,
                 success: function (res) {
-                  wx.switchTab({
-                    url: '/pages/orders/orders',
+                  wx.navigateTo({
+                    url: '/pages/paymentResult/paymentResult?type=1' + "&orderMessage=" + JSON.stringify(orderMessage),
                   })
                 },
                 fail: function (res) {
-                  wx.showToast({
-                    title: '支付失败',
-                    icon: 'none',
-                    duration: 2000
-                  });
+                  // wx.showToast({
+                  //   title: '支付失败',
+                  //   icon: 'none',
+                  //   duration: 2000
+                  // });
+                  wx.navigateTo({
+                    url: '/pages/paymentResult/paymentResult?type=2' + "&orderMessage=" + JSON.stringify(orderMessage),
+                  })
                 },
               })
 

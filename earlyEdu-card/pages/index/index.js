@@ -351,4 +351,10 @@ Page({
        url: '/pages/assemble/assemble',
      })
   },
+  //去买卡
+  buyCard(){
+    wx.navigateTo({
+      url: '/pages/member/member',
+    })
+  }
 })

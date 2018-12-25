@@ -22,7 +22,7 @@
   <view class='orderBac orderPadd orderMar orderFont'>
     <view class='orderItems' hidden="{{orderInfo.ordertype==11}}">
       <view class='orderItem'>商品金额</view>
-      <view>￥{{type==1?orderInfo.amount*100:orderInfo.amount}}</view>
+      <view>￥{{orderInfo.amount}}</view>
     </view>
     <!-- <view class='orderItems'>
       <view class='orderItem'>运费</view>
@@ -38,7 +38,7 @@
        <view  style='flex:0 0 70%'>
           <view class='orderFont'>{{orderInfo.activityname}}</view>
           <!-- <view style='font-size:26rpx;color:#868686'>半年</view> -->
-          <view class='orderFont'>￥{{type==1?orderInfo.amount*100:orderInfo.amount}}</view>
+          <view class='orderFont'>￥{{orderInfo.amount}}</view>
        </view>
        <view class='orderFont'>x1</view>
     </view>
