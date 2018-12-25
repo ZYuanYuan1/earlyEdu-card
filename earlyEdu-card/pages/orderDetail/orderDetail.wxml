@@ -1,49 +1,115 @@
 <!--pages/orderDetail/orderDetail.wxml-->
 <view class='contanier'>
-   <view class='header margin'>
-       <view class='header_item'>
-           <view style='flex:0 0 85%'>
-               <image class='shop' src='https://img.sahuanka.com/earlyEdu-card/images/shop.png'></image>
-               <text class='title'>潮童星</text>
-               <image class='arrow' src='https://img.sahuanka.com/earlyEdu-card/images/arrow.png'></image>
-           </view>
-           <view class='success' style='flex:0 0 15%'>交易成功</view>
-       </view>
-       <view class='header_itemtwo'>
-          <view style='flex:0 0 20%' style='margin-right:30rpx'>
-             <image class='header_img' src=''></image>
-          </view>
-          <view  style='flex:0 0 60%'>
-             <view class='header_fonta' >潮童星形体测试课程</view>
-             <view class='header_fontb' >半年</view>
-          </view>
-          <view style='flex:0 0 15%;text-align:right'>
-             <view class='header_fonta'>￥1999</view>
-             <view class='header_fontb'>×1</view>
-          </view>
-       </view>
-       <view class='member'>
-          <view class='member_itemone'>会员优惠</view>
-          <view class='member_itemtwo'>-￥50</view>
-       </view>
-       <view class='money member'>
-          <view  class='member_itemone'>佣金抵扣</view>
-          <view class='member_itemtwo'>-￥100</view>
-       </view>
-       <view class='pay'>
-          <view  class='member_itemone'>实付款</view>
-          <view style='color:#B4282D' class='member_itemtwo'>￥1849</view>
-       </view>
-   </view>
-   <view class='header  margin'>
-       <view class='content_title'><text style='color:#B4282D'>|</text>订单信息</view>
-       <text selectable="true" class='title_font'>订单编号：8888888888</text>
-       <view class='title_font'>创建时间：2018-10-14 21:56:21</view>
-   </view>
-   <view class='footer'>
-       <!-- <view class='footer_button'>再来一单</view> -->
-       <!-- <view class='footer_button' style='right:176rpx'>删除订单</view>
-       <view class='footer_buttonpay'>支付</view> -->
-       <view  class='footer_buttonpay'>查看券码</view>
-   </view>
+  <view class='header margin'>
+    <view class='header_item'>
+      <view style='flex:0 0 85%'>
+        <image class='shop' src='https://img.sahuanka.com/earlyEdu-card/images/shop.png'></image>
+        <text class='title'>{{orderDetailData.activityname}}</text>
+        <image class='arrow' src='https://img.sahuanka.com/earlyEdu-card/images/arrow.png'></image>
+      </view>
+      <view class='success' style='flex:0 0 15%'>{{tool.formatOrdertState(orderDetailData.state)}}</view>
+      <!-- {{tool.formatOrdertState(orderDetailData.state)}} -->
+    </view>
+    <view class='header_itemtwo'>
+      <view style='flex:0 0 20%' style='margin-right:30rpx'>
+        <image class='header_img' src='{{orderDetailData.orderpic}}'></image>
+      </view>
+      <view style='flex:0 0 60%'>
+        <view class='header_fonta'>{{orderDetailData.activityname}}</view>
+        <!-- <view class='header_fontb'>半年</view> -->
+      </view>
+      <view style='flex:0 0 15%;text-align:right'>
+        <view class='header_fonta'>￥{{orderDetailData.amount}}</view>
+        <view class='header_fontb'>×1</view>
+      </view>
+    </view>
+    <!-- <view class='member'>
+      <view class='member_itemone'>会员优惠</view>
+      <view class='member_itemtwo'>-￥50</view>
+    </view> -->
+    <view class='money member' wx:if="{{isReplace}}">
+      <view class='member_itemone'>佣金抵扣</view>
+      <view class='member_itemtwo'>-￥{{orderDetailData.replaceAmount}}</view>
+    </view>
+    <view class='pay'>
+      <view class='member_itemone'>实付款</view>
+      <view style='color:#B4282D' class='member_itemtwo'>￥{{isReplace?orderDetailData.amount-orderDetailData.replaceAmount:orderDetailData.amount}}</view>
+    </view>
+  </view>
+  <view class='header  margin'>
+    <view class='content_title'><text style='color:#B4282D'>|</text>订单信息</view>
+    <text selectable="true" class='title_font'>订单编号：{{orderDetailData.orderno}}</text>
+    <view class='title_font'>创建时间：{{orderDetailData.createdate}}</view>
+  </view>
+  <view class='footer'>
+    <!-- <view class='footer_button'>再来一单</view> -->
+    <!-- <view class='footer_button' style='right:176rpx'>删除订单</view>-->
+    <view class='footer_buttonpay' wx:if="{{orderDetailData.state == 7}}" bindtap='pop_evaluate' hover-class="none" data-order-id="{{orderDetailData.orderid}}" data-business-activity-id="{{orderDetailData.businessactivityid}}">评价</view>
+    <view class='footer_buttonpay' wx:if="{{orderDetailData.state == 2}}" bindtap='gotopay' data-order-info="{{orderDetailData}}">支付</view>
+    <view class='footer_buttonpay' wx:if="{{orderDetailData.state == 3}}" bindtap="showDialogBtn" data-qrcode-url="{{orderDetailData.qrcode}}" data-order-number="{{orderDetailData.orderno}}">查看券码</view>
+  </view>
 </view>
+<!--电子券弹框-->
+<view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+  <view class="modal-title">
+    <view class="closeicon" bindtap="onCancel">
+      <image src="https://img.sahuanka.com/sjCard/images/closeicon.png"></image>
+    </view>
+    <view class="titleright">电子券</view>
+  </view>
+  <view class="modal-content">
+    <view class="alerttext">
+      电子券编号:<text>{{orderNo}}</text>
+    </view>
+    <view class="container-box">
+      <view class="img-box" bindtap='toinvite_people'>
+        <canvas hidden="{{canvasHidden}}" canvas-id="mycanvas" style="width:250rpx;height:250rpx;margin-left:90rpx;" />
+      </view>
+    </view>
+    <view hidden="{{maskHidden}}" class="mask"></view>
+    <view class="canvas-box"></view>
+  </view>
+</view>
+
+<wxs module="tool">
+  var formater = {
+    formatOrdertState: function (state) {
+      state = state + ''
+      var stateStr = ''
+      switch (state) {
+        case '1':
+          stateStr = '已创建'
+          break;
+        case '2':
+          stateStr = '待支付'
+          break;
+        case '3':
+          stateStr = '待使用'
+          break;
+        case '4':
+          stateStr = '付款失败'
+          break;
+        case '5':
+          stateStr = '已关闭'
+          break;
+        case '6':
+          stateStr = '已取消'
+          break;
+        case '7':
+          stateStr = '待评价'
+          break;
+        case '8':
+          stateStr = '已过期'
+          break;
+        case '9':
+          stateStr = '已完成'
+          break;
+      }
+      return stateStr
+    }
+  }
+  module.exports = {
+    formatOrdertState: formater.formatOrdertState
+  }
+</wxs>

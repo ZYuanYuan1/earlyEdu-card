@@ -38,7 +38,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 6,
 			"list": [
 				{
 					"id": -1,
@@ -73,7 +73,14 @@
 				{
 					"id": -1,
 					"name": "member",
-					"pathName": "pages/member/member"
+					"pathName": "pages/member/member",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "orderDetail",
+					"pathName": "pages/orderDetail/orderDetail",
+					"query": "orderid=2561"
 				}
 			]
 		}

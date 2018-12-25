@@ -1,85 +1,104 @@
 /* pages/orderDetail/orderDetail.wxss */
-page{
+page {
   background: #F4F4F4
 }
-.header{
+
+.header {
   background: white;
   margin-top: 20rpx;
   line-height: 50rpx
 }
-.margin{
+
+.margin {
   padding: 26rpx 30rpx
 }
-.header_item{
+
+.header_item {
   display: flex;
   align-items: center;
   margin-bottom: 30rpx
 }
-.shop{
+
+.shop {
   width: 24rpx;
   height: 22rpx;
   margin-right: 16rpx
 }
-.title{
+
+.title {
   font-size: 24rpx;
   color: #515151;
   margin-right: 20rpx
 }
-.arrow{
+
+.arrow {
   width: 10rpx;
   height: 18rpx
 }
-.success{
-   font-size: 24rpx;
-   color: #B4282D
+
+.success {
+  font-size: 24rpx;
+  color: #B4282D
 }
-.header_img{
+
+.header_img {
   width: 140rpx;
   height: 140rpx;
   background: #cccccc
 }
-.header_fonta{
+
+.header_fonta {
   font-size: 22rpx;
   color: #333333
 }
-.header_fontb{
+
+.header_fontb {
   font-size: 22rpx;
   color: #999999
 }
-.member{
+
+.member {
   font-size: 20rpx;
   color: #3D4244;
   display: flex
 }
-.pay{
+
+.pay {
   font-size: 24rpx;
   color: #3D4244;
   display: flex
 }
-.money{
+
+.money {
   display: flex
 }
-.header_itemtwo{
+
+.header_itemtwo {
   display: flex
 }
-.member_itemone{
+
+.member_itemone {
   flex: 0 0 85%
 }
-.member_itemtwo{
+
+.member_itemtwo {
   flex: 0 0 15%;
   text-align: right
 }
+
 /* 订单 */
-.content_title{
+.content_title {
   font-size: 26rpx;
   color: #333333
 }
-.title_font{
+
+.title_font {
   font-size: 22rpx;
   color: #666666
 }
+
 /* 底部 */
-.footer{
+.footer {
   background: #ffffff;
   width: 100%;
   height: 90rpx;
@@ -88,7 +107,8 @@ page{
   display: flex;
   align-items: center
 }
-.footer_button{
+
+.footer_button {
   width: 136rpx;
   height: 52rpx;
   position: fixed;
@@ -101,8 +121,9 @@ page{
   right: 30rpx;
   border-radius: 26rpx
 }
-.footer_buttonpay{
-    width: 136rpx;
+
+.footer_buttonpay {
+  width: 136rpx;
   height: 52rpx;
   position: fixed;
   border: 2rpx solid #B4282D;
@@ -113,4 +134,80 @@ page{
   align-items: center;
   right: 20rpx;
   border-radius: 26rpx
+}
+
+/* 弹窗 */
+.modal-dialog {
+  width: 540rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  z-index: 9999;
+  background: #f9f9f9;
+  margin: -180rpx 105rpx;
+  border-radius: 36rpx;
+}
+
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.modal-title {
+  height: 94rpx;
+  display: flex;
+  line-height: 94rpx;
+  font-size: 34rpx;
+  color: #333;
+  padding-left: 30rpx;
+}
+
+.modal-content {
+  padding: 30rpx 60rpx 50rpx 60rpx;
+  text-align: center;
+  color: #333;
+  font-size: 28rpx;
+  border-top: 2rpx solid #e5e5e5;
+}
+
+.alerttext {
+  text-align: center;
+  font-size: 28rpx;
+  color: #333;
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
+}
+
+.img-box {
+  position: relative;
+}
+
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.closeicon {
+  flex: 0 0 100rpx;
+  text-align: center;
+  z-index: 10000;
+}
+
+.closeicon image {
+  width: 26rpx;
+  height: 26rpx
 }
