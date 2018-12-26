@@ -9,22 +9,45 @@ Page({
    * 页面的初始数据
    */
   data: {
-    bannerList:[],//banner图
-    'locationStr': '加载失败',//定位地址
-    'bannerList':[],//banner
-     goods:[],//商品列表
-     curPage:1,//当前页
-     pageSize:10,
-     searchInput:"",//搜索内容
-    inviteUserPhone: '',//邀请人电话
-    showPhoneModal: false,//手机号绑定弹框
-    nav: [
-      { imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/circle.png', descs: '孕产护理', businessMenuId:35},
-      { imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/group2.png', descs: '亲子购物', businessMenuId: 2},
-      { imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/baby.png', descs: '婴儿服务', businessMenuId: 36 },
-      { imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/group3.png', descs: '学习教育', businessMenuId: 4},
-      { imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/group4.png', descs: '亲子游乐', businessMenuId: 1 },
-      { imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/life.png', descs: '生活服务', businessMenuId: 48 }
+    bannerList: [], //banner图
+    'locationStr': '加载失败', //定位地址
+    'bannerList': [], //banner
+    goods: [], //商品列表
+    curPage: 1, //当前页
+    pageSize: 10,
+    searchInput: "", //搜索内容
+    inviteUserPhone: '', //邀请人电话
+    showPhoneModal: false, //手机号绑定弹框
+    nav: [{
+        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/circle.png',
+        descs: '孕产护理',
+        businessMenuId: 35
+      },
+      {
+        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/group2.png',
+        descs: '亲子购物',
+        businessMenuId: 2
+      },
+      {
+        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/baby.png',
+        descs: '婴儿服务',
+        businessMenuId: 36
+      },
+      {
+        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/group3.png',
+        descs: '学习教育',
+        businessMenuId: 4
+      },
+      {
+        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/group4.png',
+        descs: '亲子游乐',
+        businessMenuId: 1
+      },
+      {
+        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/life.png',
+        descs: '生活服务',
+        businessMenuId: 48
+      }
     ],
     navTxt: {
       navtxtImg: "https://img.sahuanka.com/earlyEdu-card/images/right.png",
@@ -45,13 +68,17 @@ Page({
       key: config.key
     });
     if (options.location) {
-      this.setData({ 'locationStr': options.location })
+      this.setData({
+        'locationStr': options.location
+      })
       this.locationFun();
     } else {
       this.locationFun();
     }
-    this.loadBannerListFun()//加载banner
-    this.getGoodsList();//加载商品数据
+    this.loadBannerListFun() //加载banner
+    // this.getGoodsList(); //加载商品数据
+    // 暂时用定时器，使得loginStutes先于初始化数据储存（避免老用户重复弹出手机号验证）
+    setTimeout(this.getGoodsList, 1000)
   },
 
   /**
@@ -95,17 +122,17 @@ Page({
   onReachBottom: function () {
 
   },
-   
+
   /**
    * 用户点击右上角分享
    */
 
-   onShareAppMessage(){
-     return {
-       title: '送给宝宝的第一份成长大礼包~',
-       imageUrl: 'https://img.sahuanka.com/earlyEdu-card/images/sharePar.jpg'
-     }
-   },
+  onShareAppMessage() {
+    return {
+      title: '送给宝宝的第一份成长大礼包~',
+      imageUrl: 'https://img.sahuanka.com/earlyEdu-card/images/sharePar.jpg'
+    }
+  },
 
   //定位地址方法
   locationFun() {
@@ -128,11 +155,17 @@ Page({
           success: function (res) {
             var add = res.result.address;
             if (res.result.address_reference && res.result.address_reference.landmark_l1) {
-              that.setData({ 'locationStr': res.result.address_reference.landmark_l1.title })
+              that.setData({
+                'locationStr': res.result.address_reference.landmark_l1.title
+              })
             } else if (res.result.address_reference && res.result.address_reference.landmark_l2) {
-              that.setData({ 'locationStr': res.result.address_reference.landmark_l2.title })
+              that.setData({
+                'locationStr': res.result.address_reference.landmark_l2.title
+              })
             } else {
-              that.setData({ 'locationStr': add })
+              that.setData({
+                'locationStr': add
+              })
             }
           },
           fail: function (res) {
@@ -145,7 +178,9 @@ Page({
 
       },
       fail: function (res) {
-        that.setData({ 'locationStr': '定位失败' })
+        that.setData({
+          'locationStr': '定位失败'
+        })
       },
       complete: function (res) {
         // that.loadScoreListFun('', that.data.taskval, that.data.areaval, that.data.sortval);
@@ -162,7 +197,10 @@ Page({
   //获取定位地址方法
   locationViewSelected: function () {
     var that = this;
-    that.setData({ 'address': '定位中...', 'location': '正在定位...' });
+    that.setData({
+      'address': '定位中...',
+      'location': '正在定位...'
+    });
     wx.getLocation({
       type: 'wgs84',
       success: function (res) {
@@ -188,7 +226,10 @@ Page({
               // that.setData({ 'locationStr': address })
             }
 
-            that.setData({ 'address': address, 'location': '重新定位' })
+            that.setData({
+              'address': address,
+              'location': '重新定位'
+            })
           },
           fail: function (res) {
 
@@ -202,7 +243,10 @@ Page({
       },
       fail: function (res) {
 
-        that.setData({ 'address': '定位失败', 'location': '重新定位' })
+        that.setData({
+          'address': '定位失败',
+          'location': '重新定位'
+        })
       },
       complete: function (res) {
 
@@ -215,8 +259,13 @@ Page({
     wx.request({
       url: app.apiUrl + '/api/banner/list',
       method: 'post',
-      header: { 'content-type': 'application/x-www-form-urlencoded' },
-      data: { 'limit': 10, 'page': that.data.curPage },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        'limit': 10,
+        'page': that.data.curPage
+      },
       success: function (res) {
         if (res.data.code == 0) {
           var bannerList = [];
@@ -226,7 +275,9 @@ Page({
               bannerList.push(data[i]);
             }
           }
-          that.setData({ 'bannerList': bannerList });
+          that.setData({
+            'bannerList': bannerList
+          });
         };
 
       },
@@ -234,59 +285,62 @@ Page({
     })
   },
   //点击跳转到宝贝大礼页面
-  goBabygift(){
+  goBabygift() {
     wx.navigateTo({
       url: '/pages/babyGift/babyGift',
     })
   },
+  
   //初始化数据
   getGoodsList: function () {
     var that = this;
     wx.getStorage({
       key: 'loginStutes',
       success: function (res) {
-        console.log(res);
+        // console.log(res);
         var userInfo = JSON.parse(res.data);
         var tokenVal = userInfo.app_token;
         wx.request({
           url: getApp().apiUrl + '/api/activity/list',
           method: "post",
-          data:{
-            'page': that.data.curPage, 
+          data: {
+            'page': that.data.curPage,
             'limit': that.data.pageSize,
             'activityname': that.data.searchInput,
-            'activitytype': [3,4],
-            'sort':0
+            'activitytype': [3, 4],
+            'sort': 0
           },
           header: {
             'Authorization': tokenVal,
             'content-type': 'application/x-www-form-urlencoded'
           },
           success: function (res) {
-            console.log(res);
+            // console.log(res);
             // console.log(res.data.page.pageSize);
             var page = res.data.page
             if (res.data.code !== 0) {
-                wx.showToast({
-                  title: '加载失败...',
-                  icon:"none"
-                })
-              }
-            if (res.data.code == 0 && page.list.length <= page.totalCount){
-            let goods = [];
-            goods = that.data.goods;
-            for (var i = 0; i < res.data.page.list.length; i++) {
-              goods.push(res.data.page.list[i]);
+              wx.showToast({
+                title: '加载失败...',
+                icon: "none"
+              })
             }
-            that.setData({
-              goods: goods,
-            });
-           }
+            if (res.data.code == 0 && page.list.length <= page.totalCount) {
+              let goods = [];
+              goods = that.data.goods;
+              for (var i = 0; i < res.data.page.list.length; i++) {
+                goods.push(res.data.page.list[i]);
+              }
+              that.setData({
+                goods: goods,
+              });
+            }
           }
         })
       },
       fail: function (res) {
-        that.setData({ 'showPhoneModal': true });
+        that.setData({
+          'showPhoneModal': true
+        })
       }
     })
   },
@@ -303,7 +357,7 @@ Page({
     this.setData({
       curPage: this.data.curPage + 1
     });
-    console.log(this.data.curPage)
+    // console.log(this.data.curPage)
     this.getGoodsList()
   },
   //搜索
@@ -312,13 +366,13 @@ Page({
     this.setData({
       curPage: 1,
       searchInput: searchInput,
-      goods:[]
+      goods: []
     });
     this.getGoodsList();
   },
   //进入详情页
-  goGoodsdetail(e){
-    console.log(e);
+  goGoodsdetail(e) {
+    // console.log(e);
     var businessactivityid = e.currentTarget.dataset.businessId;
     var bid = e.currentTarget.dataset.id;
     var type = e.currentTarget.dataset.type;
@@ -328,31 +382,31 @@ Page({
   },
   //点击确定-bindPhone组件传过来的信息
   getBindInfo: function (e) {
-    console.log(e);
-    var bindInfo = e.detail.bindPhone;//true为手机绑定成功，false为手机绑定失败
+    // console.log(e);
+    var bindInfo = e.detail.bindPhone; //true为手机绑定成功，false为手机绑定失败
     if (bindInfo) {
       var userInfo = e.detail.userInfo;
-      console.log(userInfo);
-      this.loadBannerListFun()//加载banner
-      this.getGoodsList();//加载商品数据
+      // console.log(userInfo);
+      this.loadBannerListFun() //加载banner
+      this.getGoodsList(); //加载商品数据
     }
   },
   //邀请
   //跳到选择页面
-  goChoose(e){
-    console.log(e.currentTarget.id)
+  goChoose(e) {
+    // console.log(e.currentTarget.id)
     wx.navigateTo({
       url: '/pages/choose/choose?businessMenuId=' + e.currentTarget.id,
     })
   },
   //跳转到拼团列表页面
-  goAssemble(){
-     wx.navigateTo({
-       url: '/pages/assemble/assemble',
-     })
+  goAssemble() {
+    wx.navigateTo({
+      url: '/pages/assemble/assemble',
+    })
   },
   //去买卡
-  buyCard(){
+  buyCard() {
     wx.navigateTo({
       url: '/pages/member/member',
     })

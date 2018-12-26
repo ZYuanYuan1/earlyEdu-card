@@ -48,19 +48,19 @@ App({
     loginInfo: null,
     invitePeopleNumber: "",
     localAddress: '杭州',
-    flag:true
+    flag: true
   },
-  onLaunch(options){
+  onLaunch(options) {
     var that = this;
     var logs = wx.getStorageSync('logs') || []
     //console.log(logs);
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs);
-    console.log(options);
+    // console.log(options);
     this.globalData.scene = options.scene;
     this.getUserInfo(function (info) {
-      console.log(info);
-      console.log(that.globalData.invitePeopleNumber)
+      // console.log(info);
+      // console.log(that.globalData.invitePeopleNumber)
     });
   },
   getSystemInfo: function (cb) {
@@ -81,24 +81,28 @@ App({
     //调用登录接口
     wx.login({
       success: function (res) {
-        console.log(that.globalData.flag)
-        console.log(res);
+        // console.log(that.globalData.flag)
+        // console.log(res)
         wx.getStorage({
           key: 'flag',
           success: function (res) {
-            that.globalData.flag=res.flag
+            that.globalData.flag = res.flag
           }
         })
-        console.log(that.globalData.flag)  
+        // console.log(that.globalData.flag)  
         var js_code = res.code;
         wx.request({
           url: that.apiUrl + '/api/weixin/login',
           // url:"https://api.jcrsjy.com/api/home/getToken",
           method: 'post',
-          data: { 'appletCode': js_code },
-          header: { 'content-type': 'application/x-www-form-urlencoded' },
+          data: {
+            'appletCode': js_code
+          },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
           success: function (res) {
-            console.log("登录成功"+res);
+            // console.log("登录成功"+res);
             if (res.data.code == 0) {
               //如果用户不为空
               if (res.data.user) {
@@ -126,7 +130,7 @@ App({
     wx.getLocation({
       type: 'wgs84',
       success: function (res) {
-        console.log(res)
+        // console.log(res)
         var latitude = res.latitude
         var longitude = res.longitude
         var speed = res.speed
@@ -140,21 +144,21 @@ App({
             longitude: longitude
           },
           success: function (res) {
-            console.log(res);
+            // console.log(res);
             //that.setData({ 'locationStr': res.result.address })
           },
           fail: function (res) {
-            console.log(res);
+            // console.log(res);
           },
           complete: function (res) {
-            console.log(11);
+            // console.log(11);
           }
         });
       }
     })
   },
 
-   apiUrl: "https://test2.jcrsjy.com",//测试接口
+  apiUrl: "https://test2.jcrsjy.com", //测试接口
   //  apiUrl: "https://api.jcrsjy.com", //正式接口
 
 })
