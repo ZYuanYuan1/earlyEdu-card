@@ -9,16 +9,16 @@ Page({
     activityInfo: {}, //商家活动
     actype: 4, //商品类型，区分礼品和普通商品价格，默认礼品
     businessid: 0, //商品id
-    assembleActivityId:0,//拼团id
+    assembleActivityId: 0, //拼团id
     token: "", //用户token
     addrShow: true, //是否显示地址模块
     addressList: [], //地址列表
     activitytype: 0, //区分商品类型
     inviteUserPhone: '', //邀请人电话
     userInfo: {}, //用户信息
-    number:0,//拼团人数
-    dayDiff:0,//相差多少天
-    hours:0//相差多少小时
+    number: 0, //拼团人数
+    dayDiff: 0, //相差多少天
+    hours: 0 //相差多少小时
   },
 
   /**
@@ -32,24 +32,25 @@ Page({
       assembleActivityId: options.assembleActivityId,
       businessid: options.businessId,
     })
-    console.log(that.data.businessid)
-    //加载用户token
-    wx.getStorage({
-      key: 'loginStutes',
-      success: function (res) {
-        console.log(res);
-        var userInfo = JSON.parse(res.data);
-        var tokenVal = userInfo.app_token;
-        console.log(tokenVal)
-        that.innitGoodsdetail(options.assembleActivityId, tokenVal) //初始化数据
-      },
-      fail: function (res) {
-        that.setData({
-          'showPhoneModal': true
-        });
-      }
-    })
-    that.innitCount(options.assembleActivityId)//初始化拼团人数
+    // console.log(that.data.businessid)
+    that.innitGoodsdetail(options.assembleActivityId) //初始化数据
+    // //加载用户token
+    // wx.getStorage({
+    //   key: 'loginStutes',
+    //   success: function (res) {
+    //     console.log(res);
+    //     var userInfo = JSON.parse(res.data);
+    //     var tokenVal = userInfo.app_token;
+    //     console.log(tokenVal)
+    //     that.innitGoodsdetail(options.assembleActivityId, tokenVal) //初始化数据
+    //   },
+    //   fail: function (res) {
+    //     that.setData({
+    //       'showPhoneModal': true
+    //     });
+    //   }
+    // })
+    that.innitCount(options.assembleActivityId) //初始化拼团人数
     that.innitAddress(); //初始化地址
   },
 
@@ -153,19 +154,19 @@ Page({
       method: 'get',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
-        'Authorization': token
+        // 'Authorization': token
       },
-      data:{
+      data: {
         assembleActivityId: that.data.assembleActivityId
       },
       success: function (res) {
         console.log(res);
         if (res.data.code == 0) {
           var activityInfo = res.data.info; //商家活动
-       //天数换算  
+          //天数换算  
           var t3 = activityInfo.shelfTime;
           that.timeFun(t3)
-          if (activityInfo.shelfTime!= null) {
+          if (activityInfo.shelfTime != null) {
             activityInfo.shelfTime = activityInfo.shelfTime.substring(0, 10)
           }
           that.setData({
@@ -186,44 +187,66 @@ Page({
 
     })
   },
-  innitCount(detailId){
+  innitCount(detailId) {
     var that = this;
-    wx.getStorage({
-      key: 'loginStutes',
-      success: function (res1) {
-        var userInfo = JSON.parse(res1.data);
-        var tokenVal = userInfo.app_token;
-        console.log(userInfo)
     wx.request({
       // + detailId
       url: getApp().apiUrl + '/api/assembleActivity/orderCount/' + detailId,
       method: 'get',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
-        'Authorization': tokenVal
+        // 'Authorization': tokenVal
       },
       data: {
         assembleActivityId: that.data.assembleActivityId
       },
       success: function (res) {
         console.log(res)
-        var activityInfo=that.data.activityInfo;
-        var number = (res.data.count/activityInfo.maxNumber * 100).toFixed(1);
-         if(res.data.code==0){
-           that.setData({
-             number: number
-           })
-         }
+        var activityInfo = that.data.activityInfo;
+        var number = (res.data.count / activityInfo.maxNumber * 100).toFixed(1);
+        if (res.data.code == 0) {
+          that.setData({
+            number: number
+          })
+        }
       }
     })
-      },
-      fail: function (res) {
-        console.log("loginStutes 失败")
-        that.setData({
-          'showPhoneModal': true
-        });
-      }
-    })
+    // wx.getStorage({
+    //   key: 'loginStutes',
+    //   success: function (res1) {
+    //     var userInfo = JSON.parse(res1.data);
+    //     var tokenVal = userInfo.app_token;
+    //     console.log(userInfo)
+    //     wx.request({
+    //       // + detailId
+    //       url: getApp().apiUrl + '/api/assembleActivity/orderCount/' + detailId,
+    //       method: 'get',
+    //       header: {
+    //         'content-type': 'application/x-www-form-urlencoded',
+    //         // 'Authorization': tokenVal
+    //       },
+    //       data: {
+    //         assembleActivityId: that.data.assembleActivityId
+    //       },
+    //       success: function (res) {
+    //         console.log(res)
+    //         var activityInfo = that.data.activityInfo;
+    //         var number = (res.data.count / activityInfo.maxNumber * 100).toFixed(1);
+    //         if (res.data.code == 0) {
+    //           that.setData({
+    //             number: number
+    //           })
+    //         }
+    //       }
+    //     })
+    //   },
+    //   fail: function (res) {
+    //     console.log("loginStutes 失败")
+    //     that.setData({
+    //       'showPhoneModal': true
+    //     });
+    //   }
+    // })
   },
   //初始化店铺地址
   innitAddress() {
@@ -247,7 +270,6 @@ Page({
       }
     })
   },
-
   //跳转到地址总条数页面
   adressAll() {
     var that = this;
@@ -291,21 +313,21 @@ Page({
               orderInfo = JSON.stringify(res.data.order);
               var activityInfo = that.data.activityInfo
               //商品是会员的情况下
-              if (activityInfo.isMember){
+              if (activityInfo.isMember) {
                 if (userInfo.grade > 0) {
                   wx.navigateTo({
                     url: '/pages/payment/payment?orderInfo=' + orderInfo
                   })
-                } 
-              }else{
+                }
+              } else {
                 wx.navigateTo({
                   url: '/pages/payment/payment?orderInfo=' + orderInfo
                 })
               }
-               //领取成功跳转到-确认订单页面
+              //领取成功跳转到-确认订单页面
 
             } else {
-              if(res.data.msg=="你还不是会员"){
+              if (res.data.msg == "你还不是会员") {
                 wx.showModal({
                   content: '抱歉，您还不是会员，无法领取哦',
                   showCancel: false,
@@ -317,32 +339,22 @@ Page({
                     })
                   }
                 })
-              }else{
-              wx.showToast({
-                title: res.data.msg,
-                icon: "none"
-              })
-            }
+              } else {
+                wx.showToast({
+                  title: res.data.msg,
+                  icon: "none"
+                })
+              }
             };
-
           },
-
-
-
         })
-
       },
-
       fail: function (res) {
-
         that.setData({
           'showPhoneModal': true
         });
-
       }
-
     })
-
   },
   //邀请
   onShareAppMessage: function (res) {
@@ -364,26 +376,26 @@ Page({
     })
   },
   //天数换算函数
-  timeFun(d1){
+  timeFun(d1) {
     //如果时间格式是正确的，那下面这一步转化时间格式就可以不用了
-    var that=this;
-    var dateBegin = new Date(d1.replace(/-/g, "/"));//将-转化为/，使用new Date
-    var dateEnd = new Date();//获取当前时间
-    var dateDiff = dateBegin.getTime() - dateEnd.getTime();//时间差的毫秒数
-    var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天数
-    var leave1 = dateDiff % (24 * 3600 * 1000)    //计算天数后剩余的毫秒数
-    var hours = Math.floor(leave1 / (3600 * 1000))//计算出小时数
+    var that = this;
+    var dateBegin = new Date(d1.replace(/-/g, "/")); //将-转化为/，使用new Date
+    var dateEnd = new Date(); //获取当前时间
+    var dateDiff = dateBegin.getTime() - dateEnd.getTime(); //时间差的毫秒数
+    var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000)); //计算出相差天数
+    var leave1 = dateDiff % (24 * 3600 * 1000) //计算天数后剩余的毫秒数
+    var hours = Math.floor(leave1 / (3600 * 1000)) //计算出小时数
     console.log(" 相差 " + dayDiff + "天 " + hours + "小时 ")
-    if (dateDiff<0){
+    if (dateDiff < 0) {
       that.setData({
         dayDiff: 0,
         hours: 0
       })
-    }else{
-    that.setData({
-      dayDiff:dayDiff,
-      hours: hours
-    })
+    } else {
+      that.setData({
+        dayDiff: dayDiff,
+        hours: hours
+      })
     }
   }
 })

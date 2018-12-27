@@ -294,55 +294,91 @@ Page({
   //初始化数据
   getGoodsList: function () {
     var that = this;
-    wx.getStorage({
-      key: 'loginStutes',
+    wx.request({
+      url: getApp().apiUrl + '/api/activity/list',
+      method: "post",
+      data: {
+        'page': that.data.curPage,
+        'limit': that.data.pageSize,
+        'activityname': that.data.searchInput,
+        'activitytype': [3, 4],
+        'sort': 0
+      },
+      header: {
+        // 'Authorization': tokenVal,
+        'content-type': 'application/x-www-form-urlencoded'
+      },
       success: function (res) {
         // console.log(res);
-        var userInfo = JSON.parse(res.data);
-        var tokenVal = userInfo.app_token;
-        wx.request({
-          url: getApp().apiUrl + '/api/activity/list',
-          method: "post",
-          data: {
-            'page': that.data.curPage,
-            'limit': that.data.pageSize,
-            'activityname': that.data.searchInput,
-            'activitytype': [3, 4],
-            'sort': 0
-          },
-          header: {
-            'Authorization': tokenVal,
-            'content-type': 'application/x-www-form-urlencoded'
-          },
-          success: function (res) {
-            // console.log(res);
-            // console.log(res.data.page.pageSize);
-            var page = res.data.page
-            if (res.data.code !== 0) {
-              wx.showToast({
-                title: '加载失败...',
-                icon: "none"
-              })
-            }
-            if (res.data.code == 0 && page.list.length <= page.totalCount) {
-              let goods = [];
-              goods = that.data.goods;
-              for (var i = 0; i < res.data.page.list.length; i++) {
-                goods.push(res.data.page.list[i]);
-              }
-              that.setData({
-                goods: goods,
-              });
-            }
+        // console.log(res.data.page.pageSize);
+        var page = res.data.page
+        if (res.data.code !== 0) {
+          wx.showToast({
+            title: '加载失败...',
+            icon: "none"
+          })
+        }
+        if (res.data.code == 0 && page.list.length <= page.totalCount) {
+          let goods = [];
+          goods = that.data.goods;
+          for (var i = 0; i < res.data.page.list.length; i++) {
+            goods.push(res.data.page.list[i]);
           }
-        })
-      },
-      fail: function (res) {
-        that.setData({
-          'showPhoneModal': true
-        })
+          that.setData({
+            goods: goods,
+          });
+        }
       }
     })
+    // wx.getStorage({
+    //   key: 'loginStutes',
+    //   success: function (res) {
+    //     console.log(res)
+    //     var userInfo = JSON.parse(res.data);
+    //     var tokenVal = userInfo.app_token;
+    //     wx.request({
+    //       url: getApp().apiUrl + '/api/activity/list',
+    //       method: "post",
+    //       data: {
+    //         'page': that.data.curPage,
+    //         'limit': that.data.pageSize,
+    //         'activityname': that.data.searchInput,
+    //         'activitytype': [3, 4],
+    //         'sort': 0
+    //       },
+    //       header: {
+    //         'Authorization': tokenVal,
+    //         'content-type': 'application/x-www-form-urlencoded'
+    //       },
+    //       success: function (res) {
+    //         // console.log(res);
+    //         // console.log(res.data.page.pageSize);
+    //         var page = res.data.page
+    //         if (res.data.code !== 0) {
+    //           wx.showToast({
+    //             title: '加载失败...',
+    //             icon: "none"
+    //           })
+    //         }
+    //         if (res.data.code == 0 && page.list.length <= page.totalCount) {
+    //           let goods = [];
+    //           goods = that.data.goods;
+    //           for (var i = 0; i < res.data.page.list.length; i++) {
+    //             goods.push(res.data.page.list[i]);
+    //           }
+    //           that.setData({
+    //             goods: goods,
+    //           });
+    //         }
+    //       }
+    //     })
+    //   },
+    //   fail: function (res) {
+    //     that.setData({
+    //       'showPhoneModal': true
+    //     })
+    //   }
+    // })
   },
   //上拉刷新，下拉加载
   onPullDownRefresh: function () {

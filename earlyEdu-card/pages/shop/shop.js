@@ -33,25 +33,30 @@ Page({
       businessid: options.businessid,
       businessactivityid: options.businessactivityid,
     })
-    //加载用户token
-    wx.getStorage({
-      key: 'loginStutes',
-      success: function (res) {
-        console.log(res);
-        var userInfo = JSON.parse(res.data);
-        var tokenVal = userInfo.app_token;
-        console.log(tokenVal)
-        that.innitGoodsdetail(options.businessactivityid, tokenVal) //初始化数据
-        that.innitAddress(); //初始化地址
-        that.innitComment(tokenVal); //初始化评论
-        that.innitGoods() //初始化商品信息
-      },
-      fail: function (res) {
-        that.setData({
-          'showPhoneModal': true
-        });
-      }
-    })
+
+    that.innitGoodsdetail(options.businessactivityid) //初始化数据
+    that.innitAddress(); //初始化地址
+    that.innitComment(); //初始化评论
+    that.innitGoods() //初始化商品信息
+    // //加载用户token
+    // wx.getStorage({
+    //   key: 'loginStutes',
+    //   success: function (res) {
+    //     console.log(res);
+    //     var userInfo = JSON.parse(res.data);
+    //     var tokenVal = userInfo.app_token;
+    //     console.log(tokenVal)
+    //     that.innitGoodsdetail(options.businessactivityid, tokenVal) //初始化数据
+    //     that.innitAddress(); //初始化地址
+    //     that.innitComment(tokenVal); //初始化评论
+    //     that.innitGoods() //初始化商品信息
+    //   },
+    //   fail: function (res) {
+    //     that.setData({
+    //       'showPhoneModal': true
+    //     });
+    //   }
+    // })
     that.innitShop()
   },
 
@@ -114,7 +119,7 @@ Page({
       method: 'post',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
-        'Authorization': token
+        // 'Authorization': token
       },
       success: function (res) {
         console.log(res);
@@ -148,7 +153,7 @@ Page({
         businessactivityid: that.data.businessactivityid
       },
       header: {
-        'Authorization': token
+        // 'Authorization': token
       },
       success(res) {
         that.setData({
@@ -189,7 +194,7 @@ Page({
       }),
       method: 'get',
       header: {
-        'Authorization': token,
+        // 'Authorization': token,
         'content-type': 'application/x-www-form-urlencoded'
       },
       success(res) {
@@ -229,7 +234,6 @@ Page({
     console.log(e);
     var that = this;
     var storeId = that.data.businessInfo.businessid;
-    console.log(storeId);
     var curr_state = that.data.saving;
     wx.getStorage({
       key: 'loginStutes',
@@ -307,96 +311,167 @@ Page({
   },
   innitGoods() {
     var that = this;
-    wx.getStorage({
-      key: 'loginStutes',
+    wx.request({
+      // + detailId
+      url: getApp().apiUrl + '/api/activity/list',
+      method: 'post',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        // 'Authorization': tokenVal
+      },
+      data: {
+        businessid: that.data.businessid,
+        activitytype: [3, 4],
+        page: that.data.curPage,
+        limit: that.data.pageSize
+      },
       success: function (res) {
         console.log(res);
-        var userInfo = JSON.parse(res.data);
-        var tokenVal = userInfo.app_token;
-        wx.request({
-          // + detailId
-          url: getApp().apiUrl + '/api/activity/list',
-          method: 'post',
-          header: {
-            'content-type': 'application/x-www-form-urlencoded',
-            'Authorization': tokenVal
-          },
-          data: {
-            businessid: that.data.businessid,
-            activitytype: [3, 4],
-            page: that.data.curPage,
-            limit: that.data.pageSize
-          },
-          success: function (res) {
-            console.log(res);
-            // console.log(res.data.page.pageSize);
-            var page = res.data.page
-            if (res.data.code !== 0) {
-              wx.showToast({
-                title: '加载失败...',
-                icon: "none"
-              })
-            }
-            if (res.data.code == 0 && page.list.length <= page.totalCount) {
-              let goods = [];
-              goods = that.data.goods;
-              for (var i = 0; i < res.data.page.list.length; i++) {
-                goods.push(res.data.page.list[i]);
-              }
-              that.setData({
-                goods: goods,
-              });
-            }
+        // console.log(res.data.page.pageSize);
+        var page = res.data.page
+        if (res.data.code !== 0) {
+          wx.showToast({
+            title: '加载失败...',
+            icon: "none"
+          })
+        }
+        if (res.data.code == 0 && page.list.length <= page.totalCount) {
+          let goods = [];
+          goods = that.data.goods;
+          for (var i = 0; i < res.data.page.list.length; i++) {
+            goods.push(res.data.page.list[i]);
           }
-        })
+          that.setData({
+            goods: goods,
+          });
+        }
       }
     })
+    // wx.getStorage({
+    //   key: 'loginStutes',
+    //   success: function (res) {
+    //     console.log(res);
+    //     var userInfo = JSON.parse(res.data);
+    //     var tokenVal = userInfo.app_token;
+    //     wx.request({
+    //       // + detailId
+    //       url: getApp().apiUrl + '/api/activity/list',
+    //       method: 'post',
+    //       header: {
+    //         'content-type': 'application/x-www-form-urlencoded',
+    //         'Authorization': tokenVal
+    //       },
+    //       data: {
+    //         businessid: that.data.businessid,
+    //         activitytype: [3, 4],
+    //         page: that.data.curPage,
+    //         limit: that.data.pageSize
+    //       },
+    //       success: function (res) {
+    //         console.log(res);
+    //         // console.log(res.data.page.pageSize);
+    //         var page = res.data.page
+    //         if (res.data.code !== 0) {
+    //           wx.showToast({
+    //             title: '加载失败...',
+    //             icon: "none"
+    //           })
+    //         }
+    //         if (res.data.code == 0 && page.list.length <= page.totalCount) {
+    //           let goods = [];
+    //           goods = that.data.goods;
+    //           for (var i = 0; i < res.data.page.list.length; i++) {
+    //             goods.push(res.data.page.list[i]);
+    //           }
+    //           that.setData({
+    //             goods: goods,
+    //           });
+    //         }
+    //       }
+    //     })
+    //   }
+    // })
   },
   //获取商家列表
   innitShop() {
     var that = this;
-    wx.getStorage({
-      key: 'loginStutes',
+
+    wx.request({
+      // + detailId
+      url: getApp().apiUrl + '/api/business/list',
+      method: 'post',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        // 'Authorization': tokenVal
+      },
+      data: {
+        page: 1,
+        limit: 1000
+      },
       success: function (res) {
         console.log(res);
-        var userInfo = JSON.parse(res.data);
-        var tokenVal = userInfo.app_token;
-        wx.request({
-          // + detailId
-          url: getApp().apiUrl + '/api/business/list',
-          method: 'post',
-          header: {
-            'content-type': 'application/x-www-form-urlencoded',
-            'Authorization': tokenVal
-          },
-          data: {
-            page: 1,
-            limit: 1000
-          },
-          success: function (res) {
-            console.log(res);
-            // console.log(res.data.page.pageSize);
-            var page = res.data.page
-            if (res.data.code !== 0) {
-              wx.showToast({
-                title: '加载失败...',
-                icon: "none"
-              })
-            }
-            if (res.data.code == 0 && page.list.length <= page.totalCount) {
-              let shop = [];
-              shop = that.data.shop;
-              for (var i = 0; i < res.data.page.list.length; i++) {
-                shop.push(res.data.page.list[i]);
-              }
-              that.setData({
-                shop: shop,
-              });
-            }
+        // console.log(res.data.page.pageSize);
+        var page = res.data.page
+        if (res.data.code !== 0) {
+          wx.showToast({
+            title: '加载失败...',
+            icon: "none"
+          })
+        }
+        if (res.data.code == 0 && page.list.length <= page.totalCount) {
+          let shop = [];
+          shop = that.data.shop;
+          for (var i = 0; i < res.data.page.list.length; i++) {
+            shop.push(res.data.page.list[i]);
           }
-        })
+          that.setData({
+            shop: shop,
+          });
+        }
       }
     })
+    // wx.getStorage({
+    //   key: 'loginStutes',
+    //   success: function (res) {
+    //     console.log(res);
+    //     var userInfo = JSON.parse(res.data);
+    //     var tokenVal = userInfo.app_token;
+    //     wx.request({
+    //       // + detailId
+    //       url: getApp().apiUrl + '/api/business/list',
+    //       method: 'post',
+    //       header: {
+    //         'content-type': 'application/x-www-form-urlencoded',
+    //         'Authorization': tokenVal
+    //       },
+    //       data: {
+    //         page: 1,
+    //         limit: 1000
+    //       },
+    //       success: function (res) {
+    //         console.log(res);
+    //         // console.log(res.data.page.pageSize);
+    //         var page = res.data.page
+    //         if (res.data.code !== 0) {
+    //           wx.showToast({
+    //             title: '加载失败...',
+    //             icon: "none"
+    //           })
+    //         }
+    //         if (res.data.code == 0 && page.list.length <= page.totalCount) {
+    //           let shop = [];
+    //           shop = that.data.shop;
+    //           for (var i = 0; i < res.data.page.list.length; i++) {
+    //             shop.push(res.data.page.list[i]);
+    //           }
+    //           that.setData({
+    //             shop: shop,
+    //           });
+    //         }
+    //       }
+    //     })
+    //   }
+    // })
   },
   //上拉刷新，下拉加载
   onPullDownRefresh: function () {

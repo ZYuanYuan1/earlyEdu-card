@@ -15,53 +15,53 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-    console.log("1111" + JSON.stringify(options))
+  onLoad: function (options) {
+    // console.log("1111" + JSON.stringify(options))
     if (options.inviteUserPhone) {
-    var inviteUserPhone = options.inviteUserPhone;
-    getApp().globalData.invitePeopleNumber = inviteUserPhone;
+      var inviteUserPhone = options.inviteUserPhone;
+      getApp().globalData.invitePeopleNumber = inviteUserPhone;
     }
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     this.initInfoFun()
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
@@ -125,7 +125,7 @@ Page({
     })
   },
   //点击确定-bindPhone组件传过来的信息
-  getBindInfo: function(e) {
+  getBindInfo: function (e) {
     var bindInfo = e.detail.bindPhone; //true为手机绑定成功，false为手机绑定失败
     if (bindInfo) {
       var userInfo = e.detail.userInfo;
@@ -134,11 +134,11 @@ Page({
     }
   },
   //初始化页面
-  initInfoFun: function() {
+  initInfoFun: function () {
     var that = this;
     wx.getStorage({
       key: 'loginStutes',
-      success: function(res1) {
+      success: function (res1) {
         var userInfo = JSON.parse(res1.data);
         var tokenVal = userInfo.app_token;
         console.log(userInfo)
@@ -150,7 +150,7 @@ Page({
             'content-type': 'application/x-www-form-urlencoded',
             'Authorization': tokenVal
           },
-          success: function(res2) {
+          success: function (res2) {
             let code = res2.data.code;
             let info = res2.data.user;
             if (code === 0) {
@@ -173,7 +173,7 @@ Page({
           },
         })
       },
-      fail: function(res) {
+      fail: function (res) {
         console.log("loginStutes 失败")
         that.setData({
           'showPhoneModal': true
@@ -187,11 +187,11 @@ Page({
     })
   },
   //邀请
-  onShareAppMessage: function(res) {
+  onShareAppMessage: function (res) {
     // var that = this
     // console.log(res);
     // if (res.from === 'button') {
-      // 来自页面内转发按钮
+    // 来自页面内转发按钮
     //   console.log(res.target);
     // }
     // wx.getStorage({
@@ -219,7 +219,7 @@ Page({
   },
 
   // 核销码
-  skipScancode(){
+  skipScancode() {
     wx.scanCode({
       success: (scanCodeRes) => {
         console.log(scanCodeRes)
@@ -233,7 +233,10 @@ Page({
             wx.request({
               url: scanCodeRes.result,
               method: 'post',
-              header: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': tokenVal },
+              header: {
+                'content-type': 'application/x-www-form-urlencoded',
+                'Authorization': tokenVal
+              },
               success: function (res) {
                 console.log(res);
                 if (res.data.code == 0) {
@@ -255,16 +258,20 @@ Page({
             })
           },
           fail: function (res) {
-            that.setData({ 'showPhoneModal': true });
+            that.setData({
+              'showPhoneModal': true
+            });
           }
         })
       }
     })
   },
-  goReturn(){
-    this.setData({ 'showPhoneModal': true });
+  goReturn() {
+    this.setData({
+      'showPhoneModal': true
+    });
   },
-  goQRcode(){
+  goQRcode() {
     wx.navigateTo({
       url: '/pages/myQRcode/myQRcode',
     })
