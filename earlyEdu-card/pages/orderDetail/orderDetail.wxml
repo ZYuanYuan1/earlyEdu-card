@@ -1,13 +1,13 @@
 <!--pages/orderDetail/orderDetail.wxml-->
 <view class='contanier'>
-  <view class='header margin'>
+  <view class='header margin' bindtap='goDetail'>
     <view class='header_item'>
-      <view style='flex:0 0 85%'>
-        <image class='shop' src='https://img.sahuanka.com/earlyEdu-card/images/shop.png'></image>
-        <text class='title'>{{orderDetailData.activityname}}</text>
-        <image class='arrow' src='https://img.sahuanka.com/earlyEdu-card/images/arrow.png'></image>
-      </view>
-      <view class='success' style='flex:0 0 15%'>{{tool.formatOrdertState(orderDetailData.state)}}</view>
+      <!-- <view style='flex:0 0 85%'> -->
+        <!-- <image class='shop' src='https://img.sahuanka.com/earlyEdu-card/images/shop.png'></image> -->
+        <!-- <text class='title'>{{orderDetailData.activityname}}</text> -->
+        <!-- <image class='arrow' src='https://img.sahuanka.com/earlyEdu-card/images/arrow.png'></image> -->
+      <!-- </view> -->
+      <view class='success' style='flex:0 0 15%;'>{{tool.formatOrdertState(orderDetailData.state)}}</view>
       <!-- {{tool.formatOrdertState(orderDetailData.state)}} -->
     </view>
     <view class='header_itemtwo'>
@@ -19,7 +19,7 @@
         <!-- <view class='header_fontb'>半年</view> -->
       </view>
       <view style='flex:0 0 15%;text-align:right'>
-        <view class='header_fonta'>￥{{orderDetailData.amount}}</view>
+        <view class='header_fonta'>￥{{orderDetailData.amount+(orderDetailData.replaceAmount==null?0:orderDetailData.replaceAmount)}}</view>
         <view class='header_fontb'>×1</view>
       </view>
     </view>
@@ -27,13 +27,13 @@
       <view class='member_itemone'>会员优惠</view>
       <view class='member_itemtwo'>-￥50</view>
     </view> -->
-    <view class='money member' wx:if="{{isReplace}}">
+    <view class='money member'>
       <view class='member_itemone'>佣金抵扣</view>
-      <view class='member_itemtwo'>-￥{{orderDetailData.replaceAmount}}</view>
+      <view class='member_itemtwo'>-￥{{orderDetailData.replaceAmount==null?0:orderDetailData.replaceAmount}}</view>
     </view>
     <view class='pay'>
       <view class='member_itemone'>实付款</view>
-      <view style='color:#B4282D' class='member_itemtwo'>￥{{isReplace?orderDetailData.amount-orderDetailData.replaceAmount:orderDetailData.amount}}</view>
+      <view style='color:#B4282D' class='member_itemtwo'>￥{{orderDetailData.amount}}</view>
     </view>
   </view>
   <!-- 订单信息 -->

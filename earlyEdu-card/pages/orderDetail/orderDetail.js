@@ -371,9 +371,28 @@ Page({
       }
     })
   },
-  // gotopay(){
-  //   wx.navigateTo({
-  //     url: '/pages/payment/payment?orderInfo=' + orderInfo
-  //   })
-  // }
+  //点击跳转到详情
+  goDetail(){
+    var that=this;
+    var orderDetailData = that.data.orderDetailData;
+    var businessId = orderDetailData.businessid;
+    var ordertype = orderDetailData.ordertype;
+    var activitytype;
+    if (orderDetailData.ordertype==12){
+      var assembleActivityId = orderDetailData.businessactivityid
+      wx.navigateTo({
+        url: '/pages/groupDetail/groupDetail?assembleActivityId=' + assembleActivityId + "&businessId=" + businessId,
+      })
+    }else{
+      if (orderDetailData.ordertype==6){
+         activitytype=3;
+      }else{
+         activitytype = 4
+      }
+      var businessactivityid = orderDetailData.businessactivityid;
+      wx:wx.navigateTo({
+        url: '/pages/goodsDetail/goodsDetail?businessactivityid=' + businessactivityid + "&businessid=" + businessId + "&activitytype=" + activitytype
+      })
+    }
+  }
 })
