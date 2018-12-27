@@ -35,25 +35,30 @@ Page({
       businessactivityid: options.businessactivityid
     })
     console.log(that.data.businessid)
-    //加载用户token
-    wx.getStorage({
-      key: 'loginStutes',
-      success: function (res) {
-        console.log(res);
-        var userInfo = JSON.parse(res.data);
-        var tokenVal = userInfo.app_token;
-        console.log(tokenVal)
-        that.innitGoodsdetail(options.businessactivityid, tokenVal) //初始化数据
-        that.innitCount(tokenVal) //加载销售件数
-        that.innitAddress(); //初始化地址
-        that.innitComment(tokenVal); //初始化评论
-      },
-      fail: function (res) {
-        that.setData({
-          'showPhoneModal': true
-        });
-      }
-    })
+
+    that.innitGoodsdetail(options.businessactivityid) //初始化数据
+    that.innitCount() //加载销售件数
+    that.innitAddress(); //初始化地址
+    that.innitComment(); //初始化评论
+    // //加载用户token
+    // wx.getStorage({
+    //   key: 'loginStutes',
+    //   success: function (res) {
+    //     console.log(res);
+    //     var userInfo = JSON.parse(res.data);
+    //     var tokenVal = userInfo.app_token;
+    //     console.log(tokenVal)
+    //     that.innitGoodsdetail(options.businessactivityid, tokenVal) //初始化数据
+    //     that.innitCount(tokenVal) //加载销售件数
+    //     that.innitAddress(); //初始化地址
+    //     that.innitComment(tokenVal); //初始化评论
+    //   },
+    //   fail: function (res) {
+    //     that.setData({
+    //       'showPhoneModal': true
+    //     });
+    //   }
+    // })
   },
 
   /**
@@ -138,7 +143,6 @@ Page({
         })
       },
       fail: function (res) {
-        console.log("loginStutes 失败")
         that.setData({
           'showPhoneModal': true
         });
@@ -154,7 +158,7 @@ Page({
       method: 'post',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
-        'Authorization': token
+        // 'Authorization': token
       },
       success: function (res) {
         console.log(res);
@@ -176,9 +180,7 @@ Page({
             icon: "none"
           })
         }
-
       },
-
     })
   },
   //初始化销售件数
@@ -191,7 +193,7 @@ Page({
         businessactivityid: that.data.businessactivityid
       },
       header: {
-        'Authorization': token
+        // 'Authorization': token
       },
       success(res) {
         that.setData({
@@ -226,31 +228,24 @@ Page({
     var that = this
     //用户评价数量
     wx.request({
-
       url: getApp().apiUrl + '/api/comment/total/' + that.data.businessactivityid,
       data: ({
         businessActivityId: that.data.businessactivityid
       }),
-
       method: 'get',
       header: {
-        'Authorization': token,
+        // 'Authorization': token,
         'content-type': 'application/x-www-form-urlencoded'
       },
       success(res) {
-
         console.log(res.data.info.count)
         if (res.data.code == 0 && res.data.info.count != 0) {
-
           that.setData({
-
             count: res.data.info.count,
             commentShow: false
-
           })
         }
       }
-
     })
     //用户评价信息
     wx.request({
@@ -265,22 +260,17 @@ Page({
       method: 'get',
       success(res) {
         if (res.data.code == 0 && res.data.info != null) {
-
           var createdate = res.data.info.createTime;
           var createMonth = createdate.substring(5, 7);
           var createDay = createdate.substring(8, 10);
-
           var starArr = [];
           for (var i = 0; i < res.data.info.score; i++) {
             starArr.push("http://img.sahuanka.com/sjCard/images/star.png")
           };
           that.setData({
-
             info: res.data.info,
-
             createDate: createMonth + "月" + createDay + "日",
             starImg: starArr
-
           })
         } else {
           that.setData({
@@ -375,7 +365,6 @@ Page({
             fail: function (res) {
               console.log(res);
             }
-
           });
         }
       },
@@ -409,54 +398,35 @@ Page({
     }
     console.log(ordertype);
     wx.getStorage({
-
       key: 'loginStutes',
-
       success: function (res) {
-
         //console.log(res);
-
         var userInfo = JSON.parse(res.data);
-
         //console.log(userInfo);
-
         var tokenVal = userInfo.app_token;
         wx.request({
-
           url: getApp().apiUrl + '/api/order/creatOrder',
-
           method: 'post',
-
           data: {
             'ordertype': ordertype,
             'businessactivityid': businessactivityid
           },
-
           header: {
             'content-type': 'application/x-www-form-urlencoded',
             'Authorization': tokenVal
           },
-
           success: function (res) {
-
             console.log(res);
-
             if (res.data.code == 0) {
-
               var activityInfo = that.data.activityInfo;
-
               var orderInfo = res.data.order;
-
               if (orderInfo.orderpic) {
                 orderInfo.orderpic = encodeURIComponent(orderInfo.orderpic);
               }
-
               if (orderInfo.qrcode) {
                 orderInfo.qrcode = encodeURIComponent(orderInfo.qrcode);
               }
-
               // console.log(orderInfo);
-
               orderInfo = JSON.stringify(res.data.order);
               if (activitytype == 3) {
                 wx.navigateTo({
@@ -492,25 +462,15 @@ Page({
                 })
               }
             };
-
           },
-
-
-
         })
-
       },
-
       fail: function (res) {
-
         that.setData({
           'showPhoneModal': true
         });
-
       }
-
     })
-
   },
   //邀请
   onShareAppMessage: function (res) {

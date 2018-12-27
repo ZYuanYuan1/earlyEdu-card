@@ -111,117 +111,196 @@ Page({
   //初始化选择状态框
   innitChoose() {
     var that = this
-    wx.getStorage({
-      key: 'loginStutes',
+    wx.request({
+      url: getApp().apiUrl + '/api/product/menu/list',
+      method: 'get',
+      header: {
+        // 'Authorization': tokenVal,
+        'content-type': 'application/x-www-form-urlencoded'
+      },
       success: function (res) {
         console.log(res);
-        var userInfo = JSON.parse(res.data);
-        var tokenVal = userInfo.app_token;
-        console.log(tokenVal);
-        wx.request({
-          url: getApp().apiUrl + '/api/product/menu/list',
-          method: 'get',
-          header: {
-            'Authorization': tokenVal,
-            'content-type': 'application/x-www-form-urlencoded'
-          },
-          success: function (res) {
-            console.log(res);
-            var choose = [{
-              productMenuId: 0,
-              name: "全部"
-            }];
-            if (res.data.code == 0) {
-              for (var i = 0; i < res.data.list.length; i++) {
-                choose.push(res.data.list[i]);
-              }
-            }
-            that.setData({
-              curPage: 1,
-              choose: choose,
-              chooseId: 0,
-            });
-            // that.innitBabygift(that.data.chooseId, that.data.sortId)
+        var choose = [{
+          productMenuId: 0,
+          name: "全部"
+        }];
+        if (res.data.code == 0) {
+          for (var i = 0; i < res.data.list.length; i++) {
+            choose.push(res.data.list[i]);
           }
-
-        })
-      },
-      fail: function (res) {
+        }
         that.setData({
-          'showPhoneModal': true
+          curPage: 1,
+          choose: choose,
+          chooseId: 0,
         });
+        // that.innitBabygift(that.data.chooseId, that.data.sortId)
       }
+
     })
+    // wx.getStorage({
+    //   key: 'loginStutes',
+    //   success: function (res) {
+    //     console.log(res);
+    //     var userInfo = JSON.parse(res.data);
+    //     var tokenVal = userInfo.app_token;
+    //     console.log(tokenVal);
+    //     wx.request({
+    //       url: getApp().apiUrl + '/api/product/menu/list',
+    //       method: 'get',
+    //       header: {
+    //         'Authorization': tokenVal,
+    //         'content-type': 'application/x-www-form-urlencoded'
+    //       },
+    //       success: function (res) {
+    //         console.log(res);
+    //         var choose = [{
+    //           productMenuId: 0,
+    //           name: "全部"
+    //         }];
+    //         if (res.data.code == 0) {
+    //           for (var i = 0; i < res.data.list.length; i++) {
+    //             choose.push(res.data.list[i]);
+    //           }
+    //         }
+    //         that.setData({
+    //           curPage: 1,
+    //           choose: choose,
+    //           chooseId: 0,
+    //         });
+    //         // that.innitBabygift(that.data.chooseId, that.data.sortId)
+    //       }
+
+    //     })
+    //   },
+    //   fail: function (res) {
+    //     that.setData({
+    //       'showPhoneModal': true
+    //     });
+    //   }
+    // })
   },
   //初始化数据
   innitBabygift(chooseId, sort) {
     var that = this;
-    wx.getStorage({
-      key: 'loginStutes',
+    if (chooseId == 0) {
+      mdata = {
+        'page': that.data.curPage,
+        'limit': that.data.pageSize,
+        sort: that.data.sortId,
+        activitytype: 4
+      }
+    } else {
+      var mdata = {
+        'productmenuid': chooseId,
+        'page': that.data.curPage,
+        'limit': that.data.pageSize,
+        sort: that.data.sortId,
+        activitytype: 4
+      };
+    }
+    wx.showLoading({
+      "mask": true
+    })
+    wx.request({
+      url: getApp().apiUrl + '/api/activity/list',
+      method: 'post',
+      data: mdata,
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        // 'Authorization': tokenVal
+      },
       success: function (res) {
         // console.log(res);
-        var userInfo = JSON.parse(res.data);
-        var tokenVal = userInfo.app_token;
-
-        if (chooseId == 0) {
-          mdata = {
-            'page': that.data.curPage,
-            'limit': that.data.pageSize,
-            sort: that.data.sortId,
-            activitytype: 4
-          }
-        } else {
-          var mdata = {
-            'productmenuid': chooseId,
-            'page': that.data.curPage,
-            'limit': that.data.pageSize,
-             sort: that.data.sortId,
-             activitytype: 4
-          };
+        wx.hideLoading();
+        // console.log(res.data.page.pageSize);
+        var page = res.data.page
+        wx.hideLoading();
+        if (res.data.code !== 0) {
+          wx.showToast({
+            title: '加载失败...',
+            icon: "none"
+          })
         }
-        wx.showLoading({
-          "mask": true
-        })
-        wx.request({
-          url: getApp().apiUrl + '/api/activity/list',
-          method: 'post',
-          data: mdata,
-          header: {
-            'content-type': 'application/x-www-form-urlencoded',
-            'Authorization': tokenVal
-          },
-          success: function (res) {
-            // console.log(res);
-            wx.hideLoading();
-            // console.log(res.data.page.pageSize);
-            var page = res.data.page
-            wx.hideLoading();
-            if (res.data.code !== 0) {
-              wx.showToast({
-                title: '加载失败...',
-                icon: "none"
-              })
-            }
-            if (res.data.code == 0 && that.data.curPage <= page.totalPage) {
-              let goods = [];
-              goods = that.data.goods
-              for (var i = 0; i < res.data.page.list.length; i++) {
-                goods.push(res.data.page.list[i]);
-              }
-              that.setData({
-                goods: goods,
-              });
-            }
+        if (res.data.code == 0 && that.data.curPage <= page.totalPage) {
+          let goods = [];
+          goods = that.data.goods
+          for (var i = 0; i < res.data.page.list.length; i++) {
+            goods.push(res.data.page.list[i]);
           }
-
-        })
-      },
-      fail: function (res) {
-        that.setData({
-          'showPhoneModal': true
-        });
+          that.setData({
+            goods: goods,
+          });
+        }
       }
+
     })
+    // wx.getStorage({
+    //   key: 'loginStutes',
+    //   success: function (res) {
+    //     // console.log(res);
+    //     var userInfo = JSON.parse(res.data);
+    //     var tokenVal = userInfo.app_token;
+
+    //     if (chooseId == 0) {
+    //       mdata = {
+    //         'page': that.data.curPage,
+    //         'limit': that.data.pageSize,
+    //         sort: that.data.sortId,
+    //         activitytype: 4
+    //       }
+    //     } else {
+    //       var mdata = {
+    //         'productmenuid': chooseId,
+    //         'page': that.data.curPage,
+    //         'limit': that.data.pageSize,
+    //          sort: that.data.sortId,
+    //          activitytype: 4
+    //       };
+    //     }
+    //     wx.showLoading({
+    //       "mask": true
+    //     })
+    //     wx.request({
+    //       url: getApp().apiUrl + '/api/activity/list',
+    //       method: 'post',
+    //       data: mdata,
+    //       header: {
+    //         'content-type': 'application/x-www-form-urlencoded',
+    //         'Authorization': tokenVal
+    //       },
+    //       success: function (res) {
+    //         // console.log(res);
+    //         wx.hideLoading();
+    //         // console.log(res.data.page.pageSize);
+    //         var page = res.data.page
+    //         wx.hideLoading();
+    //         if (res.data.code !== 0) {
+    //           wx.showToast({
+    //             title: '加载失败...',
+    //             icon: "none"
+    //           })
+    //         }
+    //         if (res.data.code == 0 && that.data.curPage <= page.totalPage) {
+    //           let goods = [];
+    //           goods = that.data.goods
+    //           for (var i = 0; i < res.data.page.list.length; i++) {
+    //             goods.push(res.data.page.list[i]);
+    //           }
+    //           that.setData({
+    //             goods: goods,
+    //           });
+    //         }
+    //       }
+
+    //     })
+    //   },
+    //   fail: function (res) {
+    //     that.setData({
+    //       'showPhoneModal': true
+    //     });
+    //   }
+    // })
   },
   //上拉刷新，下拉加载
   onPullDownRefresh: function () {
@@ -242,7 +321,7 @@ Page({
   //分类选框是否显示，点击调用数据
   searchClass(e) {
     let chooseClassId = e.currentTarget.id
-    if(e.currentTarget.dataset.c == true) {
+    if (e.currentTarget.dataset.c == true) {
       chooseClassId = this.data.chooseClassId
     }
     console.log(chooseClassId)
