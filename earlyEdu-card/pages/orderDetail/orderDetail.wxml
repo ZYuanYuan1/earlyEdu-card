@@ -36,10 +36,17 @@
       <view style='color:#B4282D' class='member_itemtwo'>￥{{isReplace?orderDetailData.amount-orderDetailData.replaceAmount:orderDetailData.amount}}</view>
     </view>
   </view>
+  <!-- 订单信息 -->
   <view class='header  margin'>
     <view class='content_title'><text style='color:#B4282D'>|</text>订单信息</view>
     <text selectable="true" class='title_font'>订单编号：{{orderDetailData.orderno}}</text>
     <view class='title_font'>创建时间：{{orderDetailData.createdate}}</view>
+  </view>
+  <!-- 物流信息 -->
+   <view class='header  margin' hidden='{{logisticsDetailData==null||logisticsDetailData.expressId==null}}'>
+    <view class='content_title'><text style='color:#B4282D'>|</text>物流信息</view>
+    <view  class='title_font'>物流公司：{{logisticsCompanyData.name}}</view>
+    <text selectable="true" class='title_font'>物流编号：{{logisticsDetailData.expressOrder}}</text>
   </view>
   <view class='footer'>
     <!-- <view class='footer_button'>再来一单</view> -->

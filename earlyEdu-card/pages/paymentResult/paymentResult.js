@@ -7,7 +7,8 @@ Page({
   data: {
     type: 0, //区分支付成功或者失败
     second: 3, //倒计时
-    id: 0
+    id: 0,
+    orderMessage:{}//订单信息
   },
 
   /**
@@ -77,12 +78,13 @@ Page({
   goOrderdetail(e) {
     console.log(e.currentTarget.id)
     var id = e.currentTarget.id;
+    var orderid = this.data.orderMessage.orderid;
     if (id) {
       this.setData({
         id: e.currentTarget.id
       })
       wx.redirectTo({
-        url: '/pages/orderDetail/orderDetail'
+        url: '/pages/orderDetail/orderDetail?orderid=' + orderid
       })
     }
   },
@@ -90,6 +92,7 @@ Page({
   countdown(that) {
     var second = that.data.second;
     var id = that.data.id;
+    var orderid = this.data.orderMessage.orderid;
     var time = setTimeout(function() {
       that.setData({
         second: second - 1
@@ -99,7 +102,7 @@ Page({
     if (second == 0) {
       if (id == 1) {} else {
         wx.redirectTo({
-          url: '/pages/orderDetail/orderDetail',
+          url: '/pages/orderDetail/orderDetail?orderid=' + orderid,
         })
       }
     }

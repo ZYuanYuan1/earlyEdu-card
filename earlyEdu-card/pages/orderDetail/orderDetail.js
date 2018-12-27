@@ -10,13 +10,18 @@ Page({
     orderDetailData: null, //订单详情信息
     showModal: false, //电子券弹框
     imagePath: '',
+    logisticsDetailData:{},//物流信息
+    logisticsCompanyData:{},//物流商家信息
+    // expressId:0 //物流id
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getOrderDetailInfo(options.orderid)
+    this.getOrderDetailInfo(options.orderid);
+    this.getLogisticsDetail(options.orderid);
+    // this.getLogisticsCompany()
   },
 
   /**
@@ -166,6 +171,101 @@ Page({
       }
     })
   },
+  // 获取物流详情
+  getLogisticsDetail(orderid) {
+   var that = this
+    wx.getStorage({
+      key: 'loginStutes',
+      success: function (res) {
+        var userInfo = JSON.parse(res.data);
+        var tokenVal = userInfo.app_token;
+        // that.setData({
+        //   'userInfo': userInfo
+        // });
+        wx.request({
+          url: getApp().apiUrl + `/api/order/address/${orderid}`,
+          method: 'get',
+          data: { orderId: orderid},
+          header: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'Authorization': tokenVal
+          },
+          success: function (res) {
+            console.log(res)
+            var logisticsDetailData = res.data.info;
+            if (res.data.code == 0) {
+              that.setData({
+                logisticsDetailData: logisticsDetailData,
+              })
+              wx.request({
+                url: getApp().apiUrl + '/api/express/info/' + logisticsDetailData.expressId,
+                method: 'get',
+                data: { expressId: logisticsDetailData.expressId },
+                header: {
+                  'content-type': 'application/x-www-form-urlencoded',
+                  'Authorization': tokenVal
+                },
+                success: function (res) {
+                  console.log(res)
+                  if (res.data.code == 0) {
+                    that.setData({
+                      logisticsCompanyData: res.data.info
+                    })
+                  }
+                },
+
+              })
+            }
+          },
+
+        })
+      },
+      fail: function (res) {
+        that.setData({
+          'showPhoneModal': true
+        });
+      }
+    })
+  },
+  //获取物流公司
+  // getLogisticsCompany() {
+  //  var that = this;
+  //   var expressId = that.data.expressId
+  //   wx.getStorage({
+  //     key: 'loginStutes',
+  //     success: function (res) {
+  //       var userInfo = JSON.parse(res.data);
+  //       var tokenVal = userInfo.app_token;
+  //       console.log(expressid)
+  //       // that.setData({
+  //       //   'userInfo': userInfo
+  //       // });
+  //       wx.request({
+  //         url: getApp().apiUrl + '/api/express/info/' + expressId,
+  //         method: 'get',
+  //         data: { expressId: expressId },
+  //         header: {
+  //           'content-type': 'application/x-www-form-urlencoded',
+  //           'Authorization': tokenVal
+  //         },
+  //         success: function (res) {
+  //           console.log(res)
+  //           if (res.data.code == 0) {
+  //             that.setData({
+  //               logisticsCompanyData: res.data.info
+  //             })
+  //           }
+  //         },
+
+  //       })
+  //     },
+  //     fail: function (res) {
+  //       that.setData({
+  //         'showPhoneModal': true
+  //       });
+  //     }
+  //   })
+  // },
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -199,5 +299,81 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  //支付
+  wxpay() {
+    var that = this;
+    wx.getStorage({
+      key: 'loginStutes',
+      success: function (res) {
+        console.log(res);
+        var userInfo = JSON.parse(res.data);
+        var tokenVal = userInfo.app_token;
+        var orderDetailData = that.data.orderDetailData;
+        // that.data.remark
+        wx.request({
+          url: getApp().apiUrl + '/api/order/creatPayOrder',
+          method: 'post',
+          data: { 'orderid': orderDetailData.orderid, 'isReplace': orderDetailData.isReplace, 'addressId': orderDetailData.addressId, 'remark': orderDetailData.remark },
+          header: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': tokenVal },
+          success: function (res) {
+            console.log(res);
+            if (res.data.code == 0) {
+              if (!res.data.data) {
+                wx.switchTab({
+                  url: '/pages/orders/orders',
+                })
+                return
+              }
+              //待完成-res参数
+              wx.requestPayment({
+                timeStamp: res.data.data.timeStamp,
+                nonceStr: res.data.data.nonceStr,
+                package: res.data.data.package,
+                signType: res.data.data.signType,
+                paySign: res.data.data.paySign,
+                success: function (res) {
+                  that.setData({
+                    type: 1
+                  })
+                  that.countdown(that)
+                },
+                fail: function (res) {
+                  // wx.showToast({
+                  //   title: '支付失败',
+                  //   icon: 'none',
+                  //   duration: 2000
+                  // });
+                  that.setData({
+                    type: 2
+                  })
+                },
+              })
+
+            };
+
+          },
+
+        })
+      },
+      // 当密码输入框输入数字6位数时的自定义函数
+      valueSix() {
+        console.log("1");
+        // 模态交互效果
+        wx.showToast({
+          title: '支付成功',
+          icon: 'success',
+          duration: 2000
+        })
+      },
+      fail: function (res) {
+        that.setData({ 'showPhoneModal': true });
+      }
+    })
+  },
+  // gotopay(){
+  //   wx.navigateTo({
+  //     url: '/pages/payment/payment?orderInfo=' + orderInfo
+  //   })
+  // }
 })
