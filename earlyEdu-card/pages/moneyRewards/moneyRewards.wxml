@@ -12,7 +12,7 @@
    <view class='content' wx:if="{{moneyLength>0}}">
       <view style='font-size:32rpx'>{{grade>0?"现金奖励流水":"资金流水"}}</view>
       <view class='content_item' wx:for="{{moneys}}">
-         <view style='flex:0 0 85%'>
+         <view style='flex:0 0 80%'>
              <view class='cont_fontone'>{{item.description}}</view>
               <view class='cont_fonttwo'>{{item.createdate}}</view>
          </view>

@@ -227,45 +227,6 @@ Page({
       }
     })
   },
-  //获取物流公司
-  // getLogisticsCompany() {
-  //  var that = this;
-  //   var expressId = that.data.expressId
-  //   wx.getStorage({
-  //     key: 'loginStutes',
-  //     success: function (res) {
-  //       var userInfo = JSON.parse(res.data);
-  //       var tokenVal = userInfo.app_token;
-  //       console.log(expressid)
-  //       // that.setData({
-  //       //   'userInfo': userInfo
-  //       // });
-  //       wx.request({
-  //         url: getApp().apiUrl + '/api/express/info/' + expressId,
-  //         method: 'get',
-  //         data: { expressId: expressId },
-  //         header: {
-  //           'content-type': 'application/x-www-form-urlencoded',
-  //           'Authorization': tokenVal
-  //         },
-  //         success: function (res) {
-  //           console.log(res)
-  //           if (res.data.code == 0) {
-  //             that.setData({
-  //               logisticsCompanyData: res.data.info
-  //             })
-  //           }
-  //         },
-
-  //       })
-  //     },
-  //     fail: function (res) {
-  //       that.setData({
-  //         'showPhoneModal': true
-  //       });
-  //     }
-  //   })
-  // },
   /**
    * 生命周期函数--监听页面隐藏
    */

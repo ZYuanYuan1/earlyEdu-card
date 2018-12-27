@@ -1,7 +1,6 @@
 {
   "navigationBarBackgroundColor": "#ffffff",
   "navigationBarTitleText": "我的订单",
-  "enablePullDownRefresh": true,
   "usingComponents": {
     "bindphone": "../../components/bindPhone/bindPhone"
   }
