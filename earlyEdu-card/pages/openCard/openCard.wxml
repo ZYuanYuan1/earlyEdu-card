@@ -57,3 +57,5 @@
      </view>
    </view>
 </view>
+<!--绑定手机号弹窗-->
+<bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone>

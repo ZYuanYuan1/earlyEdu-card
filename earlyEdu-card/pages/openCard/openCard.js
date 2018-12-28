@@ -141,6 +141,11 @@ Page({
           },
 
         })
+      },
+      fail: function (res) {
+        that.setData({
+          'showPhoneModal': true
+        });
       }
     })
   },
