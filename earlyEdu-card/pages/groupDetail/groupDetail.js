@@ -164,10 +164,10 @@ Page({
         if (res.data.code == 0) {
           var activityInfo = res.data.info; //商家活动
           //天数换算  
-          var t3 = activityInfo.shelfTime;
+          var t3 = activityInfo.deadline;
           that.timeFun(t3)
-          if (activityInfo.shelfTime != null) {
-            activityInfo.shelfTime = activityInfo.shelfTime.substring(0, 10)
+          if (activityInfo.deadline != null) {
+            activityInfo.deadline = activityInfo.deadline.substring(0, 10)
           }
           that.setData({
             'activityInfo': activityInfo

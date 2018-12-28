@@ -101,32 +101,32 @@ Page({
   onUnload: function () {
 
   },
+    onPullDownRefresh() {
+      console.log("66666666")
+    page = 1;
+    this.setData({
+      taskList: [],
+    })
+    this.loadOrderListFun();
+    wx.stopPullDownRefresh();
+  },
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    console.log(333);
     this.loadOrderListFun();
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  // onPullDownRefresh() {
-  //   page = 1;
-  //   this.setData({
-  //     taskList: []
-  //   })
-  //   this.loadOrderListFun();
-  //   wx.stopPullDownRefresh();
-  // },
 
   //加载订单列表
   loadOrderListFun: function () {
     var that = this;
-    if (hadLastPage != false) {
-      //that.setData({ reachBottomTip: true });
-      return;
-    };
+    // if (hadLastPage != false) {
+    //   that.setData({ reachBottomTip: true });
+    //   return;
+    // };
     wx.getStorage({
       key: 'loginStutes',
       success: function (res) {
@@ -149,7 +149,7 @@ Page({
             'Authorization': tokenVal
           },
           success: function (res) {
-            console.log(res);
+            console.log(res+"1111111111111111111");
             if (res.data.code == 0) {
               var taskList = that.data.taskList;
               var businiss = that.data.businiss;
