@@ -10,8 +10,8 @@ Page({
     orderDetailData: null, //订单详情信息
     showModal: false, //电子券弹框
     imagePath: '',
-    logisticsDetailData:{},//物流信息
-    logisticsCompanyData:{},//物流商家信息
+    logisticsDetailData: {}, //物流信息
+    logisticsCompanyData: {}, //物流商家信息
     // expressId:0 //物流id
   },
 
@@ -173,7 +173,7 @@ Page({
   },
   // 获取物流详情
   getLogisticsDetail(orderid) {
-   var that = this
+    var that = this
     wx.getStorage({
       key: 'loginStutes',
       success: function (res) {
@@ -185,37 +185,41 @@ Page({
         wx.request({
           url: getApp().apiUrl + `/api/order/address/${orderid}`,
           method: 'get',
-          data: { orderId: orderid},
+          data: {
+            orderId: orderid
+          },
           header: {
             'content-type': 'application/x-www-form-urlencoded',
             'Authorization': tokenVal
           },
           success: function (res) {
-            console.log(res)
-            var logisticsDetailData = res.data.info;
+            console.log('1r',res)
+            var logisticsDetailData = res.data.info
             if (res.data.code == 0) {
               that.setData({
                 logisticsDetailData: logisticsDetailData,
               })
-              if (logisticsDetailData.expressId!=null){
-              wx.request({
-                url: getApp().apiUrl + '/api/express/info/' + logisticsDetailData.expressId,
-                method: 'get',
-                data: { expressId: logisticsDetailData.expressId },
-                header: {
-                  'content-type': 'application/x-www-form-urlencoded',
-                  'Authorization': tokenVal
-                },
-                success: function (res) {
-                  console.log(res)
-                  if (res.data.code == 0) {
-                    that.setData({
-                      logisticsCompanyData: res.data.info
-                    })
-                  }
-                },
+              if (logisticsDetailData.expressId) {
+                wx.request({
+                  url: getApp().apiUrl + '/api/express/info/' + logisticsDetailData.expressId,
+                  method: 'get',
+                  data: {
+                    expressId: logisticsDetailData.expressId
+                  },
+                  header: {
+                    'content-type': 'application/x-www-form-urlencoded',
+                    'Authorization': tokenVal
+                  },
+                  success: function (res) {
+                    console.log(res)
+                    if (res.data.code == 0) {
+                      that.setData({
+                        logisticsCompanyData: res.data.info
+                      })
+                    }
+                  },
 
-              })
+                })
               }
             }
           },
@@ -277,8 +281,16 @@ Page({
         wx.request({
           url: getApp().apiUrl + '/api/order/creatPayOrder',
           method: 'post',
-          data: { 'orderid': orderDetailData.orderid, 'isReplace': orderDetailData.isReplace, 'addressId': orderDetailData.addressId, 'remark': orderDetailData.remark },
-          header: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': tokenVal },
+          data: {
+            'orderid': orderDetailData.orderid,
+            'isReplace': orderDetailData.isReplace,
+            'addressId': orderDetailData.addressId,
+            'remark': orderDetailData.remark
+          },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'Authorization': tokenVal
+          },
           success: function (res) {
             console.log(res);
             if (res.data.code == 0) {
@@ -330,32 +342,40 @@ Page({
         })
       },
       fail: function (res) {
-        that.setData({ 'showPhoneModal': true });
+        that.setData({
+          'showPhoneModal': true
+        });
       }
     })
   },
   //点击跳转到详情+ "&businessid=" + businessId
-  goDetail(){
-    var that=this;
+  goDetail() {
+    var that = this;
     var orderDetailData = that.data.orderDetailData;
     var businessId = orderDetailData.businessid;
     var ordertype = orderDetailData.ordertype;
     var activitytype;
-    if (orderDetailData.ordertype==12){
+    if (orderDetailData.ordertype == 12) {
       var assembleActivityId = orderDetailData.businessactivityid
       wx.navigateTo({
         url: '/pages/groupDetail/groupDetail?assembleActivityId=' + assembleActivityId + "&businessId=" + businessId,
       })
-    }else{
-      if (orderDetailData.ordertype==6){
-         activitytype=3;
-      }else{
-         activitytype = 4
+    } else {
+      if (orderDetailData.ordertype == 6) {
+        activitytype = 3;
+      } else {
+        activitytype = 4
       }
       var businessactivityid = orderDetailData.businessactivityid;
-      wx:wx.navigateTo({
+      wx.navigateTo({
         url: '/pages/goodsDetail/goodsDetail?businessactivityid=' + businessactivityid + "&activitytype=" + activitytype
       })
     }
+  },
+  // 跳转快递信息
+  toExpress() {
+    wx.navigateTo({
+      url: '/pages/express/express'
+    })
   }
 })

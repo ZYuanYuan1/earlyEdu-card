@@ -1,7 +1,7 @@
 {
-  "pages":[
-     "pages/index/index",
-     "pages/orderDetail/orderDetail",
+  "pages": [
+    "pages/index/index",
+    "pages/orderDetail/orderDetail",
     "pages/assemble/assemble",
     "pages/groupDetail/groupDetail",
     "pages/myQRcode/myQRcode",
@@ -34,42 +34,43 @@
     "pages/moneyRewards/moneyRewards",
     "pages/me/me",
     "pages/agreement/agreement",
-    "pages/bindPhone/bindPhone"
-
+    "pages/bindPhone/bindPhone",
+    "pages/express/express"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#FFFECF",
     "navigationBarTitleText": "早教卡",
-    "navigationBarTextStyle":"black"
-  },"tabBar": {
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
     "color": "#333333",
     "selectedColor": "#333333",
-    "list": [{
-      "pagePath": "pages/index/index",
-      "text": "首页",
-      "iconPath": "/images/Group9.png",
-      "selectedIconPath": "/images/Group.png"
-    },
-    {
-      "pagePath": "pages/classify/classify",
-      "text": "分类",
-      "iconPath": "/images/Group17.png",
-      "selectedIconPath": "/images/Group8.png"
-    },
-    {
-      "pagePath": "pages/orders/orders",
-      "text": "订单",
-      "iconPath": "/images/Group18.png",
-      "selectedIconPath": "/images/Group7.png"
-    },
-    {
-      "pagePath": "pages/my/my",
-      "text": "我的",
-      "iconPath": "/images/Group19.png",
-      "selectedIconPath": "/images/Group6.png"
-    
-    }
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/images/Group9.png",
+        "selectedIconPath": "/images/Group.png"
+      },
+      {
+        "pagePath": "pages/classify/classify",
+        "text": "分类",
+        "iconPath": "/images/Group17.png",
+        "selectedIconPath": "/images/Group8.png"
+      },
+      {
+        "pagePath": "pages/orders/orders",
+        "text": "订单",
+        "iconPath": "/images/Group18.png",
+        "selectedIconPath": "/images/Group7.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "/images/Group19.png",
+        "selectedIconPath": "/images/Group6.png"
+      }
     ]
   }
 }
