@@ -43,11 +43,11 @@
     <view class='title_font'>创建时间：{{orderDetailData.createdate}}</view>
   </view>
   <!-- 物流信息 -->
-   <view class='header  margin' hidden='{{logisticsDetailData==null||logisticsDetailData.expressId==null}}'>
+   <view class='header  margin' hidden='{{logisticsDetailData==null||logisticsDetailData.expressId==null||(logisticsDetailData.expressOrder==null&&logisticsDetailData.expressId==0)}}'>
     <view class='content_title'><text style='color:#B4282D'>|</text>物流信息</view>
-    <view  class='title_font'>物流公司：{{logisticsCompanyData.name}}</view>
-    <text selectable="true" class='title_font'>物流编号：{{logisticsDetailData.expressOrder}}</text>
-    <text style="font-size: 20rpx;color: #ccc;"> (长按可复制粘贴)</text>
+    <view  class='title_font'>物流公司：{{logisticsCompanyData.name==null?"暂无物流公司":logisticsCompanyData.name}}</view>
+    <text selectable="true" class='title_font'>物流编号：{{logisticsDetailData.expressOrder==null||logisticsDetailData.expressOrder==""?"暂无单号":logisticsDetailData.expressOrder}}</text>
+    <text style="font-size: 20rpx;color: #ccc;" hidden='{{logisticsDetailData.expressOrder==null||logisticsDetailData.expressOrder==""}}'> (长按可复制粘贴)</text>
   </view>
   <view class='footer'>
     <!-- <view class='footer_button'>再来一单</view> -->
