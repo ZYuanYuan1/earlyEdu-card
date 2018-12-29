@@ -7,10 +7,10 @@ Page({
    */
   data: {
     businessInfo: {}, //商家信息
-    activityInfo: {}, //商家活动
+    // activityInfo: {}, //商家活动
     businessid: 0, //商品id
     token: "", //用户token
-    businessactivityid: 0, //商品活动id
+    // businessactivityid: 0, //商品活动id
     addrShow: true, //是否显示地址模块
     addressList: [], //地址列表
     commentShow: true, //是否显示用户评价模块
@@ -31,13 +31,14 @@ Page({
     //主页面传过来的值赋值
     that.setData({
       businessid: options.businessid,
-      businessactivityid: options.businessactivityid,
+      // businessactivityid: options.businessactivityid,
     })
 
-    that.innitGoodsdetail(options.businessactivityid) //初始化数据
+    that.innitGoodsdetail(options.businessid) //初始化数据
     that.innitAddress(); //初始化地址
-    that.innitComment(); //初始化评论
-    that.innitGoods() //初始化商品信息
+    // that.innitComment(); //初始化评论
+    that.innitGoods(); //初始化商品信息
+    that.innitShop()
     // //加载用户token
     // wx.getStorage({
     //   key: 'loginStutes',
@@ -57,7 +58,6 @@ Page({
     //     });
     //   }
     // })
-    that.innitShop()
   },
 
   /**
@@ -115,7 +115,7 @@ Page({
     var that = this;
     wx.request({
       // + detailId
-      url: getApp().apiUrl + '/api/businessactivity/info/' + detailId,
+      url: getApp().apiUrl + '/api/business/info/' + detailId,
       method: 'post',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
@@ -124,16 +124,10 @@ Page({
       success: function (res) {
         console.log(res);
         if (res.data.code == 0) {
-          var hostInfo = res.data.business; //商家信息
-          var activityInfo = res.data.businessactivity; //商家活动
-          console.log(activityInfo);
+          var hostInfo = res.data.info; //商家信息
           that.setData({
             'businessInfo': hostInfo,
-            'activityInfo': activityInfo
           });
-          //富文本
-          var article = activityInfo.content;
-          WxParse.wxParse('article', 'html', article, that, 15);
 
         } else {
 
@@ -141,25 +135,6 @@ Page({
 
       },
 
-    })
-  },
-  //初始化销售件数
-  innitCount(token) {
-    var that = this;
-    wx.request({
-      url: getApp().apiUrl + '/api/order/number/' + that.data.businessactivityid,
-      method: "get",
-      data: {
-        businessactivityid: that.data.businessactivityid
-      },
-      header: {
-        // 'Authorization': token
-      },
-      success(res) {
-        that.setData({
-          goodsNumber: res.data.number
-        })
-      }
     })
   },
   //初始化店铺地址
@@ -184,44 +159,44 @@ Page({
     })
   },
   //初始化用户评价
-  innitComment(token) {
-    var that = this
-    //用户评价数量
-    wx.request({
-      url: getApp().apiUrl + '/api/comment/total/' + that.data.businessactivityid,
-      data: ({
-        businessActivityId: that.data.businessactivityid
-      }),
-      method: 'get',
-      header: {
-        // 'Authorization': token,
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success(res) {
-        console.log(res.data.info.count)
-        if (res.data.code == 0 && res.data.info.count != 0) {
-          var avg = Math.round(res.data.info.score / res.data.info.count)
-          console.log(avg);
-          var starArr = [];
-          for (var i = 0; i < avg; i++) {
-            starArr.push("http://img.sahuanka.com/sjCard/images/star.png")
-          };
-          that.setData({
-            starImg: starArr
+  // innitComment(token) {
+  //   var that = this
+  //   //用户评价数量
+  //   wx.request({
+  //     url: getApp().apiUrl + '/api/comment/total/' + that.data.businessactivityid,
+  //     data: ({
+  //       businessActivityId: that.data.businessactivityid
+  //     }),
+  //     method: 'get',
+  //     header: {
+  //       // 'Authorization': token,
+  //       'content-type': 'application/x-www-form-urlencoded'
+  //     },
+  //     success(res) {
+  //       console.log(res.data.info.count)
+  //       if (res.data.code == 0 && res.data.info.count != 0) {
+  //         var avg = Math.round(res.data.info.score / res.data.info.count)
+  //         console.log(avg);
+  //         var starArr = [];
+  //         for (var i = 0; i < avg; i++) {
+  //           starArr.push("http://img.sahuanka.com/sjCard/images/star.png")
+  //         };
+  //         that.setData({
+  //           starImg: starArr
 
-          })
-        }
-      }
+  //         })
+  //       }
+  //     }
 
-    })
-  },
+  //   })
+  // },
   //跳转到评论总条数页面
-  commentAll() {
-    var that = this;
-    wx.navigateTo({
-      url: '/pages/commentAll/commentAll?businessActivityId=' + that.data.businessactivityid,
-    })
-  },
+  // commentAll() {
+  //   var that = this;
+  //   wx.navigateTo({
+  //     url: '/pages/commentAll/commentAll?businessActivityId=' + that.data.businessactivityid,
+  //   })
+  // },
   //跳转到地址总条数页面 
   adressAll() {
     var that = this;

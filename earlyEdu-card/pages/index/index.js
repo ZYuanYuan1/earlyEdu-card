@@ -407,13 +407,14 @@ Page({
     this.getGoodsList();
   },
   //进入详情页
+  // + "&businessid=" + bid
   goGoodsdetail(e) {
     // console.log(e);
     var businessactivityid = e.currentTarget.dataset.businessId;
-    var bid = e.currentTarget.dataset.id;
+    // var bid = e.currentTarget.dataset.id;
     var type = e.currentTarget.dataset.type;
     wx.navigateTo({
-      url: '/pages/goodsDetail/goodsDetail?businessactivityid=' + businessactivityid + "&businessid=" + bid + "&activitytype=" + type,
+      url: '/pages/goodsDetail/goodsDetail?businessactivityid=' + businessactivityid + "&activitytype=" + type,
     })
   },
   //点击确定-bindPhone组件传过来的信息
@@ -446,5 +447,28 @@ Page({
     wx.navigateTo({
       url: '/pages/member/member',
     })
-  }
+  },
+  //banner跳转详情
+   skip_bannerDetail: function (e) {
+    console.log(e);
+    var bannerType = e.currentTarget.dataset.bannerType
+    var bannerRequesturl = e.currentTarget.dataset.bannerRequesturl;
+    var type;
+    console.log(bannerType);
+    console.log(bannerRequesturl);
+    if (bannerType == 3||5) {
+      if (bannerType==3){
+        type==3
+      }else{
+        type == 4
+      }
+      wx.navigateTo({
+        url: '/pages/goodsDetail/goodsDetail?businessactivityid=' + bannerRequesturl + "&activitytype=" + type,
+      })
+    } else if (bannerType == 4) {
+      wx.navigateTo({
+        url: '/pages/shop/shop?businessactivityid=' + bannerRequesturl,
+      })
+    } 
+  },
 })

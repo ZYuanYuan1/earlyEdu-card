@@ -15,11 +15,11 @@ page{
 .rignt_img{
   width: 28rpx;
   height: 28rpx;
-  margin-right: 20rpx
+  margin-right: 40rpx
 }
 .addr_left{
   padding: 15rpx 0 30rpx 30rpx;
-  flex: 0 0 83%
+  flex: 0 0 78%
 }
 .enable{
   width: 64rpx;

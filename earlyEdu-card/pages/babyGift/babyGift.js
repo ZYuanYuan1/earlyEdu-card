@@ -33,18 +33,17 @@ Page({
       index: 4
     }],
     searchInput: "", //输入搜索
-    invitePeopleNumber: "" //邀请人电话
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    if (options) {
-      var scene = decodeURIComponent(options.scene);
-      getApp().globalData.invitePeopleNumber = scene;
-      console.log("222222" + getApp().globalData.invitePeopleNumber);
-    }
+  onLoad: function () {
+    // if (options) {
+    //   var scene = decodeURIComponent(options.scene);
+    //   getApp().globalData.invitePeopleNumber = scene;
+    //   console.log("222222" + getApp().globalData.invitePeopleNumber);
+    // }
     // wx.createAudioContext(audioid, this)
     this.innitChoose(); //初始化数据
     this.innitBabygift(0, 0); //初始化数据
@@ -359,12 +358,13 @@ Page({
     });
     this.innitBabygift(this.data.chooseId, this.data.sortId);
   },
-  //跳转到详情
+  //跳转到详情  + '&businessid=' + businessid
   goGooddstail(e) {
+    var activitytype=e.currentTarget.dataset.activitytype
     var businessactivityid = e.currentTarget.dataset.businessactivityid;
-    var businessid = e.currentTarget.dataset.businessid
+    // var businessid = e.currentTarget.dataset.businessid
     wx.navigateTo({
-      url: '/pages/goodsDetail/goodsDetail?businessactivityid=' + businessactivityid + '&businessid=' + businessid,
+      url: '/pages/goodsDetail/goodsDetail?businessactivityid=' + businessactivityid + '&activitytype=' + activitytype,
     })
   },
   //领取礼品

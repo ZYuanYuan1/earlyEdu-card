@@ -51,8 +51,8 @@
                data-order-number="{{item.orderno}}" wx:if="{{item.ordertype==11?item.state==3||item.state==1:item.state==3}}">查看券码</view>
             <view class="comment" style='border: 2rpx solid #D0021B;' bindtap='pop_evaluate' hover-class="none"
                data-order-id="{{item.orderid}}" data-business-activity-id="{{item.businessactivityid}}" wx:if="{{item.state==7}}">评价有礼</view>
-            <view class="comment" style='border: 2rpx solid #D0021B;' bindtap='goGoodsDetail' data-orderid="{{item.orderid}}" data-business-id="{{item.businessactivityid}}" id="{{item.businessid}}"
-               data-activity-type="{{item.ordertype}}" wx:if="{{item.state==9}}">再来一单</view>
+            <!-- <view class="comment" style='border: 2rpx solid #D0021B;' bindtap='goGoodsDetail' data-orderid="{{item.orderid}}" data-business-id="{{item.businessactivityid}}" id="{{item.businessid}}"
+               data-activity-type="{{item.ordertype}}" wx:if="{{item.state==9}}">再来一单</view> -->
             <!-- <view>再来一单</view> -->
          </view>
       </view>

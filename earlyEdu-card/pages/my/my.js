@@ -9,18 +9,18 @@ Page({
     showPhoneModal: false, //手机号绑定弹框
     userInfo: {}, //用户信息
     memberDate: "",
-    inviteUserPhone: '' //邀请人电话
+    // inviteUserPhone: '' //邀请人电话
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
     // console.log("1111" + JSON.stringify(options))
-    if (options.inviteUserPhone) {
-      var inviteUserPhone = options.inviteUserPhone;
-      getApp().globalData.invitePeopleNumber = inviteUserPhone;
-    }
+    // if (options.inviteUserPhone) {
+    //   var inviteUserPhone = options.inviteUserPhone;
+    //   getApp().globalData.invitePeopleNumber = inviteUserPhone;
+    // }
   },
 
   /**

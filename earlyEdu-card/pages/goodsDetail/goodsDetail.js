@@ -31,10 +31,9 @@ Page({
     //主页面传过来的值赋值
     that.setData({
       activitytype: options.activitytype,
-      businessid: options.businessid,
+      // businessid: options.businessid,
       businessactivityid: options.businessactivityid
     })
-    console.log(that.data.businessid)
 
     that.innitGoodsdetail(options.businessactivityid) //初始化数据
     that.innitCount() //加载销售件数
@@ -59,6 +58,9 @@ Page({
     //     });
     //   }
     // })
+    setTimeout(function(){
+      that.innitAddress();
+    },500)
   },
 
   /**
@@ -165,10 +167,10 @@ Page({
         if (res.data.code == 0) {
           var hostInfo = res.data.business; //商家信息
           var activityInfo = res.data.businessactivity; //商家活动
-          console.log(activityInfo);
           that.setData({
             'businessInfo': hostInfo,
-            'activityInfo': activityInfo
+            'activityInfo': activityInfo,
+            businessid: activityInfo.businessid
           });
           //富文本
           var article = activityInfo.content;
@@ -204,9 +206,10 @@ Page({
   },
   //初始化店铺地址
   innitAddress() {
-    var that = this;
+    var that=this;
+    var businessid = that.data.businessid
     wx.request({
-      url: getApp().apiUrl + '/api/business/address/list/' + that.data.businessid,
+      url: getApp().apiUrl + '/api/business/address/list/' + businessid,
       success(res) {
         console.log(res.data.list.length);
         if (res.data.code == 0 && res.data.list.length != 0) {
@@ -291,16 +294,16 @@ Page({
   //跳转到地址总条数页面
   adressAll() {
     var that = this;
+    var businessid=that.data.businessid;
     wx.navigateTo({
-      url: '/pages/shopAddress/shopAddress?businessid=' + that.data.businessid,
+      url: '/pages/shopAddress/shopAddress?businessid=' + businessid,
     })
   },
   //收藏
   save: function (e) {
     console.log(e);
     var that = this;
-    var storeId = that.data.businessInfo.businessid;
-    console.log(storeId);
+    var storeId =that.data.businessid;
     var curr_state = that.data.saving;
     wx.getStorage({
       key: 'loginStutes',
@@ -375,10 +378,13 @@ Page({
       }
     });
   },
+  // businessactivityid=' + businessactivityid + '&
   goShop() {
     console.log(this.data.businessid)
+    var businessid = this.data.businessid;
+    var businessactivityid = this.data.businessactivityid;
     wx.navigateTo({
-      url: '/pages/shop/shop?businessactivityid=' + this.data.businessactivityid + "&businessid=" + this.data.businessid,
+      url: '/pages/shop/shop?businessid=' + businessid
     })
   },
   //确认支付
@@ -477,11 +483,10 @@ Page({
     var that = this
     var businessactivityid = that.data.businessactivityid;
     var inviteUserPhone = that.data.inviteUserPhone;
-    var businessid = that.data.businessid;
     var activitytype = that.data.activitytype
     return {
       title: '送给宝宝的第一份成长大礼包~',
-      path: "/pages/goodsDetail/goodsDetail?businessactivityid=" + businessactivityid + "&businessid=" + businessid + "&activitytype" + activitytype,
+      path: "/pages/goodsDetail/goodsDetail?businessactivityid=" + businessactivityid + "&activitytype" + activitytype,
       imageUrl: 'https://img.sahuanka.com/earlyEdu-card/images/sharePar.jpg'
     }
   },

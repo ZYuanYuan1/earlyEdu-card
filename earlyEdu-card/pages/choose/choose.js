@@ -360,14 +360,14 @@ Page({
     });
     this.innitBabygift(this.data.chooseId, this.data.sortId);
   },
-  //跳转到详情
+  //跳转到详情 + '&businessid=' + businessid
   goGoodsdetail(e) {
     console.log(e)
     var businessactivityid = e.currentTarget.dataset.businessId;
     var businessid = e.currentTarget.dataset.id;
     var activitytype = e.currentTarget.dataset.type
     wx.navigateTo({
-      url: '/pages/goodsDetail/goodsDetail?businessactivityid=' + businessactivityid + '&businessid=' + businessid + "&activitytype=" + activitytype,
+      url: '/pages/goodsDetail/goodsDetail?businessactivityid=' + businessactivityid + "&activitytype=" + activitytype,
     })
   },
 })

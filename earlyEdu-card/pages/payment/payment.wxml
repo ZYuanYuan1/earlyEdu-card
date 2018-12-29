@@ -30,7 +30,7 @@
     </view> -->
      <view class='orderItems'>
       <view style='flex:0 0 12%'>留言</view>
-       <textarea placeholder='点击给商家留言' placeholder-class='font-size:26rpx' bindinput="remark"></textarea>
+       <textarea placeholder='如有多家门店，请备注您想前往的门店地址' placeholder-style='font-size:20rpx'  bindinput="remark"></textarea>
     </view>
   </view>
     <view class='orderBac orderMar' style="display:flex;padding:30rpx">

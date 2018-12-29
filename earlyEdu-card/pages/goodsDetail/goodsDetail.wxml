@@ -50,7 +50,7 @@
           </view>
         </view>
         <!-- 适合年龄 -->
-        <view class='model' style='font-size:26rpx;padding:26rpx 30rpx'>
+        <view class='model' style='font-size:26rpx;padding:26rpx 30rpx' hidden='activityInfo.starage&&activityInfo.endage==null'>
           适用年龄段：{{activityInfo.starage}}-{{activityInfo.endage}}周岁
         </view>
         <!-- 适用店铺-->

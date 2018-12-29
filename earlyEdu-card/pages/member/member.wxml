@@ -10,9 +10,9 @@
   </view>
   <view class="content">
     <view class="content_title">额外福利</view>
-    <view>1、购卡即得官方定制精美礼盒“传家宝”一份，数量有限，先到先得。</view>
+    <view>1、购卡即得官方定制礼盒“传家宝”一份，数量有限，先到先得。</view>
     <view>2、会员可免费享受官方举办的育儿主题活动。</view>
-    <view>3、会员可免费获得元宝妈价值520元的系列育儿主题微课。</view>
+    <!-- <view>3、会员可免费获得元宝妈价值520元的系列育儿主题微课。</view> -->
   </view>
   <!-- <view class='content'>
     <view class='content_title'>会员专享免费权益</view>

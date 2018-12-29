@@ -197,6 +197,7 @@ Page({
               that.setData({
                 logisticsDetailData: logisticsDetailData,
               })
+              if (logisticsDetailData.expressId!=null){
               wx.request({
                 url: getApp().apiUrl + '/api/express/info/' + logisticsDetailData.expressId,
                 method: 'get',
@@ -215,6 +216,7 @@ Page({
                 },
 
               })
+              }
             }
           },
 
@@ -332,7 +334,7 @@ Page({
       }
     })
   },
-  //点击跳转到详情
+  //点击跳转到详情+ "&businessid=" + businessId
   goDetail(){
     var that=this;
     var orderDetailData = that.data.orderDetailData;
@@ -352,7 +354,7 @@ Page({
       }
       var businessactivityid = orderDetailData.businessactivityid;
       wx:wx.navigateTo({
-        url: '/pages/goodsDetail/goodsDetail?businessactivityid=' + businessactivityid + "&businessid=" + businessId + "&activitytype=" + activitytype
+        url: '/pages/goodsDetail/goodsDetail?businessactivityid=' + businessactivityid + "&activitytype=" + activitytype
       })
     }
   }
