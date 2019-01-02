@@ -49,6 +49,10 @@ Page({
           let allSubListArr = []
           for (var i = 0; i < res.data.list.length; i++) {
             choose.push(res.data.list[i]);
+            // console.log(res.data.list[i].subList)
+            if (!res.data.list[i].subList) {
+              continue
+            }
             allSubListArr.push(...res.data.list[i].subList)
           }
           choose.unshift({
