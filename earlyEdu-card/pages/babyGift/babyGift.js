@@ -39,11 +39,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-    // if (options) {
-    //   var scene = decodeURIComponent(options.scene);
-    //   getApp().globalData.invitePeopleNumber = scene;
-    //   console.log("222222" + getApp().globalData.invitePeopleNumber);
-    // }
+    if (options) {
+      var scene = decodeURIComponent(options.scene);
+      getApp().globalData.invitePeopleNumber = scene;
+    }
     // wx.createAudioContext(audioid, this)
     this.innitChoose(); //初始化数据
     this.innitBabygift(0, 0); //初始化数据
