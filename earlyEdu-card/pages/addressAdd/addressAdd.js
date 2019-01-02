@@ -14,12 +14,13 @@ Page({
     addressList: [],
     isDefault: false,
     region: ['请选择省市区', '', ''],
+    phoneNum: ''
   },
   onLoad: function (e) {
     var addressList
     if (e.addressList != null) {
       addressList = JSON.parse(e.addressList);
-      console.log(addressList);
+      // console.log(addressList);
       var that = this;
       var id = addressList.userAddrId;
       if (id) {
@@ -56,12 +57,17 @@ Page({
       region: e.detail.value
     })
   },
+  getPhoneNum(e) {
+    this.setData({
+      phoneNum: e.detail.value
+    })
+  },
   bindSave: function (e) {
-    console.log(e);
-    var that = this;
-    var linkMan = e.detail.value.linkMan;
-    var address = e.detail.value.address;
-    var mobile = e.detail.value.mobile;
+    console.log(e)
+    var that = this
+    var linkMan = e.detail.value.linkMan
+    var address = e.detail.value.address
+    var mobile = this.data.phoneNum || this.data.addressList.phoneNumber
 
     if (linkMan == "") {
       wx.showModal({
@@ -71,7 +77,7 @@ Page({
       })
       return
     }
-    if (mobile == "") {
+    if (mobile == '') {
       wx.showModal({
         title: '提示',
         content: '请填写手机号码',
@@ -107,13 +113,13 @@ Page({
     wx.getStorage({
       key: 'loginStutes',
       success: function (res) {
-        console.log(res);
+        // console.log(res);
         var userInfo = JSON.parse(res.data);
         var tokenVal = userInfo.app_token;
-        console.log(tokenVal);
+        // console.log(tokenVal);
         var apiAddoRuPDATE = "save";
         var apiAddid = that.data.id;
-        console.log(apiAddid);
+        // console.log(apiAddid);
         var methods = "post";
         if (apiAddid) {
           apiAddoRuPDATE = "update";
@@ -130,7 +136,7 @@ Page({
             city: that.data.region[1],
             district: that.data.region[2],
             street: e.detail.value.address,
-            phoneNumber: e.detail.value.mobile,
+            phoneNumber: mobile,
             isDefault: that.data.isDefault
           },
           header: {
@@ -138,13 +144,13 @@ Page({
             'content-type': 'application/x-www-form-urlencoded'
           },
           success: function (res) {
-            console.log(res);
+            // console.log(res);
             if (res.data.code != 0) {
               // 登录错误 
               wx.hideLoading();
               wx.showModal({
                 title: '操作失败',
-                content: "请联系管理员",
+                content: "请检查输入内容或联系管理员",
                 showCancel: false
               })
               return;

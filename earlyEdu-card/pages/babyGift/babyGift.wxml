@@ -33,8 +33,7 @@
     <image style='width:120rpx;height:120rpx' src='https://img.sahuanka.com/earlyEdu-card/images/return.gif'></image>
   </view>
   <view class='con {{chooseId==0&&sortId==0?"content_add":""}}'>
-    <view class='content ' wx:for="{{goods}}" bindtap='goGooddstail' data-businessactivityid="{{item.businessactivityid}}"
-      data-businessid='{{item.businessid}}' data-activitytype='{{item.activitytype}}'>
+    <view class='content ' wx:for="{{goods}}" data-businessid='{{item.businessid}}'>
       <view style='flex:0 0 20%'>
         <image src='{{item.activitypic}}' class="item_img"></image>
       </view>
@@ -46,7 +45,9 @@
         </view>
       </view>
       <view style='flex:0 0 20%'>
-        <view class='receive' bindtap='getGift'>领取</view>
+        <view class='receiveNo' wx:if="{{item.orderState == 3}}">已领取</view>
+        <!-- bindtap='getGift' -->
+        <view class='receive' wx:else bindtap='goGooddstail' data-businessactivityid="{{item.businessactivityid}}" data-activitytype='{{item.activitytype}}'>领取</view>
         <view class='surplus'>剩余：{{item.count}}</view>
       </view>
     </view>

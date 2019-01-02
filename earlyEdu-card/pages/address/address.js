@@ -50,7 +50,7 @@ Page({
     wx.getStorage({
       key: 'loginStutes',
       success: function (res) {
-        console.log(res);
+        // console.log(res);
         var userInfo = JSON.parse(res.data);
         var tokenVal = userInfo.app_token;
         wx.request({
@@ -61,7 +61,7 @@ Page({
           },
           method: "get",
           success(res) {
-            console.log(res);
+            // console.log(res);
             if (res.data.code == 0 && res.data.list.length != 0) {
               that.setData({
                 addressList: res.data.list
@@ -85,14 +85,14 @@ Page({
     wx.getStorage({
       key: 'loginStutes',
       success: function (res) {
-        console.log(res);
+        // console.log(res);
         var userInfo = JSON.parse(res.data);
         var tokenVal = userInfo.app_token;
         wx.showModal({
           title: '提示',
           content: '确定要删除地址吗？',
           success: function (res) {
-            console.log(tokenVal);
+            // console.log(tokenVal);
             if (res.confirm) {
               wx.request({
                 url: getApp().apiUrl + '/api/userAddr/delete/' + id,
@@ -105,14 +105,14 @@ Page({
                   'content-type': 'application/x-www-form-urlencoded'
                 },
                 success: (res) => {
-                  console.log(res);
+                  // console.log(res);
                   if (res.data.code == 0) {
                     that.innitShoppingAddr()
                   }
                 },
               })
             } else if (res.cancel) {
-              console.log('用户点击取消')
+              // console.log('用户点击取消')
             }
           },
 
@@ -122,11 +122,11 @@ Page({
   },
   //点击确定-bindPhone组件传过来的信息
   getBindInfo: function (e) {
-    console.log(e);
+    // console.log(e);
     var bindInfo = e.detail.bindPhone;//true为手机绑定成功，false为手机绑定失败
     if (bindInfo) {
       var userInfo = e.detail.userInfo;
-      console.log(userInfo);
+      // console.log(userInfo);
       this.innitShoppingAddr()
     }
   },

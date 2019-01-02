@@ -3,5 +3,6 @@
   "navigationBarBackgroundColor": "#ffffff",
   "usingComponents": {
     "bindphone": "../../components/bindPhone/bindPhone"
-  }
+  },
+  "disableScroll": true
 }
