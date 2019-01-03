@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/addContent/addContent",
     "pages/orderDetail/orderDetail",
     "pages/assemble/assemble",
     "pages/groupDetail/groupDetail",

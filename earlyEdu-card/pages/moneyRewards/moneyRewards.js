@@ -118,10 +118,14 @@ Page({
         console.log(res);
         var userInfo = JSON.parse(res.data);
         var tokenVal = userInfo.app_token;
-        wx.request({
+        wx.request({ 
          url: getApp().apiUrl + '/api/fundsflow/list',
          method: 'get',
           header: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': tokenVal },
+          data:{
+            page:that.data.curPage,
+            limit: 10,            
+          },
           success: function (res) {
             console.log(res);
             var page = res.data.page
@@ -160,7 +164,7 @@ Page({
         this.setData({
           curPage: 1
         });
-        // this.innitBabygift(0, 0)
+        this.innitMoney()
         wx.stopPullDownRefresh();
       },
       onReachBottom: function () {
@@ -168,7 +172,7 @@ Page({
           curPage: this.data.curPage + 1
         });
         console.log(this.data.curPage)
-        // this.innitBabygift(0, 0)
+        this.innitMoney()
       },
   //点击确定-bindPhone组件传过来的信息
   getBindInfo: function (e) {

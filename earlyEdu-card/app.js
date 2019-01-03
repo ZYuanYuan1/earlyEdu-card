@@ -158,7 +158,7 @@ App({
     })
   },
 
-  //  apiUrl: "https://test2.jcrsjy.com", //测试接口
-   apiUrl: "https://api.jcrsjy.com", //正式接口
+   apiUrl: "https://test2.jcrsjy.com", //测试接口
+  //  apiUrl: "https://api.jcrsjy.com", //正式接口
 
 })

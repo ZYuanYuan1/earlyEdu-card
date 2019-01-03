@@ -1,0 +1,5 @@
+/* pages/addContent/addContent.wxss */
+image{
+  width: 100%;
+  display: block
+}

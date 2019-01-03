@@ -19,19 +19,9 @@ Page({
     inviteUserPhone: '', //邀请人电话
     showPhoneModal: false, //手机号绑定弹框
     nav: [{
-        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/circle.png',
-        descs: '孕产护理',
-        businessMenuId: 35
-      },
-      {
-        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/group2.png',
-        descs: '亲子购物',
-        businessMenuId: 2
-      },
-      {
-        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/baby.png',
-        descs: '婴儿服务',
-        businessMenuId: 36
+        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/group4.png',
+        descs: '亲子游乐',
+        businessMenuId: 1
       },
       {
         imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/group3.png',
@@ -39,14 +29,24 @@ Page({
         businessMenuId: 4
       },
       {
-        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/group4.png',
-        descs: '亲子游乐',
-        businessMenuId: 1
-      },
-      {
         imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/life.png',
         descs: '生活服务',
         businessMenuId: 48
+      },
+      {
+        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/baby.png',
+        descs: '亲子健康',
+        businessMenuId: 54
+      },
+      {
+        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/group2.png',
+        descs: '亲子购物',
+        businessMenuId: 2
+      },
+      {
+        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/circle.png',
+        descs: '孕产护理',
+        businessMenuId: 35
       }
     ],
     navTxt: {
@@ -471,4 +471,9 @@ Page({
       })
     } 
   },
+  goAddcontent(){
+    wx.navigateTo({
+      url: '/pages/addContent/addContent'
+    })
+  }
 })
