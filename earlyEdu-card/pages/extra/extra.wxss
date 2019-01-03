@@ -1,6 +1,6 @@
 /* pages/extra/extra.wxss */
 page{
-  background: url("https://img.sahuanka.com/earlyEdu-card/images/extra_bg3.gif") no-repeat;
+  background: url("https://img.sahuanka.com/earlyEdu-card/images/extra_bg4.gif") no-repeat;
   background-size: 100% 100%
 }
 .header{

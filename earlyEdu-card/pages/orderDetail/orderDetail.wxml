@@ -54,7 +54,7 @@
     <!-- <view class='footer_button' style='right:176rpx'>删除订单</view>-->
     <view class='footer_buttonpay' wx:if="{{orderDetailData.state == 7}}" bindtap='pop_evaluate' hover-class="none" data-order-id="{{orderDetailData.orderid}}" data-business-activity-id="{{orderDetailData.businessactivityid}}">评价</view>
     <view class='footer_buttonpay' wx:if="{{orderDetailData.state == 2}}" bindtap='gotopay' data-order-info="{{orderDetailData}}">支付</view>
-    <view class='footer_buttonpay' bindtap="toExpress" style="right:176rpx" wx:if="{{logisticsDetailData.expressOrder}}">查看物流</view>
+    <!-- <view class='footer_buttonpay' bindtap="toExpress" style="right:176rpx" wx:if="{{logisticsDetailData.expressOrder}}">查看物流</view> -->
     <view class='footer_buttonpay' wx:if="{{orderDetailData.state == 3}}" bindtap="showDialogBtn" data-qrcode-url="{{orderDetailData.qrcode}}" data-order-number="{{orderDetailData.orderno}}">查看券码</view>
   </view>
 </view>
