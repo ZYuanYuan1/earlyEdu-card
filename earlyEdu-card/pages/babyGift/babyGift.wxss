@@ -1,91 +1,111 @@
 /* pages/babyGift/babyGift.wxss */
-.header{
+.header {
   position: fixed
 }
+
 /* 导航 */
-.nav{
+.nav {
   height: 104rpx;
   display: flex;
   font-size: 26rpx;
   color: #444444;
   text-align: center;
   padding-top: 20rpx;
-  margin:0 15rpx
+  margin: 0 15rpx
 }
-.nav_item{
+
+.nav_item {
   flex: 0 0 15%;
   height: 48rpx;
   margin: 0 20rpx
 }
-.nav_change{
-    border-bottom: 4rpx solid #E2C976;
+
+.nav_item:last-child {
+  flex: 0 0 22%;
 }
+
+.nav_change {
+  border-bottom: 4rpx solid #E2C976;
+}
+
 /* 筛选 */
-.filter{
+.filter {
   display: flex;
   width: 750rpx;
   height: 72rpx;
   border-radius: 40rpx 40rpx 0 0;
   position: fixed;
   top: 90rpx;
-  background:#ffffff;
+  background: #ffffff;
   text-align: center;
   align-items: center
 }
-.filter_add{
+
+.filter_add {
   height: 40rpx
 }
-.filter_item{
-   flex: 0 0 50%;
-   height: 100%
+
+.filter_item {
+  flex: 0 0 50%;
+  height: 100%
 }
-.filter_item text{
+
+.filter_item text {
   font-size: 26rpx;
   color: #666666
 }
-.filter_item image{
+
+.filter_item image {
   width: 14rpx;
   height: 8rpx;
   margin-left: 16rpx
 }
+
 /* 内容 */
-.content{
+.content {
   display: flex;
   padding: 25rpx 30rpx;
 }
-.con{
+
+.con {
   background: #ffffff;
   width: 100%;
   padding-top: 160rpx;
 }
-.content_add{
-     padding-top:120rpx 
-  }
-.item_img{
+
+.content_add {
+  padding-top: 120rpx
+}
+
+.item_img {
   width: 116rpx;
   height: 116rpx;
   border-radius: 12rpx;
   background: #000000
 }
-.item_title{
+
+.item_title {
   font-size: 28rpx;
   color: #333333;
   margin-bottom: 20rpx
 }
-.item_price{
+
+.item_price {
   font-size: 28rpx;
   color: #FF5339
 }
-.price{
-   font-size: 26rpx;
-   color: #888888;
-   text-decoration: line-through;
-   margin-left: 20rpx
+
+.price {
+  font-size: 26rpx;
+  color: #888888;
+  text-decoration: line-through;
+  margin-left: 20rpx
 }
-.receive{
+
+.receive {
   width: 136rpx;
   height: 52rpx;
-  background: linear-gradient(to right,#F8E7A3, #E2C875);
+  background: linear-gradient(to right, #F8E7A3, #E2C875);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,7 +114,8 @@
   font-size: 22rpx;
   margin-bottom: 20rpx
 }
-.receiveNo{
+
+.receiveNo {
   width: 136rpx;
   height: 52rpx;
   background: #E8E8E8;
@@ -106,38 +127,44 @@
   font-size: 22rpx;
   margin-bottom: 20rpx
 }
-.surplus{
+
+.surplus {
   font-size: 20rpx;
   color: #666666;
   text-align: center
 }
-.more{
-    font-size:24rpx;
-    color:#9F8A60;
-    text-align:center;
-    width:100%;
-    height:50rpx;
-  }
-  .return{
-  width:100%;
-  position:fixed;
-  z-index:2;
-  text-align:right;
-  bottom:27%;
+
+.more {
+  font-size: 24rpx;
+  color: #9F8A60;
+  text-align: center;
+  width: 100%;
+  height: 50rpx;
 }
+
+.return {
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+  text-align: right;
+  bottom: 27%;
+}
+
 /* 弹窗 */
-.pop{
+.pop {
   top: 160rpx;
   position: fixed;
   background: #ffffff;
   width: 100%;
   color: #888888;
   font-size: 24rpx;
-  padding:0 50rpx
+  padding: 0 50rpx
 }
-.pop_item{
-  margin:20rpx 0
+
+.pop_item {
+  margin: 20rpx 0
 }
-.change{
+
+.change {
   color: #E2C976
 }
