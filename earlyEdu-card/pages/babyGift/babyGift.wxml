@@ -1,10 +1,11 @@
-<!--pages/babyGift/babyGift.wxml-->
+<!-- pages/babyGift/babyGift.wxml -->
 <view class='contanier'>
   <view class='header'>
     <scroll-view scroll-x="true" style='background: #FFFECF'>
       <view class='nav'>
-        <view class='nav_item {{chooseId==item.productMenuId?"nav_change":""}}' bindtap='chooseBind' wx:for="{{choose}}"
-          id="{{item.productMenuId}}">{{item.name}}</view>
+        <view class='nav_item {{chooseId==item.productMenuId?"nav_change":""}}' bindtap='chooseBind' wx:for="{{choose}}" id="{{item.productMenuId}}">
+          {{item.name}}
+        </view>
       </view>
     </scroll-view>
     <view class='filter {{chooseId==0&&sortId==0?"filter_add":""}}'>
@@ -19,13 +20,16 @@
     </view>
     <!-- 分类 -->
     <view class='pop' wx:for="{{choose}}" wx:for-item='items' id="{{items.productMenuId}}" hidden='{{classShow}}' style='display:{{chooseId==items.productMenuId&&classShow==false?"block":"none"}}'>
-      <view class='pop_item {{chooseClassId==item.productMenuId?"change":""}}' wx:for="{{items.subList}}" id="{{item.productMenuId}}" bindtap='searchClass'>{{item.name}}</view>
+      <view class='pop_item {{chooseClassId==item.productMenuId?"change":""}}' wx:for="{{items.subList}}" id="{{item.productMenuId}}" bindtap='searchClass'>
+        {{item.name}}
+      </view>
       <!-- {{chooseClassId==item.productMenuId?"change":""}} -->
     </view>
     <!-- 排序 -->
     <view class='pop' hidden='{{sortShow}}'>
-      <view class='pop_item  {{sortId==item.index?"change":""}}' wx:for="{{sort}}" data-index="{{item.index}}" id='{{chooseId}}'
-        bindtap='searchSort'>{{item.sortName}}</view>
+      <view class='pop_item  {{sortId==item.index?"change":""}}' wx:for="{{sort}}" data-index="{{item.index}}" id='{{chooseId}}' bindtap='searchSort'>
+        {{item.sortName}}
+      </view>
     </view>
   </view>
   <!-- 内容 -->
@@ -47,12 +51,14 @@
       <view style='flex:0 0 20%'>
         <view class='receiveNo' wx:if="{{item.orderState == 3}}">已领取</view>
         <!-- bindtap='getGift' -->
-        <view class='receive' wx:else bindtap='goGooddstail' data-businessactivityid="{{item.businessactivityid}}" data-activitytype='{{item.activitytype}}'>领取</view>
+        <view class='receive' wx:else bindtap='goGooddstail' data-businessactivityid="{{item.businessactivityid}}" data-activitytype='{{item.activitytype}}'>
+          领取
+        </view>
         <view class='surplus'>剩余：{{item.count}}</view>
       </view>
     </view>
   </view>
   <view class='more'>没有更多了</view>
 </view>
-<!--绑定手机号弹窗-->
+<!-- 绑定手机号弹窗 -->
 <bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone>
