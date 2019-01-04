@@ -61,6 +61,18 @@ Page({
     setTimeout(function(){
       that.innitAddress();
     },500)
+    //用户注册
+    if (getApp().globalData.userInfo!=null){
+      wx.getStorage({
+        key: 'loginStutes',
+        success: function (res) {
+          console.log(res);
+          var userInfo = JSON.parse(res.data);
+          var tel = userInfo.mobile
+          getApp().globalData.invitePeopleNumber = tel
+        }
+      })
+    }
   },
 
   /**

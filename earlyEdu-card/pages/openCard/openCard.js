@@ -12,7 +12,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    //用户注册
+    if (getApp().globalData.userInfo != null) {
+      wx.getStorage({
+        key: 'loginStutes',
+        success: function (res) {
+          console.log(res);
+          var userInfo = JSON.parse(res.data);
+          var tel = userInfo.mobile
+          getApp().globalData.invitePeopleNumber = tel
+        }
+      })
+    }
   },
 
   /**

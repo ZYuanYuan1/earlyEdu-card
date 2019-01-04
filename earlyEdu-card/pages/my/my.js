@@ -21,6 +21,18 @@ Page({
     //   var inviteUserPhone = options.inviteUserPhone;
     //   getApp().globalData.invitePeopleNumber = inviteUserPhone;
     // }
+    //用户注册
+    if (getApp().globalData.userInfo != null) {
+      wx.getStorage({
+        key: 'loginStutes',
+        success: function (res) {
+          console.log(res);
+          var userInfo = JSON.parse(res.data);
+          var tel = userInfo.mobile
+          getApp().globalData.invitePeopleNumber = tel
+        }
+      })
+    }
   },
 
   /**

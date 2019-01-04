@@ -88,7 +88,13 @@ Page({
             console.log(res);
             if (res.data.code == 0) {
               var userInfo = res.data.user;
-              that.setData({ 'userInfo': userInfo });
+              var genderIndex = that.data.gender.indexOf(userInfo.dabaogender);
+              var date = userInfo.dabaobirthday;
+              that.setData({ 
+                'userInfo': userInfo,
+                 genderIndex: genderIndex,
+                 date: date
+                });
 
             } else if (res.data.code == 500 || res.data.code == 401) {
               that.setData({ 'showPhoneModal': true });
