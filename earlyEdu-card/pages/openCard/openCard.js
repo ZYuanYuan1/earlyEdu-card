@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderId:0
+    orderId: 0,
+    lock: false
   },
 
   /**
@@ -74,29 +75,41 @@ Page({
   // onShareAppMessage: function () {
 
   // },
-  agreement(){
+  agreement() {
     wx.navigateTo({
       url: '/pages/agreement/agreement',
     })
   },
   //支付
-  pay(){
+  pay() {
     var that = this;
+    if (that.data.lock === true) {
+      return
+    }
     wx.getStorage({
       key: 'loginStutes',
       success: function (res) {
-        var userInfo = JSON.parse(res.data);
+        that.setData({
+          lock: true
+        })
+        var userInfo = JSON.parse(res.data)
         //console.log(userInfo);
-        var tokenVal = userInfo.app_token;
+        var tokenVal = userInfo.app_token
         wx.request({
           url: getApp().apiUrl + '/api/order/creatOrder',
           method: 'post',
-          data: { 'ordertype': 2, 'businessactivityid':2},
-          header: { 'content-type': "application/x-www-form-urlencoded", 'Authorization': tokenVal },
+          data: {
+            'ordertype': 2,
+            'businessactivityid': 2
+          },
+          header: {
+            'content-type': "application/x-www-form-urlencoded",
+            'Authorization': tokenVal
+          },
           success: function (res) {
             if (res.data.code == 0) {
               // var activityInfo = that.data.activityInfo;
-              var orderId = res.data.order.orderid;
+              var orderId = res.data.order.orderid
               that.setData({
                 orderId: orderId
               })
@@ -108,8 +121,13 @@ Page({
               wx.request({
                 url: getApp().apiUrl + '/api/order/creatPayOrder',
                 method: 'post',
-                data: { 'orderid': that.data.orderId },
-                header: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': tokenVal },
+                data: {
+                  'orderid': that.data.orderId
+                },
+                header: {
+                  'content-type': 'application/x-www-form-urlencoded',
+                  'Authorization': tokenVal
+                },
                 success: function (res) {
                   console.log(res);
                   if (res.data.code == 0) {
@@ -121,7 +139,9 @@ Page({
                       signType: res.data.data.signType,
                       paySign: res.data.data.paySign,
                       success: function (res) {
-                        console.log(res);
+                        that.setData({
+                          lock: false
+                        })
                         wx.showToast({
                           title: '支付成功',
                           icon: 'none',
@@ -129,28 +149,39 @@ Page({
                         })
                       },
                       fail: function (res) {
+                        that.setData({
+                          lock: false
+                        })
                         wx.showToast({
                           title: '支付失败',
                           icon: 'none',
                           duration: 2000
                         });
-
                       },
                     })
-
                   };
-
                 },
-
+                fail: function (res) {
+                  that.setData({
+                    lock: false
+                  })            
+                }
               })
             } else {
+              that.setData({
+                lock: false
+              })
               wx.showToast({
                 title: res.data.msg,
                 icon: 'none'
               })
             };
           },
-
+          fail: function (res) {
+            that.setData({
+              lock: false
+            })            
+          }
         })
       },
       fail: function (res) {

@@ -26,7 +26,8 @@ Page({
     businessActivityId: '', //评价-当前活动id
     orderId: '', //订单id
     textareaVal: '',
-    state: 1 //textarea-评价内容
+    state: 1, //textarea-评价内容
+    lock: false
   },
   onLoad: function () {
     // console.log(this.data.state)
@@ -55,7 +56,6 @@ Page({
       wx.getStorage({
         key: 'loginStutes',
         success: function (res) {
-          console.log(res);
           var userInfo = JSON.parse(res.data);
           var tel = userInfo.mobile
           getApp().globalData.invitePeopleNumber = tel
@@ -93,7 +93,6 @@ Page({
     that.loadOrderListFun();
   },
   tabClick: function (e) {
-    console.log(e);
     this.setData({
       sliderOffset: e.currentTarget.offsetLeft,
       activeIndex: e.currentTarget.id
@@ -113,8 +112,8 @@ Page({
   onUnload: function () {
 
   },
-    onPullDownRefresh() {
-      console.log("66666666")
+  onPullDownRefresh() {
+    console.log("66666666")
     page = 1;
     this.setData({
       taskList: [],
@@ -126,7 +125,11 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.loadOrderListFun();
+    let that = this
+    if(that.data.lock === true) {
+      return
+    }
+    that.loadOrderListFun();
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
@@ -142,7 +145,6 @@ Page({
     wx.getStorage({
       key: 'loginStutes',
       success: function (res) {
-        console.log(res);
         var userInfo = JSON.parse(res.data);
         var tokenVal = userInfo.app_token;
         that.setData({
@@ -161,7 +163,7 @@ Page({
             'Authorization': tokenVal
           },
           success: function (res) {
-            console.log(res+"1111111111111111111");
+            console.log(res);
             if (res.data.code == 0) {
               var taskList = that.data.taskList;
               var businiss = that.data.businiss;
@@ -176,6 +178,7 @@ Page({
               }
               if (res.data.page.currPage == res.data.page.totalPage) {
                 hadLastPage = res.data.page.currPage;
+                that.data.lock = true
               } else {
                 page++;
               };
