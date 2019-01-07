@@ -24,7 +24,7 @@
   position: fixed;
   top: 35%;
   left: 0;
-  z-index: 9999;
+  z-index: 9990;
   background: #f9f9f9;
   margin: -180rpx 80rpx;
   border-radius: 36rpx;

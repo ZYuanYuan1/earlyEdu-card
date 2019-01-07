@@ -34,7 +34,7 @@
   </view>
   <!-- 内容 -->
   <view class='return' bindtap='returnIndex'>
-    <image style='width:120rpx;height:120rpx' src='https://img.sahuanka.com/earlyEdu-card/images/return.gif'></image>
+    <image style='width:120rpx;height:120rpx;' src='https://img.sahuanka.com/earlyEdu-card/images/return.gif'></image>
   </view>
   <view class='con {{chooseId==0&&sortId==0?"content_add":""}}'>
     <view class='content ' wx:for="{{goods}}" data-businessid='{{item.businessid}}'>

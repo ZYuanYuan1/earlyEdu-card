@@ -83,19 +83,26 @@ Page({
         wx.request({
           url: getApp().apiUrl + '/api/user/info',
           method: 'post',
-          header: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': tokenVal },
+          header: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': tokenVal},
           success: function (res) {
             console.log(res);
             if (res.data.code == 0) {
               var userInfo = res.data.user;
+              if (userInfo.dabaogender!=null){
               var genderIndex = that.data.gender.indexOf(userInfo.dabaogender);
-              var date = userInfo.dabaobirthday;
+                  that.setData({
+                    genderIndex: genderIndex,
+                  })
+              }
+              if (userInfo.dabaobirthday != null) {
+                var date = userInfo.dabaobirthday;
+                that.setData({
+                  date: date
+                })
+              }
               that.setData({ 
                 'userInfo': userInfo,
-                 genderIndex: genderIndex,
-                 date: date
                 });
-
             } else if (res.data.code == 500 || res.data.code == 401) {
               that.setData({ 'showPhoneModal': true });
             };
@@ -206,7 +213,6 @@ Page({
             fail: function () {
               console.log('操作失败');
             }
-
           })
         }
       }) 

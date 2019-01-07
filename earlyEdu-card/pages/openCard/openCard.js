@@ -85,6 +85,7 @@ Page({
     wx.getStorage({
       key: 'loginStutes',
       success: function (res) {
+        if (getApp().globalData.userInfo != null){
         var userInfo = JSON.parse(res.data);
         //console.log(userInfo);
         var tokenVal = userInfo.app_token;
@@ -122,36 +123,48 @@ Page({
                       paySign: res.data.data.paySign,
                       success: function (res) {
                         console.log(res);
-                        wx.showToast({
-                          title: '支付成功',
-                          icon: 'none',
-                          duration: 2000
+                        wx.showModal({
+                          content: '恭喜您，已经成为早教卡会员！',
+                          showCancel: false,
+                          confirmText: "ok",
+                          confirmColor: "#D0021B",
+                          success(){}
                         })
                       },
                       fail: function (res) {
-                        wx.showToast({
-                          title: '支付失败',
-                          icon: 'none',
-                          duration: 2000
+                        wx.showModal({
+                          content: '很抱歉，开通会员失败，再试一次~',
+                          showCancel: false,
+                          confirmText: "ok",
+                          confirmColor: "#D0021B",
+                          success(){}
                         });
-
                       },
                     })
 
                   };
 
                 },
-
               })
             } else {
-              wx.showToast({
-                title: res.data.msg,
-                icon: 'none'
+              wx.showModal({
+                content: res.data.msg,
+                showCancel: false,
+                confirmText: "ok",
+                confirmColor: "#D0021B",
+                success() {}
               })
             };
           },
 
         })
+      
+      
+      }else{
+          that.setData({
+            'showPhoneModal': true
+          }); 
+      }
       },
       fail: function (res) {
         that.setData({

@@ -419,6 +419,7 @@ Page({
       key: 'loginStutes',
       success: function (res) {
         //console.log(res);
+        if (getApp().globalData.userInfo != null){
         var userInfo = JSON.parse(res.data);
         //console.log(userInfo);
         var tokenVal = userInfo.app_token;
@@ -482,6 +483,12 @@ Page({
             };
           },
         })
+      
+      }else{
+          that.setData({
+            'showPhoneModal': true
+          });
+       }
       },
       fail: function (res) {
         that.setData({

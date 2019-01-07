@@ -185,9 +185,15 @@ Page({
       wx.getStorage({
         key: 'loginStutes',
         success: function (res) {
+          // if (getApp().globalData.userInfo != null){
           let userInfo = JSON.parse(res.data)
           let tokenVal = userInfo.app_token
           resolve(tokenVal)
+          // }else{
+          //   that.setData({
+          //    'showPhoneModal': true
+          //   });
+          // }
         },
         fail: function () {
           resolve()
@@ -198,7 +204,7 @@ Page({
       mdata = {
         'page': that.data.curPage,
         'limit': that.data.pageSize,
-        sort: that.data.sortId,
+         sort: that.data.sortId,
         // activitytype: 4
       }
     } else {
@@ -206,15 +212,24 @@ Page({
         'productmenuid': chooseId,
         'page': that.data.curPage,
         'limit': that.data.pageSize,
-        sort: that.data.sortId,
+         sort: that.data.sortId,
         // activitytype: 4
       }
     }
-    wx.showLoading({
-      "mask": true
-    })
+    // wx.showLoading({
+    //   "mask": true
+    // })
     tokenValPromise.then(tokenVal => {
       // console.log(tokenVal)
+      if (getApp().globalData.userInfo != null){
+        that.setData({
+             'showPhoneModal': false
+            });
+      }else{
+        that.setData({
+          'showPhoneModal': true
+        });
+      }
       let url = '/api/gift/comment/list'
       if (tokenVal) {
         url = '/api/gift/list'
@@ -228,9 +243,9 @@ Page({
           'Authorization': tokenVal
         },
         success: function (res) {
-          wx.hideLoading();
+          // wx.hideLoading();
           var page = res.data.page
-          wx.hideLoading();
+          // wx.hideLoading();
           if (res.data.code !== 0) {
             wx.showToast({
               title: '加载失败...',
