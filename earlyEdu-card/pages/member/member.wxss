@@ -38,7 +38,7 @@ page {
   font-size: 28rpx;
   border-radius: 12rpx;
   margin: 0 auto;
-  margin-top: 60rpx
+  margin-top: 20rpx;
 }
 
 /* 内容 */
@@ -97,6 +97,7 @@ page {
   height: 354rpx;
   margin: 20rpx auto 0;
 }
+
 /* .footer image {
   display: block;
   width: 690rpx;

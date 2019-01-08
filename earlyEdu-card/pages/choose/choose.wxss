@@ -8,22 +8,17 @@
 /* 导航 */
 .nav {
   height: 104rpx;
-  display: flex;
   font-size: 26rpx;
   color: #444444;
-  text-align: center;
   padding-top: 20rpx;
-  margin: 0 15rpx;
 }
 
 .nav_item {
-  flex: 0 0 15%;
+  display: inline-block;
+  text-align: center;
+  width: 104rpx;
   height: 48rpx;
   margin: 0 20rpx;
-}
-
-.nav_item:last-child {
-  flex: 0 0 22%;
 }
 
 .nav_change {

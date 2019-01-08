@@ -204,7 +204,7 @@ Page({
       mdata = {
         'page': that.data.curPage,
         'limit': that.data.pageSize,
-         sort: that.data.sortId,
+        sort: that.data.sortId,
         // activitytype: 4
       }
     } else {
@@ -212,7 +212,7 @@ Page({
         'productmenuid': chooseId,
         'page': that.data.curPage,
         'limit': that.data.pageSize,
-         sort: that.data.sortId,
+        sort: that.data.sortId,
         // activitytype: 4
       }
     }
@@ -221,11 +221,11 @@ Page({
     // })
     tokenValPromise.then(tokenVal => {
       // console.log(tokenVal)
-      if (getApp().globalData.userInfo != null){
+      if (getApp().globalData.userInfo != null) {
         that.setData({
-             'showPhoneModal': false
-            });
-      }else{
+          'showPhoneModal': false
+        });
+      } else {
         that.setData({
           'showPhoneModal': true
         });
