@@ -201,7 +201,7 @@ Page({
       mdata = {
         'page': that.data.curPage,
         'limit': that.data.pageSize,
-         sort: that.data.sortId,
+        sort: that.data.sortId,
         // activitytype: 4
       }
     } else {
@@ -209,7 +209,7 @@ Page({
         'productmenuid': chooseId,
         'page': that.data.curPage,
         'limit': that.data.pageSize,
-         sort: that.data.sortId,
+        sort: that.data.sortId,
         // activitytype: 4
       }
     }

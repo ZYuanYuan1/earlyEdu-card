@@ -2,7 +2,7 @@
 <view class='contanier'>
    <!-- 头部导航 -->
    <view class='header'>
-      <scroll-view scroll-x="true" style='background: #FFFECF;'>
+      <scroll-view scroll-x="true" style='background: #FFFECF;white-space: nowrap;width:750rpx;'>
          <view class='nav'>
             <view class='nav_item {{chooseId==item.productMenuId?"nav_change":""}}' wx:for="{{choose}}" id="{{item.productMenuId}}" bindtap='chooseBind'>
                {{item.name}}

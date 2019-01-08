@@ -1,8 +1,8 @@
 <!-- pages/babyGift/babyGift.wxml -->
 <view class='contanier'>
   <view class='header'>
-    <scroll-view scroll-x="true" style='background: #FFFECF'>
-      <view class='nav'>
+    <scroll-view scroll-x="true" style='background: #FFFECF;white-space: nowrap;width:750rpx;'>
+      <view class="nav">
         <view class='nav_item {{chooseId==item.productMenuId?"nav_change":""}}' bindtap='chooseBind' wx:for="{{choose}}" id="{{item.productMenuId}}">
           {{item.name}}
         </view>
