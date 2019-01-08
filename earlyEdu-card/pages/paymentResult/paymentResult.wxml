@@ -5,6 +5,12 @@
        <view class='skip'>({{second}}秒后自动跳转至订单页面)</view>
        <view class='view' bindtap='goOrderdetail' id="1">查看订单</view>
    </view>
+    <view wx:if="{{type==3}}">
+       <view class='pay_title'>领取成功</view>
+       <view style='width:400rpx;font-size:24rpx;text-align:left;padding-bottom:20rpx;'>每个礼包仅限使用一次，请合理安排使用时间。您可主动联系商家确认礼包使用时间，也可耐心的等待商家邀您</view>
+       <view class='skip'>({{second}}秒后自动跳转至订单页面)</view>
+       <view class='view' bindtap='goOrderdetail' id="1">查看订单</view>
+   </view>
    <view wx:else>
        <view class='pay_default'>支付失败</view>
        <view class='skip tell'>请在<text style='color:#B4282D'>24小时</text>内完成付款 否则订单会被系统取消</view>

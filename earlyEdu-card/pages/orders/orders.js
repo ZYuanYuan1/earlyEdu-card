@@ -146,11 +146,11 @@ Page({
       key: 'loginStutes',
       success: function (res) {
         console.log(res);
-      if (getApp().globalData.userInfo != null){
         var userInfo = JSON.parse(res.data);
         var tokenVal = userInfo.app_token;
         that.setData({
-          'userInfo': userInfo
+          'userInfo': userInfo,
+          'showPhoneModal': false
         });
         wx.request({
           url: getApp().apiUrl + '/api/order/info/list',
@@ -198,11 +198,11 @@ Page({
           },
 
         })
-      }else{
-        that.setData({
-          'showPhoneModal': true
-        });
-      }
+      // }else{
+      //   that.setData({
+      //     'showPhoneModal': true
+      //   });
+      // }
     },
       fail: function (res) {
         that.setData({

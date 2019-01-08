@@ -177,10 +177,6 @@ Page({
               that.setData({
                 userInfo: info
               })
-            } else {
-              that.setData({
-                'showPhoneModal': true
-              });
             }
           },
         })
@@ -277,11 +273,6 @@ Page({
         })
       }
     })
-  },
-  goReturn() {
-    this.setData({
-      'showPhoneModal': true
-    });
   },
   goQRcode() {
     wx.navigateTo({

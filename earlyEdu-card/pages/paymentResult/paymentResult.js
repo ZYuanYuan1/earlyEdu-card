@@ -23,7 +23,7 @@ Page({
         type: type,
         orderMessage: orderMessage
       })
-    if (type == 1) { this.countdown(this);}
+    if (type == 1 || type == 3) { this.countdown(this);}
   },
 
   /**
@@ -51,14 +51,12 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
   },
 
   /**
