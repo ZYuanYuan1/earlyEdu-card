@@ -78,6 +78,7 @@ Page({
     page = 1;
     hadLastPage = false;
     var that = this;
+    that.data.lock = false
     that.setData({
       taskList: []
     })
@@ -126,7 +127,7 @@ Page({
    */
   onReachBottom: function () {
     let that = this
-    if(that.data.lock === true) {
+    if (that.data.lock === true) {
       return
     }
     that.loadOrderListFun();
@@ -198,12 +199,12 @@ Page({
           },
 
         })
-      // }else{
-      //   that.setData({
-      //     'showPhoneModal': true
-      //   });
-      // }
-    },
+        // }else{
+        //   that.setData({
+        //     'showPhoneModal': true
+        //   });
+        // }
+      },
       fail: function (res) {
         that.setData({
           'showPhoneModal': true
