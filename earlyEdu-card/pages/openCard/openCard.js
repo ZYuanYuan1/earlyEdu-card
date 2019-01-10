@@ -6,7 +6,8 @@ Page({
    */
   data: {
     orderId: 0,
-    lock: false
+    lock: false,
+    showModal:false
   },
 
   /**
@@ -89,7 +90,7 @@ Page({
     wx.getStorage({
       key: 'loginStutes',
       success: function (res) {
-        if (getApp().globalData.userInfo != null){
+        // if (getApp().globalData.userInfo != null){
         var userInfo = JSON.parse(res.data);
         that.setData({
           lock: true
@@ -193,11 +194,11 @@ Page({
         })
       
       
-      }else{
-          that.setData({
-            'showPhoneModal': true
-          }); 
-      }
+      // }else{
+      //     that.setData({
+      //       'showPhoneModal': true
+      //     }); 
+      // }
       },
       fail: function (res) {
         that.setData({

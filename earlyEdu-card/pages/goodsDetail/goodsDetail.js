@@ -19,7 +19,8 @@ Page({
     saving: 0, //判断是否收藏
     activitytype: 0, //区分商品类型
     inviteUserPhone: '', //邀请人电话
-    userInfo: {} //用户信息
+    userInfo: {},//用户信息
+    showPhoneModal:false
   },
 
   /**
@@ -419,7 +420,7 @@ Page({
       key: 'loginStutes',
       success: function (res) {
         //console.log(res);
-        if (getApp().globalData.userInfo != null){
+        // if (getApp().globalData.userInfo != null){
         var userInfo = JSON.parse(res.data);
         //console.log(userInfo);
         var tokenVal = userInfo.app_token;
@@ -484,11 +485,11 @@ Page({
           },
         })
       
-      }else{
-          that.setData({
-            'showPhoneModal': true
-          });
-       }
+      // }else{
+      //     that.setData({
+      //       'showPhoneModal': true
+      //     });
+      //  }
       },
       fail: function (res) {
         that.setData({

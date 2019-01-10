@@ -129,8 +129,8 @@ Page({
             console.log(res);
             if (res.data.code == 0) {
               if (!res.data.data) {
-                wx.switchTab({
-                  url: '/pages/orders/orders',
+                wx.navigateTo({
+                  url: '/pages/paymentResult/paymentResult?type=3' + "&orderMessage=" + JSON.stringify(orderMessage),
                 })
                 return
               }
