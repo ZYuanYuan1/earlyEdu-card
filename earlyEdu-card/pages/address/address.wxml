@@ -1,6 +1,6 @@
 <!--pages/address/address.wxml-->
-<view>
-  <view class='addr_content' wx:for='{{addressList}}'>
+<scroll-view class="address" scroll-y="{{true}}" style="height:{{scrollViewHeight}}px">
+  <view class='addr_content' wx:for='{{addressList}}' wx:key="userAddrId">
     <view class='addr_left'>
     <view class='top'>{{item.recipient}}</view>
     <view class='top'>{{item.phoneNumber}}</view>
@@ -14,7 +14,7 @@
       <image  class='rignt_img' src='https://img.sahuanka.com/earlyEdu-card/images/del.png' bindtap='deleteAddress' data-id="{{item.userAddrId}}"></image>
     </view>
   </view>
-</view>
+</scroll-view>
  <view class='comment_footer' bindtap='addAddr'>
      <button>+新增地址</button>
  </view>

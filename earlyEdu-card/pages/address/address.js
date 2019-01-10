@@ -6,21 +6,37 @@ Page({
    */
   data: {
     addressList: [],
-    inviteUserPhone: '',//邀请人电话
-    showPhoneModal: false,//手机号绑定弹框
+    inviteUserPhone: '', //邀请人电话
+    showPhoneModal: false, //手机号绑定弹框,
+    scrollViewHeight: 0, // scrollview高度自适应
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 获取scrollView自适应高度
+    let windowHeight
+    wx.getSystemInfo({
+      success: function (res) {
+        windowHeight = res.windowHeight
+      }
+    })
+    const query = wx.createSelectorQuery().in(this)
+    query.select('.comment_footer').boundingClientRect()
+    query.exec((res) => {
+      const btnHeight = res[0].height
+      const scrollViewHeight = windowHeight - btnHeight
+      this.setData({
+        scrollViewHeight
+      })
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  },
+  onReady: function () {},
 
   /**
    * 生命周期函数--监听页面显示
@@ -75,7 +91,9 @@ Page({
         })
       },
       fail: function (res) {
-        that.setData({ 'showPhoneModal': true });
+        that.setData({
+          'showPhoneModal': true
+        });
       }
     })
   },
@@ -123,7 +141,7 @@ Page({
   //点击确定-bindPhone组件传过来的信息
   getBindInfo: function (e) {
     // console.log(e);
-    var bindInfo = e.detail.bindPhone;//true为手机绑定成功，false为手机绑定失败
+    var bindInfo = e.detail.bindPhone; //true为手机绑定成功，false为手机绑定失败
     if (bindInfo) {
       var userInfo = e.detail.userInfo;
       // console.log(userInfo);

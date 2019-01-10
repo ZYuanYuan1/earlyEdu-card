@@ -50,7 +50,7 @@ page {
 .headerConA image {
   width: 104rpx;
   height: 104rpx;
-  border-radius: ;
+  /* border-radius: ; */
   border-radius: 50%;
 }
 
@@ -60,11 +60,31 @@ page {
   display: flex;
   align-items: center;
 }
+
 .headerConB image {
   margin-left: 10rpx;
   width: 36rpx;
   height: 36rpx;
 }
+.vipIcon {
+  width: 130rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  font-size: 22rpx;
+  color: #FFEFA6;
+  background-color: #2C2C2C;
+  border-radius: 4rpx;
+  display: flex;
+  align-items: center;
+  margin-left: 6rpx;
+}
+
+.vipIcon image {
+  width: 24rpx;
+  height: 18rpx;
+  margin-right: 4rpx;
+}
+
 .headerConC image {
   width: 80rpx;
   height: 80rpx;
@@ -88,7 +108,7 @@ page {
 
 .vipCardA image {
   width: 24rpx;
-  height: 24rpx;
+  height: 20rpx;
 
 }
 
