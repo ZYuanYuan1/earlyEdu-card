@@ -1,4 +1,4 @@
-<!--pages/index/index.wxml-->
+<!-- pages/index/index.wxml -->
 <view>
   <!-- 头部搜索以及地址定位 -->
   <view class="search-bar">
@@ -7,11 +7,10 @@
       <text class="search-bar-loacation-text">{{locationStr}}</text>
       <image class="search-bar-loacation-arrow" src='https://img.sahuanka.com/earlyEdu-card/images/downArrow.png'></image>
     </view>
-
     <view class="search-bar-input-container">
       <view class="search-bar-input-sub-container">
         <image class="search-bar-input-sub-container-icon" src="https://img.sahuanka.com/earlyEdu-card/images/copy.png"></image>
-        <input placeholder='搜索你想要的' placeholder-class='searPl' type="text" confirm-type="search" class="search-bar-input-sub-container-text"  bindblur="toSearch" value="{{searchInput}}" />
+        <input placeholder='搜索你想要的' placeholder-class='searPl' type="text" confirm-type="search" class="search-bar-input-sub-container-text" bindblur="toSearch" value="{{searchInput}}" />
       </view>
     </view>
   </view>
@@ -30,11 +29,11 @@
   </view>
   <!-- 导航栏 -->
   <view class='nav'>
-    <view class="navDisc navList" wx:for="{{navTxt.navtxtCon}}">
+    <view class="navDisc navList" wx:for="{{navTxt.navtxtCon}}" wx:key="index">
       <image src='{{navTxt.navtxtImg}}'></image>
       <text>{{item}}</text>
     </view>
-    <view class="navList" wx:for="{{nav}}" id="{{item.businessMenuId}}" bindtap='goChoose'>
+    <view class="navList" wx:for="{{nav}}" wx:key="businessMenuId" id="{{item.businessMenuId}}" bindtap='goChoose'>
       <image src="{{item.imgUrls}}" />
       <view>{{item.descs}}</view>
     </view>
@@ -42,14 +41,18 @@
   <!-- 宝贝大礼 -->
   <view class='cor' style='padding-top:30rpx' bindtap='goAddcontent'>
     <!-- <image src='/images/gif.gif'class="corset" bindtap='goAssemble'></image> -->
-     <!-- <image src='https://img.sahuanka.com/earlyEdu-card/images/Groupgif.gif' bindtap='goAssemble'></image>-->
+    <!-- <image src='https://img.sahuanka.com/earlyEdu-card/images/Groupgif.gif' bindtap='goAssemble'></image> -->
     <!-- <image src='https://img.sahuanka.com/earlyEdu-card/images/babyGiftgif.gif' bindtap='goBabygift'></image> -->
-    <image src='https://img.sahuanka.com/earlyEdu-card/images/addContent.gif'   style="width:100%;height:152rpx"></image>
-  </view> 
+    <image src='https://img.sahuanka.com/earlyEdu-card/images/addContent.gif' style="width:100%;height:152rpx"></image>
+  </view>
+  <!-- 分享有礼 -->
+  <view class='conTitle' style='flex:1'>分享有礼</view>
+  <c-share-gift></c-share-gift>
+  <!-- 为你优选 -->
   <view class='conTitle' style='flex:1'>为你优选</view>
   <!-- 内容 -->
   <view class='content'>
-    <view class='conGoods' wx:for="{{goods}}" hidden='{{item.activitytype==4?false:true}}' data-business-id="{{item.businessactivityid}}" data-id="{{item.businessid}}" data-type="{{item.activitytype}}" bindtap='goGoodsdetail'>
+    <view class='conGoods' wx:for="{{goods}}" wx:key="businessactivityid" hidden='{{item.activitytype==4?false:true}}' data-business-id="{{item.businessactivityid}}" data-id="{{item.businessid}}" data-type="{{item.activitytype}}" bindtap='goGoodsdetail'>
       <view class='conVip'>
         <view>
           <view>会员</view>
@@ -59,14 +62,16 @@
       <image src='{{item.activitypic}}'></image>
       <view class='conDis conAll des'>{{item.description}}</view>
       <view class='con'>
-        <view class='conName conAll' style='overflow:hidden;white-space:nowrap;text-overflow:ellipsis;'>{{item.activityname}}</view>
+        <view class='conName conAll' style='overflow:hidden;white-space:nowrap;text-overflow:ellipsis;'>
+          {{item.activityname}}
+        </view>
         <view style='padding:0rpx 2rpx 20rpx 10rpx'>
           <text class="price">￥{{item.gradeAmount}}</text>
           <text class='linePrice'>￥{{item.amount}}</text>
         </view>
       </view>
     </view>
-    <view class='conGoods' wx:for="{{goods}}" hidden="{{item.activitytype==3?false:true}}" data-business-id="{{item.businessactivityid}}" data-id="{{item.businessid}}" data-type="{{item.activitytype}}" bindtap='goGoodsdetail'>
+    <view class='conGoods' wx:for="{{goods}}" wx:key="businessactivityid" hidden="{{item.activitytype==3?false:true}}" data-business-id="{{item.businessactivityid}}" data-id="{{item.businessid}}" data-type="{{item.activitytype}}" bindtap='goGoodsdetail'>
       <!-- <view class='conVip'>
                  <view>
                     <view>会员</view>
@@ -76,7 +81,9 @@
       <image src='{{item.activitypic}}'></image>
       <view class='conDis conAll des'>{{item.description}}</view>
       <view class='con'>
-        <view class='conName conAll' style='overflow:hidden;white-space:nowrap;text-overflow:ellipsis;'>{{item.activityname}}</view>
+        <view class='conName conAll' style='overflow:hidden;white-space:nowrap;text-overflow:ellipsis;'>
+          {{item.activityname}}
+        </view>
         <view style='padding:0rpx 2rpx 20rpx 10rpx'>
           <text class="price">￥{{item.gradeAmount}}</text>
           <text style='color:#888888;font-size:18rpx;margin-left:20rpx'>非会员价￥{{item.amount}}</text>
@@ -87,8 +94,8 @@
   <view class='more'>没有更多了</view>
   <!-- <view style='text-align:center;margin-top:60rpx;font-size:24rpx;color:#888888'>暂无商家</view> -->
 </view>
- <view class='return' bindtap='buyCard'>
-          <image style='width:120rpx;height:120rpx' src='https://img.sahuanka.com/earlyEdu-card/images/buyCard.gif'></image>
-        </view>
-<!--绑定手机号弹窗-->
+<view class='return' bindtap='buyCard'>
+  <image style='width:120rpx;height:120rpx' src='https://img.sahuanka.com/earlyEdu-card/images/buyCard.gif'></image>
+</view>
+<!-- 绑定手机号弹窗 -->
 <bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone>

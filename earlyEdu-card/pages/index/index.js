@@ -290,7 +290,7 @@ Page({
       url: '/pages/babyGift/babyGift',
     })
   },
-  
+
   //初始化数据
   getGoodsList: function () {
     var that = this;
@@ -449,17 +449,17 @@ Page({
     })
   },
   //banner跳转详情
-   skip_bannerDetail: function (e) {
+  skip_bannerDetail: function (e) {
     console.log(e);
     var bannerType = e.currentTarget.dataset.bannerType
     var bannerRequesturl = e.currentTarget.dataset.bannerRequesturl;
     var type;
     console.log(bannerType);
     console.log(bannerRequesturl);
-    if (bannerType == 3||5) {
-      if (bannerType==3){
-        type==3
-      }else{
+    if (bannerType == 3 || 5) {
+      if (bannerType == 3) {
+        type == 3
+      } else {
         type == 4
       }
       wx.navigateTo({
@@ -469,9 +469,9 @@ Page({
       wx.navigateTo({
         url: '/pages/shop/shop?businessactivityid=' + bannerRequesturl,
       })
-    } 
+    }
   },
-  goAddcontent(){
+  goAddcontent() {
     wx.navigateTo({
       url: '/pages/addContent/addContent'
     })
