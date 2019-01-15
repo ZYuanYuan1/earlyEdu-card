@@ -350,5 +350,4 @@ Page({
       url: "/pages/index/index"
     })
   },
-  //初始化
 })

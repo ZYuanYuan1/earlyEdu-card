@@ -471,9 +471,9 @@ Page({
       })
     } 
   },
-  goAddcontent(){
-    wx.navigateTo({
-      url: '/pages/addContent/addContent'
-    })
-  }
+  // goAddcontent(){
+  //   wx.navigateTo({
+  //     url: '/pages/addContent/addContent'
+  //   })
+  // }
 })

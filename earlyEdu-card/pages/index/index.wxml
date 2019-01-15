@@ -40,11 +40,11 @@
     </view>
   </view>
   <!-- 宝贝大礼 -->
-  <view class='cor' style='padding-top:30rpx' bindtap='goAddcontent'>
+  <view class='cor' style='padding-top:30rpx'>
     <!-- <image src='/images/gif.gif'class="corset" bindtap='goAssemble'></image> -->
-     <!-- <image src='https://img.sahuanka.com/earlyEdu-card/images/Groupgif.gif' bindtap='goAssemble'></image>-->
-    <!-- <image src='https://img.sahuanka.com/earlyEdu-card/images/babyGiftgif.gif' bindtap='goBabygift'></image> -->
-    <image src='https://img.sahuanka.com/earlyEdu-card/images/addContent.gif'   style="width:100%;height:152rpx"></image>
+     <image src='https://img.sahuanka.com/earlyEdu-card/images/Groupgif.gif' bindtap='goAssemble'></image>
+    <image src='https://img.sahuanka.com/earlyEdu-card/images/babyGiftgif.gif' bindtap='goBabygift'></image>
+    <!-- <image src='https://img.sahuanka.com/earlyEdu-card/images/addContent.gif'   style="width:100%;height:152rpx"></image> -->
   </view> 
   <view class='conTitle' style='flex:1'>为你优选</view>
   <!-- 内容 -->

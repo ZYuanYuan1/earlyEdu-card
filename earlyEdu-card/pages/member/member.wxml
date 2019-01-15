@@ -4,7 +4,7 @@
     <image src='https://img.sahuanka.com/earlyEdu-card/images/member_headimg.png'></image>
     <view class='header_content'>
       <view style='margin-top:44rpx;color:#E6D5B5;font-size:32rpx'>给宝贝闪闪发光的童年</view>
-      <view style='margin-top:34rpx;color:#f4f4f4;font-size:28rpx'>开通会员，可享受会员专享福利</view>
+      <view style='margin-top:34rpx;color:#f4f4f4;font-size:28rpx'>开通会员，可领取会员专享福利</view>
       <view style='color:#f4f4f4;font-size:28rpx'>预计可赚62300元</view>
       <view class='header_button' bindtap='openCard'>为宝宝开通人生第一张卡</view>
     </view>
