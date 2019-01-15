@@ -1,6 +1,7 @@
 {
   "enablePullDownRefresh": true,
   "usingComponents": {
-    "bindphone": "../../components/bindPhone/bindPhone"
+    "bindphone": "../../components/bindPhone/bindPhone",
+    "c-share-gift": "../../components/index/share-gift/index"
   }
 }

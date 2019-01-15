@@ -36,7 +36,8 @@
     "pages/me/me",
     "pages/agreement/agreement",
     "pages/bindPhone/bindPhone",
-    "pages/express/express"
+    "pages/express/express",
+    "pages/aBulk/aBulk"
   ],
   "permission": {
     "scope.userLocation": {

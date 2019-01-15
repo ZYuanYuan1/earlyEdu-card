@@ -1,0 +1,15 @@
+<view class="share-gift">
+  <block wx:for="{{2}}">
+    <view class="item" bindtap="toDetail">
+      <image />
+      <view class="item-describe">
+        <view class="tag">超值福利</view>
+        <view class="name">聚焦北鼻时尚摄尚摄影聚焦北鼻时尚摄影聚焦北鼻时尚摄影</view>
+        <view class="plus">送10张底片+精美摆拍</view>
+        <view class="price">
+          ¥299<text class="price-old">原价¥1299</text>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
