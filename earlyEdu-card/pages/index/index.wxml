@@ -47,7 +47,7 @@
   </view> 
   <!-- 分享有礼 -->
   <view class='conTitle' style='flex:1'>分享有礼</view>
-  <c-share-gift></c-share-gift>
+  <c-share-gift item="item-index" tag="tag-index"></c-share-gift>
   <!-- 为你优选 -->
   <view class='conTitle' style='flex:1'>为你优选</view>
   <!-- 内容 -->

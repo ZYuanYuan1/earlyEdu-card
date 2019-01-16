@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    height: 200,
     bannerList: [], //banner图
     'locationStr': '加载失败', //定位地址
     'bannerList': [], //banner

@@ -3,15 +3,15 @@ Component({
   /**
    * 组件的属性列表
    */
+  externalClasses: ['item', 'tag'],
   properties: {
-
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-
+    height:200
   },
 
   /**

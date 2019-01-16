@@ -61,7 +61,7 @@ Page({
     // })
     setTimeout(function(){
       that.innitAddress();
-    },500)
+    },1000)
     //用户注册
     if (getApp().globalData.userInfo!=null){
       wx.getStorage({

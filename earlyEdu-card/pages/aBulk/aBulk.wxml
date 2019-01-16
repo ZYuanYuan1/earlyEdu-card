@@ -1,2 +1,14 @@
 <view class="container">
+   <c-share-gift item="item-abulk"></c-share-gift>
+   <view class='content'>
+      <view class='content_item'> 
+         <view>总价</view>
+         <view>￥2980</view>
+      </view>
+      <view class='content_item' style='color:#FF5339'>
+         <view>团购价</view>
+         <view>￥299</view>
+      </view>
+   </view>
+   <view class='btn_poster'>生成分享海报</view>
 </view>

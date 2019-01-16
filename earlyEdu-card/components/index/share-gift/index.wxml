@@ -1,8 +1,8 @@
 <view class="share-gift">
   <block wx:for="{{2}}">
     <view class="item" bindtap="toDetail">
-      <image />
-      <view class="item-describe">
+      <image class='item-img'/>
+      <view class="item-describe" style='height:{{height}}rpx'>
         <view class="tag">超值福利</view>
         <view class="name">聚焦北鼻时尚摄尚摄影聚焦北鼻时尚摄影聚焦北鼻时尚摄影</view>
         <view class="plus">送10张底片+精美摆拍</view>

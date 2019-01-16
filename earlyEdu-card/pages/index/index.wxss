@@ -351,3 +351,23 @@
   bottom: 27%;
 
 }
+/* 组件样式 */
+.item-index{
+width:680rpx;
+height:236rpx;
+background-color:#FFF4F2;
+display:flex;
+align-items:center;
+border-radius:6rpx;
+margin-bottom:20rpx;
+}
+.tag-index{
+   width: 100rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  font-size: 22rpx;
+  color: #FF5339;
+  border: 1rpx solid #FF5339;
+  text-align: center;
+  border-radius: 2rpx
+}
