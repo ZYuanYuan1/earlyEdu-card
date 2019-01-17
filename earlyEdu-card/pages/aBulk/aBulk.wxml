@@ -1,5 +1,5 @@
 <view class="container">
-   <c-share-gift item="item-abulk"></c-share-gift>
+   <c-share-gift item="item-abulk" paramAtoB="{{desheight}}" isShow="{{show}}" bindmyevent="toGoodsdetail" id="myComponent"></c-share-gift>
    <view class='content'>
       <view class='content_item'> 
          <view>总价</view>

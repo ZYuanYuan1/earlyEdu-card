@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    height: 200,
+    deshHeight: 200,
     bannerList: [], //banner图
     'locationStr': '加载失败', //定位地址
     'bannerList': [], //banner
@@ -64,6 +64,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getChildRun()
     //实例化API核心类
     qqmapsdk = new QQMapWX({
       key: config.key
@@ -86,7 +87,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+      
   },
 
   /**
@@ -472,6 +473,18 @@ Page({
       })
     }
   },
+  toGiftdetail(e){
+    var id=e.detail.id
+    wx.navigateTo({
+      url: '/pages/aBulk/aBulk?id='+id,
+    })
+  },
+  getChildRun() {
+    var header = this.selectComponent('#myComponent');
+    console.log(header)
+    // 父组件里执行子组件的方法
+    header.childRun("/api/gift/pack/list","")
+  }
   // goAddcontent(){
   //   wx.navigateTo({
   //     url: '/pages/addContent/addContent'

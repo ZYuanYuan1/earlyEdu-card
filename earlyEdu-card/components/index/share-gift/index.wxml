@@ -1,13 +1,14 @@
+
 <view class="share-gift">
-  <block wx:for="{{2}}">
-    <view class="item" bindtap="toDetail">
-      <image class='item-img'/>
-      <view class="item-describe" style='height:{{height}}rpx'>
-        <view class="tag">超值福利</view>
-        <view class="name">聚焦北鼻时尚摄尚摄影聚焦北鼻时尚摄影聚焦北鼻时尚摄影</view>
-        <view class="plus">送10张底片+精美摆拍</view>
+  <block wx:for="{{goods}}">
+    <view class="item" bindtap="toDetail" id="{{item.giftPackId}}" data-acId="{{item.activityIds}}">
+      <image class='item-img' src='{{item.posterPath}}'/>
+      <view class="item-describe" style='height:{{paramAtoB}}rpx'>
+        <view wx:if="{{isShow}}" class="tag">超值福利</view>
+        <view class="name">{{item.title}}</view>
+        <view class="plus">{{item.remark}}</view>
         <view class="price">
-          ¥299<text class="price-old">原价¥1299</text>
+          ¥299<text class="price-old">原价¥{{item.amount}}</text>
         </view>
       </view>
     </view>

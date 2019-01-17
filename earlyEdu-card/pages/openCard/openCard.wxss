@@ -67,3 +67,9 @@ font-size:32rpx;
   color: #808080;
   text-align: center
 }
+.donate_btn{
+width:690rpx;
+height:132rpx;
+margin-top:40rpx;
+
+}

@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/addContent/addContent",
+    "pages/donate/donate",
     "pages/orderDetail/orderDetail",
     "pages/assemble/assemble",
     "pages/groupDetail/groupDetail",

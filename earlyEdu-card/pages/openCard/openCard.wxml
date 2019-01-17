@@ -49,6 +49,7 @@
         <text class='content_center'>￥299</text>
       </view>
     </view>
+    <image src='https://img.sahuanka.com/earlyEdu-card/images/donate_btn.png' class='donate_btn' bindtap='donateBind'></image>
     <view class="pay" bindtap='pay'>立即支付</view>
     <view class='content_font'>
       支付即视为同意

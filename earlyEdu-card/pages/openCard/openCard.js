@@ -214,4 +214,10 @@ Page({
       imageUrl: 'https://img.sahuanka.com/earlyEdu-card/images/sharePar.jpg'
     }
   },
+  // 捐款按钮
+  donateBind(){
+    wx.navigateTo({
+      url: '/pages/donate/donate'
+    })
+  }
 })
