@@ -197,7 +197,7 @@ Page({
       console.log(res)
       let qrcode = res
       wx.getImageInfo({
-        src: 'https://img.sahuanka.com/earlyEdu-card/images/poster_bg.png',
+        src: 'https://img.sahuanka.com/earlyEdu-card/images/poster_bg.jpg',
         success: function(res) {
           that.setData({
             showModal: true,
@@ -225,11 +225,11 @@ Page({
         type: 'image',
         url: qr_code,
         css: {
-          width: '140rpx',
-          height: '140rpx',
-          left: '209rpx',
-          top: '670rpx',
-          borderRadius: '70rpx'
+          width: '180rpx',
+          height: '180rpx', 
+          left: '189rpx',
+          top: '500rpx',
+          borderRadius: '90rpx'
         }
       }]
     })
