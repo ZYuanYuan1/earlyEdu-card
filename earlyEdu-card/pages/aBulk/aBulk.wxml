@@ -1,9 +1,22 @@
 <view class="container">
-   <c-share-gift item="item-abulk" paramAtoB="{{desheight}}" isShow="{{show}}" bindmyevent="toGoodsdetail" id="myComponent"></c-share-gift>
+  <view class="share-gift">
+  <block wx:for="{{goods}}">
+    <view class="item" bindtap="toGoodsdetail" id="{{item.businessactivityid}}" data-ac-type="{{item.activitytype}}">
+      <image class='item-img' src='{{item.activitypic}}'/>
+      <view class="item-describe" style='height:160rpx'>
+        <view class="name">{{item.activityname}}</view>
+        <view class="plus">{{item.description}}</view>
+        <view class="price">
+          ¥299<text class="price-old">原价¥{{item.amount}}</text>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
    <view class='content'>
       <view class='content_item'> 
          <view>总价</view>
-         <view>￥2980</view>
+         <view>￥{{count}}</view>
       </view>
       <view class='content_item' style='color:#FF5339'>
          <view>团购价</view>

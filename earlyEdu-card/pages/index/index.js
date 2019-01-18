@@ -483,7 +483,7 @@ Page({
     var header = this.selectComponent('#myComponent');
     console.log(header)
     // 父组件里执行子组件的方法
-    header.childRun("/api/gift/pack/list","")
+    header.childRun("/api/gift/pack/list")
   }
   // goAddcontent(){
   //   wx.navigateTo({

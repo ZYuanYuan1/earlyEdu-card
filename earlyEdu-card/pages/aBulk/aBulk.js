@@ -5,9 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    desheight:160,
     show:false,
-    id:0
+    id:0,
+    goods:[],
+    count:0
   },
 
   /**
@@ -18,8 +19,8 @@ Page({
     this.setData({
       id: options.id
     })
-    this.properties.height=160;
-    this.getChildRun()
+    var id=this.data.id;
+    this.initGoods(id);
   },
 
   /**
@@ -72,17 +73,44 @@ Page({
   },
   //跳转
   toGoodsdetail(e){
+   var id=e.currentTarget.id;
+    var acType=e.currentTarget.dataset.acType;
     wx.navigateTo({
-      url: '/pages/goodsDetail/goodsDetail'
+      url: '/pages/goodsDetail/goodsDetail?businessactivityid=' + id + "&activitytype=" + acType
     })
   },
   //初始数据
-  getChildRun() {
-    var header = this.selectComponent('#myComponent');
-    console.log(header);
-    // 父组件里执行子组件的方法
-    var aid=this.data.id;
-    console.log(aid);
-    header.childRun("/api/gift/pack/info/1", aid)
-  }
+  initGoods(giftPackId){
+    var that=this
+     wx.request({
+       url: getApp().apiUrl + "/api/gift/pack/info/" + giftPackId,
+       method: "get",
+       data: {
+         'page': 1,
+         'limit': 1000,
+         giftPackId: giftPackId
+       },
+       header: {
+         // 'Authorization': tokenVal,
+         'content-type': 'application/x-www-form-urlencoded'
+       },
+       success: function (res) {
+         console.log(res);
+         // console.log(res.data.page.pageSize);
+         var page = res.data.info;
+         console.log(page.activityList.length);
+         if (res.data.code == 0) {
+           let goods = [];
+           goods = that.data.goods;
+           for (var i = 0; i < page.activityList.length; i++) {
+             goods.push(page.activityList[i]);
+           }
+           that.setData({
+             goods: goods,
+             count: page.amount
+           });
+         }
+       }
+     })
+   }
 })

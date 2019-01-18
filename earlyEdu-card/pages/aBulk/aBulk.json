@@ -1,7 +1,4 @@
 {
-  "usingComponents": {
-    "c-share-gift": "../../components/index/share-gift/index"
-  },
   "navigationBarTitleText": "分享有礼",
   "navigationBarBackgroundColor": "#ffffff"
 }

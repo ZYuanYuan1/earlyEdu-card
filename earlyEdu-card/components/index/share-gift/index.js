@@ -39,7 +39,7 @@ Component({
       var myEventOption = {}
       this.triggerEvent('myevent', myEventDetail, myEventOption)
     },
-    childRun(url, giftPackId){
+    childRun(url){
       console.log("haaaaaaaaaaaaaaa");
       var that=this;
       wx.request({
@@ -48,7 +48,6 @@ Component({
         data: {
           'page': 1,
           'limit': 1000,
-           giftPackId: giftPackId
         },
         header: {
           // 'Authorization': tokenVal,
