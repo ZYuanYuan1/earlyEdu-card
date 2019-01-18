@@ -1,6 +1,6 @@
 
 <view class="share-gift">
-  <block wx:for="{{goods}}">
+  <block wx:for="{{goods}}" wx:key="index">
     <view class="item" bindtap="toDetail" id="{{item.giftPackId}}" data-acId="{{item.activityIds}}">
       <image class='item-img' src='{{item.posterPath}}'/>
       <view class="item-describe" style='height:{{paramAtoB}}rpx'>

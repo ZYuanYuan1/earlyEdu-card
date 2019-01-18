@@ -1,6 +1,6 @@
 <view class="container">
   <view class="share-gift">
-  <block wx:for="{{goods}}">
+  <block wx:for="{{goods}}" wx:key="index">
     <view class="item" bindtap="toGoodsdetail" id="{{item.businessactivityid}}" data-ac-type="{{item.activitytype}}">
       <image class='item-img' src='{{item.activitypic}}'/>
       <view class="item-describe" style='height:160rpx'>
@@ -23,5 +23,10 @@
          <view>￥299</view>
       </view>
    </view>
-   <view class='btn_poster'>生成分享海报</view>
+   <view class='btn_poster' bindtap="handlePoster">生成分享海报</view>
+</view>
+
+<!-- 海报 -->
+<view style="position:fixed;top:4444rpx;">
+  <painter palette="{{template}}" bind:imgOK="onImgOK" />
 </view>

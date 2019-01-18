@@ -1,4 +1,8 @@
 {
   "navigationBarTitleText": "分享有礼",
-  "navigationBarBackgroundColor": "#ffffff"
+  "navigationBarBackgroundColor": "#ffffff",
+  "usingComponents": {
+    "painter": "../../components/painter/painter"
+  },
+  "disableScroll": true
 }
