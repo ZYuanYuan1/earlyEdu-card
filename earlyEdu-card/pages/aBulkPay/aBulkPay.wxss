@@ -1,1 +1,28 @@
-/* pages/aBulkPay/aBulkPay.wxss */
+.container {
+  font-size: 26rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-btn {
+  font-size: 36rpx;
+  color: #ffffff;
+  width: 632rpx;
+  height: 104rpx;
+  line-height: 104rpx;
+  text-align: center;
+  background-color: #E26E76;
+  border-radius: 53px;
+  margin-top: 16rpx;
+}
+
+.login-tip {
+  width: 462rpx;
+  height: 22rpx;
+  font-size: 22rpx;
+  font-weight: 400;
+  color: #666666;
+  margin-top: 52rpx;
+}
