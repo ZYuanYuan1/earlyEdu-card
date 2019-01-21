@@ -1,0 +1,11 @@
+<view class="container">
+  <image class="login-logo" src="https://img.sahuanka.com/earlyEdu-card/images/aBulkPay_logo.png" />
+  <input class="login-input" type="number" placeholder="请输入手机号" />
+  <view class="line"></view>
+  <input class="login-input" type="number" placeholder="请输入短信验证码" />
+  <view class="line"></view>
+
+  <view class="login-btn">支付¥299</view>
+
+  <view class="login-tip">温馨提示：请填写您的信息方便我们联系您哦！</view>
+</view>

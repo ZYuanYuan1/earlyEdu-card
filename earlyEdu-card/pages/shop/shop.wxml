@@ -8,7 +8,7 @@
          <view class='header_title'>{{businessInfo.businessname}}</view>
          <view><image class='star_img' wx:for="{{starImg}}" src='{{item}}'></image></view>
       </view> -->
-      <view style='flex:0 0 70%' wx:for="{{shop}}" wx:if="{{item.businessId==businessid}}">
+      <view style='flex:0 0 70%' wx:for="{{shop}}" wx:key="index" wx:if="{{item.businessId==businessid}}">
          <view class='header_title'>{{item.businessName}}</view>
          <view>
             <image class='star_img' wx:for="{{starImg}}" src='{{item}}'></image>
@@ -30,7 +30,7 @@
          <view style='width:74rpx'>分享</view>
       </view>
    </view>
-   <view class="topdetailimgbox" bindtap='skip_lessonList' wx:for="{{shop}}" wx:if="{{item.businessId==businessid}}">
+   <view class="topdetailimgbox" bindtap='skip_lessonList' wx:for="{{shop}}" wx:key="index" wx:if="{{item.businessId==businessid}}">
       <image src="{{item.businessPic}}" binderror="errImg" data-err-img="{{businessInfo.businesspic}}"></image>
    </view>
    <view class="maindetailbigbox">
