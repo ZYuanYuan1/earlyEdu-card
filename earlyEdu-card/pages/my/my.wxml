@@ -30,7 +30,7 @@
     <view class='vipCard' bindtap='goMember'>
       <view class='vipCardA'>
         <image src="https://img.sahuanka.com/earlyEdu-card/images/v_icon2.png"></image>
-        <text>早教卡</text>
+        <text>开通会员权益</text>
       </view>
       <view>送给宝宝的第一份成长大礼</view>
     </view>

@@ -31,6 +31,8 @@ Page({
     classShow: true, //分类选框是否显示
     sortShow: true, //排序选框是否显示
     sortId: 0, //排序id
+    cName:"分类",
+    sName:"排序",
     sort: [{
       sortName: "综合排序",
       index: 0
@@ -143,7 +145,6 @@ Page({
         // 'Authorization': tokenVal
       },
       success: function (res) {
-        console.log(res);
         wx.hideLoading();
         // console.log(res.data.page.pageSize);
         var page = res.data.page
@@ -215,17 +216,22 @@ Page({
   },
   //分类选框是否显示，点击调用数据
   searchClass(e) {
-    let chooseClassId = e.currentTarget.id
+    var cName=e.currentTarget.dataset.cname;
+    let chooseClassId = e.currentTarget.id;
+    if (cName != null) {
+      this.setData({
+        cName: cName
+      })
+    }
     if (e.currentTarget.dataset.c == true) {
       chooseClassId = this.data.chooseClassId
     }
-    console.log(e)
     this.setData({
       goods: [],
       curPage: 1,
       classShow: !this.data.classShow,
       sortShow: true,
-      chooseClassId: chooseClassId,
+      chooseClassId: chooseClassId
       // chooseId: e.currentTarget.id,
       // sortId: e.currentTarget.dataset.index
     })
@@ -233,12 +239,18 @@ Page({
   },
   //排序选框是否显示，点击调用数据
   searchSort(e) {
+    var sName = e.currentTarget.dataset.sname;
+    if(sName!=null){
+      this.setData({
+        sName: sName
+      })
+    }
     this.setData({
       sortShow: !this.data.sortShow,
       classShow: true,
       goods: [],
       chooseId: e.currentTarget.id,
-      sortId: e.currentTarget.dataset.index
+      sortId: e.currentTarget.dataset.index,
     })
     this.innitBabygift(this.data.chooseId, this.data.sortId);
   },

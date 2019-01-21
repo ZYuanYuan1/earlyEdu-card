@@ -10,24 +10,24 @@
     </scroll-view>
     <view class='filter {{chooseId==0&&sortId==0?"filter_add":""}}'>
       <view class='filter_item' id='{{chooseId}}' data-c="{{true}}" data-index='{{sortId}}' bindtap='searchClass' hidden='{{chooseId==0&&sortId==0?true:false}}'>
-        <text>分类</text>
+        <text>{{cName}}</text>
         <image src="{{arrowUrl}}"></image>
       </view>
       <view class='filter_item' data-index='{{sortId}}' id='{{chooseId}}' bindtap='searchSort' hidden='{{chooseId==0&&sortId==0?true:false}}'>
-        <text>排序</text>
+        <text>{{sName}}</text>
         <image src="{{arrowUrl}}"></image>
       </view>
     </view>
     <!-- 分类 -->
     <view class='pop' wx:for="{{choose}}" wx:for-item='items' id="{{items.productMenuId}}" hidden='{{classShow}}' style='display:{{chooseId==items.productMenuId&&classShow==false?"block":"none"}}'>
-      <view class='pop_item {{chooseClassId==item.productMenuId?"change":""}}' wx:for="{{items.subList}}" id="{{item.productMenuId}}" bindtap='searchClass'>
+      <view class='pop_item {{chooseClassId==item.productMenuId?"change":""}}' wx:for="{{items.subList}}" id="{{item.productMenuId}}" bindtap='searchClass' data-cname="{{item.name}}">
         {{item.name}}
       </view>
       <!-- {{chooseClassId==item.productMenuId?"change":""}} -->
     </view>
     <!-- 排序 -->
     <view class='pop' hidden='{{sortShow}}'>
-      <view class='pop_item  {{sortId==item.index?"change":""}}' wx:for="{{sort}}" data-index="{{item.index}}" id='{{chooseId}}' bindtap='searchSort'>
+      <view class='pop_item  {{sortId==item.index?"change":""}}' wx:for="{{sort}}" data-index="{{item.index}}" id='{{chooseId}}' bindtap='searchSort' data-sname="{{item.sortName}}">
         {{item.sortName}}
       </view>
     </view>

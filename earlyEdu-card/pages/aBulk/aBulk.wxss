@@ -100,7 +100,7 @@ margin-top:80rpx;
 }
 .price {
   font-size: 28rpx;
-  color: #FF5339;
+  color: #333333;
 }
 .price-old {
   color: #9B9B9B;

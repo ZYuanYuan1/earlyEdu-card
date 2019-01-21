@@ -7,7 +7,7 @@
         <view class="name">{{item.activityname}}</view>
         <view class="plus">{{item.description}}</view>
         <view class="price">
-          ¥299<text class="price-old">原价¥{{item.amount}}</text>
+         ¥{{item.amount}}
         </view>
       </view>
     </view>
