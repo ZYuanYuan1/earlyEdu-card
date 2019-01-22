@@ -19,10 +19,17 @@
 }
 
 .login-tip {
-  width: 462rpx;
+  /* width: 462rpx; */
   height: 22rpx;
   font-size: 22rpx;
   font-weight: 400;
   color: #666666;
   margin-top: 52rpx;
+  text-align: center;
+}
+
+.login-logo {
+  width: 220rpx;
+  height: 94rpx;
+  margin: 100rpx 0 140rpx 0;
 }

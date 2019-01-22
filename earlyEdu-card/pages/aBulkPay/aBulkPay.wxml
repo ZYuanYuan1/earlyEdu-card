@@ -1,8 +1,9 @@
 <c-login wx:if="{{!isLogin}}" bind:phone="bindPhoneSucc"></c-login>
 <view class="container" wx:else>
-  <view class="login-mes">
+  <!-- <view class="login-mes">
     {{tel}}，{{isLogin ?'已经':'未'}}登录，会员: {{vip? '是':'否'}}
-  </view>
-  <view class="login-btn" bindtap="pay">支付¥299</view>
-  <view class="login-tip">温馨提示：请填写您的信息方便我们联系您哦！</view>
+  </view> -->
+  <image class="login-logo" src="https://img.sahuanka.com/earlyEdu-card/images/aBulkPay_logo.png" />
+  <view class="login-btn" bindtap="pay">支付¥0</view>
+  <view class="login-tip">温馨提示：您已经是会员可0元购买！</view>
 </view>
