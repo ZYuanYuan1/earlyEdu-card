@@ -45,3 +45,17 @@
   color: #666666;
   margin-top: 52rpx;
 }
+
+.login-code {
+  font-size: 26rpx;
+  width: 170rpx;
+  height: 58rpx;
+  line-height: 58rpx;
+  text-align: center;
+  color: #333333;
+  border: 2rpx solid #333333;
+  position: absolute;
+  right: 60rpx;
+  top: 496rpx;
+  z-index: 9999;
+}

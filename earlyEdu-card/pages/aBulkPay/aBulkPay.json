@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "c-login": "../../components/aBulkPay/login/index"
-  }
+  },
+  "disableScroll": true
 }

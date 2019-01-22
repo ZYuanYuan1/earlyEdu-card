@@ -220,13 +220,15 @@ Page({
       success: function (res) {
         var userInfo = JSON.parse(res.data);
         var tokenVal = userInfo.app_token;
-        var tel = encodeURIComponent(userInfo.mobile)
+        // var tel = encodeURIComponent(`${userInfo.mobile}&${that.data.id}`)
+        var tel = `${userInfo.mobile}.${that.data.id}`
+        console.log(encodeURIComponent(tel))
         wx.request({
           url: getApp().apiUrl + "/api/weixin/qrCode",
           method: 'post',
           data: {
             scene: tel,
-            page: "pages/aBulkPay/aBulkPay",
+            page: `pages/aBulkPay/aBulkPay`,
             is_hyaline: true
           },
           header: {
