@@ -22,7 +22,8 @@ Component({
   data: {
     goods:[],
     id:0,
-    acid:0
+    acid:0,
+    isSure:true
   },
   ready(){
     // this.childRun("/api/gift/pack/info/1", "1")
@@ -63,9 +64,14 @@ Component({
             goods = that.data.goods;
             for (var i = 0; i <page.length; i++) {
               goods.push(page[i]);
+              if (page[i].giftPackId){
+                 that.setData({
+                   isSure:false
+                 })
+              }
             }
             that.setData({
-              goods: goods,
+              goods: goods
             });
           }
         }
