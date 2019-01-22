@@ -2,5 +2,6 @@
   "usingComponents": {
     "c-login": "../../components/aBulkPay/login/index"
   },
-  "disableScroll": true
+  "disableScroll": true,
+  "navigationBarTitleText": "购买礼包"
 }
