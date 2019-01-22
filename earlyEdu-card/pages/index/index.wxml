@@ -35,7 +35,7 @@
     </view>
     <view class="navList" wx:for="{{nav}}" wx:key="businessMenuId" id="{{item.businessMenuId}}" bindtap='goChoose'>
       <image src="{{item.imgUrls}}" />
-      <view>{{item.descs}}</view>
+      <view style='font-size:20rpx'>{{item.descs}}</view>
     </view>
   </view>
   <!-- 宝贝大礼 -->
@@ -46,7 +46,7 @@
     <!-- <image src='https://img.sahuanka.com/earlyEdu-card/images/addContent.gif'   style="width:100%;height:152rpx"></image> -->
   </view> 
   <!-- 分享有礼 -->
-  <view class='conTitle' style='flex:1'>分享有礼</view>
+  <!-- <view class='conTitle' style='flex:1'>分享有礼</view> -->
   <c-share-gift item="item-index" tag="tag-index" paramAtoB="{{deshHeight}}" bindmyevent="toGiftdetail" id="myComponent"></c-share-gift>
   <!-- 为你优选 -->
   <view class='conTitle' style='flex:1'>为你优选</view>

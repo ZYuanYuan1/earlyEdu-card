@@ -62,6 +62,9 @@ App({
       // console.log(info);
       // console.log(that.globalData.invitePeopleNumber)
     });
+    let res = wx.getSystemInfoSync()
+    console.log("同步获取系统信息：" + res);
+    console.log(res);
   },
   getSystemInfo: function (cb) {
     var that = this

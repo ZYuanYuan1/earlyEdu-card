@@ -112,11 +112,20 @@
   text-align: center;
 
 }
+/* .navLista{
+   width: 125rpx;
+  height: 140rpx;
+  text-align: center;
+} */
 
 .navList image {
   width: 136rpx;
   height: 136rpx
 }
+/* .navLista image {
+  width: 88rpx;
+  height: 88rpx
+} */
 
 .navList view {
   font-size: 24rpx;
@@ -155,7 +164,6 @@
   margin-right: 10rpx;
   margin-bottom: 20rpx;
   border-radius: 12rpx
-<<<<<<< HEAD
   }
   .conTitle{
     font-size:32rpx;

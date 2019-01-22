@@ -61,3 +61,11 @@
   text-decoration: line-through;
   margin-left: 10rpx;
 }
+ .conTitle{
+    font-size:32rpx;
+    font-weight:bold;
+    color: #333333;
+    text-align: center;
+    margin-top:30rpx;
+
+  }

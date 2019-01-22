@@ -1,4 +1,4 @@
-
+<view class='conTitle' style='flex:1'wx:if="{{goods}}">分享有礼</view>
 <view class="share-gift">
   <block wx:for="{{goods}}" wx:key="index">
     <view class="item" bindtap="toDetail" id="{{item.giftPackId}}" data-acId="{{item.activityIds}}">

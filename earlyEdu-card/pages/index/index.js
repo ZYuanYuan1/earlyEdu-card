@@ -53,8 +53,8 @@ Page({
     navTxt: {
       navtxtImg: "https://img.sahuanka.com/earlyEdu-card/images/right.png",
       navtxtCon: [
-        "精选优质早教商家",
-        "一站式早教服务",
+        "精选优质亲子商家",
+        "一站式亲子服务",
         "全程陪伴孩子成长"
       ]
     },
