@@ -5,14 +5,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    type: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.innitAddress(options.businessid)
+    let that = this
+    if (options.businessactivityid) {
+      that.data.type = 1
+    }
+    this.innitAddress(options.businessid || options.businessactivityid)
   },
 
   /**
@@ -68,10 +72,14 @@ Page({
   onShareAppMessage: function () {
 
   },
-  innitAddress(businessid) {
+  innitAddress(id) {
     var that = this;
+    let url = getApp().apiUrl + '/api/business/address/list/' + id
+    if(that.data.type == 1) {
+      url = getApp().apiUrl + '/api/activity/address/' + id
+    }
     wx.request({
-      url: getApp().apiUrl + '/api/business/address/list/' + businessid,
+      url,
       success(res) {
         console.log(res.data.list.length);
         if (res.data.code == 0 && res.data.list.length != 0) {
