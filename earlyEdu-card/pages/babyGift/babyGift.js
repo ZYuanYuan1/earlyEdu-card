@@ -227,6 +227,10 @@ Page({
         sort: that.data.sortId,
         // activitytype: 4
       }
+      if (that.data.sortId == 4) {
+        mdata.lat = getApp().globalData.latitude
+        mdata.lng = getApp().globalData.longitude
+      }
     }
     // wx.showLoading({
     //   "mask": true
