@@ -224,7 +224,6 @@ Page({
     wx.request({
       url: getApp().apiUrl + '/api/activity/address/' + businessactivityid,
       success(res) {
-        console.log(res.data.list.length);
         if (res.data.code == 0 && res.data.list.length != 0) {
           that.setData({
             addressList: res.data.list,

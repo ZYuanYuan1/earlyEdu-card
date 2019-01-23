@@ -142,11 +142,12 @@
 }
 
 .return {
-  width: 100%;
+  width: 140rpx;
   position: fixed;
   z-index: 9999;
   text-align: right;
   bottom: 27%;
+  right: 0
 }
 
 /* 弹窗 */
