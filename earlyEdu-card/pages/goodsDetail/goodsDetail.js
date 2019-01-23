@@ -307,9 +307,9 @@ Page({
   //跳转到地址总条数页面
   adressAll() {
     var that = this;
-    var businessid=that.data.businessid;
+    var businessactivityid = that.data.activityInfo.businessactivityid
     wx.navigateTo({
-      url: '/pages/shopAddress/shopAddress?businessid=' + businessid,
+      url: '/pages/shopAddress/shopAddress?businessactivityid=' + businessactivityid,
     })
   },
   //收藏
