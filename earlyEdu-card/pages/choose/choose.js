@@ -129,8 +129,8 @@ Page({
         activitytype: [3, 4]
       }
       if (that.data.sortId == 4) {
-        mdata.latitude = getApp().globalData.latitude
-        mdata.longitude = getApp().globalData.longitude
+        mdata.lat = getApp().globalData.latitude
+        mdata.lng = getApp().globalData.longitude
       }
     }
     wx.showLoading({
