@@ -1,7 +1,7 @@
 <!--pages/member/member.wxml-->
 <view class='contanier'>
   <view class='header'>
-    <image src='https://img.sahuanka.com/earlyEdu-card/images/member_headimg.png'></image>
+    <!-- <image src='https://img.sahuanka.com/earlyEdu-card/images/member_headimg.png'></image> -->
     <view class='header_content'>
       <view style='margin-top:44rpx;color:#E6D5B5;font-size:32rpx'>给宝贝闪闪发光的童年</view>
       <view style='margin-top:34rpx;color:#f4f4f4;font-size:28rpx'>开通会员，可领取会员专享福利</view>
