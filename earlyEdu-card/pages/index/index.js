@@ -19,33 +19,34 @@ Page({
     searchInput: "", //搜索内容
     inviteUserPhone: '', //邀请人电话
     showPhoneModal: false, //手机号绑定弹框
+    userInfo:{},
     nav: [{
-        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/group4.png',
+        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/indexBall.png',
         descs: '亲子游乐',
         businessMenuId: 1
       },
       {
-        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/group3.png',
+        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/indexPen.png',
         descs: '学习教育',
         businessMenuId: 4
       },
       {
-        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/life.png',
+        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/indexHome.png',
         descs: '生活服务',
         businessMenuId: 48
       },
       {
-        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/baby.png',
+        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/indexHos.png',
         descs: '亲子健康',
         businessMenuId: 54
       },
       {
-        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/group2.png',
+        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/indexBag.png',
         descs: '亲子购物',
         businessMenuId: 2
       },
       {
-        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/circle.png',
+        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/indexMen.png',
         descs: '孕产护理',
         businessMenuId: 35
       }
@@ -77,7 +78,8 @@ Page({
     } else {
       this.locationFun();
     }
-    this.loadBannerListFun() //加载banner
+    this.loadBannerListFun(), //加载banner
+    this.initInfoFun()
     // this.getGoodsList(); //加载商品数据
     // 暂时用定时器，使得loginStutes先于初始化数据储存（避免老用户重复弹出手机号验证）
     setTimeout(this.getGoodsList, 1000)
@@ -94,7 +96,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.initInfoFun()
   },
 
   /**
@@ -484,10 +486,47 @@ Page({
     console.log(header)
     // 父组件里执行子组件的方法
     header.childRun("/api/gift/pack/list")
-  }
+  },
   // goAddcontent(){
   //   wx.navigateTo({
   //     url: '/pages/addContent/addContent'
   //   })
   // }
+  goMymsg(){
+    wx.navigateTo({
+      url: '/pages/me/me'
+    })
+  },
+  initInfoFun: function () {
+    var that = this;
+    wx.getStorage({
+      key: 'loginStutes',
+      success: function (res) {
+        console.log(res);
+        var userInfo = JSON.parse(res.data);
+        var tokenVal = userInfo.app_token;
+        //that.setData({ 'userInfo': userInfo });
+        wx.request({
+          url: getApp().apiUrl + '/api/user/info',
+          method: 'post',
+          header: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': tokenVal },
+          success: function (res) {
+            console.log(res);
+            if (res.data.code == 0) {
+              that.setData({
+                'userInfo': userInfo,
+              });
+            } else if (res.data.code == 500 || res.data.code == 401) {
+              that.setData({ 'showPhoneModal': true });
+            };
+
+          },
+
+        })
+      },
+      fail: function (res) {
+        console.log("失败了")
+      }
+    })
+  }
 })

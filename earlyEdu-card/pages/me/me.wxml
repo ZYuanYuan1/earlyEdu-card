@@ -36,4 +36,5 @@
       </view>
    </view>
 </view>
-<!-- 性别弹窗 -->
+<!-- a验证弹窗 -->
+<bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone>

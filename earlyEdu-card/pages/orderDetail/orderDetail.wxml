@@ -19,14 +19,15 @@
         <!-- <view class='header_fontb'>半年</view> -->
       </view>
       <view style='flex:0 0 15%;text-align:right'>
-        <view class='header_fonta'>￥{{orderDetailData.amount+(orderDetailData.replaceAmount==null?0:orderDetailData.replaceAmount)}}</view>
+      <!-- orderDetailData.amount+(orderDetailData.replaceAmount==null?0:orderDetailData.replaceAmount -->
+        <view class='header_fonta'>￥{{orderDetailData.totalamount}}</view>
         <view class='header_fontb'>×1</view>
       </view>
     </view>
-    <!-- <view class='member'>
+    <view class='member'>
       <view class='member_itemone'>会员优惠</view>
-      <view class='member_itemtwo'>-￥50</view>
-    </view> -->
+      <view class='member_itemtwo'>-￥{{orderDetailData.totalamount-orderDetailData.amount}}</view>
+    </view>
     <view class='money member'>
       <view class='member_itemone'>佣金抵扣</view>
       <view class='member_itemtwo'>-￥{{orderDetailData.replaceAmount==null?0:orderDetailData.replaceAmount}}</view>

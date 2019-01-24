@@ -24,6 +24,7 @@
       </view>
    </view>
    <view class='btn_poster' bindtap="handlePoster">生成分享海报</view>
+   <view style='font-size:22rpx;padding-top:70rpx;'>分享给好友，好友购买后，您可获得40元佣金哦！</view>
 </view>
 
 <!-- 海报 -->

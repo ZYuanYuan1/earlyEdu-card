@@ -36,7 +36,7 @@
           <!-- <view  class='myfont  myOfont'>地点：西湖区水晶城</view> -->
         </view>
         <view style='orderRight'>
-          <view class='myfont myright'>￥{{item.amount}}</view>
+          <view class='myfont myright'>￥{{item.totalamount}}</view>
           <view class='myfont myOfont myright'>x1</view>
           <view class='myfont' style='margin-top: 60rpx'>合计:￥{{item.amount}}</view>
         </view>
@@ -73,7 +73,7 @@
           <!-- <view  class='myfont  myOfont'>地点：西湖区水晶城</view> -->
         </view>
         <view style='orderRight'>
-          <view class='myfont myright'>￥{{item.amount}}</view>
+          <view class='myfont myright'>￥{{item.totalamount}}</view>
           <view class='myfont myOfont myright'>x1</view>
           <view class='myfont' style='margin-top: 60rpx'>合计:￥{{item.amount}}</view>
         </view>
@@ -102,7 +102,7 @@
           <!-- <view  class='myfont  myOfont'>地点：西湖区水晶城</view> -->
         </view>
         <view style='orderRight'>
-          <view class='myfont myright'>￥{{item.amount}}</view>
+          <view class='myfont myright'>￥{{item.totalamount}}</view>
           <view class='myfont myOfont myright'>x1</view>
           <view class='myfont' style='margin-top: 60rpx'>合计:￥￥{{item.amount}}</view>
         </view>
@@ -131,7 +131,7 @@
           <!-- <view  class='myfont  myOfont'>地点：西湖区水晶城</view> -->
         </view>
         <view style='orderRight'>
-          <view class='myfont myright'>￥{{item.amount}}</view>
+          <view class='myfont myright'>￥{{item.totalamount}}</view>
           <view class='myfont myOfont myright'>x1</view>
           <view class='myfont' style='margin-top: 60rpx'>合计:￥{{item.amount}}</view>
         </view>
