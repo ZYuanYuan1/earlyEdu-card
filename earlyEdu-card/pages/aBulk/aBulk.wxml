@@ -27,6 +27,11 @@
 </view>
 
 <!-- 海报 -->
-<view style="position:fixed;top:4444rpx;">
+<view style="position: fixed;top: 3333rpx;">
   <painter palette="{{template}}" bind:imgOK="onImgOK" />
 </view>
+<modal hidden="{{!showModal}}" bindconfirm="handleSavePoster" bindcancel="handleCancelPoster" confirmText="保存图片">
+  <view style="width:560rpx;overflow:hidden;">
+    <image style="width:100%;" src="{{posterPath}}" />
+  </view>
+</modal>

@@ -39,7 +39,8 @@ Page({
     goods: [],
     count: 0,
     template: '', //painter json数据
-    posterData: null
+    posterData: null,
+    showModal: false
   },
 
   /**
@@ -118,6 +119,7 @@ Page({
           base64src(that.data.posterQRcode)
             .then(res => {
               that.setData({
+                showModal: true,
                 'posterData.posterQRcode': res
               })
             })
@@ -138,10 +140,44 @@ Page({
 
   },
   onImgOK(e) {
+    this.setData({
+      posterPath: e.detail.path,
+    })
+    wx.hideLoading()
+    // wx.saveImageToPhotosAlbum({
+    //   filePath: e.detail.path,
+    //   success(res) {
+    //     wx.hideLoading()
+    //     wx.showToast({
+    //       title: '海报已保存至相册',
+    //       icon: 'success',
+    //       duration: 2000
+    //     })
+    //   },
+    //   fail() {
+    //     wx.hideLoading()
+    //     wx.showToast({
+    //       title: '保存海报失败，请重试',
+    //       icon: 'none',
+    //       duration: 2000
+    //     })
+    //   }
+    // })
+  },
+  handleCancelPoster() {
+    this.setData({
+      showModal: false
+    })
+  },
+  handleSavePoster() {
+    let that = this
     wx.saveImageToPhotosAlbum({
-      filePath: e.detail.path,
+      filePath: that.data.posterPath,
       success(res) {
-        wx.hideLoading()
+        // wx.hideLoading()
+        that.setData({
+          showModal: false
+        })
         wx.showToast({
           title: '海报已保存至相册',
           icon: 'success',
@@ -149,7 +185,10 @@ Page({
         })
       },
       fail() {
-        wx.hideLoading()
+        // wx.hideLoading()
+        that.setData({
+          showModal: false
+        })
         wx.showToast({
           title: '保存海报失败，请重试',
           icon: 'none',
