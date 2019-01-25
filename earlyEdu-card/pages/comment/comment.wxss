@@ -3,26 +3,22 @@ page{
   background: #F8F8F8;
 }
 .comment_header{
-  width: 100%;
+  width: 690rpx;
   height: 100%;
   display: flex;
-  justify-content: space-around;
-  margin:24rpx 0 50rpx 0
+  padding:24rpx 30rpx 50rpx 30rpx
 }
 .comment_header image{
   width: 90rpx;
   height: 94rpx;
   flex: none;
-  margin-left:-32rpx;
-
 }
 .header_right{
-  flex: none;
+  flex: 0 0 65%;
 }
 .header_right text{
   display: block;
   font-family: "PingFangSC";
-  margin-left: -116rpx;
   line-height: 48rpx;
   
 }
@@ -30,6 +26,8 @@ page{
   font-size: 20rpx;
   color: #999999;
   line-height:68rpx;
+  flex: 0 0 20%;
+  padding-top: 10rpx
 
 }
 .right_select text{

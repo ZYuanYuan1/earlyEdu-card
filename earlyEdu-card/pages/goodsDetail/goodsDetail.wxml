@@ -83,7 +83,7 @@
             </view>
           </view>
           <view class="taskitem" style='display:flex'>
-            <image src='{{info.avatarUrl}}' class='dissCountleft'></image>
+            <image src='{{(info.avatarUrl==null||"")?"/images/img.png":info.avatarUrl}}' class='dissCountleft'></image>
             <view style='display:flex:0 0 72%;line-height:20rpx;line-height:22px;width:68%;'>
               <view style='font-size:26rpx;color:#446889'>{{info.userName==null&&avatarUrl==null?'*****':info.userName}}</view>
               <view style='font-size:20rpx'><text>打分 </text>

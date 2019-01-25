@@ -2,7 +2,7 @@
 <view class='comment_con'>
  <form bindsubmit='submitClick'> 
    <view class='comment_header'>
-     <image src='{{businessactivity.activitypic}}' ></image>
+     <view style='flex:0 0 15%'><image src='{{businessactivity.activitypic}}' ></image></view>
      <view class='header_right'>
      <text style='font-size:32rpx;font-weight:bold'>{{businessactivity.businessname}}</text>
      <text style='font-size:26rpx'>{{businessactivity.activityname}}</text>
