@@ -65,7 +65,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getChildRun()
+    this.getChildRun();
+    this.initInfoFun()
     //实例化API核心类
     qqmapsdk = new QQMapWX({
       key: config.key
@@ -79,7 +80,6 @@ Page({
       this.locationFun();
     }
     this.loadBannerListFun(), //加载banner
-    this.initInfoFun()
     // this.getGoodsList(); //加载商品数据
     // 暂时用定时器，使得loginStutes先于初始化数据储存（避免老用户重复弹出手机号验证）
     setTimeout(this.getGoodsList, 1000)
@@ -96,7 +96,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.initInfoFun()
+      this.initInfoFun();
   },
 
   /**
@@ -117,7 +117,6 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
   },
 
   /**
@@ -391,6 +390,7 @@ Page({
       goods: []
     });
     this.getGoodsList();
+    this.initInfoFun();
     wx.stopPullDownRefresh();
   },
   onReachBottom: function () {
@@ -502,22 +502,21 @@ Page({
     wx.getStorage({
       key: 'loginStutes',
       success: function (res) {
-        console.log(res);
-        var userInfo = JSON.parse(res.data);
-        var tokenVal = userInfo.app_token;
+        var user= JSON.parse(res.data);
+        var tokenVal = user.app_token;
         //that.setData({ 'userInfo': userInfo });
         wx.request({
           url: getApp().apiUrl + '/api/user/info',
           method: 'post',
           header: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': tokenVal },
           success: function (res) {
-            console.log(res);
+            var userInfo = res.data.user;
             if (res.data.code == 0) {
               that.setData({
                 'userInfo': userInfo,
               });
             } else if (res.data.code == 500 || res.data.code == 401) {
-              that.setData({ 'showPhoneModal': true });
+              console.log("失败了11111")
             };
 
           },
