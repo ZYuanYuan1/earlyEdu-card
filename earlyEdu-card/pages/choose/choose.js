@@ -212,7 +212,7 @@ Page({
       curPage: this.data.curPage + 1
     });
     console.log(this.data.curPage)
-    this.innitBabygift(this.data.chooseId, this.data.sortId)
+    this.innitBabygift(this.data.chooseClassId || this.data.chooseId, this.data.sortId)
   },
   //分类选框是否显示，点击调用数据
   searchClass(e) {
@@ -261,7 +261,8 @@ Page({
       goods: [],
       chooseId: e.currentTarget.id,
       chooseClassId: null,
-      curPage: 1
+      curPage: 1,
+      cName: '分类'
     });
     this.innitBabygift(this.data.chooseId, this.data.sortId);
   },

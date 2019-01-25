@@ -151,47 +151,6 @@ Page({
       }
 
     })
-    // wx.getStorage({
-    //   key: 'loginStutes',
-    //   success: function (res) {
-    //     console.log(res);
-    //     var userInfo = JSON.parse(res.data);
-    //     var tokenVal = userInfo.app_token;
-    //     console.log(tokenVal);
-    //     wx.request({
-    //       url: getApp().apiUrl + '/api/product/menu/list',
-    //       method: 'get',
-    //       header: {
-    //         'Authorization': tokenVal,
-    //         'content-type': 'application/x-www-form-urlencoded'
-    //       },
-    //       success: function (res) {
-    //         console.log(res);
-    //         var choose = [{
-    //           productMenuId: 0,
-    //           name: "全部"
-    //         }];
-    //         if (res.data.code == 0) {
-    //           for (var i = 0; i < res.data.list.length; i++) {
-    //             choose.push(res.data.list[i]);
-    //           }
-    //         }
-    //         that.setData({
-    //           curPage: 1,
-    //           choose: choose,
-    //           chooseId: 0,
-    //         });
-    //         // that.innitBabygift(that.data.chooseId, that.data.sortId)
-    //       }
-
-    //     })
-    //   },
-    //   fail: function (res) {
-    //     that.setData({
-    //       'showPhoneModal': true
-    //     });
-    //   }
-    // })
   },
   //初始化数据
   innitBabygift(chooseId, sort) {
@@ -286,7 +245,7 @@ Page({
       curPage: this.data.curPage + 1
     });
     console.log(this.data.curPage)
-    this.innitBabygift(this.data.chooseId, this.data.sortId)
+    this.innitBabygift(this.data.chooseClassId || this.data.chooseId, this.data.sortId)
   },
   //分类选框是否显示，点击调用数据
   searchClass(e) {
@@ -337,7 +296,8 @@ Page({
       goods: [],
       chooseId: e.currentTarget.id,
       chooseClassId: null,
-      curPage: 1
+      curPage: 1,
+      cName: '分类'
     });
     this.innitBabygift(this.data.chooseId, this.data.sortId);
   },
