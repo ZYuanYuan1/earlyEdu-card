@@ -136,6 +136,20 @@ page {
   border-radius: 26rpx
 }
 
+.footer_buttonalready {
+  width: 136rpx;
+  height: 52rpx;
+  position: fixed;
+  border: 2rpx solid #666666;
+  font-size: 24rpx;
+  color: #666666;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 20rpx;
+  border-radius: 26rpx
+}
+
 /* 弹窗 */
 .modal-dialog {
   width: 540rpx;
