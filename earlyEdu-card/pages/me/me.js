@@ -43,7 +43,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
   },
 
   /**
@@ -77,8 +76,8 @@ Page({
       key: 'loginStutes',
       success: function (res) {
         console.log(res);
-        var userInfo = JSON.parse(res.data);
-        var tokenVal = userInfo.app_token;
+        var user= JSON.parse(res.data);
+        var tokenVal = user.app_token;
         //that.setData({ 'userInfo': userInfo });
         wx.request({
           url: getApp().apiUrl + '/api/user/info',
@@ -94,7 +93,7 @@ Page({
                     genderIndex: genderIndex,
                   })
               }
-              if (userInfo.dabaobirthday != null) {
+              if (userInfo.dabaobirthday != ''||null) {
                 var date = userInfo.dabaobirthday;
                 that.setData({
                   date: date
@@ -135,9 +134,9 @@ Page({
           key: 'loginStutes',
           success: function (r) {
             //console.log(res);
-            var userInfo = JSON.parse(r.data);
+            var user = JSON.parse(r.data);
             //console.log(userInfo);
-            var tokenVal = userInfo.app_token;
+            var tokenVal = user.app_token;
             console.log(tokenVal);
             wx.uploadFile({
               url: getApp().apiUrl + '/api/user/uploadimg',

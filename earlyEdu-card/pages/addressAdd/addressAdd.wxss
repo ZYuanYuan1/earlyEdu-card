@@ -74,8 +74,8 @@ picker {
     height: 100%;
     margin-right: 20rpx;
     line-height: 40rpx;
-    font-size: 28rpx
-
+    font-size: 28rpx;
+    width:100%
 }
 .hui{
     color: #777;
