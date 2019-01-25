@@ -19,6 +19,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.data.orderid = options.orderid
     this.getOrderDetailInfo(options.orderid);
     this.getLogisticsDetail(options.orderid);
     // this.getLogisticsCompany()
@@ -35,7 +36,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getOrderDetailInfo(this.data.orderid)
   },
   //点击电子券-弹出电子券二维码
   showDialogBtn: function (e) {
