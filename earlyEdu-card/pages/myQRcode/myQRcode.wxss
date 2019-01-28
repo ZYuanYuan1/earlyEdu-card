@@ -1,65 +1,60 @@
 /* pages/myQRcode/myQRcode.wxss */
-page{
-  background: linear-gradient(#021446,#4D5D81)
+
+page {
+  background: #ffe8ef;
 }
-.contanier{
-  width: 100%;
-  height: 100%;
-  text-align: center
+
+.contanier {
+  background: url('https://img.sahuanka.com/earlyEdu-card/images/fish1.png') no-repeat;
+  background-size: 100% 660rpx;
+  padding-top: 370rpx;
+  position: relative;
 }
-.title{
-  color: #FCDC89;
-  font-size: 40rpx;
+
+.invitBtn {
+  background: #cf1303;
+  color: #fff;
+  width: 400rpx;
+  height: 84rpx;
+  border-radius: 16rpx;
+  text-align: center;
+  line-height: 84rpx;
+  font-size: 44rpx;
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+}
+
+.conBack {
+  width: 618rpx;
+  height: 540rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  color: #666;
   text-align: center;
 }
-.content{
-  color: #ffffff;
-  font-size: 26rpx;
-  width: 622rpx;
-  margin: 0 auto
-}
-.img{
-  width: 510rpx;
-  height: 678rpx;
-}
-.save{
-  width: 470rpx;
-  height: 96rpx;
-  background: #DF212E;
-  border-radius: 16rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 36rpx;
-  margin: 0 auto
-}
-.QRmargin{
-  margin-top: 70rpx
-}
-.qrcode{
-  width:510rpx;
-  height:678rpx;
-  position:relative;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:0 120rpx;
-}
-.qritem{
-  width:212rpx;
-  height:212rpx;
-  position:absolute;
-  padding-top:257rpx;
-}
-.save_share{
-width:470rpx;
-height:96rpx;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-font-size:27rpx;
-margin:0 auto;
 
+.posBtn {
+  background: url(https://img.sahuanka.com/earlyEdu-card/images/QRbtn.png) no-repeat;
+  background-size: 622rpx 106rpx;
+  width: 622rpx;
+  font-size: 36rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 106rpx;
+}
+
+.mar {
+  margin: 0 auto;
+}
+
+.des {
+  font-size: 13px;
+  width: 384rpx;
+  margin: 0 auto;
+}
+
+.marTop {
+  margin-top: 40rpx;
 }

@@ -1,12 +1,12 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/myQRcode/myQRcode",
     "pages/addContent/addContent",
     "pages/donate/donate",
     "pages/orderDetail/orderDetail",
     "pages/assemble/assemble",
     "pages/groupDetail/groupDetail",
-    "pages/myQRcode/myQRcode",
     "pages/extra/extra",
     "pages/choose/choose",
     "pages/cash_record/cash_record",
