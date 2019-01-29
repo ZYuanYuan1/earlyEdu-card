@@ -20,6 +20,7 @@ Page({
     inviteUserPhone: '', //邀请人电话
     showPhoneModal: false, //手机号绑定弹框
     userInfo:{},
+    curIndex:0,
     nav: [{
         imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/indexBall.png',
         descs: '亲子游乐',
@@ -41,7 +42,7 @@ Page({
         businessMenuId: 54
       },
       {
-        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/indexBag.png',
+        imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/navShop.png',
         descs: '亲子购物',
         businessMenuId: 2
       },
@@ -526,6 +527,14 @@ Page({
       fail: function (res) {
         console.log("失败了")
       }
+    })
+  },
+  //滑动导航页面
+  onChange(e){
+    console.log(e.detail.current)
+    var curIndex = e.detail.current;
+    this.setData({
+      curIndex: curIndex
     })
   }
 })

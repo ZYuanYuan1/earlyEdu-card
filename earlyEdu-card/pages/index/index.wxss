@@ -104,10 +104,12 @@
 
 /* 导航 */
 
-scroll-view {
-  width: 750rpx;
+.scollClass {
+  width: 100%;
   white-space: nowrap;
-  padding-top: 30rpx
+  padding-top: 38rpx;
+  box-sizing: border-box;
+  margin-bottom: 40rpx
 }
 
 .nav {
@@ -123,7 +125,7 @@ scroll-view {
 }
 
 .navLista {
-  width: 165rpx;
+  width: 152rpx;
   height: 140rpx;
   text-align: center;
   display: inline-block;
@@ -135,8 +137,8 @@ scroll-view {
 }
 
 .navLista image {
-  width: 68rpx;
-  height: 68rpx;
+  width: 60rpx;
+  height: 60rpx;
 }
 
 .navList view {
@@ -435,4 +437,22 @@ scroll-view {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+}
+/* 导航滑动 */
+.pro{
+  background:#dedede;
+  width:40rpx;
+  height:6rpx;
+  border-radius:4rpx;
+  margin-right:2rpx
+}
+.change{
+  background:#D79850;
+  width:40rpx;
+  height:6rpx;
+  border-radius:4rpx;
+  margin-right:2rpx
+}
+.chanItem{
+ margin-left: -152rpx
 }
