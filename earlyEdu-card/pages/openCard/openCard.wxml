@@ -45,7 +45,7 @@
     <view class='content_card'>
       <view>
         <icon type='success' color='#CBB588' size='16' class='content_icon' style='margin:0 20rpx 0 40rpx;'></icon>
-        <text class='content_center' style='margin-right:362rpx;'>早教卡</text>
+        <text class='content_center' style='margin-right:362rpx;'>亲子达人卡</text>
         <text class='content_center'>￥299</text>
       </view>
     </view>
@@ -53,7 +53,7 @@
     <view class="pay" bindtap='pay'>立即支付</view>
     <view class='content_font'>
       支付即视为同意
-      <text style='color:#4A90E2' bindtap='agreement'>《早教卡会员-用户协议》</text>
+      <text style='color:#4A90E2' bindtap='agreement'>《亲子达人卡会员-用户协议》</text>
     </view>
   </view>
 </view>

@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    contentOne:"&nbsp;&nbsp;欢迎使用精彩人生早教卡会员服务，"
+    contentOne:"&nbsp;&nbsp;欢迎使用精彩人生亲子达人卡会员服务，"
   },
 
   /**

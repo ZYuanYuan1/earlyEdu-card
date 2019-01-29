@@ -49,7 +49,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#FFFECF",
-    "navigationBarTitleText": "早教卡",
+    "navigationBarTitleText": "亲子达人卡",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

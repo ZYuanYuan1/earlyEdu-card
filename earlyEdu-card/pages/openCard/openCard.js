@@ -145,7 +145,7 @@ Page({
                           lock: false
                         })
                         wx.showModal({
-                          content: '恭喜您，已经成为早教卡会员！',
+                          content: '恭喜您，已经成为亲子达人卡会员！',
                           showCancel: false,
                           confirmText: "ok",
                           confirmColor: "#D0021B",
