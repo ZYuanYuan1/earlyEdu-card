@@ -4,7 +4,7 @@
   <view class='header'>
     <view class='headerCon'>
       <view class='headerConA headerConAll' style='flex:0 0 20%' bindtap='editMy'>
-        <image src='{{userInfo.avatarurl?userInfo.avatarurl:"/images/img.png"}}'></image>
+        <image src='{{userInfo.avatarurl?userInfo.avatarurl:"https://img.sahuanka.com/earlyEdu-card/images/head_img.png"}}'></image>
         <view style='font-size:18rpx'>编辑</view>
       </view>
       <view style='flex:0 0 60%;margin-top:20rpx'>
