@@ -1,7 +1,7 @@
 {
   "navigationBarTitleText": "我的邀请分红二维码",
   "navigationBarBackgroundColor": "#D20C06",
-  "navigationBarTextStyle": "#ffffff",
+  "navigationBarTextStyle": "white",
   "usingComponents": {
     "bindphone": "../../components/bindPhone/bindPhone",
     "painter": "../../components/painter/painter"

@@ -139,7 +139,7 @@ Page({
       inviteUserPhone: userInfo.mobile
     });
     return {
-      title: '送给宝宝的第一份成长大礼包~',
+      title: '299一年，杭州娃的开销我包了',
       path: "/pages/my/my?inviteUserPhone=" + userInfo.mobile
     }
   },
@@ -197,7 +197,7 @@ Page({
       console.log(res)
       let qrcode = res
       wx.getImageInfo({
-        src: 'https://img.sahuanka.com/earlyEdu-card/images/poster_bg.jpg',
+        src: 'https://img.sahuanka.com/earlyEdu-card/images/poster_bg1.jpg',
         success: function(res) {
           that.setData({
             showModal: true,

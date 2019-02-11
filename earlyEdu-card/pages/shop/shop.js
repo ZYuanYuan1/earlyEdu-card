@@ -469,7 +469,7 @@ Page({
     // var inviteUserPhone = that.data.inviteUserPhone;
     var businessid = that.data.businessid
     return {
-      title: '送给宝宝的第一份成长大礼包~',
+      title: '299一年，杭州娃的开销我包了',
       path: "/pages/shop/shop?businessactivityid=" + businessactivityid + "&businessid=" + businessid,
       imageUrl: 'https://img.sahuanka.com/earlyEdu-card/images/sharePar.jpg'
     }

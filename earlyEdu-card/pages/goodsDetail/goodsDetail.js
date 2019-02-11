@@ -504,7 +504,7 @@ Page({
     var inviteUserPhone = that.data.inviteUserPhone;
     var activitytype = that.data.activitytype
     return {
-      title: '送给宝宝的第一份成长大礼包~',
+      title: '299一年，杭州娃的开销我包了',
       path: "/pages/goodsDetail/goodsDetail?businessactivityid=" + businessactivityid + "&activitytype" + activitytype,
       imageUrl: 'https://img.sahuanka.com/earlyEdu-card/images/sharePar.jpg'
     }
