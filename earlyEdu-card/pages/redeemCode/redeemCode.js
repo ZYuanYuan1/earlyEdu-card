@@ -82,9 +82,10 @@ Page({
           success: function (res) {
             if(res.data.code==0){
               wx.showModal({
-                content: '恭喜您，兑换成功！快去选礼包吧~',
+                title: '恭喜您，兑换成功！快去选礼包吧~',
+                content: '每成功邀请一个好友购卡，您可获得奖金40元，若您邀请的好友邀请新用户成功购卡，您可再获得奖金30元哦！',
                 showCancel: false,
-                confirmText: "领取礼包",
+                confirmText: "我的礼包",
                 confirmColor: "#D0021B",
                 success(res) {
                   wx.navigateTo({

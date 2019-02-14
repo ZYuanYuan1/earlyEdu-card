@@ -1,32 +1,29 @@
 <view class="container">
   <view class="share-gift">
-  <block wx:for="{{goods}}" wx:key="index">
-    <view class="item" bindtap="toGoodsdetail" id="{{item.businessactivityid}}" data-ac-type="{{item.activitytype}}">
-      <image class='item-img' src='{{item.activitypic}}'/>
-      <view class="item-describe" style='height:160rpx'>
-        <view class="name">{{item.activityname}}</view>
-        <view class="plus">{{item.description}}</view>
-        <view class="price">
-         ¥{{item.amount}}
+    <block wx:for="{{goods}}" wx:key="index">
+      <view class="item" bindtap="toGoodsdetail" id="{{item.businessactivityid}}" data-ac-type="{{item.activitytype}}">
+        <image class='item-img' src='{{item.activitypic}}' />
+        <view class="item-describe" style='height:160rpx'>
+          <view class="name">{{item.activityname}}</view>
+          <view class="plus">{{item.description}}</view>
+          <view class="price">¥{{item.amount}}</view>
         </view>
       </view>
+    </block>
+  </view>
+  <view class='content'>
+    <view class='content_item'>
+      <view>总价</view>
+      <view>￥{{count}}</view>
     </view>
-  </block>
+    <view class='content_item' style='color:#FF5339'>
+      <view>团购价</view>
+      <view>￥299</view>
+    </view>
+  </view>
+  <view class='btn_poster' bindtap="handlePoster">生成分享海报</view>
+  <view style='font-size:22rpx;padding-top:70rpx;'>分享给好友，好友购买后，您可获得40元佣金哦！</view>
 </view>
-   <view class='content'>
-      <view class='content_item'> 
-         <view>总价</view>
-         <view>￥{{count}}</view>
-      </view>
-      <view class='content_item' style='color:#FF5339'>
-         <view>团购价</view>
-         <view>￥299</view>
-      </view>
-   </view>
-   <view class='btn_poster' bindtap="handlePoster">生成分享海报</view>
-   <view style='font-size:22rpx;padding-top:70rpx;'>分享给好友，好友购买后，您可获得40元佣金哦！</view>
-</view>
-
 <!-- 海报 -->
 <view style="position: fixed;top: 3333rpx;">
   <painter palette="{{template}}" bind:imgOK="onImgOK" />

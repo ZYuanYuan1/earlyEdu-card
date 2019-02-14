@@ -1,0 +1,43 @@
+.container {
+  font-size: 26rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.succ_icon {
+  width: 174rpx;
+  height: 174rpx;
+  margin: 160rpx 0 50rpx 0;
+}
+
+.succ_text {
+  font-size: 32rpx;
+  color: #333333;
+  font-weight:400;
+}
+
+.tips {
+  width: 510rpx;
+  margin-top: 190rpx;
+  font-size: 24rpx;
+  color: #999999;
+  text-align: justify;
+  line-height: 48rpx;
+}
+
+.tips text {
+  color: #FF5339;
+}
+
+.back {
+  margin-top: 100rpx;
+  width: 200rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  color: #333333;
+  border: 1rpx solid #333333;
+  border-radius: 8rpx;
+}

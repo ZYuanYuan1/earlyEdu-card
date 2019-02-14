@@ -145,11 +145,19 @@ Page({
                           lock: false
                         })
                         wx.showModal({
-                          content: '恭喜您，已经成为亲子达人卡会员！',
+                          content: '付款成功',
                           showCancel: false,
                           confirmText: "ok",
                           confirmColor: "#D0021B",
-                          success(){}
+                          success(res){
+                            if (res.confirm) {
+                              wx.navigateTo({
+                                url: '/pages/openCardSucc/openCardSucc'
+                              })
+                            } else if (res.cancel) {
+                              console.log('用户点击取消')
+                            }
+                          }
                         })
                       },
                       fail: function (res) {
