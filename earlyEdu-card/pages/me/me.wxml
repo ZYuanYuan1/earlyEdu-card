@@ -2,7 +2,7 @@
 <view class='contanier'>
    <view class='header'>
         <view style=' position: relative' bindtap='changeImg'>
-            <image class="headPortrait" src='{{userInfo.avatarurl?userInfo.avatarurl:"/images/img.png"}}'></image>
+            <image class="headPortrait" src='{{userInfo.avatarurl?userInfo.avatarurl:"https://img.sahuanka.com/earlyEdu-card/images/head_img.png"}}'></image>
             <image class="edit" src='https://img.sahuanka.com/earlyEdu-card/images/edit.png'></image>
         </view>
    </view>

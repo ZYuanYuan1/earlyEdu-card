@@ -1,17 +1,19 @@
-// pages/member/member.js
+// pages/openCardSucc/openCardSucc.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    masking: false
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {},
+  onLoad: function (options) {
+
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -19,34 +21,19 @@ Page({
   onReady: function () {
 
   },
-  previewImage: function (e) {
-    console.log(e)
-    var current = e.target.dataset.src;
-    wx.previewImage({
-      current: current,
-      urls: [current]
-    })
-  },
-
-  // 点击使用说明
-  directions() {
-    this.setData({
-      masking: true
-    })
-  },
-
-  // 关闭使用说明
-  directionsClose() {
-    this.setData({
-      masking: false
-    })
-  },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
 
+  },
+
+  // 返回
+  back() {
+    wx.reLaunch({
+      url: '/pages/my/my'
+    })
   },
 
   /**
@@ -80,16 +67,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  openCard() {
-    wx.navigateTo({
-      url: '/pages/openCard/openCard',
-    })
-  },
-  // 分享
-  onShareAppMessage() {
-    return {
-      title: '299一年，杭州娃的开销我包了',
-      imageUrl: 'https://img.sahuanka.com/earlyEdu-card/images/sharePar.jpg'
-    }
-  },
+  onShareAppMessage: function () {
+
+  }
 })

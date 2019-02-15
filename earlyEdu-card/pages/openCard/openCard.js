@@ -145,11 +145,19 @@ Page({
                           lock: false
                         })
                         wx.showModal({
-                          content: '恭喜您，已经成为亲子达人卡会员！',
+                          content: '付款成功',
                           showCancel: false,
                           confirmText: "ok",
                           confirmColor: "#D0021B",
-                          success(){}
+                          success(res){
+                            if (res.confirm) {
+                              wx.navigateTo({
+                                url: '/pages/openCardSucc/openCardSucc'
+                              })
+                            } else if (res.cancel) {
+                              console.log('用户点击取消')
+                            }
+                          }
                         })
                       },
                       fail: function (res) {
@@ -210,7 +218,7 @@ Page({
   // 分享
   onShareAppMessage() {
     return {
-      title: '送给宝宝的第一份成长大礼包~',
+      title: '299一年，杭州娃的开销我包了',
       imageUrl: 'https://img.sahuanka.com/earlyEdu-card/images/sharePar.jpg'
     }
   },

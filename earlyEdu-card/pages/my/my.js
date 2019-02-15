@@ -220,7 +220,7 @@ Page({
     //   inviteUserPhone: userInfo.mobile
     // });
     return {
-      title: '送给宝宝的第一份成长大礼包~',
+      title: '299一年，杭州娃的开销我包了',
       // path: "/pages/my/my?inviteUserPhone=" + userInfo.mobile,
       imageUrl: 'https://img.sahuanka.com/earlyEdu-card/images/sharePar.jpg'
     }

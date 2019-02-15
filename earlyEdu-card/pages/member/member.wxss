@@ -13,7 +13,7 @@ page {
 .header {
   width: 690rpx;
   height: 260rpx;
-  background:url('https://img.sahuanka.com/earlyEdu-card/images/member_headimg.png') no-repeat;
+  background: url('https://img.sahuanka.com/earlyEdu-card/images/member_headimg.png') no-repeat;
   background-size: 100%;
   display: flex;
   justify-content: center;
@@ -24,10 +24,23 @@ page {
   height: 260rpx;
 }
 
+.directions {
+  font-size: 22rpx;
+  width: 120rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  border-radius: 200rpx 0 0 200rpx;
+  background-color: #FF5339;
+  position: absolute;
+  top: 16rpx;
+  right: 0;
+}
+
 .header_content {
   text-align: center;
   color: #ffffff;
-  width: 690rpx
+  width: 690rpx;
+  position: relative;
 }
 
 .header_button {
@@ -112,4 +125,70 @@ page {
   width: 100%;
   text-align: center;
   padding-top: 40rpx
+}
+
+/* 使用说明 */
+.directions-view {
+  width: 508rpx;
+  position: absolute;
+  top: 20%;
+  left: 121rpx;
+  z-index: 999;
+}
+
+.directions-close {
+  width: 60rpx;
+  height: 60rpx;
+  margin-top: 60rpx;
+  margin-left: 224rpx;
+  line-height: 60rpx;
+  color: #ffffff;
+  border: 4rpx solid #ffffff;
+  text-align: center;
+  border-radius: 60rpx;
+  font-weight: bold;
+}
+
+.directions-content {
+  font-size: 22rpx;
+  width: 508rpx;
+  height: 556rpx;
+  background: url('https://img.sahuanka.com/earlyEdu-card/images/directions_bg.png') no-repeat;
+  background-size: 508rpx 556rpx;
+  color: #333333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.directions-content .title {
+  font-size: 32rpx;
+  color: #000000;
+  letter-spacing: 4rpx;
+  font-weight: 500;
+  margin: 60rpx 0 30rpx 0;
+}
+
+.directions-content .line {
+  width: 44rpx;
+  height: 6rpx;
+  background: rgba(255, 83, 57, 1);
+  margin-bottom: 58rpx;
+}
+
+.directions-content .item {
+  width: 366rpx;
+  margin-bottom: 38rpx;
+}
+
+.directions-content .item:nth-of-type(5) {
+  margin-bottom: 50rpx;
+}
+
+.directions-content .time{
+  width: 366rpx;
+}
+
+.directions-content .time text{
+  color: #FF5339;
 }

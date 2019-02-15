@@ -39,7 +39,8 @@
     "pages/bindPhone/bindPhone",
     "pages/express/express",
     "pages/aBulk/aBulk",
-    "pages/aBulkPay/aBulkPay"
+    "pages/aBulkPay/aBulkPay",
+    "pages/openCardSucc/openCardSucc"
   ],
   "permission": {
     "scope.userLocation": {

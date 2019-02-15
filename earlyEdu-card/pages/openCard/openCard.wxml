@@ -43,11 +43,11 @@
   </view>
   <view class='content'>
     <view class='content_card'>
-      <view>
+      <view style="display: flex;align-items: center;">
         <icon type='success' color='#CBB588' size='16' class='content_icon' style='margin:0 20rpx 0 40rpx;'></icon>
-        <text class='content_center' style='margin-right:362rpx;'>亲子达人卡</text>
-        <text class='content_center'>￥299</text>
+        <text class='content_center'>亲子达人卡</text>
       </view>
+      <text class='content_center' style="margin-right:40rpx;">￥299</text>
     </view>
     <image src='https://img.sahuanka.com/earlyEdu-card/images/donate_btn.png' class='donate_btn' bindtap='donateBind'></image>
     <view class="pay" bindtap='pay'>立即支付</view>

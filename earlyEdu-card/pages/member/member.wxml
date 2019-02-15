@@ -3,6 +3,7 @@
   <view class='header'>
     <!-- <image src='https://img.sahuanka.com/earlyEdu-card/images/member_headimg.png'></image> -->
     <view class='header_content'>
+      <view class="directions" bindtap="directions">使用说明</view>
       <view style='margin-top:44rpx;color:#E6D5B5;font-size:32rpx'>给宝贝闪闪发光的童年</view>
       <view style='margin-top:34rpx;color:#f4f4f4;font-size:28rpx'>开通会员，可领取会员专享福利</view>
       <view style='color:#f4f4f4;font-size:28rpx'>预计可赚62300元</view>
@@ -57,6 +58,18 @@
   <view class='footer'>
     <!-- <image src='https://img.sahuanka.com/earlyEdu-card/images/member_footimg.png'></image> -->
     <image src="https://img.sahuanka.com/earlyEdu-card/images/service_qrcode@2x.png" data-src="https://img.sahuanka.com/earlyEdu-card/images/service_qrcode@2x.png"  bindtap="previewImage"/>
-    <view>会员须知：本卡有效期 2019-01-01至2019-12-31</view>
+    <view>会员须知：本卡有效期截止至2019-12-31</view>
   </view>
+</view>
+<v-mask wx:if="{{masking}}"></v-mask>
+<view class="directions-view" wx:if="{{masking}}">
+  <view class="directions-content">
+    <view class="title">亲子达人卡使用说明</view>
+    <view class="line"></view>
+    <view class="item">1、打开小程序选择心仪的礼包，联系商户预约参与时间</view>
+    <view class="item">2、参与后出示礼包订单二维码，兑换礼包</view>
+    <view class="item">3、购买商户产品，获得专享折扣</view>
+    <view class="time">本卡有效期：<text>截止至2019.12.31</text></view>
+  </view>
+  <view class="directions-close" bindtap="directionsClose">X</view>
 </view>

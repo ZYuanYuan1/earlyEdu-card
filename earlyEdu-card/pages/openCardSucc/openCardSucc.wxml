@@ -1,0 +1,6 @@
+<view class="container">
+  <image class="succ_icon" src="https://img.sahuanka.com/earlyEdu-card/images/openCardSucc_icon.png" />
+  <view class="succ_text">恭喜您已成为会员</view>
+  <view class="tips">每成功邀请一个好友购卡，您可获得奖金<text >40元</text>，若您邀请的好友邀请新用户成功购卡，您可再获得奖金<text >30元</text>哦！</view>
+  <view class="back" bindtap="back">返回</view>
+</view>
