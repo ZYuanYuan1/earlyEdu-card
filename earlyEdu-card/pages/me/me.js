@@ -93,7 +93,7 @@ Page({
                     genderIndex: genderIndex,
                   })
               }
-              if (userInfo.dabaobirthday != ''||null) {
+              if (userInfo.dabaobirthday !=null||'') {
                 var date = userInfo.dabaobirthday;
                 that.setData({
                   date: date

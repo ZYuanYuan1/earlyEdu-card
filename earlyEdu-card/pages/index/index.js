@@ -423,16 +423,16 @@ Page({
     })
   },
   //点击确定-bindPhone组件传过来的信息
-  getBindInfo: function (e) {
-    // console.log(e);
-    var bindInfo = e.detail.bindPhone; //true为手机绑定成功，false为手机绑定失败
-    if (bindInfo) {
-      var userInfo = e.detail.userInfo;
-      // console.log(userInfo);
-      this.loadBannerListFun() //加载banner
-      this.getGoodsList(); //加载商品数据
-    }
-  },
+  // getBindInfo: function (e) {
+  //   // console.log(e);
+  //   var bindInfo = e.detail.bindPhone; //true为手机绑定成功，false为手机绑定失败
+  //   if (bindInfo) {
+  //     var userInfo = e.detail.userInfo;
+  //     // console.log(userInfo);
+  //     this.loadBannerListFun() //加载banner
+  //     this.getGoodsList(); //加载商品数据
+  //   }
+  // },
   //邀请
   //跳到选择页面
   goChoose(e) {
