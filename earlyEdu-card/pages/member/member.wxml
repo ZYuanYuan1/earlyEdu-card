@@ -4,9 +4,9 @@
     <!-- <image src='https://img.sahuanka.com/earlyEdu-card/images/member_headimg.png'></image> -->
     <view class='header_content'>
       <view class="directions" bindtap="directions">使用说明</view>
-      <view style='margin-top:44rpx;color:#E6D5B5;font-size:32rpx'>给宝贝闪闪发光的童年</view>
+      <!-- <view style='margin-top:44rpx;color:#E6D5B5;font-size:32rpx'>给宝贝闪闪发光的童年</view>
       <view style='margin-top:34rpx;color:#f4f4f4;font-size:28rpx'>开通会员，可领取会员专享福利</view>
-      <view style='color:#f4f4f4;font-size:28rpx'>预计可赚62300元</view>
+      <view style='color:#f4f4f4;font-size:28rpx'>预计可赚62300元</view> -->
       <view class='header_button' bindtap='openCard'>开卡立享免单</view>
     </view>
   </view>
@@ -77,8 +77,12 @@
   </view>
   <view class='footer'>
     <!-- <image src='https://img.sahuanka.com/earlyEdu-card/images/member_footimg.png'></image> -->
-    <image src="https://img.sahuanka.com/earlyEdu-card/images/service.png" data-src="https://img.sahuanka.com/earlyEdu-card/images/service.png"  bindtap="previewImage"/>
-    <view>会员须知：本卡有效期截止至2019-12-31</view>
+    <!-- <image src="https://img.sahuanka.com/earlyEdu-card/images/service.png" data-src="https://img.sahuanka.com/earlyEdu-card/images/service.png"  bindtap="previewImage"/> -->
+    <view style='padding-top:68rpx'>添加官方客服微信，可以了解更多福利信息哦~</view>
+    <view>官方福利提前知，会员活动优先享~</view>
+    <view style='padding:28rpx 0 14rpx 0;font-size:28rpx;font-weight:bold;'>微信号: <text selectable="true">A18814819198</text></view>
+    <view style='font-size:18rpx;padding-bottom:94rpx;'>微信号: 长按可复制文本</view>
+    <view style='font-size:18rpx;padding-bottom:94rpx;'>会员须知：本卡有效期截止至2019-12-31</view>
   </view>
 </view>
 <v-mask wx:if="{{masking}}"></v-mask>

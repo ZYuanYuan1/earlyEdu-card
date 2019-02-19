@@ -4,7 +4,6 @@ var config = require('../../utils/config.js');
 var app = getApp();
 var qqmapsdk;
 Page({
-
   /**
    * 页面的初始数据
    */
