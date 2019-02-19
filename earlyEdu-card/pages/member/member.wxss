@@ -106,6 +106,9 @@ page {
 } */
 
 /* 底部 */
+.footer{
+  margin-top: 84rpx
+}
 .footer image {
   display: block;
   width: 544rpx;
@@ -191,4 +194,37 @@ page {
 
 .directions-content .time text{
   color: #FF5339;
+}
+/* 中间内容 */
+.m_title{
+  font-size:24rpx;
+font-weight:bold;
+margin: 30rpx 0
+}
+.m_des{
+  font-size:18rpx;
+}
+.m_btn{
+font-size:18rpx;
+color:#DBB686;
+border:2rpx solid #DBB686;
+border-radius:16rpx;
+width:114rpx;
+height:28rpx;
+display:flex;
+justify-content:center;
+align-items:center;
+margin: 0 auto;
+margin-top: 14rpx
+}
+.m_tiem{
+  width: 206rpx;
+  height: 232rpx;
+  background: url("https://img.sahuanka.com/earlyEdu-card/images/bgCard.png") no-repeat;
+  background-size: 206rpx 232rpx;
+  text-align: center;
+  margin-right: 30rpx
+}
+.m_tiem:last-child{
+  margin-right: 0
 }
