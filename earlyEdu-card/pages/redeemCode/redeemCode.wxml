@@ -6,8 +6,8 @@
        <button formType="submit" class='sure'>确定</button>
        <view class='explain'>
           <view>说明：</view>
-          <view>1、兑换码为预售阶段兑换会员资格的凭证</view>
-          <view>2、每个兑换码仅有一次兑换资格，兑换成功</view>
+          <view>1、兑换码为兑换会员资格的凭证</view>
+          <view>2、每个兑换码仅有一次兑换资格</view>
           <view>3、当您忘记您的兑换码时，请联系客服</view>
        </view>
    </view>

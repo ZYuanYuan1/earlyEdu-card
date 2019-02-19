@@ -7,7 +7,7 @@
            <view class='header_postal' bindtap='postal'>立即提现</view>
        </view>
    </view>
-   <view class='reward' bindtap='goExtra'><image src='https://img.sahuanka.com/earlyEdu-card/images/rewards2.png'></image></view>
+   <view class='reward' bindtap='goExtra'><image src='https://img.sahuanka.com/earlyEdu-card/images/rewards3.png'></image></view>
    <!-- 内容：有数据的时候显示 -->
    <view class='content' wx:if="{{moneyLength>0}}">
       <view style='font-size:32rpx'>{{grade>0?"现金奖励流水":"资金流水"}}</view>

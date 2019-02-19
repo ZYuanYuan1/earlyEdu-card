@@ -54,7 +54,7 @@
         <view class='receive' wx:else bindtap='goGooddstail' data-businessactivityid="{{item.businessactivityid}}" data-activitytype='{{item.activitytype}}'>
           领取
         </view>
-        <view class='surplus'>剩余：{{item.count}}</view>
+        <!-- <view class='surplus'>剩余：{{item.count}}</view> -->
       </view>
     </view>
   </view>

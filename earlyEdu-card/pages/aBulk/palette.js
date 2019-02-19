@@ -48,7 +48,7 @@ class PosterTemplate {
           text: title,
           css: {
             color: '#333333',
-            width: '480rpx',
+            width: '700rpx',
             top: '730rpx',
             fontSize: '32rpx',
             left: '375rpx',
