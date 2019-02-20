@@ -166,11 +166,8 @@ Component({
                     icon: 'success',
                     duration: 2000
                   })
-                  var userInfo=res2.data.user;
-                  console.log(1+userInfo)
+                  // var infoStr=JSON.stringify(res2.data.user.userInfo)
                   var infoStr=JSON.stringify(res2.data.user)
-                  console.log(2+infoStr)
-                  // wx.setStorageSync('loginStutes',infoStr)
                   wx.setStorage({
                     key: 'loginStutes',
                     data: infoStr
@@ -179,6 +176,7 @@ Component({
                     isShow: false
                   });//隐藏弹出框
                   var myEventDetail ={'bindPhone': true,'userInfo':res2.data.user}// detail对象，提供给事件监听函数-绑定手机成功
+                  // var myEventDetail ={'bindPhone': true,'userInfo':res2.data.user.userInfo}// detail对象，提供给事件监听函数-绑定手机成功
                   var myEventOption ={} // 触发事件的选项
                   console.log(4);
                   that.triggerEvent('phone', myEventDetail, myEventOption)
