@@ -22,6 +22,7 @@
   background-color: aquamarine;
   border-radius: 6rpx 0 0 6rpx;
 }
+
 .item-describe {
   width: 400rpx;
   padding: 20rpx;
@@ -43,29 +44,37 @@
 
 .name {
   font-size: 26rpx;
-  color: #333333;
+  color: #333;
 }
 
 .plus {
   font-size: 22rpx;
-  color: #666666;
+  color: #666;
 }
 
 .price {
   font-size: 28rpx;
-  color: #FF5339;
+  color: #ff5339;
 }
 
 .price-old {
-  color: #9B9B9B;
+  color: #9b9b9b;
   text-decoration: line-through;
   margin-left: 10rpx;
 }
- .conTitle{
-    font-size:32rpx;
-    font-weight:bold;
-    color: #333333;
-    text-align: center;
-    margin-top:30rpx;
 
-  }
+.conTitle {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-top: 30rpx;
+}
+
+.more {
+  font-size: 24rpx;
+  color: #9f8a60;
+  text-align: center;
+  width: 100%;
+  height: 50rpx;
+}

@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/member/member",
+    "pages/smGift/smGift",
     "pages/myQRcode/myQRcode",
     "pages/addContent/addContent",
     "pages/donate/donate",
@@ -26,7 +28,6 @@
     "pages/addressAdd/addressAdd",
     "pages/address/address",
     "pages/redeemCode/redeemCode",
-    "pages/member/member",
     "pages/openCard/openCard",
     "pages/classify/classify",
     "pages/order/order",

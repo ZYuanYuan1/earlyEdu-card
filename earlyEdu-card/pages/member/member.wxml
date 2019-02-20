@@ -4,16 +4,16 @@
     <!-- <image src='https://img.sahuanka.com/earlyEdu-card/images/member_headimg.png'></image> -->
     <view class='header_content'>
       <view class="directions" bindtap="directions">使用说明</view>
-      <view style='margin-top:44rpx;color:#E6D5B5;font-size:32rpx'>给宝贝闪闪发光的童年</view>
+      <!-- <view style='margin-top:44rpx;color:#E6D5B5;font-size:32rpx'>给宝贝闪闪发光的童年</view>
       <view style='margin-top:34rpx;color:#f4f4f4;font-size:28rpx'>开通会员，可领取会员专享福利</view>
-      <view style='color:#f4f4f4;font-size:28rpx'>预计可赚62300元</view>
-      <view class='header_button' bindtap='openCard'>为宝宝开通人生第一张卡</view>
+      <view style='color:#f4f4f4;font-size:28rpx'>预计可赚62300元</view> -->
+      <view class='header_button' bindtap='openCard'>开卡立享免单</view>
     </view>
   </view>
   <view class="content">
-    <view class="content_title">额外福利</view>
+    <!-- <view class="content_title">额外福利</view>
     <view>1、购卡即得官方定制礼盒“传家宝”一份，数量有限，先到先得。</view>
-    <view>2、会员可免费享受官方举办的育儿主题活动。</view>
+    <view>2、会员可免费享受官方举办的育儿主题活动。</view> -->
     <!-- <view>3、会员可免费获得元宝妈价值520元的系列育儿主题微课。</view> -->
   </view>
   <!-- <view class='content'>
@@ -55,10 +55,34 @@
       </view>
     </view>
   </view> -->
+  <view style='display:flex;justify-content:center;'>
+     <view class='m_tiem'>
+        <view class='m_title'>主题活动</view>
+        <view class='m_des'>免费享受官方</view>
+        <view class='m_des' style='color:#FF5050'>育儿主题活动</view>
+        <view class='m_btn'>开通立享受</view>
+     </view>
+       <view class='m_tiem'>
+        <view class='m_title'>邀请有奖</view>
+        <view  class='m_des'>邀请好友注册</view>
+        <view  class='m_des'>可得<text style='color:#FF5050'>40元现金</text>奖励</view>
+        <view class='m_btn'>开通立享受</view>
+     </view>
+        <view class='m_tiem'>
+        <view class='m_title'>免单项目</view>
+        <view class='m_des'><text style='color:#FF5050'>6万+</text>免单项目</view>
+        <view class='m_des'><text style='color:#FF5050'>260+</text>门店任你选</view>
+        <view class='m_btn'>开通立享受</view>
+     </view>
+  </view>
   <view class='footer'>
     <!-- <image src='https://img.sahuanka.com/earlyEdu-card/images/member_footimg.png'></image> -->
-    <image src="https://img.sahuanka.com/earlyEdu-card/images/service_qrcode@2x.png" data-src="https://img.sahuanka.com/earlyEdu-card/images/service_qrcode@2x.png"  bindtap="previewImage"/>
-    <view>会员须知：本卡有效期截止至2019-12-31</view>
+    <!-- <image src="https://img.sahuanka.com/earlyEdu-card/images/service.png" data-src="https://img.sahuanka.com/earlyEdu-card/images/service.png"  bindtap="previewImage"/> -->
+    <view style='padding-top:68rpx'>添加官方客服微信，可以了解更多福利信息哦~</view>
+    <view>官方福利提前知，会员活动优先享~</view>
+    <view style='padding:28rpx 0 14rpx 0;font-size:28rpx;font-weight:bold;'>微信号: <text selectable="true">A18814819198</text></view>
+    <view style='font-size:18rpx;padding-bottom:94rpx;'>微信号: 长按可复制文本</view>
+    <view style='font-size:18rpx;padding-bottom:94rpx;'>会员须知：本卡有效期截止至2019-12-31</view>
   </view>
 </view>
 <v-mask wx:if="{{masking}}"></v-mask>

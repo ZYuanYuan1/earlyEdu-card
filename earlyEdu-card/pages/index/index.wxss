@@ -456,3 +456,29 @@
 .chanItem{
  margin-left: -152rpx
 }
+/* 小礼包样式 */
+.g_img{
+  width: 240rpx;
+  height: 240rpx;
+  border-radius:8rpx 8rpx 0 0
+}
+.g_title{
+  font-size: 24rpx;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}
+.g_des{
+  overflow:hidden;
+white-space:nowrap;
+text-overflow:ellipsis;
+font-size:20rpx;
+color:#9B9B9B;
+line-height:32rpx;
+}
+.g_more{
+ width: 720rpx;
+ text-align: right;
+ font-size: 20rpx;
+ color: #9B9B9B;
+}

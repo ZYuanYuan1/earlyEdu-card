@@ -1,0 +1,23 @@
+/* pages/smGift/smGift.wxss */
+/* 组件样式 */
+
+.item-index {
+  width: 690rpx;
+  height: 236rpx;
+  background-color: #fff4f2;
+  display: flex;
+  align-items: center;
+  border-radius: 6rpx;
+  margin-bottom: 20rpx;
+}
+
+.tag-index {
+  width: 100rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  font-size: 22rpx;
+  color: #ff5339;
+  border: 1rpx solid #ff5339;
+  text-align: center;
+  border-radius: 2rpx;
+}

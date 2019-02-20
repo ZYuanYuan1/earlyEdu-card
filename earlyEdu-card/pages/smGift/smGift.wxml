@@ -1,0 +1,4 @@
+<!--pages/smGift/smGift.wxml-->
+<view>
+     <c-share-gift item="item-index" tag="tag-index" paramAtoB="{{deshHeight}}" bindmyevent="toGiftdetail" id="myComponent"></c-share-gift>
+</view>

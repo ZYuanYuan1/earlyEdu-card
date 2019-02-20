@@ -4,7 +4,6 @@ var config = require('../../utils/config.js');
 var app = getApp();
 var qqmapsdk;
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -21,6 +20,7 @@ Page({
     showPhoneModal: false, //手机号绑定弹框
     userInfo:{},
     curIndex:0,
+    smGifts:[],
     nav: [{
         imgUrls: 'https://img.sahuanka.com/earlyEdu-card/images/indexBall.png',
         descs: '亲子游乐',
@@ -66,8 +66,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getChildRun();
-    this.initInfoFun()
+    // this.getChildRun();
+    this.initInfoFun();
+    this.childRun();
     //实例化API核心类
     qqmapsdk = new QQMapWX({
       key: config.key
@@ -477,17 +478,17 @@ Page({
     }
   },
   toGiftdetail(e){
-    var id=e.detail.id
+    var id = e.currentTarget.id
     wx.navigateTo({
       url: '/pages/aBulk/aBulk?id='+id,
     })
   },
-  getChildRun() {
-    var header = this.selectComponent('#myComponent');
-    console.log(header)
-    // 父组件里执行子组件的方法
-    header.childRun("/api/gift/pack/list")
-  },
+  // getChildRun() {
+  //   var header = this.selectComponent('#myComponent');
+  //   console.log(header)
+  //   // 父组件里执行子组件的方法
+  //   header.childRun("/api/gift/pack/list")
+  // },
   // goAddcontent(){
   //   wx.navigateTo({
   //     url: '/pages/addContent/addContent'
@@ -536,5 +537,49 @@ Page({
     this.setData({
       curIndex: curIndex
     })
-  }
+  },
+  //跳转小礼包更多页面
+  goMore(){
+    wx.navigateTo({
+      url: '/pages/smGift/smGift',
+    })
+  },
+  //获取小礼包更多数据
+  childRun() {
+    console.log("haaaaaaaaaaaaaaa");
+    var that = this;
+    wx.request({
+      url: getApp().apiUrl + "/api/gift/pack/list",
+      method: "post",
+      data: {
+        'page': 1,
+        'limit': 1000,
+      },
+      header: {
+        // 'Authorization': tokenVal,
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(res);
+        // console.log(res.data.page.pageSize);
+        var page = res.data.list;
+        console.log(page.length);
+        if (res.data.code == 0) {
+          let smGifts = [];
+          smGifts = that.data.smGifts;
+          for (var i = 0; i < 6; i++) {
+            smGifts.push(page[i]);
+            if (page[i].giftPackId) {
+              that.setData({
+                isSure: false
+              })
+            }
+          }
+          that.setData({
+            smGifts: smGifts
+          });
+        }
+      }
+    })
+  },
 })

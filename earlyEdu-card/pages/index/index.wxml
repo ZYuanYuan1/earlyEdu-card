@@ -62,9 +62,30 @@
   </view>
   <!-- 分享有礼 -->
   <!-- <view class='conTitle' style='flex:1'>分享有礼</view> -->
-  <c-share-gift item="item-index" tag="tag-index" paramAtoB="{{deshHeight}}" bindmyevent="toGiftdetail" id="myComponent"></c-share-gift>
+  <view>
+    <view class='conTitle'>分享有礼</view>
+    <view bindtap='goMore' class='g_more'>查看更多>></view>
+    <scroll-view  scroll-x="true" >
+      <view class="content" style='flex-wrap:nowrap;padding-bottom:0'>
+         <view class='conGoods' style='border-radius:8rpx;border:3rpx solid #e9e9e9' wx:for="{{smGifts}}"  id="{{item.giftPackId}}" data-acId="{{item.activityIds}}"     bindtap='toGiftdetail'>
+      <image style=" width: 240rpx;height: 240rpx;border-radius:8rpx 8rpx 0 0" src='{{item.posterPath}}'></image>
+      <view class='con' style='width:240rpx'>
+        <view class='g_title'>
+          {{item.title}}
+        </view>
+         <view class='g_des'>{{item.remark}}</view>
+        <view>
+          <text class="price">￥299</text>
+          <text style='color:#888888;font-size:20rpx;margin-left:20rpx'>原价￥{{item.amount}}</text>
+        </view>
+      </view>
+    </view>
+    </view>
+    </scroll-view>
+  </view>
+  <!-- <c-share-gift item="item-index" tag="tag-index" paramAtoB="{{deshHeight}}" bindmyevent="toGiftdetail" id="myComponent"></c-share-gift> -->
   <!-- 为你优选 -->
-  <view class='conTitle' style='flex:1'>为你优选</view>
+  <view class='conTitle' style='flex:1;margin-top:0'>为你优选</view>
   <!-- 内容 -->
   <view class='content'>
     <view class='conGoods' wx:for="{{goods}}" wx:key="businessactivityid" hidden='{{item.activitytype==4?false:true}}' data-business-id="{{item.businessactivityid}}" data-id="{{item.businessid}}" data-type="{{item.activitytype}}" bindtap='goGoodsdetail'>
