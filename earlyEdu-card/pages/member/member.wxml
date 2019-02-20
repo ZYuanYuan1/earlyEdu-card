@@ -11,6 +11,7 @@
     </view>
   </view>
   <view class="content">
+    开通会员，预计可赚<text style='color:#DBB686'>62300</text>元
     <!-- <view class="content_title">额外福利</view>
     <view>1、购卡即得官方定制礼盒“传家宝”一份，数量有限，先到先得。</view>
     <view>2、会员可免费享受官方举办的育儿主题活动。</view> -->
@@ -55,6 +56,7 @@
       </view>
     </view>
   </view> -->
+  <!-- <view>开通会员，预计可赚62300元</view> -->
   <view style='display:flex;justify-content:center;'>
      <view class='m_tiem'>
         <view class='m_title'>主题活动</view>
@@ -81,7 +83,7 @@
     <view style='padding-top:68rpx'>添加官方客服微信，可以了解更多福利信息哦~</view>
     <view>官方福利提前知，会员活动优先享~</view>
     <view style='padding:28rpx 0 14rpx 0;font-size:28rpx;font-weight:bold;'>微信号: <text selectable="true">A18814819198</text></view>
-    <view style='font-size:18rpx;padding-bottom:94rpx;'>微信号: 长按可复制文本</view>
+    <view style='font-size:18rpx;padding-bottom:94rpx;'>长按可复制文本</view>
     <view style='font-size:18rpx;padding-bottom:94rpx;'>会员须知：本卡有效期截止至2019-12-31</view>
   </view>
 </view>

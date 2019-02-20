@@ -33,6 +33,7 @@ page {
   background-color: #FF5339;
   position: absolute;
   top: 27rpx;
+  text-align: center;
   right: 0;
 }
 
@@ -44,27 +45,40 @@ page {
 }
 
 .header_button {
-  width: 340rpx;
+  width: 266rpx;
   height: 76rpx;
-  background: #CBB588;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 28rpx;
-  border-radius: 12rpx;
+  border-radius: 38rpx;
   margin: 0 auto;
   margin-top: 322rpx;
+  box-shadow:0 4rpx 8rpx rgba(0,0,0,0.3);
+  background: linear-gradient(to right,#E5C893,#DABB7A);
+  animation:myfirst 1.5s cubic-bezier(0.95,0,0,0.95) infinite;
+  transform: scale(1);
+	-webkit-animation:myfirst 1.5s cubic-bezier(0.95,0,0,0.95)  infinite; /* Safari and Chrome */
+}
+@keyframes myfirst
+{
+	0%,25%{transform: scale(1);}
+  85%,100%{ transform: scale(1.05);}
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+	0%,25%{  transform: scale(1);}
+  80%,100%{transform: scale(1.05);}
 }
 
 /* 内容 */
 .content {
-  width: 610rpx;
-  font-size: 28rpx;
-  margin: 98rpx auto 0;
-  text-align: justify;
-  font-weight: bold;
-  color: #333333;
-  line-height: 46rpx;
+  width: 100%;
+  font-size: 32rpx;
+  margin: 86rpx auto 48rpx;
+  text-align: center;
+  color: #333333 
 }
 
 .content_title {
