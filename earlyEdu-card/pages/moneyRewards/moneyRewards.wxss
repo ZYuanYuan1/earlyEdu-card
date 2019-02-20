@@ -1,9 +1,10 @@
 /* pages/moneyRewards/moneyRewards.wxss */
-page{
-  background:#F4F4F4
+page {
+  background: #F4F4F4
 }
+
 /* 头部 */
-.header{
+.header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,30 +14,36 @@ page{
   color: #EDD992;
   text-align: center;
 }
-.header_title{
-   font-size: 32rpx;
-   margin-bottom: 10rpx
+
+.header_title {
+  font-size: 32rpx;
+  margin-bottom: 10rpx
 }
-.header_num{
+
+.header_num {
   font-size: 60rpx;
   margin-bottom: 10rpx
 }
-.header_postal{
+
+.header_postal {
   font-size: 28rpx;
   color: #ABA192
 }
+
 /* 内容 */
-.reward{ 
-   margin-top: -36px;
-   width: 100%;
+.reward {
+  margin-top: -36px;
+  width: 100%;
   display: flex;
   justify-content: center
 }
-.reward image{
+
+.reward image {
   width: 690rpx;
   height: 140rpx
 }
-.content{
+
+.content {
   margin: 30rpx 30rpx 30rpx;
   width: 590rpx;
   height: 100%;
@@ -44,25 +51,110 @@ page{
   border-radius: 16rpx;
   padding: 40rpx 50rpx 0;
 }
-.content_item{
+
+.content_item {
   height: 132rpx;
-  border-bottom: 2rpx solid  #F4F4F4;
+  border-bottom: 2rpx solid #F4F4F4;
   display: flex;
   align-items: center
 }
-.cont_fontone{
+
+.cont_fontone {
   font-size: 28rpx
 }
-.cont_fonttwo{
+
+.cont_fonttwo {
   font-size: 24rpx;
   color: #999999
 }
- .no_content{
-    font-size:28rpx;
-    color:#dddddd;
-    text-align:center;
-    height:800rpx;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-  }
+
+.no_content {
+  font-size: 28rpx;
+  color: #dddddd;
+  text-align: center;
+  height: 800rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 规则说明 */
+
+.directions {
+  font-size: 22rpx;
+  width: 120rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  border-radius: 200rpx 0 0 200rpx;
+  background-color: #FF5339;
+  position: absolute;
+  top: 27rpx;
+  right: 0;
+  color: #ffffff;
+}
+
+/* 使用说明 */
+.directions-view {
+  width: 600rpx;
+  position: absolute;
+  top: 84rpx;
+  left: 75rpx;
+  z-index: 999;
+}
+
+.directions-close {
+  width: 60rpx;
+  height: 60rpx;
+  margin-top: 50rpx;
+  margin-left: 270rpx;
+  line-height: 60rpx;
+  color: #ffffff;
+  border: 4rpx solid #ffffff;
+  text-align: center;
+  border-radius: 60rpx;
+  font-weight: bold;
+}
+
+.directions-content {
+  font-size: 22rpx;
+  width: 600rpx;
+  height: 940rpx;
+  background: url('https://img.sahuanka.com/earlyEdu-card/images/directions_bg.png') no-repeat;
+  background-size: 600rpx 940rpx;
+  color: #333333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.directions-content .title {
+  font-size: 32rpx;
+  color: #000000;
+  letter-spacing: 4rpx;
+  font-weight: 500;
+  margin: 60rpx 0 30rpx 0;
+}
+
+.directions-content .line {
+  width: 44rpx;
+  height: 6rpx;
+  background: rgba(255, 83, 57, 1);
+  margin-bottom: 58rpx;
+}
+
+.directions-content .item {
+  width: 432rpx;
+  margin-bottom: 20rpx;
+}
+
+/* .directions-content .item:nth-of-type(5) {
+  margin-bottom: 50rpx;
+} */
+
+.directions-content .time{
+  width: 366rpx;
+}
+
+.directions-content .time text{
+  color: #FF5339;
+}

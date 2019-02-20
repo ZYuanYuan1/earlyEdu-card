@@ -30,6 +30,7 @@
      <view class='maintext'>
           <text>温馨提示：</text> 
             <view>提现需1-3个工作日到账，请您耐心等待哦~</view>
+            <view>提现平台将收取1%的手续费</view>
           </view>
   </view>
    <!--绑定手机号弹窗-->

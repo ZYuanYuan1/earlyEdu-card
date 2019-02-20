@@ -1,29 +1,51 @@
-<!--pages/moneyRewards/moneyRewards.wxml-->
-<view class='contanier'> 
-   <view class='header'>
-       <view style='flex:0 0 85%; margin-top: -92rpx'>
-           <view class='header_title'>{{grade>0?"我的奖励金":"我的资金"}}</view>
-           <view class='header_num'>{{amount}}</view>
-           <view class='header_postal' bindtap='postal'>立即提现</view>
-       </view>
-   </view>
-   <view class='reward' bindtap='goExtra'><image src='https://img.sahuanka.com/earlyEdu-card/images/rewards3.png'></image></view>
-   <!-- 内容：有数据的时候显示 -->
-   <view class='content' wx:if="{{moneyLength>0}}">
-      <view style='font-size:32rpx'>{{grade>0?"现金奖励流水":"资金流水"}}</view>
-      <view class='content_item' wx:for="{{moneys}}">
-         <view style='flex:0 0 80%'>
-             <view class='cont_fontone'>{{item.description}}</view>
-              <view class='cont_fonttwo'>{{item.createdate}}</view>
-         </view>
-         <view class='cont_fontone' style='color:#FF5339'><text>{{item.fundsflowtype==1?"+":"-"}}</text>{{item.amount}}元</view>
+<!-- pages/moneyRewards/moneyRewards.wxml -->
+<view class='contanier'>
+  <view class='header'>
+    <view style='flex:0 0 85%; margin-top: -92rpx'>
+      <view class='header_title'>{{grade>0?"我的奖励金":"我的资金"}}</view>
+      <view class='header_num'>{{amount}}</view>
+      <view class='header_postal' bindtap='postal'>立即提现</view>
+    </view>
+    <view class="directions" bindtap="directions">规则说明</view>
+  </view>
+  <view class='reward' bindtap='goExtra'>
+    <image src='https://img.sahuanka.com/earlyEdu-card/images/rewards3.png'></image>
+  </view>
+  <!-- 内容：有数据的时候显示 -->
+  <view class='content' wx:if="{{moneyLength>0}}">
+    <view style='font-size:32rpx'>{{grade>0?"现金奖励流水":"资金流水"}}</view>
+    <view class='content_item' wx:for="{{moneys}}">
+      <view style='flex:0 0 80%'>
+        <view class='cont_fontone'>{{item.description}}</view>
+        <view class='cont_fonttwo'>{{item.createdate}}</view>
       </view>
-   </view>
-<!-- 无数据的时候显示 -->
-   <view class='content' wx:if="{{moneyLength<=0}}">
-      <view style='font-size:32rpx'>{{grade>0?"现金奖励流水":"资金流水"}}</view>
-      <view class='no_content'>暂无数据</view>  
-   </view>
+      <view class='cont_fontone' style='color:#FF5339'>
+        <text>{{item.fundsflowtype==1?"+":"-"}}</text>
+        {{item.amount}}元
+      </view>
+    </view>
+  </view>
+  <!-- 无数据的时候显示 -->
+  <view class='content' wx:if="{{moneyLength<=0}}">
+    <view style='font-size:32rpx'>{{grade>0?"现金奖励流水":"资金流水"}}</view>
+    <view class='no_content'>暂无数据</view>
+  </view>
 </view>
-<!--绑定手机号弹窗-->
+<!-- 绑定手机号弹窗 -->
 <bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone>
+
+<!-- 规则说明 -->
+<v-mask wx:if="{{masking}}"></v-mask>
+<view class="directions-view" wx:if="{{masking}}">
+  <view class="directions-content">
+    <view class="title">规则说明</view>
+    <view class="line"></view>
+    <view class="item">1、现金起提金额为1000元，未达到1000元不可提现。</view>
+    <view class="item">2、提现金额平台将收取1％的收取费。在平台内消费时无需扣除手续费。</view>
+    <view class="item">3、提现一般1~3天内到账（您理解并同意如遇提现高峰，提现到账时间会延长）。</view>
+    <view class="item">4、您理解并同意我们应用先进的人工智能分析您的行为，如发现造假等违规操作，我们有权阻止您使用（填写邀请码、提现、奖励）以及取消您获得的奖励。</view>
+    <view class="item">5、为保证用户顺利提现，提现需用户按照提现页面规范操作，如用户未按提现要求操作或不符合第三方支付平台的要求等原因导致不能收款（如未做实名认证或提现前与平台账号解绑等），所获得的现金将无法提现，本平台无需承担任何责任。</view>
+    <view class="item">6、我们可在法律法规允许的范围内对本次活动规则解释并做出适当修改。</view>
+  </view>
+  <view class="directions-close" bindtap="directionsClose">X</view>
+</view>

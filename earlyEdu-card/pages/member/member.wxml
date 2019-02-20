@@ -87,6 +87,8 @@
     <view style='font-size:18rpx;padding-bottom:94rpx;'>会员须知：本卡有效期截止至2019-12-31</view>
   </view>
 </view>
+
+<!-- 使用说明 -->
 <v-mask wx:if="{{masking}}"></v-mask>
 <view class="directions-view" wx:if="{{masking}}">
   <view class="directions-content">
