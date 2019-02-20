@@ -3,6 +3,7 @@
   "navigationBarBackgroundColor": "#000000",
   "navigationBarTextStyle": "white",
   "usingComponents": {
-    "bindphone": "../../components/bindPhone/bindPhone"
+    "bindphone": "../../components/bindPhone/bindPhone",
+    "v-mask": "../../components/mask/index"
   }
 }
