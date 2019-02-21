@@ -35,7 +35,7 @@
     </view>
     </view>
   <view class='scollClass'>
-    <swiper  current='0' class='{{curIndex==1?"chanItem":""}}' style="height:140rpx"  bindchange='onChange' >
+    <swiper  current='0' class='{{curIndex==1?"chanItem":""}}' style="height:128rpx"  bindchange='onChange' >
      <swiper-item wx:for="{{2}}">
         <view  class="navLista" wx:for="{{nav}}" wx:key="businessMenuId" id="{{item.businessMenuId}}" bindtap='goChoose'>
       <image src="{{item.imgUrls}}" />
@@ -48,19 +48,7 @@
       <view  class='{{curIndex==1?"change":"pro"}}'></view>
    </view>
   </view>
-  <!-- 宝贝大礼 -->
-  <view class='cor'>
-    <!-- <image src='/images/gif.gif'class="corset" bindtap='goAssemble'></image> -->
-     <image src='https://img.sahuanka.com/earlyEdu-card/images/Groupgif.gif' bindtap='goAssemble'></image>
-    <image src='https://img.sahuanka.com/earlyEdu-card/images/babyGiftgif.gif' bindtap='goBabygift'></image>
-    <!-- <image src='https://img.sahuanka.com/earlyEdu-card/images/addContent.gif'   style="width:100%;height:152rpx"></image> -->
-  </view> 
-  <!-- 完善信息 -->
-  <view class='msInfo' hidden="{{userInfo.dabaobirthday!=null||''}}">
-     <view class='msInfo_title'>补充孩子年龄信息，获得适龄活动推荐</view>
-     <view class='msInfo_btn' bindtap='goMymsg'>立即完善</view>
-  </view>
-  <!-- 分享有礼 -->
+ <!-- 分享有礼 -->
   <!-- <view class='conTitle' style='flex:1'>分享有礼</view> -->
   <view>
     <view class='conTitle'>分享有礼</view>
@@ -83,7 +71,19 @@
     </view>
     </scroll-view>
   </view>
+    <!-- 宝贝大礼 -->
+  <view class='cor'>
+    <!-- <image src='/images/gif.gif'class="corset" bindtap='goAssemble'></image> -->
+     <image src='https://img.sahuanka.com/earlyEdu-card/images/Groupgif.gif' bindtap='goAssemble'></image>
+    <image src='https://img.sahuanka.com/earlyEdu-card/images/babyGiftgif.gif' bindtap='goBabygift'></image>
+    <!-- <image src='https://img.sahuanka.com/earlyEdu-card/images/addContent.gif'   style="width:100%;height:152rpx"></image> -->
+  </view> 
   <!-- <c-share-gift item="item-index" tag="tag-index" paramAtoB="{{deshHeight}}" bindmyevent="toGiftdetail" id="myComponent"></c-share-gift> -->
+    <!-- 完善信息 hidden="{{userInfo.dabaobirthday!=null||''}}"-->
+  <view class='msInfo' hidden="{{userInfo.dabaobirthday!=null||''}}">
+     <view class='msInfo_title'>补充孩子年龄信息，获得适龄活动推荐</view>
+     <view class='msInfo_btn' bindtap='goMymsg'>立即完善</view>
+  </view>
   <!-- 为你优选 -->
   <view class='conTitle' style='flex:1;margin-top:0'>为你优选</view>
   <!-- 内容 -->

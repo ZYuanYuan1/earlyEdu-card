@@ -84,7 +84,7 @@
     <view>官方福利提前知，会员活动优先享~</view>
     <view style='padding:28rpx 0 14rpx 0;font-size:28rpx;font-weight:bold;'>微信号: <text selectable="true">A18814819198</text></view>
     <view style='font-size:18rpx;padding-bottom:94rpx;'>长按可复制文本</view>
-    <view style='font-size:18rpx;padding-bottom:94rpx;'>会员须知：本卡有效期截止至2019-12-31</view>
+    <view style='font-size:18rpx'>会员须知：本卡有效期截止至2019-12-31</view>
   </view>
 </view>
 
