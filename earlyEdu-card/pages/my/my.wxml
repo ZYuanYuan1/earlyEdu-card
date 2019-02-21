@@ -22,7 +22,8 @@
         </view>
       </view>
       <view class='headerConC headerConAll' style='flex:0 0 20%' bindtap='goQRcode'>
-        <image src="https://img.sahuanka.com/earlyEdu-card/images/reward3.gif" style='width:82rpx;height:82rpx;margin-top:28rpx'></image>
+        <!-- <image src="https://img.sahuanka.com/earlyEdu-card/images/reward3.gif" style='width:82rpx;height:82rpx;margin-top:28rpx'></image> -->
+        <image src="https://img.sahuanka.com/earlyEdu-card/images/reward4.gif" style='width:160rpx;height:160rpx;'></image>
         <!-- <view style='font-size:16rpx'>我的邀请码</view> -->
         <!-- <button open-type="share" class='invit' hover-class="none" hover-stop-propagation="true">邀请有奖</button> -->
       </view>
