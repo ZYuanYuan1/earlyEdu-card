@@ -363,7 +363,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: -12rpx;
   padding: 40rpx 30rpx;
 }
 
