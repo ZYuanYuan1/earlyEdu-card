@@ -49,7 +49,7 @@
         </view>
       </view>
       <view style='flex:0 0 20%'>
-        <view class='receiveNo' wx:if="{{item.orderState == 3}}">已领取</view>
+        <view class='receiveNo' wx:if="{{item.orderState == 3 || item.orderState == 7 || item.orderState == 9 }}">已领取</view>
         <!-- bindtap='getGift' -->
         <view class='receive' wx:else bindtap='goGooddstail' data-businessactivityid="{{item.businessactivityid}}" data-activitytype='{{item.activitytype}}'>
           领取
