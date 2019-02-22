@@ -5,6 +5,5 @@
   "usingComponents": {
     "bindphone": "../../components/bindPhone/bindPhone",
     "painter": "../../components/painter/painter"
-  },
-  "disableScroll": true
+  }
 }

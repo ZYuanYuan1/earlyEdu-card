@@ -1,9 +1,9 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/myQRcode/myQRcode",
     "pages/member/member",
     "pages/smGift/smGift",
-    "pages/myQRcode/myQRcode",
     "pages/addContent/addContent",
     "pages/donate/donate",
     "pages/orderDetail/orderDetail",

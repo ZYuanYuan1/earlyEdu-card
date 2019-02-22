@@ -6,8 +6,34 @@
          <view  class="marTop" style='font-size:60rpx'><text style='font-size:160rpx;color:#CF1303;font-weight:bold'>40</text>元</view>
          <view class="des marTop"> 若您邀请的好友邀请新用户成功购卡 您可再获得奖金<text style='color:#CF1303'>30元</text>哦！</view>
       </view>
-      <view class='posBtn mar' style='margin-top: 80rpx' bindtap='handleSharePoster'>
+      <!-- 提示 -->
+      <view style='margin:50rpx 78rpx 144rpx 78rpx;'>
+          <view class='reTitle'>- 邀请小提示 -</view>
+          <view style='font-size:26rpx'>
+            <view class='reCont'>
+              1. 邀请您的家人、朋友、同学、同事，有娃的家长成功率更高。
+            </view>
+               <view class='reCont'>
+              2. 邀请时对好友说：<text style='color:#D20B06'>“260+门店，价值6万+礼包，杭州亲子必备，超值！推荐给你”</text>。成功率更高。
+            </view>
+               <view class='reCont'>
+             3. 可通过 <text style='color:#D20B06'>我的-右上角“邀请有奖”</text>，生成您的专属二维码海报，将海报分享给好友，若您的好友通过您的二维码注册购卡，您可获得现金奖励。
+            </view>
+               <view class='reCont'>
+              4. 可通过 <text style='color:#D20B06'>首页-分享有礼</text>，生成您的专属二维码分享海报，将海报分享给好友，若您的好友通过您的二维码注册购卡，您可获得现金奖励。
+            </view>
+               <view class='reCont'>
+            5. 请确保您的好友是通过您的二维码注册账号，以确保您能正常收到奖励。
+            </view>
+               <view class='reCont'>
+             6. 若您邀请的好友邀请新用户成功购卡，您可再获得<text style='color:#D20B06'>30元奖励</text>哦~
+            </view>
+          </view>
+      </view>
+      <view class='pos'>
+      <view class='posBtn'  bindtap='handleSharePoster'>
          点击生成专属二维码海报
+      </view>
       </view>
 </view>
 <!--绑定手机号弹窗-->
