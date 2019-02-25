@@ -1,4 +1,5 @@
 // pages/redeemCode/redeemCode.js
+var util = require('../../utils/util.js');
 Page({
 
   /**
@@ -7,6 +8,7 @@ Page({
   data: {
     inviteUserPhone: '',//邀请人电话
     showPhoneModal: false,//手机号绑定弹框
+    buttonClicked: false
   },
 
   /**
@@ -57,6 +59,16 @@ Page({
   onReachBottom: function () {
 
   },
+  buttonClicked(self) {
+    self.setData({
+      buttonClicked: true
+    })
+    setTimeout(function () {
+      self.setData({
+        buttonClicked: false
+      })
+    }, 3000)
+  },
 
   /**
    * 用户点击右上角分享
@@ -64,8 +76,9 @@ Page({
  
   //兑换
   changeVip(e){
-    var input=e.detail.value.input;
     var that = this;
+    that.buttonClicked(that);
+    var input=e.detail.value.input;
     wx.getStorage({
       key: 'loginStutes',
       success: function (res) {
@@ -121,4 +134,14 @@ Page({
       console.log(userInfo)
     }
   },
+  change(){
+    wx.showModal({
+      content: '您操作的频率太快，稍后点击！',
+      showCancel: false,
+      confirmText: "ok",
+      confirmColor: "#D0021B",
+      success() {
+      }
+    })
+  }
 })

@@ -1,5 +1,5 @@
 <!--pages/redeemCode/redeemCode.wxml-->
-<form class="contanier" bindsubmit='changeVip'>
+<form class="contanier" bindsubmit='{{!buttonClicked?"changeVip":"change"}}'>
    <view>
        <view class='title'>请输入您的兑换码</view>
        <input placeholder='请输入兑换码' placeholder-class='plInput' class='input' name="input"></input>
