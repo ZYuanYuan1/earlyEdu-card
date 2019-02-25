@@ -74,7 +74,7 @@
     <!-- 宝贝大礼 -->
   <view class='cor'>
     <!-- <image src='/images/gif.gif'class="corset" bindtap='goAssemble'></image> -->
-     <image src='https://img.sahuanka.com/earlyEdu-card/images/Groupgif.gif' bindtap='goAssemble'></image>
+     <image src='https://img.sahuanka.com/earlyEdu-card/images/inviteIn.gif' bindtap='goAssemble'></image>
     <image src='https://img.sahuanka.com/earlyEdu-card/images/babyGiftgif.gif' bindtap='goBabygift'></image>
     <!-- <image src='https://img.sahuanka.com/earlyEdu-card/images/addContent.gif'   style="width:100%;height:152rpx"></image> -->
   </view> 

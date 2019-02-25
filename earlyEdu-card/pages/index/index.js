@@ -442,10 +442,10 @@ Page({
       url: '/pages/choose/choose?businessMenuId=' + e.currentTarget.id,
     })
   },
-  //跳转到拼团列表页面
+  //跳转到拼团列表页面/pages/assemble/assemble
   goAssemble() {
     wx.navigateTo({
-      url: '/pages/assemble/assemble',
+      url: '/pages/myQRcode/myQRcode',
     })
   },
   //去买卡
